@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -20,32 +21,33 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @ServletComponentScan
-@MapperScan("com.ifast.*.dao")
+@MapperScan({"com.ifast.*.dao","com.cms.dao"})
+@ComponentScan({"com.ifast", "com.cms"})
 @SpringBootApplication
 public class Application {
-	
-	private static Logger log = LoggerFactory.getLogger(Application.class);
-	
-	/**
-	 * <pre>
-	 * </pre>
-	 * <small> 2018年3月22日 | Aron</small>
-	 *
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-		printProjectConfigs();
-	}
-	
-	private static void printProjectConfigs() {
-		ServerProperties serverProperties = SpringContextHolder.getApplicationContext().getBean(ServerProperties.class);
-		DataSourceProperties dataSourceProperties = SpringContextHolder.getApplicationContext().getBean(DataSourceProperties.class);
-		IFastProperties config = SpringContextHolder.getApplicationContext().getBean(IFastProperties.class);
-		log.info("开启演示模式：{}", config.isDemoMode());
-		log.info("开启调试模式：{}", config.isDevMode());
-		log.info("数据库：{}", dataSourceProperties.getUrl());
-		log.info("==================> run at http://localhost:{}  <==================", serverProperties.getPort() + serverProperties.getContextPath());
-	}
-	
+
+    private static Logger log = LoggerFactory.getLogger(Application.class);
+
+    /**
+     * <pre>
+     * </pre>
+     * <small> 2018年3月22日 | Aron</small>
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+        printProjectConfigs();
+    }
+
+    private static void printProjectConfigs() {
+        ServerProperties serverProperties = SpringContextHolder.getApplicationContext().getBean(ServerProperties.class);
+        DataSourceProperties dataSourceProperties = SpringContextHolder.getApplicationContext().getBean(DataSourceProperties.class);
+        IFastProperties config = SpringContextHolder.getApplicationContext().getBean(IFastProperties.class);
+        log.info("开启演示模式：{}", config.isDemoMode());
+        log.info("开启调试模式：{}", config.isDevMode());
+        log.info("数据库：{}", dataSourceProperties.getUrl());
+        log.info("==================> run at http://localhost:{}  <==================", serverProperties.getPort() + serverProperties.getContextPath());
+    }
+
 }
