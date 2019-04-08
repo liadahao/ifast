@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var id = '#doc-oc-demo3';
+            var $myOc = $(id);
+            $('.side-close').on('click', function () {
+                $myOc.offCanvas($(this).data('rel'));
+            });
+        });
+    </script>
+
+
+    <style>
+        .am-topbar {
+            border-bottom-width: 0;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background: rgba(45, 0, 79, 1);
+            height: 100%;
+        }
+
+        .nav {
+            width: 26px;
+            height: 26px;
+            top: 12px;
+            left: 1854px;
+            position: absolute;
+        }
+
+        .logo {
+            width: 150px;
+            height: 26px;
+            margin-top: 12px;
+            margin-left: 40px;
+        }
+
+
+        .get {
+            color: #fff;
+            text-align: center;
+            padding: 361px 0;
+        }
+
+        .get-title {
+            font-size: 400%;
+            display: inline-block;
+            color: rgba(0, 253, 255, 1);
+            margin-bottom: 5%;
+        }
+
+        .company-name {
+            margin-bottom: 4%;
+        }
+
+        .get-btn {
+            line-height: 2.0;
+            width: 17.71%;
+            background: rgba(0, 253, 255, 1);
+            border-radius: 34px;
+        }
+
+        .footer-icon {
+            width: 180px;
+            height: 64px;
+        }
+
+        footer {
+            background: rgba(9, 3, 1, 1);
+        }
+
+        .am-footer {
+            padding-left: 360px;
+            padding-right: 360px;
+        }
+
+        .watch-icon {
+            margin-right: 1%;
+        }
+
+        .watch-video {
+            margin-top: 3%;
+        }
+
+        .am-offcanvas-bar {
+            width: 50%;
+            height: 100%;
+            background: url(/static/img/0103menu.png);
+        }
+
+        .am-offcanvas-content {
+            padding-left: 100px;
+            padding-top: 80px;
+        }
+
+        .am-offcanvas-content a {
+            width: 128px;
+            height: 27px;
+            font-size: 28px;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .side-close {
+            padding: 17px;
+            float: right;
+        }
+
+
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <span><img class="logo" src="/static/img/logo.png"></span>
+    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+</header>
+
+<div class="get">
+    <div class="am-g">
+        <div class="am-u-lg-12">
+            <div class="get-title">IMMERSE · EXPERIENCE · DISCOVER</div>
+            <div class="company-name am-text-xxl">
+                Shenzhen Legendary Tour
+            </div>
+            <div class="am-text-xxl">
+                <a href="http://www.baidu.com" class="am-btn am-btn-xl get-btn">Learn More</a>
+            </div>
+            <div class="watch-video">
+                <i class="am-icon-play-circle-o am-icon-sm watch-icon"></i>
+                Watch Video
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 侧边栏内容 -->
+<div id="doc-oc-demo3" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+        <div class="side-close" data-rel="close">
+            <img src="/static/img/0103close.png">
+        </div>
+        <div class="am-offcanvas-content">
+            <h3><a href="/tech_tour">Tech Tour </a></h3>
+            <h3><a href="/workshop">Workshop </a></h3>
+            <h3><a href="/service">Consultancy Service</a></h3>
+            <h3><a href="/article">Article</a></h3>
+            <h3><a href="/gallery">Gallery</a></h3>
+            <h3><a href="/event">Event</a></h3>
+            <h3><a href="">Testimonials</a></h3>
+            <h3><a href="/shop">Shop</a></h3>
+            <h3><a href="/about">About us</a></h3>
+            <h3><a href="/contact">Contact us</a></h3>
+        </div>
+    </div>
+</div>
+
+<footer class="am-footer am-footer-divider">
+    <ul class="am-avg-sm-6 am-thumbnails">
+        <li>
+            <div class="am-u-sm-2"><img class="footer-icon" src="/static/img/air.png"></div>
+        </li>
+        <li>
+            <div class="am-u-sm-2"><img class="footer-icon" src="/static/img/air.png"></div>
+        </li>
+        <li>
+            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
+        </li>
+        <li>
+            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
+        </li>
+        <li>
+            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
+        </li>
+        <li>
+            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>

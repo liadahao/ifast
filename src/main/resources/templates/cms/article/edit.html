@@ -3,154 +3,134 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content ">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<form class="form-horizontal m-t" id="signupForm">
-						<input id="id" name="id" th:value="${article.id}"  type="hidden">
-												
-																																	<div class="form-group">	
-								<label class="col-sm-3 control-label">slug：</label>
-								<div class="col-sm-8">
-																		<input id="slug" name="slug" th:value="${article.slug}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">标题：</label>
-								<div class="col-sm-8">
-																		<input id="title" name="title" th:value="${article.title}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">内容：</label>
-								<div class="col-sm-8">
-																		<textarea id="content" name="content" th:text="${article.content}" class="form-control" rows="5"></textarea>
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">编辑模式，默认为html，其他可选项包括html，markdown ..：</label>
-								<div class="col-sm-8">
-																		<input id="editMode" name="editMode" th:value="${article.editMode}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">摘要：</label>
-								<div class="col-sm-8">
-																		<textarea id="summary" name="summary" th:text="${article.summary}" class="form-control" rows="5"></textarea>
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">连接到(常用于谋文章只是一个连接)：</label>
-								<div class="col-sm-8">
-																		<input id="linkTo" name="linkTo" th:value="${article.linkTo}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">缩略图：</label>
-								<div class="col-sm-8">
-																		<input id="thumbnail" name="thumbnail" th:value="${article.thumbnail}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">用户ID：</label>
-								<div class="col-sm-8">
-																		<input id="userId" name="userId" th:value="${article.userId}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">排序编号：</label>
-								<div class="col-sm-8">
-																		<input id="orderNumber" name="orderNumber" th:value="${article.orderNumber}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">状态：</label>
-								<div class="col-sm-8">
-																		<input id="status" name="status" th:value="${article.status}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">评论状态，默认允许评论：</label>
-								<div class="col-sm-8">
-																		<input id="commentStatus" name="commentStatus" th:value="${article.commentStatus}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">评论总数：</label>
-								<div class="col-sm-8">
-																		<input id="commentCount" name="commentCount" th:value="${article.commentCount}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">最后评论时间：</label>
-								<div class="col-sm-8">
-																		<input id="commentTime" name="commentTime" th:value="${article.commentTime} eq null ? '' : ${#dates.format(article.commentTime, 'yyyy-MM-dd HH:mm:ss')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">访问量：</label>
-								<div class="col-sm-8">
-																		<input id="viewCount" name="viewCount" th:value="${article.viewCount}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">创建日期：</label>
-								<div class="col-sm-8">
-																		<input id="createTime" name="createTime" th:value="${article.createTime} eq null ? '' : ${#dates.format(article.createTime, 'yyyy-MM-dd HH:mm:ss')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">最后更新日期：</label>
-								<div class="col-sm-8">
-																		<input id="modifyTime" name="modifyTime" th:value="${article.modifyTime} eq null ? '' : ${#dates.format(article.modifyTime, 'yyyy-MM-dd HH:mm:ss')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">标识，通常用于对某几篇文章进行标识，从而实现单独查询：</label>
-								<div class="col-sm-8">
-																		<input id="flag" name="flag" th:value="${article.flag}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">SEO关键字：</label>
-								<div class="col-sm-8">
-																		<input id="metaKeywords" name="metaKeywords" th:value="${article.metaKeywords}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">SEO描述信息：</label>
-								<div class="col-sm-8">
-																		<input id="metaDescription" name="metaDescription" th:value="${article.metaDescription}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">备注信息：</label>
-								<div class="col-sm-8">
-																		<textarea id="remarks" name="remarks" th:text="${article.remarks}" class="form-control" rows="5"></textarea>
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">：</label>
-								<div class="col-sm-8">
-																		<input id="style" name="style" th:value="${article.style}" class="form-control" type="text">
-																	</div>
-							</div>
-																				<div class="form-group">
-								<div class="col-sm-8 col-sm-offset-3">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-	<div th:include="include::footer"></div>
-	<script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
-	<script type="text/javascript" src="/js/appjs/cms/article/edit.js">
-	</script>
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" th:value="${article.id}" type="hidden">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">标题：</label>
+                            <div class="col-sm-8">
+                                <input id="title" name="title" th:value="${article.title}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">内容：</label>
+                            <div class="col-sm-8">
+                                <textarea id="content" name="content" th:text="${article.content}" class="form-control"
+                                          rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">编辑模式，默认为html，其他可选项包括html，markdown ..：</label>
+                            <div class="col-sm-8">
+                                <input id="editMode" name="editMode" th:value="${article.editMode}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">摘要：</label>
+                            <div class="col-sm-8">
+                                <textarea id="summary" name="summary" th:text="${article.summary}" class="form-control"
+                                          rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">连接到(常用于谋文章只是一个连接)：</label>
+                            <div class="col-sm-8">
+                                <input id="linkTo" name="linkTo" th:value="${article.linkTo}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">缩略图：</label>
+                            <div class="col-sm-8">
+                                <input id="thumbnail" name="thumbnail" th:value="${article.thumbnail}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户ID：</label>
+                            <div class="col-sm-8">
+                                <input id="userId" name="userId" th:value="${article.userId}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">排序编号：</label>
+                            <div class="col-sm-8">
+                                <input id="orderNumber" name="orderNumber" th:value="${article.orderNumber}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态：</label>
+                            <div class="col-sm-8">
+                                <input id="status" name="status" th:value="${article.status}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">评论状态，默认允许评论：</label>
+                            <div class="col-sm-8">
+                                <input id="commentStatus" name="commentStatus" th:value="${article.commentStatus}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">创建日期：</label>
+                            <div class="col-sm-8">
+                                <input id="createTime" name="createTime"
+                                       th:value="${article.createTime} eq null ? '' : ${#dates.format(article.createTime, 'yyyy-MM-dd HH:mm:ss')}"
+                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">SEO关键字：</label>
+                            <div class="col-sm-8">
+                                <input id="metaKeywords" name="metaKeywords" th:value="${article.metaKeywords}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">SEO描述信息：</label>
+                            <div class="col-sm-8">
+                                <input id="metaDescription" name="metaDescription" th:value="${article.metaDescription}"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注信息：</label>
+                            <div class="col-sm-8">
+                                <textarea id="remarks" name="remarks" th:text="${article.remarks}" class="form-control"
+                                          rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">：</label>
+                            <div class="col-sm-8">
+                                <input id="style" name="style" th:value="${article.style}" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/article/edit.js">
+</script>
 </body>
 </html>

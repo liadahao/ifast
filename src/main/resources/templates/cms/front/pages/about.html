@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <script type="text/javascript">
+        // The slider being synced must be initialized first
+        $('#carousel').flexslider({
+            animation: "slide",
+            controlNav: true,
+            animationLoop: true,
+            slideshow: false,
+            itemMargin: 24,
+            prevText: '',
+            nextText: ''
+        });
+        $(function () {
+            var id = '#doc-oc-demo3';
+            var $myOc = $(id);
+            $('.side-close').on('click', function () {
+                $myOc.offCanvas($(this).data('rel'));
+            });
+        });
+    </script>
+
+
+    <style>
+        .am-topbar {
+            border-bottom-width: 0;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background: rgba(45, 0, 79, 1);
+            height: 100%;
+        }
+
+        .nav {
+            width: 26px;
+            height: 26px;
+            top: 12px;
+            left: 1854px;
+            position: absolute;
+        }
+
+        .logo {
+            width: 150px;
+            height: 26px;
+            margin-top: 12px;
+            margin-left: 40px;
+        }
+
+        .get {
+            margin-top: 156px;
+            margin-left: 17.71%;
+            margin-right: 17.71%;
+            padding-left: 70px;
+            padding-right: 70px;
+            height: 100%;
+            display: block;
+        }
+
+        .am-offcanvas-bar {
+            width: 50%;
+            height: 100%;
+            background: url(/static/img/0103menu.png);
+        }
+
+        .am-offcanvas-content {
+            padding-left: 100px;
+            padding-top: 80px;
+        }
+
+        .am-offcanvas-content a {
+            width: 128px;
+            height: 27px;
+            font-size: 28px;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .side-close {
+            padding: 17px;
+            float: right;
+        }
+
+        .am-nav-tabs > li.am-active > a {
+            border: 0;
+            font-size: 56px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+            background: transparent;
+        }
+
+        .am-nav-tabs > li.am-active > a, .am-nav-tabs > li.am-active > a:focus, .am-nav-tabs > li.am-active > a:hover {
+            border: 0;
+            font-size: 56px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+            background: transparent;
+        }
+
+        .am-nav-tabs > li > a {
+            font-size: 56px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(61, 34, 60, 1);
+            margin-right: 5px;
+            line-height: 1.6;
+            border: 1px solid transparent;
+            border-radius: 0;
+        }
+
+        .am-tabs-bd {
+            border: 0
+        }
+
+        .am-nav-tabs {
+            border: 0;
+        }
+
+        .about-who p {
+            font-size: 16px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .about-who .left-side {
+            margin-top: 33px;
+            width: 41.82%;
+            float: left;
+        }
+
+        .about-who .left-side h1 {
+            margin-top: 1em;
+            font-size: 36px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 192, 0, 1);
+        }
+
+        .about-who .left-side h2 {
+            margin-top: 1em;
+            font-size: 20px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(156, 155, 155, 1);
+        }
+
+        .about-who .left-side p {
+            font-size: 16px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        #carousel {
+            margin-top: 20px;
+        }
+
+        #carousel ul {
+            padding-left: 0;
+        }
+
+        #carousel img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        #carousel li {
+            margin-right: 24px;
+            float: left;
+            display: block;
+        }
+
+        .right-side {
+            margin-top: 33px;
+            width: 58%;
+            float: right;
+        }
+
+        .right-side img {
+            width: 640px;
+            height: 580px;
+        }
+
+        .about-what p {
+            font-size: 16px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .about-what h1 {
+            font-size: 26px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .box:last-child {
+            margin-left: 2%;
+        }
+
+        .box {
+            width: 48.18%;
+            float: left;
+        }
+
+        .box-title {
+            margin-bottom: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <span><img class="logo" src="/static/img/logo.png"></span>
+    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+</header>
+<div class="get">
+    <div class="am-g">
+        <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li class="am-active"><a href="javascript: void(0)">WHO</a></li>
+                <li><a href="javascript: void(0)">WHAT</a></li>
+            </ul>
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-active about-who">
+                    <p>Founded by the best ，Not robots but humans</p>
+                    <div class="left-side">
+                        <div id="carousel" class="flexslider">
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="slides"
+                                    style="width: 500%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                    <li>
+                                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                    </li>
+                                    <li class="flex-active-slide">
+                                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                    </li>
+                                    <li>
+                                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                    </li>
+                                    <li>
+                                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                    </li>
+                                    <li>
+                                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                    </li>
+                                    <li>
+                                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h1>Marc Gutierrez</h1>
+                        <h2>Co-fouder and CEO</h2>
+                        <p>
+                            How to make effective business? Best software platform for running an internet business. We
+                            build the most powerful and flexible tools for internet commerce. Our company make high
+                            responce products.How to make effective business? Best software platform for running an
+                            internet business. We build the most powerful and flexible tools for internet commerce. Our
+                            company make high responce products.How to make effective business? Best software platform
+                            for running an internet business. We build the most powerful and flexible tools for internet
+                            commerce.
+                        </p>
+                    </div>
+                    <div class="right-side">
+                        <img src="/static/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                    </div>
+                </div>
+                <div class="am-tab-panel about-what">
+                    <p>We inspire people to impact 。By giving them a closer look at the best companies</p>
+                    <div class="box-line">
+                        <div class="box">
+                            <div class="box-title">
+                                <img src="/static/img/1002tours.png"/>
+                                <h1>Tech Tours</h1>
+                            </div>
+                            <p>
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese marke
+                            </p>
+                        </div>
+                        <div class="box">
+                            <div class="box-title">
+                                <img src="/static/img/1002workshops.png"/>
+                                <h1>Workshops</h1>
+                            </div>
+                            <p>
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box-line">
+                        <div class="box">
+                            <div class="box-title">
+                                <img src="/static/img/1002service.png"/>
+                                <h1>Consultancy Service </h1></div>
+                            <p>
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                            </p>
+                        </div>
+                        <div class="box">
+                            <div class="box-title">
+                                <img src="/static/img/1002shop.png"/>
+                                <h1>Shop</h1>
+                            </div>
+                            <p>
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
+                                insight of china. People with experience in the Tech industry and in the chinese market.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+        </script>
+    </div>
+</div>
+<!-- 侧边栏内容 -->
+<div id="doc-oc-demo3" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+        <div class="side-close" data-rel="close">
+            <img src="/static/img/0103close.png">
+        </div>
+        <div class="am-offcanvas-content">
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Tech Tour </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Workshop </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Consultancy Service</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Article</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Gallery</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Event</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Testimonials</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Shop</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">About us</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Contact us</a></h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>

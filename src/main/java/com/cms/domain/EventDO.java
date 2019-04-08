@@ -15,12 +15,12 @@ import lombok.EqualsAndHashCode;
  * <pre>
  * 文章表
  * </pre>
- * <small> 2019-04-08 18:31:25 | Aron</small>
+ * <small> 2019-04-08 22:45:12 | Aron</small>
  */
 @Data
 @SuppressWarnings("serial")
-@TableName("article")
-public class ArticleDO implements Serializable {
+@TableName("event")
+public class EventDO implements Serializable {
 	@TableId
 	private Integer id;
 
@@ -30,55 +30,61 @@ public class ArticleDO implements Serializable {
     /** 内容 */
     private String content;
 
-    /** 编辑模式，默认为html，其他可选项包括html，markdown .. */
-    private String editMode;
-
-    /** 摘要 */
-    private String summary;
-
     /** 连接到(常用于谋文章只是一个连接) */
-    private String linkTo;
+    private String linkto;
 
     /** 缩略图 */
     private String thumbnail;
 
     /** 用户ID */
-    private Integer userId;
+    private Integer userid;
 
     /** 排序编号 */
-    private Integer orderNumber;
+    private Integer ordernumber;
 
     /** 状态 */
     private String status;
 
     /** 评论状态，默认允许评论 */
-    private Integer commentStatus;
+    private Integer commentstatus;
 
     /** 评论总数 */
-    private Integer commentCount;
+    private Integer commentcount;
 
     /** 最后评论时间 */
-    private Date commentTime;
+    private Date commenttime;
 
     /** 访问量 */
-    private Integer viewCount;
+    private Integer viewcount;
 
     /** 创建日期 */
-    private Date createTime;
+    private Date createtime;
 
     /** 最后更新日期 */
-    private Date modifyTime;
+    private Date modifytime;
+
+    /**  */
+    private Date starttime;
+
+    /**  */
+    private Date endtime;
+
+    /**  */
+    private String price;
+
+    /**  */
+    private String address;
 
     /** SEO关键字 */
-    private String metaKeywords;
+    private String metakeywords;
 
     /** SEO描述信息 */
-    private String metaDescription;
+    private String metadescription;
 
     /** 备注信息 */
     private String remarks;
 
     /**  */
-    private Integer style;
+    private Integer type;
 
 }

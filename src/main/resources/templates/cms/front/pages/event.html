@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var id = '#doc-oc-demo3';
+            var $myOc = $(id);
+            $('.side-close').on('click', function () {
+                $myOc.offCanvas($(this).data('rel'));
+            });
+        });
+    </script>
+
+
+    <style>
+        .am-topbar {
+            border-bottom-width: 0;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background: rgba(45, 0, 79, 1);
+            height: 100%;
+        }
+
+        .nav {
+            width: 26px;
+            height: 26px;
+            top: 12px;
+            left: 1854px;
+            position: absolute;
+        }
+
+        .logo {
+            width: 150px;
+            height: 26px;
+            margin-top: 12px;
+            margin-left: 40px;
+        }
+
+
+        .article {
+            margin-top: 106px;
+            margin-left: 17.71%;
+            margin-right: 17.71%;
+            padding-left: 5.65%;
+            padding-right: 5.65%;
+            height: 100%;
+            display: block;
+        }
+
+        .first-floor {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .first-floor .title {
+            width: 20%;
+            font-size: 68px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+            float: left;
+        }
+
+        .first-floor .content {
+            margin-left: 2%;
+            padding-top: 40px;
+            width: 77%;
+            font-size: 16px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+            float: left;
+        }
+
+        .am-offcanvas-bar {
+            width: 50%;
+            height: 100%;
+            background: url(/static/img/0103menu.png);
+        }
+
+        .am-offcanvas-content {
+            padding-left: 100px;
+            padding-top: 80px;
+        }
+
+        .am-offcanvas-content a {
+            width: 128px;
+            height: 27px;
+            font-size: 28px;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .side-close {
+            padding: 17px;
+            float: right;
+        }
+
+        .search {
+            border: 0;
+            width: 40%;
+            height: 40px;
+        }
+
+        .search input {
+            background-color: transparent;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: #49128B;
+        }
+
+        .search input:focus {
+            background-color: transparent;
+        }
+
+        .search .search-btn {
+            margin-left: 10px;
+            border: 0;
+            width: 13px;
+            height: 12px;
+            background: url(/static/img/0501search.png) no-repeat center center;
+        }
+
+        .boxes {
+            margin-top: 2.22%;
+            height: auto;
+            overflow: hidden
+        }
+
+        .box {
+            margin-right: 1.2%;
+        }
+
+        .box:last-child {
+            margin-right: 0;
+        }
+
+        .box {
+            width: 24%;
+            height: 466px;
+            float: left
+        }
+
+        .box img {
+            width: 100%;
+            height: 48.83%;
+        }
+
+        .box .text {
+            height: 51.17%;
+            padding-top: 10.57%;
+            padding-left: 3.7%;
+            padding-right: 3.7%;
+            width: 100%;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .event-title {
+            font-size: 14px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(19, 19, 19, 1);
+        }
+
+        .event-date {
+            font-size: 14px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(59, 59, 59, 1);
+        }
+
+        .event-address {
+            font-size: 14px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(59, 59, 59, 1);
+        }
+
+        .event-address img {
+            width: 14px;
+            height: 36px;
+        }
+
+        .event-price {
+            font-size: 20px;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(251, 100, 0, 1);
+        }
+
+
+        .am-input-group .am-form-field {
+            width: auto;
+        }
+
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <span><img class="logo" src="/static/img/logo.png"></span>
+    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+</header>
+
+<div class="article">
+    <div class="first-floor">
+        <div class="title">Event</div>
+        <div class="content">
+            Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the ecosystem
+            and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+        </div>
+    </div>
+    <div class="search">
+        <div class="am-input-group">
+            <input type="text" class="am-form-field" placeholder="Month">
+            <input type="text" class="am-form-field" placeholder="Type">
+            <span class="am-input-group-btn">
+        <button class="search-btn" type="button"></button>
+      </span>
+        </div>
+    </div>
+    <div class="boxes">
+        <div class="box">
+            <img src="/static/img/8a30e88df3c32bc450f315ec62283436.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <img src="/static/img/e38b7d669cbb16b08e550318fb53fbbd.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <img src="/static/img/91f730237f22cd4a4b6ab38499ae6b1a.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <img src="/static/img/8a30e88df3c32bc450f315ec62283436.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="boxes">
+        <div class="box">
+            <img src="/static/img/8a30e88df3c32bc450f315ec62283436.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <img src="/static/img/8a30e88df3c32bc450f315ec62283436.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <img src="/static/img/8a30e88df3c32bc450f315ec62283436.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <img src="/static/img/8a30e88df3c32bc450f315ec62283436.jpg"/>
+            <div class="text">
+                <h3 class="event-title">
+                    The Joshua Tree FASHION SOURCE（in autumn）
+                </h3>
+                <p class="event-date">
+                    2018/9/30 14:56
+                </p>
+                <p class="event-address">
+                    <img src="/static/img/0701Location.png"/>
+                    Joshua Tree, CA, United States
+                </p>
+                <p class="event-price">
+                    $250
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="doc-example">
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3">
+                <div class="am-panel am-panel-primary am-scrollspy-init am-scrollspy-inview am-animation-fade"
+                     data-am-scrollspy="{animation: 'fade'}">
+                    <div class="am-panel-hd">Fade</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3 am-u-md-offset-4 am-u-lg-offset-3">
+                <div class="am-panel am-panel-secondary am-scrollspy-init" data-am-scrollspy="{animation: 'scale-up'}">
+                    <div class="am-panel-hd">Scale-up</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3 am-u-md-offset-8 am-u-lg-offset-6">
+                <div class="am-panel am-panel-success am-scrollspy-init" data-am-scrollspy="{animation: 'scale-down'}">
+                    <div class="am-panel-hd">Scale-down</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3 am-u-md-offset-8 am-u-lg-offset-9">
+                <div class="am-panel am-panel-warning am-scrollspy-init" data-am-scrollspy="{animation: 'slide-top'}">
+                    <div class="am-panel-hd">Slide Top</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3 am-u-md-offset-8 am-u-lg-offset-6">
+                <div class="am-panel am-panel-danger am-scrollspy-init" data-am-scrollspy="{animation: 'slide-bottom'}">
+                    <div class="am-panel-hd">Slide Bottom</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3 am-u-md-offset-4 am-u-lg-offset-3">
+                <div class="am-panel am-panel-primary am-scrollspy-init" data-am-scrollspy="{animation: 'slide-right'}">
+                    <div class="am-panel-hd">Slide Right</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3">
+                <div class="am-panel am-panel-secondary am-scrollspy-init"
+                     data-am-scrollspy="{animation: 'slide-left'}">
+                    <div class="am-panel-hd">Slide Left</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3">
+                <div class="am-panel am-panel-success am-scrollspy-init" data-am-scrollspy="{animation: 'fade'}">
+                    <div class="am-panel-hd">Fade</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3">
+                <div class="am-panel am-panel-warning am-scrollspy-init"
+                     data-am-scrollspy="{animation: 'fade', delay: 300}">
+                    <div class="am-panel-hd">Fade delay: 300</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3">
+                <div class="am-panel am-panel-danger am-scrollspy-init"
+                     data-am-scrollspy="{animation: 'fade', delay: 600}">
+                    <div class="am-panel-hd">Fade delay: 600</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-4 am-u-lg-3">
+                <div class="am-panel am-panel-primary am-scrollspy-init"
+                     data-am-scrollspy="{animation: 'fade', delay: 900}">
+                    <div class="am-panel-hd">Fade delay: 900</div>
+                    <div class="am-panel-bd">生命是一团欲望，欲望不满足便痛苦，满足便无聊。人生就在痛苦和无聊之间摇摆。——叔本华</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 侧边栏内容 -->
+<div id="doc-oc-demo3" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+        <div class="side-close" data-rel="close">
+            <img src="/static/img/0103close.png">
+        </div>
+        <div class="am-offcanvas-content">
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Tech Tour </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Workshop </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Consultancy Service</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Article</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Gallery</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Event</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Testimonials</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Shop</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">About us</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Contact us</a></h3>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

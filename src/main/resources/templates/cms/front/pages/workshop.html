@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var id = '#doc-oc-demo3';
+            var $myOc = $(id);
+            $('.side-close').on('click', function () {
+                $myOc.offCanvas($(this).data('rel'));
+            });
+        });
+    </script>
+
+
+    <style>
+        .am-topbar {
+            border-bottom-width: 0;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background: rgba(45, 0, 79, 1);
+            height: 100%;
+        }
+
+        .nav {
+            width: 26px;
+            height: 26px;
+            top: 12px;
+            left: 1854px;
+            position: absolute;
+        }
+
+        .logo {
+            width: 150px;
+            height: 26px;
+            margin-top: 12px;
+            margin-left: 40px;
+        }
+
+        .get {
+            margin-top: 106px;
+            margin-left: 340px;
+            margin-right: 340px;
+            padding-left: 71px;
+            padding-right: 71px;
+            height: 100%;
+            display: block;
+        }
+
+        .am-offcanvas-bar {
+            width: 50%;
+            height: 100%;
+            background: url(/static/img/0103menu.png);
+        }
+
+        .am-offcanvas-content {
+            padding-left: 100px;
+            padding-top: 80px;
+        }
+
+        .am-offcanvas-content a {
+            width: 128px;
+            height: 27px;
+            font-size: 28px;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .side-close {
+            padding: 17px;
+            float: right;
+        }
+
+        .title {
+            position: relative
+        }
+
+        .title-content {
+            font-size: 80px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .title-background {
+            width: 500px;
+            height: 44px;
+            background: rgba(73, 18, 139, 1);
+            position: absolute;
+            top: 75px;
+            left: 192px;
+        }
+
+        [class*=am-u-] {
+            padding: 0;
+        }
+
+        .content {
+            width: 673px;
+            font-size: 16px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+            position: absolute;
+            margin-top: 177px;
+        }
+
+        .video-content {
+            margin-top: 325px;
+        }
+
+        .video-content .right-side {
+            padding-left: 84px;
+        }
+
+        .video-content .right-side .title {
+            padding-left: 25px;
+            margin: 0;
+            font-size: 26px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .right-side-content {
+            font-size: 16px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .right-side-locat img {
+            vertical-align: bottom
+        }
+
+        .locat-img-l {
+            width: 4px;
+            height: 26px;
+            margin-right: 15px;
+            clear: none;
+        }
+
+        .locat-img-s {
+            width: 4px;
+            height: 16px;
+            margin-right: 15px;
+            clear: none;
+        }
+
+        .right-side-nav {
+            float: right;
+        }
+
+        .right-side-nav img {
+            width: 70px;
+            height: 38px;
+        }
+
+        .right-side-nav img:first-child {
+            margin-right: 24px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <span><img class="logo" src="/static/img/logo.png"></span>
+    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+</header>
+<div class="get">
+    <div class="am-g">
+        <div class="title">
+            <h1 class="title-content">
+                Workshops
+            </h1>
+            <div class="title-background"></div>
+        </div>
+        <div class="content">
+            Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life business not
+            only in the tech industry, but also manufacturing and market trade. Our tours provide a thoroughly
+            educational experience for business school students, and give professors a unique teaching opportunity that
+            can’t be found in books.
+        </div>
+        <div class="video-content am-u-lg-12">
+            <div data-am-widget="slider" class="am-slider am-slider-default am-u-lg-5"
+                 data-am-slider='{&quot;animation&quot;:&quot;slide&quot;,&quot;controlNav&quot;:&quot;thumbnails&quot;}'>
+                <ul class="am-slides">
+                    <li data-thumb="http://s.amazeui.org/media/i/demos/bing-1.jpg">
+                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg">
+
+                    </li>
+                    <li data-thumb="http://s.amazeui.org/media/i/demos/bing-2.jpg">
+                        <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg">
+
+                    </li>
+                    <li data-thumb="http://s.amazeui.org/media/i/demos/bing-3.jpg">
+                        <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg">
+
+                    </li>
+                    <li data-thumb="http://s.amazeui.org/media/i/demos/bing-4.jpg">
+                        <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg">
+
+                    </li>
+                </ul>
+            </div>
+            <div class="right-side am-u-lg-7">
+                <img class="am-u-lg-6" src="/static/img/K_03_01_workshop.png">
+                <h1 class="title am-u-lg-6">
+                    How To Work In Tech
+                    In Shenzhen
+                </h1>
+                <p class="right-side-content am-u-lg-11">
+                    Whether you are a returning Chinese student from overseas or an expat who wants to get a taste of
+                    the
+                    tech excitement, this workshop will prepare you for entering the tech industry in Shenzhen. We cover
+                    how to go about getting a job, where to apply, how to prepare a resume, how to improve your chances
+                    of getting hired, and how to give an unforgettable interview that is specific to the tech industry.
+                </p>
+                <div class="right-side-footer am-u-lg-12">
+                    <div class="right-side-locat am-u-lg-8">
+                        <img class="locat-img-l" src="/static/img/0301locaL.png"/>
+                        <img class="locat-img-s" src="/static/img/0301locaS.png"/>
+                        <img class="locat-img-s" src="/static/img/0301locaS.png"/>
+                        <img class="locat-img-s" src="/static/img/0301locaS.png"/>
+                        <img class="locat-img-s" src="/static/img/0301locaS.png"/>
+                    </div>
+                    <div class="right-side-nav am-u-lg-4">
+                        <img src="/static/img/0301L_def.png"/>
+                        <img src="/static/img/0301R_def.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 侧边栏内容 -->
+<div id="doc-oc-demo3" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+        <div class="side-close" data-rel="close">
+            <img src="/static/img/0103close.png">
+        </div>
+        <div class="am-offcanvas-content">
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Tech Tour </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Workshop </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Consultancy Service</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Article</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Gallery</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Event</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Testimonials</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Shop</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">About us</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Contact us</a></h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>

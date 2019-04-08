@@ -22,21 +22,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">编辑模式，默认为html，其他可选项包括html，markdown ..：</label>
-                            <div class="col-sm-8">
-                                <input id="editMode" name="editMode" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">摘要：</label>
-                            <div class="col-sm-8">
-                                <textarea id="summary" name="summary" class="form-control" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-sm-3 control-label">连接到(常用于谋文章只是一个连接)：</label>
                             <div class="col-sm-8">
-                                <input id="linkTo" name="linkTo" class="form-control" type="text">
+                                <input id="linkto" name="linkto" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -48,13 +36,13 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">用户ID：</label>
                             <div class="col-sm-8">
-                                <input id="userId" name="userId" class="form-control" type="text">
+                                <input id="userid" name="userid" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">排序编号：</label>
                             <div class="col-sm-8">
-                                <input id="orderNumber" name="orderNumber" class="form-control" type="text">
+                                <input id="ordernumber" name="ordernumber" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,33 +54,78 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">评论状态，默认允许评论：</label>
                             <div class="col-sm-8">
-                                <input id="commentStatus" name="commentStatus" class="form-control" type="text">
+                                <input id="commentstatus" name="commentstatus" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">评论总数：</label>
+                            <div class="col-sm-8">
+                                <input id="commentcount" name="commentcount" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">最后评论时间：</label>
+                            <div class="col-sm-8">
+                                <input id="commenttime" name="commenttime" class="form-control" type="text"
+                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">访问量：</label>
+                            <div class="col-sm-8">
+                                <input id="viewcount" name="viewcount" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">创建日期：</label>
                             <div class="col-sm-8">
-                                <input id="createTime" name="createTime" class="form-control" type="text"
+                                <input id="createtime" name="createtime" class="form-control" type="text"
                                        onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">最后更新日期：</label>
                             <div class="col-sm-8">
-                                <input id="modifyTime" name="modifyTime" class="form-control" type="text"
+                                <input id="modifytime" name="modifytime" class="form-control" type="text"
                                        onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">：</label>
+                            <div class="col-sm-8">
+                                <input id="starttime" name="starttime" class="form-control" type="text"
+                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">：</label>
+                            <div class="col-sm-8">
+                                <input id="endtime" name="endtime" class="form-control" type="text"
+                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">：</label>
+                            <div class="col-sm-8">
+                                <input id="price" name="price" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">：</label>
+                            <div class="col-sm-8">
+                                <input id="address" name="address" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">SEO关键字：</label>
                             <div class="col-sm-8">
-                                <input id="metaKeywords" name="metaKeywords" class="form-control" type="text">
+                                <input id="metakeywords" name="metakeywords" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">SEO描述信息：</label>
                             <div class="col-sm-8">
-                                <input id="metaDescription" name="metaDescription" class="form-control" type="text">
+                                <input id="metadescription" name="metadescription" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -104,7 +137,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">：</label>
                             <div class="col-sm-8">
-                                <input id="style" name="style" class="form-control" type="text">
+                                <input id="type" name="type" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -120,7 +153,7 @@
 </div>
 <div th:include="include::footer"></div>
 <script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript" src="/js/appjs/cms/article/add.js">
+<script type="text/javascript" src="/js/appjs/cms/event/add.js">
 </script>
 </body>
 </html>

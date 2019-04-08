@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${product.id}"  type="hidden">
+												
+																																	<div class="form-group">	
+								<label class="col-sm-3 control-label">分类id：</label>
+								<div class="col-sm-8">
+																		<input id="categoryid" name="categoryid" th:value="${product.categoryid}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">产品名称：</label>
+								<div class="col-sm-8">
+																		<input id="name" name="name" th:value="${product.name}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">产品简要描述：</label>
+								<div class="col-sm-8">
+																		<textarea id="description" name="description" th:text="${product.description}" class="form-control" rows="5"></textarea>
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">产品详细描述：</label>
+								<div class="col-sm-8">
+																		<textarea id="detail" name="detail" th:text="${product.detail}" class="form-control" rows="5"></textarea>
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">产品主图：</label>
+								<div class="col-sm-8">
+																		<input id="image" name="image" th:value="${product.image}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">价格：</label>
+								<div class="col-sm-8">
+																		<input id="price" name="price" th:value="${product.price}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">打折价：</label>
+								<div class="col-sm-8">
+																		<input id="sale" name="sale" th:value="${product.sale}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">跳转url：</label>
+								<div class="col-sm-8">
+																		<input id="url" name="url" th:value="${product.url}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">排序：</label>
+								<div class="col-sm-8">
+																		<input id="order" name="order" th:value="${product.order}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">标签：</label>
+								<div class="col-sm-8">
+																		<input id="tags" name="tags" th:value="${product.tags}" class="form-control" type="text">
+																	</div>
+							</div>
+																											<div class="form-group">	
+								<label class="col-sm-3 control-label">状态：</label>
+								<div class="col-sm-8">
+																		<input id="status" name="status" th:value="${product.status}" class="form-control" type="text">
+																	</div>
+							</div>
+																				<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/cms/product/edit.js">
+	</script>
+</body>
+</html>

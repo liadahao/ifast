@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Landing Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var id = '#doc-oc-demo3';
+            var $myOc = $(id);
+            $('.side-close').on('click', function () {
+                $myOc.offCanvas($(this).data('rel'));
+            });
+        });
+    </script>
+
+
+    <style>
+        .am-topbar {
+            margin-bottom: 0;
+            border-bottom-width: 0;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background: rgba(45, 0, 79, 1);
+            height: 100%;
+        }
+
+        .nav {
+            width: 26px;
+            height: 26px;
+            top: 12px;
+            left: 1854px;
+            position: absolute;
+        }
+
+        .logo {
+            width: 150px;
+            height: 26px;
+            margin-top: 12px;
+            margin-left: 40px;
+        }
+
+        .am-offcanvas-bar {
+            width: 50%;
+            height: 100%;
+            background: url(/static/img/0103menu.png);
+        }
+
+        .am-offcanvas-content {
+            padding-left: 100px;
+            padding-top: 80px;
+        }
+
+        .am-offcanvas-content a {
+            width: 128px;
+            height: 27px;
+            font-size: 28px;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .side-close {
+            padding: 17px;
+            float: right;
+        }
+
+        .get {
+            margin-left: 340px;
+            margin-right: 340px;
+            margin-top: 106px;
+            padding-left: 70px;
+            padding-right: 70px;
+            padding-top: 56px;
+        }
+
+        .get .left-side {
+            padding-top: 50px;
+            width: 493px;
+            height: 658px;
+            background: url(/static/img/0201.png) no-repeat left center;
+        }
+
+        .left-side .title {
+            overflow: hidden
+        }
+
+        .left-side .title p {
+            margin-top: 0;
+        }
+
+        .left-side .left-title {
+            margin-left: 17px;
+            width: 141px;
+            height: 49px;
+            font-size: 64px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+            display: inline;
+        }
+
+        .left-side .right-title {
+            width: 136px;
+            font-size: 64px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(73, 18, 139, 1);
+            padding-left: 39px;
+            display: inline;
+        }
+
+        .left-side .content {
+            margin: 0 0 0 198px;
+            width: 274px;
+            font-size: 14px;
+            font-family: PingFangSC-Regular;
+            font-weight: 400;
+            color: rgba(73, 18, 139, 1);
+        }
+
+        .left-side video {
+            margin-top: 47px;
+            margin-left: 198px;
+            width: 280px;
+            height: 168px;
+        }
+
+        .am-panel-hd {
+            background: rgba(0, 0, 0, 0);
+            font-size: 20px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(246, 246, 246, 1);
+        }
+
+        .am-panel {
+            background: rgba(0, 0, 0, 0);
+            border-bottom-color: rgba(0, 253, 255, 1);
+        }
+
+        .am-panel:first-child {
+            border-top: 1px solid rgba(0, 253, 255, 1);
+        }
+
+        [class*=am-u-] {
+            padding: 0;
+        }
+
+        #accordion {
+            padding-top: 50px;
+        }
+
+        #accordion .am-panel-bd {
+            font-size: 14px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(246, 246, 246, 1);
+            padding: 1.00rem 1.00rem 0;
+            border-top: 0;
+        }
+
+        #accordion .am-panel-title {
+            margin-left: 21px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <span><img class="logo" src="/static/img/logo.png"></span>
+    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+</header>
+<div class="get">
+    <div class="am-g">
+        <div class="left-side am-u-lg-6">
+            <div class="title">
+                <div class="left-title am-text-center">Tech</div>
+                <div class="right-title am-text-center">Tour</div>
+            </div>
+            <p class="content">
+                Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life business
+                not only in the tech industry, but also manufacturing and market trade. Our tours provide a
+                thoroughly educational experience for business school students, and give professors a unique
+                teaching opportunity that can’t be found in books
+            </p>
+            <video src="/static/video/WeChat_20190327231432.mp4"
+                   controls="controls">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="am-panel-group am-u-lg-6" id="accordion">
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/static/img/0201enterprise.png"></span>
+                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+                        Enterprise
+                    </span>
+                </div>
+                <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
+                    <div class="am-panel-bd">
+                        <div class="am-g">
+                            <p class="am-u-lg-9">
+                                Learn from professionals who work for Chinese companies in a variety of industries, such
+                                as
+                                Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
+                                eye-opening tour can help you determine what specific direction to take your education,
+                                while providing you with plenty of insight into what to expect, no matter what specific
+                                field you ultimately choose.
+                            </p>
+                            <video src="/static/video/WeChat_20190327231432.mp4" width="150" height="90"
+                                   controls="controls" class="am-u-lg-3">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/static/img/0201manufacturing.png"></span>
+                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+                        Manufacturing
+                    </span>
+                </div>
+                <div id="do-not-say-2" class="am-panel-collapse am-collapse">
+                    <div class="am-panel-bd">
+                        Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life
+                        business
+                        not only in the tech industry, but also manufacturing and market trade. Our tours provide a
+                        thoroughly educational experience for business school students, and give professors a unique
+                        teaching opportunity that can’t be found in books
+                    </div>
+                </div>
+            </div>
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/static/img/0201startups.png"></span>
+                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
+                        Startups
+                    </span>
+                </div>
+                <div id="do-not-say-3" class="am-panel-collapse am-collapse">
+                    <div class="am-panel-bd">
+                        ...
+                    </div>
+                </div>
+            </div>
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/static/img/0201visit.png"></span>
+                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
+                        Startups
+                    </span>
+                </div>
+                <div id="do-not-say-4" class="am-panel-collapse am-collapse">
+                    <div class="am-panel-bd">
+                        ...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 侧边栏内容 -->
+<div id="doc-oc-demo3" class="am-offcanvas">
+    <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+        <div class="side-close" data-rel="close">
+            <img src="/static/img/0103close.png">
+        </div>
+        <div class="am-offcanvas-content">
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Tech Tour </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Workshop </a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Consultancy Service</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Article</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Gallery</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Event</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Testimonials</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Shop</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">About us</a></h3>
+            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Contact us</a></h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
