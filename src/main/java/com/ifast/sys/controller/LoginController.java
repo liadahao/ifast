@@ -38,10 +38,15 @@ public class LoginController extends AdminBaseController {
 
     @GetMapping({ "/", "" })
     String welcome(Model model) {
-        return "redirect:/login";
+        return "redirect:/page/index";
     }
 
-    @GetMapping({ "/index" })
+    @GetMapping({ "admin"})
+    String adminIndex(Model model) {
+        return "redirect:/admin/index";
+    }
+
+    @GetMapping({ "admin/index" })
     String index(Model model) {
         List<Tree<MenuDO>> menus = menuService.listMenuTree(getUserId());
         model.addAttribute("menus", menus);

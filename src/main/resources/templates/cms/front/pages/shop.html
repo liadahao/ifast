@@ -10,8 +10,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
     <script type="text/javascript">
         $(function () {
             var id = '#doc-oc-demo3';
@@ -24,177 +25,114 @@
 
 
     <style>
-        .am-topbar {
-            border-bottom-width: 0;
-            background: rgba(0, 0, 0, 0);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
         html, body {
-            background: rgba(45, 0, 79, 1);
-            height: 100%;
+            background: url("/img/02.png") no-repeat fixed center center;
         }
-
-        .nav {
-            width: 26px;
-            height: 26px;
-            top: 12px;
-            left: 1854px;
-            position: absolute;
-        }
-
-        .logo {
-            width: 150px;
-            height: 26px;
-            margin-top: 12px;
-            margin-left: 40px;
-        }
-
 
         .get {
-            color: #fff;
-            text-align: center;
-            padding: 361px 0;
-        }
-
-        .get-title {
-            font-size: 400%;
-            display: inline-block;
-            color: rgba(0, 253, 255, 1);
-            margin-bottom: 5%;
-        }
-
-        .company-name {
-            margin-bottom: 4%;
-        }
-
-        .get-btn {
-            line-height: 2.0;
-            width: 17.71%;
-            background: rgba(0, 253, 255, 1);
-            border-radius: 34px;
-        }
-
-        .footer-icon {
-            width: 180px;
-            height: 64px;
-        }
-
-        footer {
-            background: rgba(9, 3, 1, 1);
-        }
-
-        .am-footer {
-            padding-left: 360px;
-            padding-right: 360px;
-        }
-
-        .watch-icon {
-            margin-right: 1%;
-        }
-
-        .watch-video {
-            margin-top: 3%;
-        }
-
-        .am-offcanvas-bar {
-            width: 50%;
+            margin-top: 106px;
+            margin-left: 340px;
+            margin-right: 340px;
+            padding-left: 71px;
+            padding-right: 71px;
             height: 100%;
-            background: url(/static/img/0103menu.png);
-        }
-
-        .am-offcanvas-content {
-            padding-left: 100px;
-            padding-top: 80px;
-        }
-
-        .am-offcanvas-content a {
-            width: 128px;
-            height: 27px;
-            font-size: 28px;
-            color: rgba(0, 253, 255, 1);
-        }
-
-        .side-close {
-            padding: 17px;
-            float: right;
+            display: block;
         }
 
 
     </style>
 </head>
 <body>
-<header class="am-topbar am-topbar-fixed-top">
-    <span><img class="logo" src="/static/img/logo.png"></span>
-    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
-</header>
+<div th:include="include :: nav"></div>
 
 <div class="get">
     <div class="am-g">
-        <div class="am-u-lg-12">
-            <div class="get-title">IMMERSE · EXPERIENCE · DISCOVER</div>
-            <div class="company-name am-text-xxl">
-                Shenzhen Legendary Tour
+        <div class="am-u-sm-7">
+            <h1 class="product-title">
+                Daniel Wellington Women's 0511DWDaniel Wellington Women's 0511DW
+            </h1>
+            <div class="tag-list">
+
             </div>
-            <div class="am-text-xxl">
-                <a href="http://www.baidu.com" class="am-btn am-btn-xl get-btn">Learn More</a>
+            <p class="product-description">
+                Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish organically
+                tanned leather strap.Our interpretation of 1950’s simplicity. Expressed completely in black with a black
+                Swedish organically tanned leather strap.
+            </p>
+            <div class="price-line">
+                <div class="price am-u-sm-3">
+                    $250
+                </div>
+                <button class="am-btn am-btn-warning am-btn-xl" href="#">
+                    <i class="am-icon-shopping-cart"></i>
+                    Add To Bag
+                </button>
             </div>
-            <div class="watch-video">
-                <i class="am-icon-play-circle-o am-icon-sm watch-icon"></i>
-                Watch Video
+            <div class="product-detail">
+                <ul>
+                    <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                        organically tanned leather strap.
+                    </li>
+                    <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                        organically tanned leather strap.
+                    </li>
+                    <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                        organically tanned leather strap.
+                    </li>
+                </ul>
             </div>
+        </div>
+        <img src="/img/a40455dd300d63eab0f12f6e3b501ece.jpeg" class="am-u-sm-5 product-image"/>
+        <div class="product-like am-u-sm-12">
+            <div class="am-u-sm-2">
+                <h3>Products</h3>
+                <h1>You May Like</h1>
+                <div class="controller">
+                    <img class="am-u-sm-4" src="/img/0901L_pre.png"/>
+                    <img class="am-u-sm-4" src="/img/0901R_pre.png"/>
+                </div>
+            </div>
+            <ul class="am-u-sm-10 am-avg-sm-2 am-avg-md-3 am-avg-lg-5 am-thumbnails">
+                <li>
+                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                    <div class="product-info">
+                        <p class="am-text-center">Leather BagLeather Bag</p>
+                        <p class="am-text-center">289 USD</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                    <div class="product-info">
+                        <p class="am-text-center">Leather BagLeather Bag</p>
+                        <p class="am-text-center">289 USD</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                    <div class="product-info">
+                        <p class="am-text-center">Leather BagLeather Bag</p>
+                        <p class="am-text-center">289 USD</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                    <div class="product-info">
+                        <p class="am-text-center">Leather BagLeather Bag</p>
+                        <p class="am-text-center">289 USD</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                    <div class="product-info">
+                        <p class="am-text-center">Leather BagLeather Bag</p>
+                        <p class="am-text-center">289 USD</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
-
 <!-- 侧边栏内容 -->
-<div id="doc-oc-demo3" class="am-offcanvas">
-    <div class="am-offcanvas-bar am-offcanvas-bar-flip">
-        <div class="side-close" data-rel="close">
-            <img src="/static/img/0103close.png">
-        </div>
-        <div class="am-offcanvas-content">
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Tech Tour </a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Workshop </a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Consultancy Service</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Article</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Gallery</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Event</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Testimonials</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Shop</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">About us</a></h3>
-            <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Contact us</a></h3>
-        </div>
-    </div>
-</div>
-
-<footer class="am-footer am-footer-divider">
-    <ul class="am-avg-sm-6 am-thumbnails">
-        <li>
-            <div class="am-u-sm-2"><img class="footer-icon" src="/static/img/air.png"></div>
-        </li>
-        <li>
-            <div class="am-u-sm-2"><img class="footer-icon" src="/static/img/air.png"></div>
-        </li>
-        <li>
-            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
-        </li>
-        <li>
-            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
-        </li>
-        <li>
-            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
-        </li>
-        <li>
-            <div class="am-u-sm-2 "><img class="footer-icon" src="/static/img/air.png"></div>
-        </li>
-    </ul>
-</footer>
-
-
+<div th:include="include :: nav-side"></div>
 </body>
 </html>

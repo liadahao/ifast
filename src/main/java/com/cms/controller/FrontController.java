@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,22 +28,29 @@ public class FrontController {
     @Autowired
     WebsiteService websiteService;
 
+    @RequestMapping("/index")
+    public String index(Model model) {
+        return "/cms/front/pages/index";
+    }
+
+
     @RequestMapping("/page/{name}")
     public String website(@PathVariable String name, Model model) {
         Wrapper<NavDO> wrapper = new EntityWrapper<NavDO>().eq("name", name);
         NavDO navDO = navService.selectOne(wrapper);
         String suffix = "";
+        Map data = new HashMap();
         if (navDO != null && !StringUtils.isEmpty(navDO.getContent())) {
-            Map data = JSON.parseObject(navDO.getContent(), Map.class);
-            model.addAttribute("data", data);
+            data = JSON.parseObject(navDO.getContent(), Map.class);
             if (navDO.getType() == 2) {
                 suffix = "techtour";
             }
         }
+        model.addAttribute("data", data);
         if (!StringUtils.isEmpty(suffix)) {
             return "/cms/front/pages/" + suffix;
         } else {
-            return "/cms/front/pages" + name;
+            return "/cms/front/pages/" + name;
         }
     }
 }
