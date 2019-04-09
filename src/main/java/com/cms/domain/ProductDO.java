@@ -3,6 +3,7 @@ package com.cms.domain;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import com.ifast.common.base.BaseDO;
 
 import lombok.Data;
@@ -21,7 +22,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 @TableName("product")
 public class ProductDO implements Serializable {
-	@TableId
+    @TableId(type = IdType.AUTO)
 	private Integer id;
 
     /** 分类id */

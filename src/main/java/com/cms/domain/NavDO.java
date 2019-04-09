@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import com.ifast.common.base.BaseDO;
 
 import lombok.Data;
@@ -20,14 +21,15 @@ import lombok.EqualsAndHashCode;
 @SuppressWarnings("serial")
 @TableName("nav")
 public class NavDO implements Serializable {
-    @TableId
-    private Integer id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
     /**
      *
      */
     private String name;
 
+    private String content;
     /**
      *
      */

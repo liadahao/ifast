@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import com.ifast.common.base.BaseDO;
 
 import lombok.Data;
@@ -21,7 +22,7 @@ import lombok.EqualsAndHashCode;
 @SuppressWarnings("serial")
 @TableName("event")
 public class EventDO implements Serializable {
-	@TableId
+    @TableId(type = IdType.AUTO)
 	private Integer id;
 
     /** 标题 */

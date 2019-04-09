@@ -1,5 +1,5 @@
 
-var prefix = "/cms/nav"
+var prefix = "/cms/website"
 $(function() {
 	load();
 });
@@ -32,7 +32,7 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 							     pageNumber : params.pageNumber,
-                                  pageSize : params.pageSize
+                                  pageSize : params.pageSize  
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -55,36 +55,40 @@ function load() {
 									checkbox : true
 								},
 																{
-									field : 'id',
-									title : '主键id'
+									field : 'id', 
+									title : '主键id' 
 								},
 																{
-									field : 'name',
-									title : '网页名称'
+									field : 'navid', 
+									title : '导航id' 
 								},
 																{
-									field : 'background',
-									title : '背景图链接'
+									field : 'title', 
+									title : '标题' 
 								},
 																{
-									field : 'url',
-									title : '访问链接'
+									field : 'content', 
+									title : '内容' 
 								},
 																{
-									field : 'order',
-									title : '排序'
+									field : 'url', 
+									title : '链接' 
 								},
 																{
-									field : 'type',
-									title : '类型'
+									field : 'images', 
+									title : '图片链接' 
 								},
 																{
-									field : 'isshow',
-									title : '是否显示'
+									field : 'type', 
+									title : '类型' 
 								},
 																{
-									field : 'updatetime',
-									title : '更新时间'
+									field : 'video', 
+									title : '视频链接' 
+								},
+																{
+									field : 'order', 
+									title : '排序' 
 								},
 																								{
 									title : '操作',
@@ -109,7 +113,14 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
-    window.location.href= prefix + '/add'
+	layer.open({
+		type : 2,
+		title : '增加',
+		maxmin : true,
+		shadeClose : false, // 点击遮罩关闭层
+		area : [ '800px', '520px' ],
+		content : prefix + '/add' // iframe的url
+	});
 }
 function edit(id) {
 	layer.open({

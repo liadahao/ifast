@@ -10,8 +10,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <link th:href="@{/static/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" th:src="@{/static/js/amazeui.min.js}"></script>
+    <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
     <script type="text/javascript">
         $(function () {
             var id = '#doc-oc-demo3';
@@ -58,7 +58,7 @@
         .am-offcanvas-bar {
             width: 50%;
             height: 100%;
-            background: url(/static/img/0103menu.png);
+            background: url(/img/0103menu.png);
         }
 
         .am-offcanvas-content {
@@ -91,7 +91,7 @@
             padding-top: 50px;
             width: 493px;
             height: 658px;
-            background: url(/static/img/0201.png) no-repeat left center;
+            background: url(/img/0201.png) no-repeat left center;
         }
 
         .left-side .title {
@@ -181,8 +181,8 @@
 </head>
 <body>
 <header class="am-topbar am-topbar-fixed-top">
-    <span><img class="logo" src="/static/img/logo.png"></span>
-    <span><img class="nav" src="/static/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+    <span><img class="logo" src="/img/logo.png"></span>
+    <span><img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
 </header>
 <div class="get">
     <div class="am-g">
@@ -197,7 +197,7 @@
                 thoroughly educational experience for business school students, and give professors a unique
                 teaching opportunity that can’t be found in books
             </p>
-            <video src="/static/video/WeChat_20190327231432.mp4"
+            <video src="/video/WeChat_20190327231432.mp4"
                    controls="controls">
                 Your browser does not support the video tag.
             </video>
@@ -205,15 +205,15 @@
         <div class="am-panel-group am-u-lg-6" id="accordion">
             <div class="am-panel">
                 <div class="am-panel-hd">
-                    <span><img class="" src="/static/img/0201enterprise.png"></span>
-                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+                    <span><img class="" src="/img/0201enterprise.png"></span>
+                    <span th:text ="${data['model1title'] != null}? ${data['model1title'][0]} : ''" class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
                         Enterprise
                     </span>
                 </div>
                 <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
                     <div class="am-panel-bd">
                         <div class="am-g">
-                            <p class="am-u-lg-9">
+                            <p th:text ="${data['model1content'] != null}? ${data['model1content'][0]} : ''" class="am-u-lg-9">
                                 Learn from professionals who work for Chinese companies in a variety of industries, such
                                 as
                                 Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
@@ -221,7 +221,7 @@
                                 while providing you with plenty of insight into what to expect, no matter what specific
                                 field you ultimately choose.
                             </p>
-                            <video src="/static/video/WeChat_20190327231432.mp4" width="150" height="90"
+                            <video src="/video/WeChat_20190327231432.mp4" width="150" height="90"
                                    controls="controls" class="am-u-lg-3">
                                 Your browser does not support the video tag.
                             </video>
@@ -231,44 +231,68 @@
             </div>
             <div class="am-panel">
                 <div class="am-panel-hd">
-                    <span><img class="" src="/static/img/0201manufacturing.png"></span>
-                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+                    <span><img class="" src="/img/0201manufacturing.png"></span>
+                    <span th:text ="${data['model2title'] != null}? ${data['model2title'][0]} : ''" class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                         Manufacturing
                     </span>
                 </div>
                 <div id="do-not-say-2" class="am-panel-collapse am-collapse">
                     <div class="am-panel-bd">
-                        Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life
-                        business
-                        not only in the tech industry, but also manufacturing and market trade. Our tours provide a
-                        thoroughly educational experience for business school students, and give professors a unique
-                        teaching opportunity that can’t be found in books
+                        <div class="am-g">
+                            <p th:text ="${data.model2content[0]}" class="am-u-lg-9">
+                                Learn from professionals who work for Chinese companies in a variety of industries, such
+                                as
+                                Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
+                                eye-opening tour can help you determine what specific direction to take your education,
+                                while providing you with plenty of insight into what to expect, no matter what specific
+                                field you ultimately choose.
+                            </p>
+                            <video src="/video/WeChat_20190327231432.mp4" width="150" height="90"
+                                   controls="controls" class="am-u-lg-3">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="am-panel">
                 <div class="am-panel-hd">
-                    <span><img class="" src="/static/img/0201startups.png"></span>
-                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
+                    <span><img class="" src="/img/0201startups.png"></span>
+                    <span th:text ="${data['model3title'] != null}? ${data['model3title'][0]} : ''" class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
                         Startups
                     </span>
                 </div>
                 <div id="do-not-say-3" class="am-panel-collapse am-collapse">
                     <div class="am-panel-bd">
-                        ...
+                        <div class="am-g">
+                            <p th:text ="${data.model3content[0]}" class="am-u-lg-9">
+                                Learn from professionals who work for Chinese companies in a variety of industries, such
+                                as
+                                Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
+                                eye-opening tour can help you determine what specific direction to take your education,
+                                while providing you with plenty of insight into what to expect, no matter what specific
+                                field you ultimately choose.
+                            </p>
+                            <video src="/video/WeChat_20190327231432.mp4" width="150" height="90"
+                                   controls="controls" class="am-u-lg-3">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="am-panel">
                 <div class="am-panel-hd">
-                    <span><img class="" src="/static/img/0201visit.png"></span>
-                    <span class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
+                    <span><img class="" src="/img/0201visit.png"></span>
+                    <span th:text ="${data['model4title'] != null}? ${data['model4title'][0]} : ''" class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
                         Startups
                     </span>
                 </div>
                 <div id="do-not-say-4" class="am-panel-collapse am-collapse">
                     <div class="am-panel-bd">
-                        ...
+                        <div class="am-g">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -280,7 +304,7 @@
 <div id="doc-oc-demo3" class="am-offcanvas">
     <div class="am-offcanvas-bar am-offcanvas-bar-flip">
         <div class="side-close" data-rel="close">
-            <img src="/static/img/0103close.png">
+            <img src="/img/0103close.png">
         </div>
         <div class="am-offcanvas-content">
             <h3><a href="http://music.163.com/#/song?id=385554" target="_blank">Tech Tour </a></h3>
