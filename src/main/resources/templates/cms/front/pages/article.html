@@ -27,7 +27,7 @@
     <style>
 
         html, body {
-            background:url("/img/02.png") no-repeat fixed center center;
+            background: url("/img/02.png") no-repeat fixed center center;
         }
 
         .article {
@@ -155,7 +155,7 @@
     </style>
 </head>
 <body>
-<div th:include="include :: nav"></div>
+<div th:include="nav :: top-nav"></div>
 
 
 <div class="article">
@@ -367,7 +367,27 @@
 
 
 <!-- 侧边栏内容 -->
-<div th:include="include :: nav-side"></div>
+<div th:include="nav :: nav-side"></div>
+<script>
+    var prefix = "/cms/article";
+    $(function () {
+        load();
+    });
 
+    function load() {
+        alert("yes");
+        $.ajax({
+            type: "GET",
+            url: "/article/list",
+            data: {"pageNumber": "1", "pageSize": "6"},
+            async: false,
+            error: function (request) {
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
 </body>
 </html>

@@ -10,7 +10,7 @@
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">标题：</label>
+                            <label class="col-sm-3 control-label">活动标题：</label>
                             <div class="col-sm-8">
                                 <input id="title" name="title" class="form-control" type="text">
                             </div>
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">连接到(常用于谋文章只是一个连接)：</label>
+                            <label class="col-sm-3 control-label">来源地址：</label>
                             <div class="col-sm-8">
                                 <input id="linkto" name="linkto" class="form-control" type="text">
                             </div>
@@ -31,12 +31,6 @@
                             <label class="col-sm-3 control-label">缩略图：</label>
                             <div class="col-sm-8">
                                 <input id="thumbnail" name="thumbnail" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">用户ID：</label>
-                            <div class="col-sm-8">
-                                <input id="userid" name="userid" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -52,66 +46,27 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">评论状态，默认允许评论：</label>
-                            <div class="col-sm-8">
-                                <input id="commentstatus" name="commentstatus" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">评论总数：</label>
-                            <div class="col-sm-8">
-                                <input id="commentcount" name="commentcount" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">最后评论时间：</label>
-                            <div class="col-sm-8">
-                                <input id="commenttime" name="commenttime" class="form-control" type="text"
-                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">访问量：</label>
-                            <div class="col-sm-8">
-                                <input id="viewcount" name="viewcount" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">创建日期：</label>
-                            <div class="col-sm-8">
-                                <input id="createtime" name="createtime" class="form-control" type="text"
-                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">最后更新日期：</label>
-                            <div class="col-sm-8">
-                                <input id="modifytime" name="modifytime" class="form-control" type="text"
-                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">：</label>
+                            <label class="col-sm-3 control-label">开始时间：</label>
                             <div class="col-sm-8">
                                 <input id="starttime" name="starttime" class="form-control" type="text"
                                        onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">：</label>
+                            <label class="col-sm-3 control-label">结束时间：</label>
                             <div class="col-sm-8">
                                 <input id="endtime" name="endtime" class="form-control" type="text"
                                        onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">：</label>
+                            <label class="col-sm-3 control-label">价钱：</label>
                             <div class="col-sm-8">
                                 <input id="price" name="price" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">：</label>
+                            <label class="col-sm-3 control-label">活动地址：</label>
                             <div class="col-sm-8">
                                 <input id="address" name="address" class="form-control" type="text">
                             </div>
@@ -135,9 +90,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">：</label>
-                            <div class="col-sm-8">
-                                <input id="type" name="type" class="form-control" type="text">
+                            <label class="col-sm-3 control-label">活动类型：</label>
+                            <div class="col-sm-9">
+                                <select class="form-control m-b" name="type">
+                                    <option value="1">创业</option>
+                                    <option value="2">公益</option>
+                                    <option value="3">硬件</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

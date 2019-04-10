@@ -110,14 +110,7 @@ function reLoad() {
 }
 
 function add() {
-    layer.open({
-        type: 2,
-        title: '增加',
-        maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
-        area: ['800px', '520px'],
-        content: prefix + '/add' // iframe的url
-    });
+    window.location.href = prefix + '/add'
 }
 
 function edit(id) {

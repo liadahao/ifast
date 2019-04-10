@@ -31,7 +31,7 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 							     pageNumber : params.pageNumber,
-                                  pageSize : params.pageSize  
+                                  pageSize : params.pageSize
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -54,92 +54,65 @@ function load() {
 									checkbox : true
 								},
 																{
-									field : 'id', 
-									title : '主键ID' 
+									field : 'id',
+									title : '主键ID'
 								},
 																{
-									field : 'title', 
-									title : '标题' 
+									field : 'title',
+									title : '标题'
 								},
 																{
-									field : 'content', 
-									title : '内容' 
+									field : 'content',
+									title : '内容'
 								},
 																{
-									field : 'linkto', 
-									title : '连接到(常用于谋文章只是一个连接)' 
+									field : 'linkto',
+									title : '来源地址'
 								},
 																{
-									field : 'thumbnail', 
-									title : '缩略图' 
+									field : 'thumbnail',
+									title : '封面图'
+								},
+
+																{
+									field : 'ordernumber',
+									title : '排序编号'
 								},
 																{
-									field : 'userid', 
-									title : '用户ID' 
+									field : 'status',
+									title : '状态'
 								},
 																{
-									field : 'ordernumber', 
-									title : '排序编号' 
+									field : 'createtime',
+									title : '创建日期'
 								},
 																{
-									field : 'status', 
-									title : '状态' 
-								},
-																{
-									field : 'commentstatus', 
-									title : '评论状态，默认允许评论' 
-								},
-																{
-									field : 'commentcount', 
-									title : '评论总数' 
-								},
-																{
-									field : 'commenttime', 
-									title : '最后评论时间' 
-								},
-																{
-									field : 'viewcount', 
-									title : '访问量' 
-								},
-																{
-									field : 'createtime', 
-									title : '创建日期' 
-								},
-																{
-									field : 'modifytime', 
-									title : '最后更新日期' 
-								},
-																{
-									field : 'starttime', 
+									field : 'starttime',
 									title : '开始时间'
 								},
 																{
-									field : 'endtime', 
+									field : 'endtime',
 									title : '结束时间'
 								},
 																{
-									field : 'price', 
+									field : 'price',
 									title : '价钱'
 								},
 																{
-									field : 'address', 
+									field : 'address',
 									title : '地址'
 								},
 																{
-									field : 'metakeywords', 
-									title : 'SEO关键字' 
+									field : 'metakeywords',
+									title : 'SEO关键字'
 								},
 																{
-									field : 'metadescription', 
-									title : 'SEO描述信息' 
+									field : 'metadescription',
+									title : 'SEO描述信息'
 								},
 																{
-									field : 'remarks', 
-									title : '备注信息' 
-								},
-																{
-									field : 'type', 
-									title : '类型'
+									field : 'type',
+									title : '类型（1：创业，2：公益，3：硬件）'
 								},
 																								{
 									title : '操作',

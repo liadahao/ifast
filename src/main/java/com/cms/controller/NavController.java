@@ -3,16 +3,12 @@ package com.cms.controller;
 
 import java.util.Arrays;
 
+import com.cms.core.HtmlConstant;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -56,6 +52,21 @@ public class NavController extends AdminBaseController {
         return "cms/nav/add";
     }
 
+    @GetMapping("/add/{type}")
+    @RequiresPermissions("cms:nav:add")
+    String add(@PathVariable("type") Integer type, Integer navId, Model model) {
+        String suffix;
+        suffix = HtmlConstant.getHtml(type);
+        model.addAttribute("navId", navId);
+        return "cms/nav/" + suffix;
+    }
+
+    @GetMapping("/add/seo")
+    @RequiresPermissions("cms:nav:add")
+    String addSeo() {
+        return "cms/nav/seo";
+    }
+
     @GetMapping("/edit/{id}")
     @RequiresPermissions("cms:nav:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -68,10 +79,9 @@ public class NavController extends AdminBaseController {
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("cms:nav:add")
-    public Result<String> save(NavDO nav) {
+    public Result<String> save(@RequestBody NavDO nav) {
         navService.insert(nav);
-        String idType = nav.getId().toString() + "-" + nav.getType().toString();
-        return Result.ok(idType);
+        return Result.ok();
     }
 
     @Log("修改")

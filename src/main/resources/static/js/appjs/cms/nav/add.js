@@ -8,28 +8,16 @@ $.validator.setDefaults({
     }
 });
 
+/**
+ * 保存并进入下一步
+ */
 function save() {
-    $.ajax({
-        cache: true,
-        type: "POST",
-        url: "/cms/nav/save",
-        data: $('#signupForm').serialize(),// 你的formid
-        async: false,
-        error: function (request) {
-            parent.layer.alert("Connection error");
-        },
-        success: function (data) {
-            if (data.code == 0) {
-                var idType = data.data;
-                var id = idType.split("-");
-                window.location.href = '/website/add/' + id[1] + "?navId=" + id[0];
-            } else {
-                parent.layer.alert(data.msg)
-            }
-
-        }
-    });
-
+    var obj = $('#signupForm').serializeJSON();
+    var data = JSON.stringify(obj);
+    console.log(data);
+    $.cookie("nav_1", null, {path: '/'});
+    $.cookie("nav_1", data, {path: '/'});
+    window.location.href = '/cms/nav/add/' + obj.type;
 }
 
 function validateRule() {

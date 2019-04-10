@@ -127,7 +127,7 @@
     </style>
 </head>
 <body>
-<div th:include="include :: nav"></div>
+<div th:include="nav :: top-nav"></div>
 
 <div class="get">
     <div class="am-g">
@@ -151,7 +151,7 @@
             <div class="am-panel">
                 <div class="am-panel-hd">
                     <span><img class="" src="/img/0201enterprise.png"></span>
-                    <span th:if="${data['model1title'] != null}" th:text="${data['model1title'][0]"
+                    <span th:if="${data['model1title'] != null}" th:text="${data['model1title']}"
                           class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
                     </span>
                     <span th:if="${data['model1title'] == null}" class="am-panel-title"
@@ -162,7 +162,7 @@
                 <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
                     <div class="am-panel-bd">
                         <div class="am-g">
-                            <p th:if="${data['model1content'] != null}" th:text="${data['model1content'][0]}"
+                            <p th:if="${data['model1content'] != null}" th:text="${data['model1content']}"
                                class="am-u-lg-9">
                             </p>
                             <p th:if="${data['model1content'] == null}" class="am-u-lg-9">
@@ -184,7 +184,7 @@
             <div class="am-panel">
                 <div class="am-panel-hd">
                     <span><img class="" src="/img/0201manufacturing.png"></span>
-                    <span th:if="${data['model2title'] != null}" th:text="${data['model1title'][0]"
+                    <span th:if="${data['model2title'] != null}" th:text="${data['model1title']}"
                           class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                     </span>
                     <span th:if="${data['model2title'] == null}" class="am-panel-title"
@@ -196,7 +196,7 @@
                 <div id="do-not-say-2" class="am-panel-collapse am-collapse">
                     <div class="am-panel-bd">
                         <div class="am-g">
-                            <p th:if="${data['model2content'] != null}" th:text="${data['model2content'][0]}"
+                            <p th:if="${data['model2content'] != null}" th:text="${data['model2content']}"
                                class="am-u-lg-9">
                             </p>
                             <p th:if="${data['model2content'] == null}" class="am-u-lg-9">
@@ -218,7 +218,7 @@
             <div class="am-panel">
                 <div class="am-panel-hd">
                     <span><img class="" src="/img/0201startups.png"></span>
-                    <span th:if="${data['model3title'] != null}" th:text="${data['model3title'][0]"
+                    <span th:if="${data['model3title'] != null}" th:text="${data['model3title']}"
                           class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
                     </span>
                     <span th:if="${data['model3title'] == null}" class="am-panel-title"
@@ -229,7 +229,7 @@
                 <div id="do-not-say-3" class="am-panel-collapse am-collapse">
                     <div class="am-panel-bd">
                         <div class="am-g">
-                            <p th:if="${data['model3content'] != null}" th:text="${data['model3content'][0]}"
+                            <p th:if="${data['model3content'] != null}" th:text="${data['model3content']}"
                                class="am-u-lg-9">
                             </p>
                             <p th:if="${data['model3content'] == null}" class="am-u-lg-9">
@@ -251,7 +251,7 @@
             <div class="am-panel">
                 <div class="am-panel-hd">
                     <span><img class="" src="/img/0201visit.png"></span>
-                    <span th:if="${data['model4title'] != null}" th:text="${data['model4title'][0]"
+                    <span th:if="${data['model4title'] != null}" th:text="${data['model4title']}"
                           class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
                     </span>
                     <span th:if="${data['model4title'] == null}" class="am-panel-title"
@@ -272,6 +272,6 @@
 </div>
 
 <!-- 侧边栏内容 -->
-<div th:include="include :: nav-side"></div>
+<div th:include="nav :: nav-side"></div>
 </body>
 </html>
