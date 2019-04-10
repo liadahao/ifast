@@ -39,7 +39,6 @@ public class FrontController {
         return "/cms/front/pages/index";
     }
 
-
     @RequestMapping("/page/{name}")
     public String website(@PathVariable String name, Model model) {
         Wrapper<NavDO> wrapper = new EntityWrapper<NavDO>().eq("name", name);

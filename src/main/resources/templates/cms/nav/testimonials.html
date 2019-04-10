@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="https://res.layui.com/layui/dist/css/layui.css?t=1551352891272" media="all">
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <div class="layui-card">
+                            <div class="layui-card-header">
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend>标题块</legend>
+                                </fieldset>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="layui-card-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">标题：</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="title" name="title" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">内容：</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="content" name="content" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">视频链接1：</label>
+                                    <div class="col-sm-8">
+                                        <input id="video1" name="video1" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">视频链接2：</label>
+                                    <div class="col-sm-8">
+                                        <input id="video2" name="video2" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">视频链接3：</label>
+                                    <div class="col-sm-8">
+                                        <input id="video3" name="video3" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">视频链接4：</label>
+                                    <div class="col-sm-8">
+                                        <input id="video4" name="video4" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">视频链接5：</label>
+                                    <div class="col-sm-8">
+                                        <input id="video5" name="video5" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <div class="layui-card">
+                            <div class="layui-card-header">
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend>模块1</legend>
+                                </fieldset>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="layui-card-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">人物姓名：</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="model-1-name" name="model1name" class="form-control"
+                                                  rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">人物简介：</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="model-1-description" name="model1description" class="form-control"
+                                                  rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">内容：</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="model-1-content" name="model1content" class="form-control"
+                                                  rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">任务肖像：</label>
+                                    <div class="col-sm-8">
+                                        <input id="model-1-image" name="model1image" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/cms/nav/add2.js">
+</script>
+<script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
+</body>
+</html>

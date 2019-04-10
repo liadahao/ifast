@@ -2,7 +2,7 @@
 <html>
 <head lang="en" xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
-    <title>Landing Page | Amaze UI Example</title>
+    <title>Tech Tour</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
@@ -173,7 +173,7 @@
                                 while providing you with plenty of insight into what to expect, no matter what specific
                                 field you ultimately choose.
                             </p>
-                            <video src="/video/WeChat_20190327231432.mp4" width="150" height="90"
+                            <video th:src="${data['model1video']}" src="/video/WeChat_20190327231432.mp4" width="150" height="90"
                                    controls="controls" class="am-u-lg-3">
                                 Your browser does not support the video tag.
                             </video>
@@ -207,7 +207,7 @@
                                 while providing you with plenty of insight into what to expect, no matter what specific
                                 field you ultimately choose.
                             </p>
-                            <video src="/video/WeChat_20190327231432.mp4" width="150" height="90"
+                            <video th:src="${data['model2video']}" src="/video/WeChat_20190327231432.mp4" width="150" height="90"
                                    controls="controls" class="am-u-lg-3">
                                 Your browser does not support the video tag.
                             </video>
@@ -240,7 +240,7 @@
                                 while providing you with plenty of insight into what to expect, no matter what specific
                                 field you ultimately choose.
                             </p>
-                            <video src="/video/WeChat_20190327231432.mp4" width="150" height="90"
+                            <video th:src="${data['model3video']}" src="/video/WeChat_20190327231432.mp4" width="150" height="90"
                                    controls="controls" class="am-u-lg-3">
                                 Your browser does not support the video tag.
                             </video>
@@ -262,7 +262,11 @@
                 <div id="do-not-say-4" class="am-panel-collapse am-collapse">
                     <div class="am-panel-bd">
                         <div class="am-g">
-
+                            <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+                                <li th:each="menu : ${data['model4content']}">
+                                    <img class="footer-icon" th:src="${menu}" src="/img/air.png">
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
