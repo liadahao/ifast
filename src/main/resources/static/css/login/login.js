@@ -190,7 +190,7 @@ $(function(){
 			            data: params,
 			            success: function (r) {
 			                if (r.code == 0) {
-			                    parent.location.href = '/index';
+			                    parent.location.href = 'admin/index';
 			                } else {
 			                    layer.msg(r.msg);
 			                }

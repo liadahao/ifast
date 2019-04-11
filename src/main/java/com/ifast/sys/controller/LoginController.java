@@ -36,11 +36,6 @@ public class LoginController extends AdminBaseController {
     @Autowired
     FileService fileService;
 
-    @GetMapping({ "/", "" })
-    String welcome(Model model) {
-        return "redirect:/page/index";
-    }
-
     @GetMapping({ "admin"})
     String adminIndex(Model model) {
         return "redirect:/admin/index";

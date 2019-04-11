@@ -42,13 +42,13 @@ import java.util.*;
  * . realm(cache)
  * . securityManager（realm）
  * . ShiroFilterFactoryBean 注册
- * 
+ *
  * </pre>
  * <small> 2018年4月18日 | Aron</small>
  */
 @Configuration
 public class ShiroConfiguration {
-    
+
     @Bean
     SessionDAO sessionDAO(ShiroProperties config) {
 //        EnterpriseCacheSessionDAO sessionDAO = new EnterpriseCacheSessionDAO();
@@ -67,7 +67,7 @@ public class ShiroConfiguration {
     }
 
     @Bean
-    public RedisTemplate<Object, Object> redisTemplate( RedisConnectionFactory redisConnectionFactory) {
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<Object, Object>();
         template.setConnectionFactory(redisConnectionFactory);
         template.setKeySerializer(new StringRedisSerializer());
@@ -85,22 +85,23 @@ public class ShiroConfiguration {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setSessionIdCookie(simpleCookie);
 
-        Collection<SessionListener> sessionListeners = new ArrayList<SessionListener>();
+        Collection<SessionListener> sessionListeners = new ArrayList<>();
         sessionListeners.add(new BDSessionListener());
         sessionManager.setSessionListeners(sessionListeners);
         sessionManager.setSessionDAO(sessionDAO);
+        sessionManager.setGlobalSessionTimeout(24 * 60 * 60 * 1000);
         return sessionManager;
     }
-    
-    @Bean(name="shiroCacheManager")
-    @DependsOn({"springContextHolder","cacheConfiguration"})
+
+    @Bean(name = "shiroCacheManager")
+    @DependsOn({"springContextHolder", "cacheConfiguration"})
     public CacheManager cacheManager() {
-    	SpringCacheManagerWrapper springCacheManager = new SpringCacheManagerWrapper();
-    	org.springframework.cache.CacheManager cacheManager = SpringContextHolder.getBean(org.springframework.cache.CacheManager.class);
-    	springCacheManager.setCacheManager(cacheManager);
+        SpringCacheManagerWrapper springCacheManager = new SpringCacheManagerWrapper();
+        org.springframework.cache.CacheManager cacheManager = SpringContextHolder.getBean(org.springframework.cache.CacheManager.class);
+        springCacheManager.setCacheManager(cacheManager);
         return springCacheManager;
     }
-    
+
     @Bean
     Authenticator authenticator(SysUserAuthorizingRealm sysUserAuthorizingRealm, JWTAuthorizingRealm jwtAuthorizingRealm) {
         IFastModularRealm authenticator = new IFastModularRealm();
@@ -111,7 +112,7 @@ public class ShiroConfiguration {
         authenticator.setRealms(realms);
         return authenticator;
     }
-    
+
     @Bean
     Authorizer authorizer(SysUserAuthorizingRealm sysUserAuthorizingRealm, JWTAuthorizingRealm jwtAuthorizingRealm) {
         ModularRealmAuthorizer authorizer = new ModularRealmAuthorizer();
@@ -121,9 +122,9 @@ public class ShiroConfiguration {
         authorizer.setRealms(realms);
         return authorizer;
     }
-    
+
     @Bean
-    SecurityManager securityManager(SessionManager sessionManager,Authorizer authorizer, Authenticator authenticator ) {
+    SecurityManager securityManager(SessionManager sessionManager, Authorizer authorizer, Authenticator authenticator) {
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
         manager.setAuthenticator(authenticator);
         manager.setAuthorizer(authorizer);
@@ -135,15 +136,10 @@ public class ShiroConfiguration {
     @Bean
     ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        
-        // 添加jwt过滤器
-        Map<String, Filter> filterMap = new HashMap<>();
-        filterMap.put("jwt", new JWTAuthenticationFilter());
-        shiroFilterFactoryBean.setFilters(filterMap);
-        
+
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         shiroFilterFactoryBean.setLoginUrl("/login");
-        shiroFilterFactoryBean.setSuccessUrl("/index");
+        shiroFilterFactoryBean.setSuccessUrl("/admin/index");
         shiroFilterFactoryBean.setUnauthorizedUrl("/shiro/405");
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/api/**", "jwt"); // api
@@ -169,6 +165,12 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/**", "authc");
+
+        // 添加jwt过滤器
+        Map<String, Filter> filterMap = new HashMap<>();
+        filterMap.put("jwt", new JWTAuthenticationFilter());
+        filterMap.put("authc", new MyFormAuthenticationFilter());
+        shiroFilterFactoryBean.setFilters(filterMap);
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

@@ -62,8 +62,8 @@ function load() {
                         title: '标题'
                     },
                     {
-                        field: 'userId',
-                        title: '用户ID'
+                        field: 'author',
+                        title: '作者'
                     },
                     {
                         field: 'orderNumber',
@@ -74,8 +74,8 @@ function load() {
                         title: '状态'
                     },
                     {
-                        field: 'commentStatus',
-                        title: '评论状态，默认允许评论'
+                        field: 'userId',
+                        title: '创建者id'
                     },
                     {
                         field: 'createTime',

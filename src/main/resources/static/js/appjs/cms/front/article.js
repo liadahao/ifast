@@ -26,7 +26,7 @@ function handleData(data) {
     var id = 'line-' + line;
     var box = '<div class="boxes" id="' + id + '"></div>';
     $('.article').append(box);
-    selector = $('#' + id)
+    selector = $('#' + id);
     for (var j = 0, len = row.length; j < len; j++) {
         var obj = row[j];
         var style = obj.style;

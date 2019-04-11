@@ -10,10 +10,12 @@ import com.cms.domain.EventDO;
 import com.cms.domain.NavDO;
 import com.cms.domain.ProductDO;
 import com.cms.service.ArticleService;
+import com.cms.service.EventService;
 import com.cms.service.NavService;
 import com.ifast.common.utils.HttpContextUtils;
 import com.ifast.common.utils.Result;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,13 @@ public class FrontController {
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    EventService eventService;
+
+    @GetMapping({ "/", "" })
+    String welcome(Model model) {
+        return "redirect:/page/index";
+    }
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -59,9 +68,17 @@ public class FrontController {
 
     @ResponseBody
     @GetMapping("/article/list")
-    public Result<Page<ArticleDO>> list() {
+    public Result<Page<ArticleDO>> articleList() {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
         Page<ArticleDO> page = articleService.selectPage(getPage(ArticleDO.class), wrapper);
+        return Result.ok(page);
+    }
+
+    @ResponseBody
+    @GetMapping("/event/list")
+    public Result<Page<EventDO>> eventList() {
+        Wrapper<EventDO> wrapper = new EntityWrapper<EventDO>().orderBy("id", false);
+        Page<EventDO> page = eventService.selectPage(getPage(EventDO.class), wrapper);
         return Result.ok(page);
     }
 
@@ -81,10 +98,10 @@ public class FrontController {
         Page<E> page = new Page<>(pageNumber, pageSize);
         //支持sort、order参数
         String sort = HttpContextUtils.getHttpServletRequest().getParameter("sort");
-        if(StringUtils.isNotBlank(sort)) {
+        if (StringUtils.isNotBlank(sort)) {
             page.setOrderByField(sort);
             String order = HttpContextUtils.getHttpServletRequest().getParameter("order");
-            if(StringUtils.isNotBlank(order)) page.setAsc("asc".equalsIgnoreCase(order));
+            if (StringUtils.isNotBlank(order)) page.setAsc("asc".equalsIgnoreCase(order));
         }
         return page;
     }

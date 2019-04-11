@@ -104,6 +104,12 @@ public class ArticleDO implements Serializable {
     private Date modifyTime;
 
     /**
+     *
+     */
+    private String metaTitle;
+
+
+    /**
      * SEO关键字
      */
     private String metaKeywords;

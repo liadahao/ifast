@@ -2,126 +2,129 @@
 <html>
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
+<link href="/css/plugins/steps/jquery.steps.css" rel="stylesheet">
+<link rel="stylesheet" href="/js/plugins/webuploader/webuploader.css" media="all">
+<link rel="stylesheet" type="text/css" href="/css/plugins/simditor/simditor.css"/>
+<style>
+    .wizard-big.wizard > .content {
+        min-height: 800px;
+    }
+
+    #content ul li {
+        display: block;
+    }
+</style>
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <form class="form-horizontal m-t" id="signupForm">
+                    <form id="article-form" class="wizard-big wizard clearfix form-horizontal m-t" action="#">
                         <input id="id" name="id" th:value="${article.id}" type="hidden">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">标题：</label>
-                            <div class="col-sm-8">
-                                <input id="title" name="title" th:value="${article.title}" class="form-control"
-                                       type="text">
+                        <h3>基本信息</h3>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标题：</label>
+                                <div class="col-sm-8">
+                                    <input id="title" name="title" class="form-control"
+                                           type="text" th:value="${article.title}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">内容：</label>
-                            <div class="col-sm-8">
-                                <textarea id="content" name="content" th:text="${article.content}" class="form-control"
-                                          rows="5"></textarea>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">摘要：</label>
+                                <div class="col-sm-8">
+                                <textarea id="summary" name="summary" class="form-control"
+                                          rows="5" th:value="${article.summary}"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">编辑模式，默认为html，其他可选项包括html，markdown ..：</label>
-                            <div class="col-sm-8">
-                                <input id="editMode" name="editMode" th:value="${article.editMode}" class="form-control"
-                                       type="text">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">创建时间：</label>
+                                <div class="input-group date col-sm-8">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" class="form-control" name="createTime" th:value="${article.createTime}"
+                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">摘要：</label>
-                            <div class="col-sm-8">
-                                <textarea id="summary" name="summary" th:text="${article.summary}" class="form-control"
-                                          rows="5"></textarea>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">作者：</label>
+                                <div class="col-sm-8">
+                                    <input id="author" name="author" class="form-control"
+                                           type="text" th:value="${article.author}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">连接到(常用于谋文章只是一个连接)：</label>
-                            <div class="col-sm-8">
-                                <input id="linkTo" name="linkTo" th:value="${article.linkTo}" class="form-control"
-                                       type="text">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">封面类型：</label>
+                                <div class="col-sm-8">
+                                    <div class="radio">
+                                        <label>
+                                            <input th:checked="${article.style eq 1}" type="radio" value="1" id="optionsRadios1"
+                                                   name="style">大图封面</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input th:checked="${article.style eq 2}" type="radio" value="2" id="optionsRadios2"
+                                                   name="style">大图封面</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input th:checked="${article.style eq 3}" type="radio" value="3" id="optionsRadios3"
+                                                   name="style">底图封面</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" th:checked="${article.style eq 4}" value="4" id="optionsRadios4"
+                                                   name="style">默认状态</label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">缩略图：</label>
-                            <div class="col-sm-8">
-                                <input id="thumbnail" name="thumbnail" th:value="${article.thumbnail}"
-                                       class="form-control" type="text">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">封面图：</label>
+                                <!--dom结构部分-->
+                                <div id="uploader-demo" class="col-sm-8">
+                                    <!--用来存放item-->
+                                    <div id="fileList" class="uploader-list"></div>
+                                    <div id="filePicker">选择图片</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">用户ID：</label>
-                            <div class="col-sm-8">
-                                <input id="userId" name="userId" th:value="${article.userId}" class="form-control"
-                                       type="text">
+                        </fieldset>
+
+                        <h3>正文内容</h3>
+                        <fieldset>
+                            <div id="content" class="ibox">
+                                <div class="ibox-content">
+                                    <textarea th:text="${article.content}" id="editor" name="content" autofocus required>
+                                        Balala...
+                                    </textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">排序编号：</label>
-                            <div class="col-sm-8">
-                                <input id="orderNumber" name="orderNumber" th:value="${article.orderNumber}"
-                                       class="form-control" type="text">
+                        </fieldset>
+
+                        <h3>SEO设置</h3>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">SEO栏目标题：</label>
+                                <div class="col-sm-8">
+                                        <textarea th:text="${article.metaTitle}" id="metaTitle" name="metaTitle" class="form-control"
+                                                  rows="5"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">状态：</label>
-                            <div class="col-sm-8">
-                                <input id="status" name="status" th:value="${article.status}" class="form-control"
-                                       type="text">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">SEO栏目关键字：</label>
+                                <div class="col-sm-8">
+                                        <textarea th:text="${article.metaKeywords}" id="metaKeywords" name="metaKeywords" class="form-control"
+                                                  rows="5"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">评论状态，默认允许评论：</label>
-                            <div class="col-sm-8">
-                                <input id="commentStatus" name="commentStatus" th:value="${article.commentStatus}"
-                                       class="form-control" type="text">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">SEO栏目简介：</label>
+                                <div class="col-sm-8">
+                                    <input th:text="${article.metaDescription}" id="metaDescription" name="metaDescription" class="form-control"
+                                           type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">创建日期：</label>
-                            <div class="col-sm-8">
-                                <input id="createTime" name="createTime"
-                                       th:value="${article.createTime} eq null ? '' : ${#dates.format(article.createTime, 'yyyy-MM-dd HH:mm:ss')}"
-                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control"
-                                       type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">SEO关键字：</label>
-                            <div class="col-sm-8">
-                                <input id="metaKeywords" name="metaKeywords" th:value="${article.metaKeywords}"
-                                       class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">SEO描述信息：</label>
-                            <div class="col-sm-8">
-                                <input id="metaDescription" name="metaDescription" th:value="${article.metaDescription}"
-                                       class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">备注信息：</label>
-                            <div class="col-sm-8">
-                                <textarea id="remarks" name="remarks" th:text="${article.remarks}" class="form-control"
-                                          rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">：</label>
-                            <div class="col-sm-8">
-                                <input id="style" name="style" th:value="${article.style}" class="form-control"
-                                       type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
-                            </div>
-                        </div>
+                            <!-- /.box-body -->
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -131,6 +134,176 @@
 <div th:include="include::footer"></div>
 <script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/article/edit.js">
+</script>
+<script type="text/javascript" src="/js/plugins/simditor/module.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/hotkeys.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/uploader.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/simditor.js"></script>
+<script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
+
+<script src="/js/plugins/staps/jquery.steps.min.js"></script>
+<script>
+    var form = $("#article-form").show();
+    form.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex) {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex) {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18) {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex) {
+                // To remove error styles
+                form.find(".body:eq(" + newIndex + ") label.error").remove();
+                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number($("#age-2").val()) >= 18) {
+                form.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3) {
+                form.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex) {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onFinished: function (event, currentIndex) {
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "/cms/article/save",
+                data: $('#article-form').serialize(),// 你的formid
+                async: false,
+                error: function (request) {
+                    parent.layer.alert("Connection error");
+                },
+                success: function (data) {
+                    if (data.code == 0) {
+                        parent.layer.msg("操作成功");
+                        window.location.href = "/cms/article";
+                    } else {
+                        parent.layer.alert(data.msg)
+                    }
+
+                }
+            });
+        }
+    }).validate({});
+
+    // 初始化Web Uploader
+    var uploader = WebUploader.create({
+
+        // 选完文件后，是否自动上传。
+        auto: true,
+
+        // swf文件路径
+        swf: '/js/Uploader.swf',
+
+        // 文件接收服务端。
+        server: 'http://webuploader.duapp.com/server/fileupload.php',
+
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick: '#filePicker',
+
+        // 只允许选择图片文件。
+        accept: {
+            title: 'Images',
+            extensions: 'jpg,jpeg,bmp,png',
+            mimeTypes: 'image/*'
+        }
+    });
+
+    // 当有文件添加进来的时候
+    uploader.on('fileQueued', function (file) {
+        var $li = $(
+            '<div id="' + file.id + '" class="file-item">' +
+            '<img>' +
+            '<div class="info">' + file.name + '</div>' +
+            '</div>'
+            ),
+            $img = $li.find('img');
+
+        let $list = $("#fileList");
+        // $list为容器jQuery实例
+        $list.append($li);
+
+        // 创建缩略图
+        // 如果为非图片文件，可以不用调用此方法。
+        // thumbnailWidth x thumbnailHeight 为 100 x 100
+        uploader.makeThumb(file, function (error, src) {
+            if (error) {
+                $img.replaceWith('<span>不能预览</span>');
+                return;
+            }
+
+            $img.attr('src', src);
+        }, 200, 200);
+    });
+
+    // 文件上传过程中创建进度条实时显示。
+    uploader.on('uploadProgress', function (file, percentage) {
+        var $li = $('#' + file.id),
+            $percent = $li.find('.progress span');
+
+        // 避免重复创建
+        if (!$percent.length) {
+            $percent = $('<p class="progress"><span></span></p>')
+                .appendTo($li)
+                .find('span');
+        }
+
+        $percent.css('width', percentage * 100 + '%');
+    });
+
+    // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+    uploader.on('uploadSuccess', function (file) {
+        $('#' + file.id).addClass('upload-state-done');
+    });
+
+    // 文件上传失败，显示上传出错。
+    uploader.on('uploadError', function (file) {
+        var $li = $('#' + file.id),
+            $error = $li.find('div.error');
+
+        // 避免重复创建
+        if (!$error.length) {
+            $error = $('<div class="error"></div>').appendTo($li);
+        }
+
+        $error.text('上传失败');
+    });
+
+    // 完成上传完了，成功或者失败，先删除进度条。
+    uploader.on('uploadComplete', function (file) {
+        $('#' + file.id).find('.progress').remove();
+    });
+
+    var editor = new Simditor({
+        textarea: $('#editor'),
+        placeholder: '这里输入文字...',
+        toolbar: toolbar,
+        pasteImage: true,
+        defaultImage: 'assets/images/image.png',
+        upload: location.search === '?upload' ? {
+            url: '/upload'
+        } : false
+    });
+
+    $('.simditor-toolbar').width('100%');
 </script>
 </body>
 </html>

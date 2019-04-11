@@ -117,7 +117,7 @@ input[type=number]::-webkit-outer-spin-button {
 .form-data .head-logo{
     position: absolute;
     top: -47px;
-    left: 116px;
+    left: 156px;
 }
 .reg_checkboxline{
     font-size: 14px;
@@ -248,7 +248,6 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-around;
     font-size: 14px;
-    color: #cacaca;
 }
 .form-data .change-login p{
     cursor: pointer;
