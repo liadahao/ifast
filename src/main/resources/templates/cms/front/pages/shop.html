@@ -29,106 +29,139 @@
             background: url("/img/02.png") no-repeat fixed center center;
         }
 
-        .get {
+        .main {
             margin-top: 106px;
-            margin-left: 340px;
-            margin-right: 340px;
-            padding-left: 71px;
-            padding-right: 71px;
             height: 100%;
             display: block;
+        }
+
+        .main-body{
+            padding-left: 5.65%;
+            padding-right: 5.65%;
         }
 
 
     </style>
 </head>
 <body>
-<div th:include="nav :: top-nav"></div>
-
-<div class="get">
+<div th:replace="nav :: top-nav"></div>
+<div class="main">
     <div class="am-g">
-        <div class="am-u-sm-7">
-            <h1 class="product-title">
-                Daniel Wellington Women's 0511DWDaniel Wellington Women's 0511DW
-            </h1>
-            <div class="tag-list">
-
-            </div>
-            <p class="product-description">
-                Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish organically
-                tanned leather strap.Our interpretation of 1950’s simplicity. Expressed completely in black with a black
-                Swedish organically tanned leather strap.
-            </p>
-            <div class="price-line">
-                <div class="price am-u-sm-3">
-                    $250
+        <div class="am-u-lg-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/testimonials">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Testimonials</div>
+                    </a>
                 </div>
-                <button class="am-btn am-btn-warning am-btn-xl" href="#">
-                    <i class="am-icon-shopping-cart"></i>
-                    Add To Bag
-                </button>
+                <div class="bottom">
+                    <a href="/page/about">
+                        <div class="bottom-text">About us</div>
+                        <img src="/img/down.png"/>
+                    </a>
+                </div>
             </div>
-            <div class="product-detail">
-                <ul>
-                    <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                        organically tanned leather strap.
+        </div>
+        <div class="main-body am-u-lg-8">
+            <div class="am-u-sm-7">
+                <h1 class="product-title">
+                    Daniel Wellington Women's 0511DWDaniel Wellington Women's 0511DW
+                </h1>
+                <div class="tag-list">
+                </div>
+                <p class="product-description">
+                    Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                    organically
+                    tanned leather strap.Our interpretation of 1950’s simplicity. Expressed completely in black with a
+                    black
+                    Swedish organically tanned leather strap.
+                </p>
+                <div class="price-line">
+                    <div class="price am-u-sm-3">
+                        $250
+                    </div>
+                    <button class="am-btn am-btn-warning am-btn-xl" href="#">
+                        <i class="am-icon-shopping-cart"></i>
+                        Add To Bag
+                    </button>
+                </div>
+                <div class="product-detail">
+                    <ul>
+                        <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                            organically tanned leather strap.
+                        </li>
+                        <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                            organically tanned leather strap.
+                        </li>
+                        <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                            organically tanned leather strap.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <img src="/img/a40455dd300d63eab0f12f6e3b501ece.jpeg" class="am-u-sm-5 product-image"/>
+            <div class="product-like am-u-sm-12">
+                <div class="am-u-sm-2">
+                    <h3>Products</h3>
+                    <h1>You May Like</h1>
+                    <div class="controller">
+                        <img class="am-u-sm-4" src="/img/0901L_pre.png"/>
+                        <img class="am-u-sm-4" src="/img/0901R_pre.png"/>
+                    </div>
+                </div>
+                <ul class="am-u-sm-10 am-avg-sm-2 am-avg-md-3 am-avg-lg-5 am-thumbnails">
+                    <li>
+                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                        <div class="product-info">
+                            <p class="am-text-center">Leather BagLeather Bag</p>
+                            <p class="am-text-center">289 USD</p>
+                        </div>
                     </li>
-                    <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                        organically tanned leather strap.
+                    <li>
+                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                        <div class="product-info">
+                            <p class="am-text-center">Leather BagLeather Bag</p>
+                            <p class="am-text-center">289 USD</p>
+                        </div>
                     </li>
-                    <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                        organically tanned leather strap.
+                    <li>
+                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                        <div class="product-info">
+                            <p class="am-text-center">Leather BagLeather Bag</p>
+                            <p class="am-text-center">289 USD</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                        <div class="product-info">
+                            <p class="am-text-center">Leather BagLeather Bag</p>
+                            <p class="am-text-center">289 USD</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
+                        <div class="product-info">
+                            <p class="am-text-center">Leather BagLeather Bag</p>
+                            <p class="am-text-center">289 USD</p>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
-        <img src="/img/a40455dd300d63eab0f12f6e3b501ece.jpeg" class="am-u-sm-5 product-image"/>
-        <div class="product-like am-u-sm-12">
-            <div class="am-u-sm-2">
-                <h3>Products</h3>
-                <h1>You May Like</h1>
-                <div class="controller">
-                    <img class="am-u-sm-4" src="/img/0901L_pre.png"/>
-                    <img class="am-u-sm-4" src="/img/0901R_pre.png"/>
-                </div>
+        <div class="am-u-lg-2">
+            <div class="right-nav">
+                <a href="/page/techtour" class="circular"></a>
+                <a href="/page/workshop" class="circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a href="/page/article" class="circular"></a>
+                <a href="/page/gallery" class="circular"></a>
+                <a href="/page/event" class="circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a class="select-circular"></a>
+                <a href="/page/about" class="circular"></a>
+                <a href="/page/contact" class="circular"></a>
             </div>
-            <ul class="am-u-sm-10 am-avg-sm-2 am-avg-md-3 am-avg-lg-5 am-thumbnails">
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                    <div class="product-info">
-                        <p class="am-text-center">Leather BagLeather Bag</p>
-                        <p class="am-text-center">289 USD</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                    <div class="product-info">
-                        <p class="am-text-center">Leather BagLeather Bag</p>
-                        <p class="am-text-center">289 USD</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                    <div class="product-info">
-                        <p class="am-text-center">Leather BagLeather Bag</p>
-                        <p class="am-text-center">289 USD</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                    <div class="product-info">
-                        <p class="am-text-center">Leather BagLeather Bag</p>
-                        <p class="am-text-center">289 USD</p>
-                    </div>
-                </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                    <div class="product-info">
-                        <p class="am-text-center">Leather BagLeather Bag</p>
-                        <p class="am-text-center">289 USD</p>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

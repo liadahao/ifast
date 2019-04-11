@@ -25,7 +25,7 @@ function handleData(data) {
     line = line + 1;
     var id = 'line-' + line;
     var box = '<div class="boxes" id="' + id + '"></div>';
-    $('.article').append(box);
+    $('.main-body').append(box);
     selector = $('#' + id);
     for (var j = 0, len = row.length; j < len; j++) {
         var obj = row[j];
@@ -48,7 +48,7 @@ function handleData(data) {
             line = line + 1;
             var id = 'line-' + line;
             var box = '<div class="boxes" id="' + id + '"></div>';
-            $('.article').append(box);
+            $('.main-body').append(box);
             selector = $('#' + id)
         }
         var html;
@@ -60,7 +60,7 @@ function handleData(data) {
                 obj.title +
                 '                </h1>\n' +
                 '                <div class="box-conetnt">\n' +
-                obj.content +
+                obj.summary +
                 '                </div><div class="tag-list">\n' +
                 '' +
                 '                </div><div class="author">\n' +
@@ -76,7 +76,7 @@ function handleData(data) {
                 obj.title +
                 '                </h1>\n' +
                 '                <div class="box-conetnt">\n' +
-                obj.content +
+                obj.summary +
                 '                </div><div class="tag-list">\n' +
                 '' +
                 '                </div><div class="author">\n' +
@@ -92,7 +92,7 @@ function handleData(data) {
                 obj.title +
                 '                </h1>\n' +
                 '                <div class="box-conetnt">\n' +
-                obj.content +
+                obj.summary +
                 '                </div><div class="tag-list">\n' +
                 '' +
                 '                </div><div class="author">\n' +

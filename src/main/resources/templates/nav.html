@@ -1,7 +1,9 @@
-<header th:fragment=top-nav class="am-topbar am-topbar-fixed-top">
-    <span><a href="/"><img class="nav-logo" src="/img/logo.png"/></a></span>
-    <span><img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
-</header>
+<div th:fragment=top-nav>
+    <header th:fragment=top-nav class="am-topbar">
+        <span><a href="/"><img class="nav-logo" src="/img/logo.png"/></a></span>
+        <span><img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+    </header>
+</div>
 
 <div th:fragment=nav-side>
     <div id="doc-oc-demo3" class="am-offcanvas">
@@ -29,7 +31,7 @@
                     <a href="/page/event">Event</a>
                 </h3>
                 <h3>
-                    <a href=/page/testimonials>Testimonials</a>
+                    <a href="/page/testimonials">Testimonials</a>
                 </h3>
                 <h3>
                     <a href="/page/shop">Shop</a>

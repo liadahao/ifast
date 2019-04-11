@@ -37,17 +37,18 @@
     <style>
 
         html, body {
-            background:url("/img/01.png") no-repeat fixed center center;
+            background: url("/img/01.png") no-repeat fixed center center;
         }
 
-        .get {
-            margin-top: 156px;
-            margin-left: 17.71%;
-            margin-right: 17.71%;
-            padding-left: 70px;
-            padding-right: 70px;
+        .main {
+            margin-top: 106px;
             height: 100%;
             display: block;
+        }
+
+        .main-body{
+            padding-left: 5.65%;
+            padding-right: 5.65%;
         }
 
         .am-nav-tabs > li.am-active > a {
@@ -181,130 +182,195 @@
             margin-bottom: 30px;
         }
 
+        .am-tabs-nav li:first-child{
+            margin-right: 168px;
+        }
+
+        .am-nav>li>a{
+            padding: 0;
+        }
+
     </style>
 </head>
 <body>
-<div th:include="nav :: top-nav"></div>
+<div th:replace="nav :: top-nav"></div>
 
-<div class="get">
+<div class="main">
     <div class="am-g">
-        <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
-            <ul class="am-tabs-nav am-nav am-nav-tabs">
-                <li class="am-active"><a href="javascript: void(0)">WHO</a></li>
-                <li><a href="javascript: void(0)">WHAT</a></li>
-            </ul>
-            <div class="am-tabs-bd">
-                <div class="am-tab-panel am-active about-who">
-                    <p>Founded by the best ，Not robots but humans</p>
-                    <div class="left-side">
-                        <div id="carousel" class="flexslider">
-                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                                <ul class="slides"
-                                    style="width: 500%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                                    <li>
-                                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                    </li>
-                                    <li class="flex-active-slide">
-                                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                    </li>
-                                    <li>
-                                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                    </li>
-                                    <li>
-                                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                    </li>
-                                    <li>
-                                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                    </li>
-                                    <li>
-                                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h1>Marc Gutierrez</h1>
-                        <h2>Co-fouder and CEO</h2>
-                        <p>
-                            How to make effective business? Best software platform for running an internet business. We
-                            build the most powerful and flexible tools for internet commerce. Our company make high
-                            responce products.How to make effective business? Best software platform for running an
-                            internet business. We build the most powerful and flexible tools for internet commerce. Our
-                            company make high responce products.How to make effective business? Best software platform
-                            for running an internet business. We build the most powerful and flexible tools for internet
-                            commerce.
-                        </p>
-                    </div>
-                    <div class="right-side">
-                        <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                    </div>
+        <div class="am-u-lg-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/shop">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Shop</div>
+                    </a>
                 </div>
-                <div class="am-tab-panel about-what">
-                    <p>We inspire people to impact 。By giving them a closer look at the best companies</p>
-                    <div class="box-line">
-                        <div class="box">
-                            <div class="box-title">
-                                <img src="/img/1002tours.png"/>
-                                <h1>Tech Tours</h1>
+                <div class="bottom">
+                    <a href="/page/contact">
+                        <div class="bottom-text">Contact us </div>
+                        <img src="/img/down.png"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main-body am-u-lg-8">
+            <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
+                <ul class="am-tabs-nav am-nav am-nav-tabs">
+                    <li class="am-active"><a href="javascript: void(0)">WHO</a></li>
+                    <li><a href="javascript: void(0)">WHAT</a></li>
+                </ul>
+                <div class="am-tabs-bd">
+                    <div class="am-tab-panel am-active about-who">
+                        <p>Founded by the best ，Not robots but humans</p>
+                        <div class="left-side">
+                            <div id="carousel" class="flexslider">
+                                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                    <ul class="slides"
+                                        style="width: 500%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                        <li>
+                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        </li>
+                                        <li class="flex-active-slide">
+                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        </li>
+                                        <li>
+                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        </li>
+                                        <li>
+                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        </li>
+                                        <li>
+                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        </li>
+                                        <li>
+                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                            <h1>Marc Gutierrez</h1>
+                            <h2>Co-fouder and CEO</h2>
                             <p>
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese marke
+                                How to make effective business? Best software platform for running an internet business.
+                                We
+                                build the most powerful and flexible tools for internet commerce. Our company make high
+                                responce products.How to make effective business? Best software platform for running an
+                                internet business. We build the most powerful and flexible tools for internet commerce.
+                                Our
+                                company make high responce products.How to make effective business? Best software
+                                platform
+                                for running an internet business. We build the most powerful and flexible tools for
+                                internet
+                                commerce.
                             </p>
                         </div>
-                        <div class="box">
-                            <div class="box-title">
-                                <img src="/img/1002workshops.png"/>
-                                <h1>Workshops</h1>
-                            </div>
-                            <p>
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                            </p>
+                        <div class="right-side">
+                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
                         </div>
                     </div>
-                    <div class="box-line">
-                        <div class="box">
-                            <div class="box-title">
-                                <img src="/img/1002service.png"/>
-                                <h1>Consultancy Service </h1></div>
-                            <p>
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                            </p>
-                        </div>
-                        <div class="box">
-                            <div class="box-title">
-                                <img src="/img/1002shop.png"/>
-                                <h1>Shop</h1>
+                    <div class="am-tab-panel about-what">
+                        <p>We inspire people to impact 。By giving them a closer look at the best companies</p>
+                        <div class="box-line">
+                            <div class="box">
+                                <div class="box-title">
+                                    <img src="/img/1002tours.png"/>
+                                    <h1>Tech Tours</h1>
+                                </div>
+                                <p>
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    marke
+                                </p>
                             </div>
-                            <p>
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                                Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better
-                                insight of china. People with experience in the Tech industry and in the chinese market.
-                            </p>
+                            <div class="box">
+                                <div class="box-title">
+                                    <img src="/img/1002workshops.png"/>
+                                    <h1>Workshops</h1>
+                                </div>
+                                <p>
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box-line">
+                            <div class="box">
+                                <div class="box-title">
+                                    <img src="/img/1002service.png"/>
+                                    <h1>Consultancy Service </h1></div>
+                                <p>
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                </p>
+                            </div>
+                            <div class="box">
+                                <div class="box-title">
+                                    <img src="/img/1002shop.png"/>
+                                    <h1>Shop</h1>
+                                </div>
+                                <p>
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
+                                    better
+                                    insight of china. People with experience in the Tech industry and in the chinese
+                                    market.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-
-        </script>
+        <div class="am-u-lg-2">
+            <div class="right-nav">
+                <a href="/page/techtour" class="circular"></a>
+                <a href="/page/workshop" class="circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a href="/page/article"></a>
+                <a href="/page/gallery" class="circular"></a>
+                <a href="/page/event" class="circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a href="/page/shop" class="circular"></a>
+                <a class="select-circular"></a>
+                <a href="/page/contact" class="circular"></a>
+            </div>
+        </div>
     </div>
 </div>
 <!-- 侧边栏内容 -->

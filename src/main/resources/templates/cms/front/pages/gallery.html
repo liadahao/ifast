@@ -23,19 +23,19 @@
                 controlNav: false,
                 animationLoop: true,
                 slideshow: false,
-                itemWidth: 210,
-                itemMargin: 5,
+                itemWidth: 140,
+                itemMargin: 24,
                 asNavFor: '#slider',
-                prevText:'',
-                nextText:''
+                prevText: '',
+                nextText: ''
             });
 
             $('#slider').flexslider({
                 animation: "slide",
                 controlNav: false,
-                directionNav:false,
+                directionNav: false,
                 animationLoop: true,
-                slideshow: true,
+                slideshow: false,
                 sync: "#carousel"
             });
         });
@@ -51,123 +51,205 @@
 
     <style>
         html, body {
-            background:url("/img/05.png") no-repeat fixed center center;
+            background: url("/img/05.png") no-repeat fixed center center;
         }
-        .get {
+
+        .main {
             margin-top: 106px;
-            margin-left: 17.71%;
-            margin-right: 17.71%;
-            padding-left: 5.65%;
-            padding-right: 5.65%;
             height: 100%;
             display: block;
+        }
+
+        .main-body {
+            padding-left: 5.65%;
+            padding-right: 5.65%;
         }
 
         .am-slider-carousel li {
             margin-right: 5px;
         }
 
-        #carousel img{
+        #carousel img {
             height: 140px;
+            cursor: pointer;
+        }
+
+        .flexslider {
+            border: 0;
+            background: transparent;
+        }
+
+        #slider img {
+            width: 65%;
+            height: 440px;
+            float: right;
+        }
+
+        .gallery-title {
+            margin-top: 138px;
+            margin-bottom: 0;
+            font-size: 80px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(0, 253, 255, 1);
+        }
+
+        .gallery-content {
+            margin: 0;
+            width: 695px;
+            padding-left: 70px;
+            padding-top: 70px;
+            font-size:14px;
+            font-family:PingFangSC-Light;
+            font-weight:300;
+            color:rgba(255,255,255,1);
+            background-image: url("/img/0601ornament.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            position: absolute;
         }
 
     </style>
 </head>
 <body>
-<div th:include="nav :: top-nav"></div>
+<div th:replace="nav :: top-nav"></div>
 
-<div class="get">
+<div class="main">
     <div class="am-g">
-        <section class="slider">
-            <div id="slider" class="flexslider">
-                <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                    <ul class="slides"
-                        style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;"
-                            class="flex-active-slide">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                        </li>
-                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                        </li>
-                    </ul>
+        <div class="am-u-lg-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/article">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Article</div>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a href="/page/event">
+                        <div class="bottom-text">Event</div>
+                        <img src="/img/down.png"/>
+                    </a>
                 </div>
             </div>
-            <div id="carousel" class="flexslider">
-                <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                    <ul class="slides"
-                        style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;"
-                            class="flex-active-slide">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                        </li>
-                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                        </li>
-                    </ul>
+        </div>
+        <div class="main-body am-u-lg-8">
+            <section class="slider">
+                <div id="slider" class="flexslider">
+                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                        <ul class="slides"
+                            style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                                <p class="gallery-title">GALLERY</p>
+                                <p class="gallery-content">So many of us are demotivated to achieve anything. Such people are not enthusiastic
+                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;"
+                                class="flex-active-slide">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                                <p class="gallery-title">GALLERY</p>
+                                <p class="gallery-content">So many of us are demotivated to achieve anything. Such people are not enthusiastic
+                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                                <p class="gallery-title">GALLERY</p>
+                                <p class="gallery-content">So many of us are demotivated to achieve anything. Such people are not enthusiastic
+                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                            </li>
+                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <div id="carousel" class="flexslider">
+                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                        <ul class="slides"
+                            style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;"
+                                class="flex-active-slide">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                            </li>
+                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-lg-2">
+            <div class="right-nav">
+                <a href="/page/techtour" class="circular"></a>
+                <a href="/page/workshop" class="circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a href="/page/article" class="circular"></a>
+                <a class="select-circular"></a>
+                <a href="/page/event" class="circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a href="/page/shop" class="circular"></a>
+                <a href="/page/about" class="circular"></a>
+                <a href="/page/contact" class="circular"></a>
             </div>
-        </section>
+        </div>
     </div>
 </div>
 <!-- 侧边栏内容 -->

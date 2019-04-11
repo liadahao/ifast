@@ -87,6 +87,99 @@ footer {
     background: url("/img/0601R_def.png") no-repeat center center;
 }
 
+.left-nav {
+    padding-left: 17px;
+    width: 50px;
+    height: 768px;
+    background: transparent;
+    font-size: 14px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+    opacity: 0.6;
+}
+
+.left-nav .top {
+    margin-top: 117px;
+}
+
+.left-nav a {
+    display: block;
+}
+
+.left-nav img {
+    width: 15px;
+    height: 23px;
+}
+
+.left-nav .top-text {
+    font-size: 14px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    text-align: right;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 45px;
+    margin-left: -40px;
+    opacity: 0.6;
+    height: 80px;
+    width: 150px;
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -moz-transform: rotate(-90deg); /* Firefox */
+    -webkit-transform: rotate(-90deg); /* Safari 和 Chrome */
+    -o-transform: rotate(-90deg); /* Opera */
+}
+
+.left-nav .bottom-text {
+    font-size: 14px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+    height: 50px;
+    width: 150px;
+    text-align: left;
+    margin-bottom: 60px;
+    margin-left: -55px;
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -moz-transform: rotate(-90deg); /* Firefox */
+    -webkit-transform: rotate(-90deg); /* Safari 和 Chrome */
+    -o-transform: rotate(-90deg); /* Opera */
+}
+
+.left-nav .bottom {
+    margin-top: 300px;
+}
+
+.right-nav {
+    height: 768px;
+    padding-right: 20px;
+    float: right;
+}
+
+.right-nav a:first-child{
+    margin-top: 234px;
+}
+
+.right-nav .select-circular {
+    margin-bottom: 20px;
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    display: block;
+}
+
+.right-nav .circular {
+    margin-bottom: 20px;
+    width:12px;
+    height:12px;
+    border:1px solid rgba(255,255,255,1);
+    opacity:0.4;
+    border-radius:5px;
+    display: block;
+}
+
 .product-title {
     font-size: 32px;
     font-family: PingFangSC-Light;
@@ -145,10 +238,12 @@ footer {
     font-weight: 300;
     color: rgba(156, 155, 155, 1);
 }
-.product-like .controller{
+
+.product-like .controller {
     margin-top: 81px;
 }
-.product-like .controller img{
+
+.product-like .controller img {
     height: 38px;
 }
 
@@ -158,8 +253,8 @@ footer {
 }
 
 .product-info {
-    background:linear-gradient(0deg,rgba(73,18,139,0.35),rgba(0,253,255,0.35));
-    border-radius:0 0 2px 2px;
+    background: linear-gradient(0deg, rgba(73, 18, 139, 0.35), rgba(0, 253, 255, 0.35));
+    border-radius: 0 0 2px 2px;
     font-size: 14px;
     font-family: PingFangSC-Light;
     font-weight: 300;

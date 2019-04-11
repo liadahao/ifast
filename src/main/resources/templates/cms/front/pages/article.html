@@ -32,12 +32,13 @@
 
         .article {
             margin-top: 106px;
-            margin-left: 17.71%;
-            margin-right: 17.71%;
-            padding-left: 5.65%;
-            padding-right: 5.65%;
             height: 100%;
             display: block;
+        }
+
+        .main-body{
+            padding-left: 5.65%;
+            padding-right: 5.65%;
         }
 
         .first-floor {
@@ -145,6 +146,7 @@
             font-family: PingFangSC-Light;
             font-weight: bold;
             color: rgba(19, 19, 19, 1);
+            overflow: hidden;
         }
 
         .box-conetnt {
@@ -153,6 +155,7 @@
             font-family: PingFangSC-Light;
             font-weight: 300;
             color: rgba(59, 59, 59, 1);
+            overflow: hidden;
         }
 
         .tag-list {
@@ -187,19 +190,54 @@
 
 
 <div class="article">
-    <div class="first-floor">
-        <div class="title">Article</div>
-        <div class="content">
-            Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the ecosystem
-            and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+    <div class="am-g">
+        <div class="am-u-lg-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/service">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Consultancy Service</div>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a href="/page/gallery">
+                        <div class="bottom-text">Gallery</div>
+                        <img src="/img/down.png"/>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="search">
-        <div class="am-input-group">
-            <input type="text" class="am-form-field">
-            <span class="am-input-group-btn">
+        <div class="main-body am-u-lg-8">
+            <div class="first-floor">
+                <div class="title">Article</div>
+                <div class="content">
+                    Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
+                    ecosystem
+                    and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+                </div>
+            </div>
+            <div class="search">
+                <div class="am-input-group">
+                    <input type="text" class="am-form-field">
+                    <span class="am-input-group-btn">
         <button class="search-btn" type="button"></button>
       </span>
+                </div>
+            </div>
+        </div>
+        <div class="am-u-lg-2">
+            <div class="right-nav">
+                <a href="/page/techtour" class="circular"></a>
+                <a href="/page/workshop" class="circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a class="select-circular"></a>
+                <a href="/page/gallery" class="circular"></a>
+                <a href="/page/event" class="circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a href="/page/shop" class="circular"></a>
+                <a href="/page/about" class="circular"></a>
+                <a href="/page/contact" class="circular"></a>
+            </div>
         </div>
     </div>
 </div>

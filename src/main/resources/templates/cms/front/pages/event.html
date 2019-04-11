@@ -32,12 +32,13 @@
 
         .article {
             margin-top: 106px;
-            margin-left: 17.71%;
-            margin-right: 17.71%;
-            padding-left: 5.65%;
-            padding-right: 5.65%;
             height: 100%;
             display: block;
+        }
+
+        .main-body{
+            padding-left: 5.65%;
+            padding-right: 5.65%;
         }
 
         .first-floor {
@@ -157,31 +158,65 @@
     </style>
 </head>
 <body>
-<div th:include="nav :: top-nav"></div>
+<div th:replace="nav :: top-nav"></div>
 <div class="article">
-    <div class="first-floor">
-        <div class="title">Event</div>
-        <div class="content">
-            Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the ecosystem
-            and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+    <div class="am-g">
+        <div class="am-u-lg-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/gallery">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Gallery</div>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a href="/page/testimonials">
+                        <div class="bottom-text">Testimonials</div>
+                        <img src="/img/down.png"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main-body am-u-lg-8">
+            <div class="first-floor">
+                <div class="title">Event</div>
+                <div class="content">
+                    Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
+                    ecosystem
+                    and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+                </div>
+            </div>
+            <div class="search">
+                <div class="am-input-group">
+                    <input type="text" id="date-1" class="am-form-field" placeholder="日期" required
+                           data-am-datepicker="{format: 'yyyy-mm', viewMode: 'months', minViewMode: 'months',autoClose:'true'}"/>
+                    <select data-am-selected name="type">
+                        <option value="1" selected>创业</option>
+                        <option value="2">公益</option>
+                        <option value="3">硬件</option>
+                    </select>
+                    <button class="search-btn" type="button"></button>
+                </div>
+            </div>
+            <div id="event-list">
+
+            </div>
+        </div>
+        <div class="am-u-lg-2">
+            <div class="right-nav">
+                <a href="/page/techtour" class="circular"></a>
+                <a href="/page/workshop" class="circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a href="/page/article" class="circular"></a>
+                <a href="/page/gallery" class="circular"></a>
+                <a class="select-circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a href="/page/shop" class="circular"></a>
+                <a href="/page/about" class="circular"></a>
+                <a href="/page/contact" class="circular"></a>
+            </div>
         </div>
     </div>
-    <div class="search">
-        <div class="am-input-group">
-            <input type="text" id="date-1" class="am-form-field" placeholder="日期" required
-                   data-am-datepicker="{format: 'yyyy-mm', viewMode: 'months', minViewMode: 'months',autoClose:'true'}"/>
-            <select data-am-selected name="type">
-                <option value="1" selected>创业</option>
-                <option value="2">公益</option>
-                <option value="3">硬件</option>
-            </select>
-            <button class="search-btn" type="button"></button>
-        </div>
-    </div>
-    <div id="event-list">
-
-    </div>
-
 </div>
 
 <!-- 侧边栏内容 -->

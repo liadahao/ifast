@@ -2,6 +2,7 @@ package com.cms.controller;
 
 
 import java.util.Arrays;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -71,6 +72,9 @@ public class ArticleController extends AdminBaseController {
     public Result<String> save(ArticleDO article) {
         if (StringUtils.isEmpty(article.getContent())) {
             return Result.fail();
+        }
+        if (article.getCreateTime() == null) {
+            article.setCreateTime(new Date());
         }
         articleService.insert(article);
         return Result.ok();

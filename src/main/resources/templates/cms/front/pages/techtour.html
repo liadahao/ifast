@@ -27,20 +27,21 @@
     <style>
 
         html, body {
-            background:url("/img/01.png") no-repeat fixed center center;
+            background: url("/img/01.png") no-repeat fixed center center;
         }
-        .get {
-            margin-left: 340px;
-            margin-right: 340px;
+
+        .main {
             margin-top: 106px;
-            padding-left: 70px;
-            padding-right: 70px;
+        }
+
+        .main-body {
+            padding-right: 3.63%;
+            padding-left: 3.63%;
             padding-top: 56px;
         }
 
-        .get .left-side {
+        .main-body .left-side {
             padding-top: 50px;
-            width: 493px;
             height: 658px;
             background: url(/img/0201.png) no-repeat left center;
         }
@@ -75,7 +76,7 @@
         }
 
         .left-side .content {
-            margin: 0 0 0 198px;
+            margin: 0 0 0 39%;
             width: 274px;
             font-size: 14px;
             font-family: PingFangSC-Regular;
@@ -85,7 +86,7 @@
 
         .left-side video {
             margin-top: 47px;
-            margin-left: 198px;
+            margin-left: 39%;
             width: 280px;
             height: 168px;
         }
@@ -108,6 +109,7 @@
         }
 
         #accordion {
+            padding-left: 20px;
             padding-top: 50px;
         }
 
@@ -127,149 +129,206 @@
     </style>
 </head>
 <body>
-<div th:include="nav :: top-nav"></div>
-
-<div class="get">
+<div th:replace="nav :: top-nav"></div>
+<div class="main">
     <div class="am-g">
-        <div class="left-side am-u-lg-6">
-            <div class="title">
-                <div class="left-title am-text-center">Tech</div>
-                <div class="right-title am-text-center">Tour</div>
+        <div class="am-u-lg-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/index">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Home</div>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a href="/page/workshop">
+                        <div class="bottom-text">Workshop</div>
+                        <img src="/img/down.png"/>
+                    </a>
+                </div>
             </div>
-            <p class="content">
-                Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life business
-                not only in the tech industry, but also manufacturing and market trade. Our tours provide a
-                thoroughly educational experience for business school students, and give professors a unique
-                teaching opportunity that can’t be found in books
-            </p>
-            <video src="/video/WeChat_20190327231432.mp4"
-                   controls="controls">
-                Your browser does not support the video tag.
-            </video>
         </div>
-        <div class="am-panel-group am-u-lg-6" id="accordion">
-            <div class="am-panel">
-                <div class="am-panel-hd">
-                    <span><img class="" src="/img/0201enterprise.png"></span>
-                    <span th:if="${data['model1title'] != null}" th:text="${data['model1title']}"
-                          class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+        <div class="main-body am-u-lg-8">
+            <div class="left-side am-u-lg-5">
+                <div class="title">
+                    <div class="left-title am-text-center">Tech</div>
+                    <div class="right-title am-text-center">Tour</div>
+                </div>
+                <p class="content">
+                    Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life
+                    business
+                    not only in the tech industry, but also manufacturing and market trade. Our tours provide a
+                    thoroughly educational experience for business school students, and give professors a unique
+                    teaching opportunity that can’t be found in books
+                </p>
+                <video src="/video/WeChat_20190327231432.mp4"
+                       controls="controls">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="am-panel-group am-u-lg-7" id="accordion">
+                <div class="am-panel">
+                    <div class="am-panel-hd">
+                        <span><img class="" src="/img/0201enterprise.png"></span>
+                        <span th:if="${data['model1title'] != null}" th:text="${data['model1title']}"
+                              class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
                     </span>
-                    <span th:if="${data['model1title'] == null}" class="am-panel-title"
-                          data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
+                        <span th:if="${data['model1title'] == null}" class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
                         Enterprise
                     </span>
-                </div>
-                <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
-                    <div class="am-panel-bd">
-                        <div class="am-g">
-                            <p th:if="${data['model1content'] != null}" th:text="${data['model1content']}"
-                               class="am-u-lg-9">
-                            </p>
-                            <p th:if="${data['model1content'] == null}" class="am-u-lg-9">
-                                Learn from professionals who work for Chinese companies in a variety of industries, such
-                                as
-                                Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
-                                eye-opening tour can help you determine what specific direction to take your education,
-                                while providing you with plenty of insight into what to expect, no matter what specific
-                                field you ultimately choose.
-                            </p>
-                            <video th:src="${data['model1video']}" src="/video/WeChat_20190327231432.mp4" width="150" height="90"
-                                   controls="controls" class="am-u-lg-3">
-                                Your browser does not support the video tag.
-                            </video>
+                    </div>
+                    <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
+                        <div class="am-panel-bd">
+                            <div class="am-g">
+                                <p th:if="${data['model1content'] != null}" th:text="${data['model1content']}"
+                                   class="am-u-lg-9">
+                                </p>
+                                <p th:if="${data['model1content'] == null}" class="am-u-lg-9">
+                                    Learn from professionals who work for Chinese companies in a variety of
+                                    industries,
+                                    such
+                                    as
+                                    Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more.
+                                    This
+                                    eye-opening tour can help you determine what specific direction to take your
+                                    education,
+                                    while providing you with plenty of insight into what to expect, no matter what
+                                    specific
+                                    field you ultimately choose.
+                                </p>
+                                <video th:src="${data['model1video']}" src="/video/WeChat_20190327231432.mp4"
+                                       width="150"
+                                       height="90"
+                                       controls="controls" class="am-u-lg-3">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="am-panel">
-                <div class="am-panel-hd">
-                    <span><img class="" src="/img/0201manufacturing.png"></span>
-                    <span th:if="${data['model2title'] != null}" th:text="${data['model1title']}"
-                          class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+                <div class="am-panel">
+                    <div class="am-panel-hd">
+                        <span><img class="" src="/img/0201manufacturing.png"></span>
+                        <span th:if="${data['model2title'] != null}" th:text="${data['model1title']}"
+                              class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                     </span>
-                    <span th:if="${data['model2title'] == null}" class="am-panel-title"
-                          data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+                        <span th:if="${data['model2title'] == null}" class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                         Enterprise
                     </span>
 
+                    </div>
+                    <div id="do-not-say-2" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <div class="am-g">
+                                <p th:if="${data['model2content'] != null}" th:text="${data['model2content']}"
+                                   class="am-u-lg-9">
+                                </p>
+                                <p th:if="${data['model2content'] == null}" class="am-u-lg-9">
+                                    Learn from professionals who work for Chinese companies in a variety of
+                                    industries,
+                                    such
+                                    as
+                                    Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more.
+                                    This
+                                    eye-opening tour can help you determine what specific direction to take your
+                                    education,
+                                    while providing you with plenty of insight into what to expect, no matter what
+                                    specific
+                                    field you ultimately choose.
+                                </p>
+                                <video th:src="${data['model2video']}" src="/video/WeChat_20190327231432.mp4"
+                                       width="150"
+                                       height="90"
+                                       controls="controls" class="am-u-lg-3">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="do-not-say-2" class="am-panel-collapse am-collapse">
-                    <div class="am-panel-bd">
-                        <div class="am-g">
-                            <p th:if="${data['model2content'] != null}" th:text="${data['model2content']}"
-                               class="am-u-lg-9">
-                            </p>
-                            <p th:if="${data['model2content'] == null}" class="am-u-lg-9">
-                                Learn from professionals who work for Chinese companies in a variety of industries, such
-                                as
-                                Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
-                                eye-opening tour can help you determine what specific direction to take your education,
-                                while providing you with plenty of insight into what to expect, no matter what specific
-                                field you ultimately choose.
-                            </p>
-                            <video th:src="${data['model2video']}" src="/video/WeChat_20190327231432.mp4" width="150" height="90"
-                                   controls="controls" class="am-u-lg-3">
-                                Your browser does not support the video tag.
-                            </video>
+                <div class="am-panel">
+                    <div class="am-panel-hd">
+                        <span><img class="" src="/img/0201startups.png"></span>
+                        <span th:if="${data['model3title'] != null}" th:text="${data['model3title']}"
+                              class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
+                    </span>
+                        <span th:if="${data['model3title'] == null}" class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
+                        Startups
+                    </span>
+                    </div>
+                    <div id="do-not-say-3" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <div class="am-g">
+                                <p th:if="${data['model3content'] != null}" th:text="${data['model3content']}"
+                                   class="am-u-lg-9">
+                                </p>
+                                <p th:if="${data['model3content'] == null}" class="am-u-lg-9">
+                                    Learn from professionals who work for Chinese companies in a variety of
+                                    industries,
+                                    such
+                                    as
+                                    Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more.
+                                    This
+                                    eye-opening tour can help you determine what specific direction to take your
+                                    education,
+                                    while providing you with plenty of insight into what to expect, no matter what
+                                    specific
+                                    field you ultimately choose.
+                                </p>
+                                <video th:src="${data['model3video']}" src="/video/WeChat_20190327231432.mp4"
+                                       width="150"
+                                       height="90"
+                                       controls="controls" class="am-u-lg-3">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-panel">
+                    <div class="am-panel-hd">
+                        <span><img class="" src="/img/0201visit.png"></span>
+                        <span th:if="${data['model4title'] != null}" th:text="${data['model4title']}"
+                              class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
+                    </span>
+                        <span th:if="${data['model4title'] == null}" class="am-panel-title"
+                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
+                        Startups
+                    </span>
+                    </div>
+                    <div id="do-not-say-4" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <div class="am-g">
+                                <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+                                    <li th:each="menu : ${data['model4content']}">
+                                        <img class="footer-icon" th:src="${menu}" src="/img/air.png">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="am-panel">
-                <div class="am-panel-hd">
-                    <span><img class="" src="/img/0201startups.png"></span>
-                    <span th:if="${data['model3title'] != null}" th:text="${data['model3title']}"
-                          class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
-                    </span>
-                    <span th:if="${data['model3title'] == null}" class="am-panel-title"
-                          data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
-                        Startups
-                    </span>
-                </div>
-                <div id="do-not-say-3" class="am-panel-collapse am-collapse">
-                    <div class="am-panel-bd">
-                        <div class="am-g">
-                            <p th:if="${data['model3content'] != null}" th:text="${data['model3content']}"
-                               class="am-u-lg-9">
-                            </p>
-                            <p th:if="${data['model3content'] == null}" class="am-u-lg-9">
-                                Learn from professionals who work for Chinese companies in a variety of industries, such
-                                as
-                                Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This
-                                eye-opening tour can help you determine what specific direction to take your education,
-                                while providing you with plenty of insight into what to expect, no matter what specific
-                                field you ultimately choose.
-                            </p>
-                            <video th:src="${data['model3video']}" src="/video/WeChat_20190327231432.mp4" width="150" height="90"
-                                   controls="controls" class="am-u-lg-3">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="am-panel">
-                <div class="am-panel-hd">
-                    <span><img class="" src="/img/0201visit.png"></span>
-                    <span th:if="${data['model4title'] != null}" th:text="${data['model4title']}"
-                          class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
-                    </span>
-                    <span th:if="${data['model4title'] == null}" class="am-panel-title"
-                          data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
-                        Startups
-                    </span>
-                </div>
-                <div id="do-not-say-4" class="am-panel-collapse am-collapse">
-                    <div class="am-panel-bd">
-                        <div class="am-g">
-                            <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
-                                <li th:each="menu : ${data['model4content']}">
-                                    <img class="footer-icon" th:src="${menu}" src="/img/air.png">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="am-u-lg-2">
+            <div class="right-nav">
+                <a class="select-circular"></a>
+                <a href="/page/workshop" class="circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a href="/page/article" class="circular"></a>
+                <a href="/page/gallery" class="circular"></a>
+                <a href="/page/event" class="circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a href="/page/shop" class="circular"></a>
+                <a href="/page/about" class="circular"></a>
+                <a href="/page/contact" class="circular"></a>
             </div>
         </div>
     </div>
