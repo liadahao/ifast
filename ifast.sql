@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 10/04/2019 19:08:44
+ Date: 11/04/2019 19:04:14
 */
 
 SET NAMES utf8mb4;
@@ -62,8 +62,9 @@ CREATE TABLE `article`  (
   `viewCount` int(11) UNSIGNED NULL DEFAULT 0 COMMENT '访问量',
   `createTime` datetime(0) NULL DEFAULT NULL COMMENT '创建日期',
   `modifyTime` datetime(0) NULL DEFAULT NULL COMMENT '最后更新日期',
-  `metaKeywords` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'SEO关键字',
-  `metaDescription` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'SEO描述信息',
+  `metaTitle` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `metaKeywords` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'SEO关键字',
+  `metaDescription` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'SEO描述信息',
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '备注信息',
   `style` int(1) NOT NULL,
   `author` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者',
@@ -72,14 +73,18 @@ CREATE TABLE `article`  (
   INDEX `created`(`createTime`) USING BTREE,
   INDEX `view_count`(`viewCount`) USING BTREE,
   INDEX `order_number`(`orderNumber`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (2, 'svbdbdb', '<p>416164984egeg</p>\n', 'html', NULL, NULL, NULL, 1, NULL, 'normal', 0, 0, NULL, 7, '2019-03-22 18:55:52', '2019-03-22 18:59:07', NULL, NULL, NULL, 0, NULL);
-INSERT INTO `article` VALUES (3, '13123svgw', '<p>Balala...1drwfwsfvswv</p>', 'html', '1231342qrdwq', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2014-11-11 00:00:00', NULL, 'wq', 'wfwf', NULL, 4, 'dahao');
-INSERT INTO `article` VALUES (4, '123e12', '<p>Balala...wfcwgfevdevdesbv ebv&nbsp; wfc</p>', 'html', 'ewqfeqwfe', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2014-11-11 00:00:00', NULL, 'fwsfwf', 'wfwe', NULL, 4, 'daafdwf');
+INSERT INTO `article` VALUES (2, 'svbdbdb', '<p>416164984egeg</p>\n', 'html', NULL, NULL, NULL, 1, NULL, 'normal', 0, 0, NULL, 7, '2019-03-22 18:55:52', '2019-03-22 18:59:07', NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `article` VALUES (3, '13123svgw', '<p>Balala...1drwfwsfvswv</p>', 'html', '1231342qrdwq', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2014-11-11 00:00:00', NULL, NULL, 'wq', 'wfwf', NULL, 4, 'dahao');
+INSERT INTO `article` VALUES (4, '123e12', '<p>Balala...wfcwgfevdevdesbv ebv&nbsp; wfc</p>', 'html', 'ewqfeqwfe', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2014-11-11 00:00:00', NULL, NULL, 'fwsfwf', 'wfwe', NULL, 4, 'daafdwf');
+INSERT INTO `article` VALUES (5, '1231fsv etget', '<p>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰</p>', 'html', 'sdfaswhfwonefpowshv9sbnfwjefpo', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2019-04-11 18:48:22', NULL, NULL, '  抢我的群无多', '琴晚琴晚', NULL, 4, 'Aron');
+INSERT INTO `article` VALUES (6, '1231fsv etget', '<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>', 'html', '', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2019-04-10 18:58:34', NULL, 'qfwfw ', '  抢我的群无多', '12e12', NULL, 4, 'dahao');
+INSERT INTO `article` VALUES (7, '1231fsv etget', '<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>', 'html', '', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, NULL, NULL, 'qfwfw ', '  抢我的群无多', '', NULL, 4, 'adadasdad');
+INSERT INTO `article` VALUES (9, '1231fsv etget', '<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>', 'html', '', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, NULL, NULL, 'qfwfw ', '  抢我的群无多', '', NULL, 4, 'adadasdad');
 
 -- ----------------------------
 -- Table structure for article_tag
@@ -142,12 +147,22 @@ CREATE TABLE `event`  (
   INDEX `created`(`createTime`) USING BTREE,
   INDEX `view_count`(`viewCount`) USING BTREE,
   INDEX `order_number`(`orderNumber`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of event
 -- ----------------------------
 INSERT INTO `event` VALUES (3, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (4, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (5, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (6, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (7, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (8, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (9, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (10, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (12, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 1);
+INSERT INTO `event` VALUES (13, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 3);
+INSERT INTO `event` VALUES (14, '123', '1231', 'www.baidu.com', '', NULL, 1, '', 1, 0, NULL, 0, NULL, NULL, '2019-04-10 18:13:11', '2019-04-10 18:13:13', '$123', '你家', '', '', '', 2);
 
 -- ----------------------------
 -- Table structure for nav
@@ -428,7 +443,7 @@ CREATE TABLE `sys_log`  (
   `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'IP地址',
   `gmtCreate` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1115921271687753731 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1116295402262478850 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
@@ -627,6 +642,29 @@ INSERT INTO `sys_log` VALUES (1115918647609536514, 1, 'admin', '添加文章表'
 INSERT INTO `sys_log` VALUES (1115919081346707458, 1, 'admin', '添加文章表', 4555, 'POST /cms/article/save', '{\"title\":[\"123e12\"],\"summary\":[\"ewqfeqwfe\"],\"createTime\":[\"2014-11-11\"],\"author\":[\"daafdwf\"],\"style\":[\"4\"],\"content\":[\"<p>Balala...wfcwgfevdevdesbv ebv&nbsp; wfc</p>\"],\"metaTitle\":[\"wf wq\"],\"metaKeywords\":[\"fwsfwf\"],\"metaDescription\":[\"wfwe\"]}', '127.0.0.1', '2019-04-10 18:06:56');
 INSERT INTO `sys_log` VALUES (1115920710158528513, 1, 'admin', '添加文章表', 117, 'POST /cms/event/save', '{\"title\":[\"123\"],\"content\":[\"1231\"],\"linkto\":[\"www.baidu.com\"],\"thumbnail\":[\"\"],\"ordernumber\":[\"1\"],\"status\":[\"\"],\"starttime\":[\"2019-04-10 18:13:11\"],\"endtime\":[\"2019-04-10 18:13:13\"],\"price\":[\"$123\"],\"address\":[\"你家\"],\"metakeywords\":[\"\"],\"metadescription\":[\"\"],\"remarks\":[\"\"],\"type\":[\"1\"]}', '127.0.0.1', '2019-04-10 18:13:25');
 INSERT INTO `sys_log` VALUES (1115921271687753730, 1, 'admin', '删除文章表', 77, 'POST /cms/event/remove', '{\"id\":[\"2\"]}', '127.0.0.1', '2019-04-10 18:15:39');
+INSERT INTO `sys_log` VALUES (1116263930516283393, 1, 'admin', '登录', 42, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 16:57:15');
+INSERT INTO `sys_log` VALUES (1116276480305852417, 1, 'admin', '登录', 20, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 17:47:07');
+INSERT INTO `sys_log` VALUES (1116276534873747458, 1, 'admin', '删除文章表', 97, 'POST /cms/event/remove', '{\"id\":[\"15\"]}', '127.0.0.1', '2019-04-11 17:47:20');
+INSERT INTO `sys_log` VALUES (1116277842821373954, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 17:52:32');
+INSERT INTO `sys_log` VALUES (1116281804639297537, 1, 'admin', '登录', 9, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:08:16');
+INSERT INTO `sys_log` VALUES (1116281855121940481, 1, 'admin', '修改文章表', 93, 'POST /cms/event/update', '{\"id\":[\"14\"],\"title\":[\"123\"],\"content\":[\"1231\"],\"linkto\":[\"www.baidu.com\"],\"thumbnail\":[\"\"],\"starttime\":[\"2019-04-10 18:13:11\"],\"endtime\":[\"2019-04-10 18:13:13\"],\"price\":[\"$123\"],\"address\":[\"你家\"],\"metakeywords\":[\"\"],\"metadescription\":[\"\"],\"type\":[\"2\"]}', '127.0.0.1', '2019-04-11 18:08:28');
+INSERT INTO `sys_log` VALUES (1116283250013233153, 1, 'admin', '修改文章表', 36, 'POST /cms/event/update', '{\"id\":[\"13\"],\"title\":[\"123\"],\"content\":[\"1231\"],\"linkto\":[\"www.baidu.com\"],\"thumbnail\":[\"\"],\"starttime\":[\"2019-04-10 18:13:11\"],\"endtime\":[\"2019-04-10 18:13:13\"],\"price\":[\"$123\"],\"address\":[\"你家\"],\"metakeywords\":[\"\"],\"metadescription\":[\"\"],\"type\":[\"3\"]}', '127.0.0.1', '2019-04-11 18:14:01');
+INSERT INTO `sys_log` VALUES (1116283344766754818, 1, 'admin', '删除文章表', 36, 'POST /cms/event/remove', '{\"id\":[\"11\"]}', '127.0.0.1', '2019-04-11 18:14:24');
+INSERT INTO `sys_log` VALUES (1116285961655934978, 1, 'admin', '登录', 5, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:24:48');
+INSERT INTO `sys_log` VALUES (1116286732220862465, 1, 'admin', '登录', 47, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:27:51');
+INSERT INTO `sys_log` VALUES (1116287099058884609, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:29:19');
+INSERT INTO `sys_log` VALUES (1116288858703556610, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:36:18');
+INSERT INTO `sys_log` VALUES (1116289068624310273, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:37:08');
+INSERT INTO `sys_log` VALUES (1116289874601734145, 1, 'admin', '登录', 48, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:40:20');
+INSERT INTO `sys_log` VALUES (1116290387707707393, 1, 'admin', '登录', 33796, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:42:23');
+INSERT INTO `sys_log` VALUES (1116290757385281537, 1, 'admin', '登录', 2891, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:43:51');
+INSERT INTO `sys_log` VALUES (1116292000375660545, 1, 'admin', '添加文章表', 83, 'POST /cms/article/save', '{\"title\":[\"1231fsv etget\"],\"summary\":[\"sdfaswhfwonefpowshv9sbnfwjefpo\"],\"createTime\":[\"2019-04-11 18:48:22\"],\"author\":[\"Aron\"],\"style\":[\"4\"],\"content\":[\"<p>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰</p>\"],\"metaTitle\":[\"驱动器无\"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"琴晚琴晚\"]}', '127.0.0.1', '2019-04-11 18:48:47');
+INSERT INTO `sys_log` VALUES (1116294381280804866, 1, 'admin', '登录', 47, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-11 18:58:15');
+INSERT INTO `sys_log` VALUES (1116294611392905217, 1, 'admin', '添加文章表', 61, 'POST /cms/article/save', '{\"title\":[\"1231fsv etget\"],\"summary\":[\"\"],\"createTime\":[\"2019-04-10 18:58:34\"],\"author\":[\"dahao\"],\"style\":[\"4\"],\"content\":[\"<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>\"],\"metaTitle\":[\"qfwfw \"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"12e12\"]}', '127.0.0.1', '2019-04-11 18:59:10');
+INSERT INTO `sys_log` VALUES (1116294869380349953, 1, 'admin', '添加文章表', 70, 'POST /cms/article/save', '{\"title\":[\"1231fsv etget\"],\"summary\":[\"\"],\"createTime\":[\"Wed Apr 10 18:58:34 CST 2019\"],\"author\":[\"adadasdad\"],\"style\":[\"4\"],\"content\":[\"<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>\"],\"metaTitle\":[\"qfwfw \"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"\"]}', '127.0.0.1', '2019-04-11 19:00:11');
+INSERT INTO `sys_log` VALUES (1116295292380102657, 1, 'admin', '添加文章表', 45, 'POST /cms/article/save', '{\"id\":[\"7\"],\"title\":[\"1231fsv etget\"],\"summary\":[\"\"],\"createTime\":[\"2019-04-02 19:01:32\"],\"author\":[\" d fvsvv\"],\"style\":[\"4\"],\"content\":[\"<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>\"],\"metaTitle\":[\"qfwfw \"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"\"]}', '127.0.0.1', '2019-04-11 19:01:52');
+INSERT INTO `sys_log` VALUES (1116295370603872258, 1, 'admin', '删除文章表', 74, 'POST /cms/article/remove', '{\"id\":[\"8\"]}', '127.0.0.1', '2019-04-11 19:02:11');
+INSERT INTO `sys_log` VALUES (1116295402262478849, 1, 'admin', '添加文章表', 123, 'POST /cms/article/save', '{\"id\":[\"7\"],\"title\":[\"1231fsv etget\"],\"summary\":[\"\"],\"createTime\":[\"\"],\"author\":[\"adadasdad\"],\"style\":[\"4\"],\"content\":[\"<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>\"],\"metaTitle\":[\"qfwfw \"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"\"]}', '127.0.0.1', '2019-04-11 19:02:18');
 
 -- ----------------------------
 -- Table structure for sys_menu
