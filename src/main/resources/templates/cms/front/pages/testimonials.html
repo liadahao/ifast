@@ -31,7 +31,7 @@
             background: url("/img/04.png") no-repeat fixed center center;
         }
 
-        .get {
+        .main {
             margin-top: 106px;
             height: 100%;
             display: block;
@@ -55,6 +55,26 @@
             position: absolute;
             z-index: 120;
             background: url("/img/0801bg2.png") no-repeat center center;
+        }
+
+        .left-nav {
+            position: absolute;
+        }
+
+        .left-nav .top {
+            margin-top: 90px;
+        }
+
+        .left-nav .top .top-text {
+            margin-left: -35px;
+        }
+
+        .left-nav .bottom {
+            margin-top: 270px;
+        }
+
+        .left-nav .bottom .bottom-text {
+            margin-left: -50px;
         }
 
         .title {
@@ -118,14 +138,76 @@
             position: absolute;
         }
 
-        /* 背景为蓝色 */
+        .head-title {
+            margin-left: 364px;
+            margin-top: 32px;
+            overflow: hidden;
+        }
+
+        .people-pic {
+            width: 60px;
+            height: 60px;
+            background: rgba(240, 0, 255, 1);
+            border-radius: 50%;
+        }
+
+        .content {
+            margin-left: 450px;
+        }
+
+        .head-title-content {
+            padding-left: 26px;
+        }
+
+        .head-title-img {
+            padding-right: 30px;
+        }
+
+        .right .content {
+            margin-top: 62px;
+            height: 280px;
+            overflow: hidden;
+            padding-right: 40px;
+        }
+
+        .controller-icon {
+            margin-left: 364px;
+            margin-top: 26px;
+            padding-right: 40px;
+            overflow: hidden;
+        }
+
+        .controller-icon img {
+            width: 70px;
+            height: 38px;
+            background: rgba(73, 18, 139, 1);
+        }
+
+        .right-nav {
+            position: relative;
+        }
+
     </style>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
 
-<div class="get">
+<div class="main">
     <div class="bg-a">
+        <div class="left-nav">
+            <div class="top">
+                <a href="/page/event">
+                    <img src="/img/up.png"/>
+                    <div class="top-text">Event</div>
+                </a>
+            </div>
+            <div class="bottom">
+                <a href="/page/shop">
+                    <div class="bottom-text">Shop</div>
+                    <img src="/img/down.png"/>
+                </a>
+            </div>
+        </div>
         <div class="title">
             Testimonials
         </div>
@@ -143,10 +225,40 @@
             <img class="third-video" src="/img/entrepreneur-working-in-the-office-picjumbo-com.jpg"/>
         </div>
         <div class="right">
-
+            <div class="head-title">
+                <img class="people-pic am-u-lg-2" src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg">
+                <div class="head-title-content am-u-lg-8">
+                    <h1>Jared Pasparage</h1>
+                    <p>Data Visualization Lead at United Airlines MBA, University of Katz Graduate School of
+                        Business, </p>
+                </div>
+                <img class="head-title-img am-u-lg-2" src="/img/0801.png">
+            </div>
+            <p class="content">“Everybody knows where and what it is. In the case of China's Silicon Valley, it's not so
+                widely known. I
+                was ignorant to how built up and revolutionaryShenzhen is becoming for the global tech scene, until
+                Tours4tech showed me. Tours4tech took the time to show the interworkings of the tech, both in detail and
+                strategy. From coding artificial intelligence to electronics supply chain best practices, I came away
+                knowing that SZ is the tech capital of China."</p>
+            <div class="controller-icon">
+                <img class="am-u-lg-2" src="/img/0801L_def.png">
+                <img class="am-u-lg-2" src="/img/0801R_def.png">
+            </div>
         </div>
-    </div>
 
+    </div>
+    <div class="right-nav">
+        <a href="/page/techtour" class="circular"></a>
+        <a href="/page/workshop" class="circular"></a>
+        <a href="/page/service" class="circular"></a>
+        <a href="/page/article"></a>
+        <a href="/page/gallery" class="circular"></a>
+        <a href="/page/event" class="circular"></a>
+        <a class="select-circular"></a>
+        <a href="/page/shop" class="circular"></a>
+        <a href="/page/about" class="circular"></a>
+        <a href="/page/contact" class="circular"></a>
+    </div>
 </div>
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
