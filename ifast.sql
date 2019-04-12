@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 11/04/2019 19:04:14
+ Date: 12/04/2019 18:38:51
 */
 
 SET NAMES utf8mb4;
@@ -53,7 +53,7 @@ CREATE TABLE `article`  (
   `summary` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '摘要',
   `linkTo` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '连接到(常用于谋文章只是一个连接)',
   `thumbnail` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '缩略图',
-  `userId` int(11) UNSIGNED NULL DEFAULT NULL COMMENT '用户ID',
+  `createUserName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户ID',
   `orderNumber` int(11) NULL DEFAULT 0 COMMENT '排序编号',
   `status` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '状态',
   `commentStatus` tinyint(1) NULL DEFAULT 1 COMMENT '评论状态，默认允许评论',
@@ -68,33 +68,41 @@ CREATE TABLE `article`  (
   `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '备注信息',
   `style` int(1) NOT NULL,
   `author` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者',
+  `fackbook` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `linkedin` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `twitter` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `medium` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `instagram` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`userId`) USING BTREE,
+  INDEX `user_id`(`createUserName`) USING BTREE,
   INDEX `created`(`createTime`) USING BTREE,
   INDEX `view_count`(`viewCount`) USING BTREE,
   INDEX `order_number`(`orderNumber`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (2, 'svbdbdb', '<p>416164984egeg</p>\n', 'html', NULL, NULL, NULL, 1, NULL, 'normal', 0, 0, NULL, 7, '2019-03-22 18:55:52', '2019-03-22 18:59:07', NULL, NULL, NULL, NULL, 0, NULL);
-INSERT INTO `article` VALUES (3, '13123svgw', '<p>Balala...1drwfwsfvswv</p>', 'html', '1231342qrdwq', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2014-11-11 00:00:00', NULL, NULL, 'wq', 'wfwf', NULL, 4, 'dahao');
-INSERT INTO `article` VALUES (4, '123e12', '<p>Balala...wfcwgfevdevdesbv ebv&nbsp; wfc</p>', 'html', 'ewqfeqwfe', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2014-11-11 00:00:00', NULL, NULL, 'fwsfwf', 'wfwe', NULL, 4, 'daafdwf');
-INSERT INTO `article` VALUES (5, '1231fsv etget', '<p>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰</p>', 'html', 'sdfaswhfwonefpowshv9sbnfwjefpo', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2019-04-11 18:48:22', NULL, NULL, '  抢我的群无多', '琴晚琴晚', NULL, 4, 'Aron');
-INSERT INTO `article` VALUES (6, '1231fsv etget', '<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>', 'html', '', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, '2019-04-10 18:58:34', NULL, 'qfwfw ', '  抢我的群无多', '12e12', NULL, 4, 'dahao');
-INSERT INTO `article` VALUES (7, '1231fsv etget', '<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>', 'html', '', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, NULL, NULL, 'qfwfw ', '  抢我的群无多', '', NULL, 4, 'adadasdad');
-INSERT INTO `article` VALUES (9, '1231fsv etget', '<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>', 'html', '', NULL, NULL, NULL, 0, NULL, 1, 0, NULL, 0, NULL, NULL, 'qfwfw ', '  抢我的群无多', '', NULL, 4, 'adadasdad');
+INSERT INTO `article` VALUES (10, '视觉中国开盘封死跌停 创始人身家瞬间缩水1.3亿', '<p>原标题：视觉中国开盘封死跌停 柴继军身价瞬间缩水1.3亿</p><p>　　4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。</p><p>　　早些时候，视觉中国发公告称，天津市互联网信息办公室依法约谈其网站负责人，责令公司网站全面彻底整改并在此期间暂时关闭网站。</p><p>　　4月11日，因“人类首张黑洞照片”版权标注问题，A股上市公司视觉中国陷入舆论风暴。网友和机构随即发现，国旗国徽也被视觉中国打了版权售卖。国徽图片页面“价格提示”显示，“用于内文不低于150元，整版跨页不低于500元，杂志封面不低于1000元，商业使用价格另议。”虽然连续发声明解释、道歉，但是网友并不买账，直至该公司关闭网站。</p><p>　　根据计划，视觉中国4月12日有3.88亿股限售股上市流通，占公司总股本比例的55.39%。此次解禁是五年前视觉中国借壳远东股份所定向增发的股份，当时定增发行价为5.28元/股，五年期间未实施过股份送转。</p>', 'html', '4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 11:59:12', NULL, '你好', '我好', '大家好', NULL, 4, '北京青年报', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (11, '1231fsv etget', '<p>Balala...</p>', 'html', '123123', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 13:02:00', NULL, '', '', '', NULL, 4, '1231', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (12, 'swfwsfasf', '<p style=\"text-align: center;\">Balala...acvasasfc</p>', 'html', 'dsvgffwef', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 13:07:35', NULL, '', '', '', NULL, 4, 'ad', '{\"order\":\"1\",\"type\":\"Fackbook\",\"url\":\"http://www.baidu.com\"}', '{\"order\":\"\",\"type\":\"Linkedin\",\"url\":\"http://www.baidu.com\"}', '{\"order\":\"\",\"type\":\"Twitter\",\"url\":\"http://www.baidu.com\"}', NULL, NULL);
+INSERT INTO `article` VALUES (13, '13', '<p>Balala...</p><p><br></p><p><img alt=\"Image\" src=\"https://n.sinaimg.cn/news/crawl/726/w550h976/20190412/OfKe-hvntnkq9510568.jpg\"><br></p><p>afafasfasdf</p><p><br></p><p>sdfsd</p><p>sdfsds</p>', 'html', '123', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 15:24:51', NULL, '', '', '', NULL, 4, '123', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (14, '13', '<p>Balala...</p><p><br></p><p><img alt=\"Image\" src=\"https://n.sinaimg.cn/news/crawl/726/w550h976/20190412/OfKe-hvntnkq9510568.jpg\"><br></p><p>afafasfasdf</p><p><br></p><p>sdfsd</p><p>sdfsds</p>', 'html', '', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 15:25:49', NULL, '', '', '', NULL, 4, '123', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (15, 'asfsaf', '<p>Balala...</p><p>svsvasv</p><p>svasvasvasv</p><p>svasvasv</p>', 'html', 'savasdv', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 15:26:45', NULL, '', '', '', NULL, 4, 'svasv', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (16, '12313', '<p>Balala... 12123e123</p><p>131231312313</p><p>13123123</p>', 'html', '1313', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 15:28:22', NULL, '', '', '', NULL, 4, '13123', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (17, '123', '<p style=\"text-align: center;\">Balala...</p><p style=\"text-align: center;\">sfasfasfoajhfoewnfpowufe hwjefnwoehfauwehfwo;efjowihfwjebnfwefhj</p><p style=\"text-align: center;\">wnefojwhnefowefjwbfeowehfwjebfwoefhewjfn</p>', 'html', '123', NULL, NULL, 'admin', 0, NULL, 1, 0, NULL, 0, '2019-04-12 15:56:57', NULL, '', '', '', NULL, 4, '123', NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for article_tag
 -- ----------------------------
 DROP TABLE IF EXISTS `article_tag`;
 CREATE TABLE `article_tag`  (
-  `article_id` bigint(20) NOT NULL,
-  `tag_id` bigint(20) NOT NULL,
-  INDEX `FKesqp7s9jj2wumlnhssbme5ule`(`tag_id`) USING BTREE,
-  INDEX `FKenqeees0y8hkm7x1p1ittuuye`(`article_id`) USING BTREE
+  `id` bigint(20) NOT NULL,
+  `articleId` bigint(20) NOT NULL,
+  `tagId` bigint(20) NOT NULL,
+  PRIMARY KEY (`articleId`, `tagId`, `id`) USING BTREE,
+  INDEX `FKesqp7s9jj2wumlnhssbme5ule`(`tagId`) USING BTREE,
+  INDEX `FKenqeees0y8hkm7x1p1ittuuye`(`articleId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -147,7 +155,7 @@ CREATE TABLE `event`  (
   INDEX `created`(`createTime`) USING BTREE,
   INDEX `view_count`(`viewCount`) USING BTREE,
   INDEX `order_number`(`orderNumber`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of event
@@ -443,7 +451,7 @@ CREATE TABLE `sys_log`  (
   `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'IP地址',
   `gmtCreate` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1116295402262478850 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1116651443516923907 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
@@ -665,6 +673,48 @@ INSERT INTO `sys_log` VALUES (1116294869380349953, 1, 'admin', '添加文章表'
 INSERT INTO `sys_log` VALUES (1116295292380102657, 1, 'admin', '添加文章表', 45, 'POST /cms/article/save', '{\"id\":[\"7\"],\"title\":[\"1231fsv etget\"],\"summary\":[\"\"],\"createTime\":[\"2019-04-02 19:01:32\"],\"author\":[\" d fvsvv\"],\"style\":[\"4\"],\"content\":[\"<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>\"],\"metaTitle\":[\"qfwfw \"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"\"]}', '127.0.0.1', '2019-04-11 19:01:52');
 INSERT INTO `sys_log` VALUES (1116295370603872258, 1, 'admin', '删除文章表', 74, 'POST /cms/article/remove', '{\"id\":[\"8\"]}', '127.0.0.1', '2019-04-11 19:02:11');
 INSERT INTO `sys_log` VALUES (1116295402262478849, 1, 'admin', '添加文章表', 123, 'POST /cms/article/save', '{\"id\":[\"7\"],\"title\":[\"1231fsv etget\"],\"summary\":[\"\"],\"createTime\":[\"\"],\"author\":[\"adadasdad\"],\"style\":[\"4\"],\"content\":[\"<p><b><i>Balala...fwsfrv年房屋评估费那我给福建南王府我基恩非叫我呢发票我回复我发我而飞机我负责哦我为你服务佛无法就饿哦我佛我我飞机而欧文服务费吴海峰sv</i></b></p><p><b><u>vsvsv</u></b></p><p><b><u><br></u></b></p><ol><li><b><u>svasv</u></b></li><li><b><u>svsav</u></b></li><li><b><u>wvwav</u></b></li></ol>\"],\"metaTitle\":[\"qfwfw \"],\"metaKeywords\":[\"  抢我的群无多\"],\"metaDescription\":[\"\"]}', '127.0.0.1', '2019-04-11 19:02:18');
+INSERT INTO `sys_log` VALUES (1116511869675302914, 1, 'admin', '登录', 71, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 09:22:28');
+INSERT INTO `sys_log` VALUES (1116515364801409026, 1, 'admin', '登录', 7, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 09:36:21');
+INSERT INTO `sys_log` VALUES (1116518967930843138, 1, 'admin', '登录', 4, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 09:50:41');
+INSERT INTO `sys_log` VALUES (1116548772894097409, 1, 'admin', '登录', 24, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 11:49:07');
+INSERT INTO `sys_log` VALUES (1116550294541479938, 1, 'admin', '登录', 45, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 11:55:09');
+INSERT INTO `sys_log` VALUES (1116550331241639938, 1, 'admin', '删除文章表', 90, 'POST /cms/article/remove', '{\"id\":[\"9\"]}', '127.0.0.1', '2019-04-12 11:55:18');
+INSERT INTO `sys_log` VALUES (1116550338548117505, 1, 'admin', '删除文章表', 90, 'POST /cms/article/remove', '{\"id\":[\"7\"]}', '127.0.0.1', '2019-04-12 11:55:20');
+INSERT INTO `sys_log` VALUES (1116550349461696514, 1, 'admin', '批量删除文章表', 30, 'POST /cms/article/batchRemove', '{\"ids[]\":[\"6\",\"5\",\"4\",\"3\",\"2\"]}', '127.0.0.1', '2019-04-12 11:55:22');
+INSERT INTO `sys_log` VALUES (1116551160535224322, 1, 'admin', '登录', 45, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 11:58:36');
+INSERT INTO `sys_log` VALUES (1116551310791970817, 1, 'admin', '添加文章表', 54, 'POST /cms/article/save', '{\"title\":[\"视觉中国开盘封死跌停 创始人身家瞬间缩水1.3亿\"],\"summary\":[\"4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。\"],\"author\":[\"北京青年报\"],\"style\":[\"4\"],\"content\":[\"<p>原标题：视觉中国开盘封死跌停 柴继军身价瞬间缩水1.3亿</p><p>　　4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。</p><p>　　早些时候，视觉中国发公告称，天津市互联网信息办公室依法约谈其网站负责人，责令公司网站全面彻底整改并在此期间暂时关闭网站。</p><p>　　4月11日，因“人类首张黑洞照片”版权标注问题，A股上市公司视觉中国陷入舆论风暴。网友和机构随即发现，国旗国徽也被视觉中国打了版权售卖。国徽图片页面“价格提示”显示，“用于内文不低于150元，整版跨页不低于500元，杂志封面不低于1000元，商业使用价格另议。”虽然连续发声明解释、道歉，但是网友并不买账，直至该公司关闭网站。</p><p>　　根据计划，视觉中国4月12日有3.88亿股限售股上市流通，占公司总股本比例的55.39%。此次解禁是五年前视觉中国借壳远东股份所定向增发的股份，当时定增发行价为5.28元/股，五年期间未实施过股份送转。</p>\"],\"metaTitle\":[\"你好\"],\"metaKeywords\":[\"我好\"],\"metaDescription\":[\"大家好\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 11:59:12');
+INSERT INTO `sys_log` VALUES (1116559495594541057, 1, 'admin', '登录', 44, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 12:31:43');
+INSERT INTO `sys_log` VALUES (1116566971220021250, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 13:01:25');
+INSERT INTO `sys_log` VALUES (1116567116825284609, 1, 'admin', '添加文章表', 11613, 'POST /cms/article/save', '{\"title\":[\"1231fsv etget\"],\"summary\":[\"123123\"],\"author\":[\"1231\"],\"style\":[\"4\"],\"social[0][type]\":[\"Fackbook\"],\"social[0][url]\":[\"1\"],\"social[0][order]\":[\"1\"],\"social[1][type]\":[\"\"],\"social[1][url]\":[\"\"],\"social[1][order]\":[\"\"],\"social[2][type]\":[\"\"],\"social[2][url]\":[\"\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"content\":[\"<p>Balala...</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 13:02:00');
+INSERT INTO `sys_log` VALUES (1116568358402162690, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 13:06:56');
+INSERT INTO `sys_log` VALUES (1116568597217443842, 1, 'admin', '添加文章表', 23705, 'POST /cms/article/save', '{\"title\":[\"swfwsfasf\"],\"summary\":[\"dsvgffwef\"],\"author\":[\"ad\"],\"style\":[\"4\"],\"social[0][type]\":[\"Fackbook\"],\"social[0][url]\":[\"adaadad\"],\"social[0][order]\":[\"1\"],\"social[1][type]\":[\"Linkedin\"],\"social[1][url]\":[\"svaasvasv\"],\"social[1][order]\":[\"sav\"],\"social[2][type]\":[\"Twitter\"],\"social[2][url]\":[\"12eedwqfwf\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"content\":[\"<p>Balala...acvasasfc</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 13:07:53');
+INSERT INTO `sys_log` VALUES (1116569732556816386, 1, 'admin', '更新菜单', 141, 'POST /sys/menu/update', '{\"parentId\":[\"1115179024377745410\"],\"id\":[\"1115184208369717251\"],\"type\":[\"1\"],\"name\":[\"文章内容管理\"],\"url\":[\"/cms/article\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-file-code-o\"]}', '127.0.0.1', '2019-04-12 13:12:24');
+INSERT INTO `sys_log` VALUES (1116569763926016001, 1, 'admin', '更新菜单', 50, 'POST /sys/menu/update', '{\"parentId\":[\"1115179024377745410\"],\"id\":[\"1115184208369717263\"],\"type\":[\"1\"],\"name\":[\"活动内容管理\"],\"url\":[\"/cms/event\"],\"perms\":[\"\"],\"orderNum\":[\"2\"],\"icon\":[\"fa fa-file-code-o\"]}', '127.0.0.1', '2019-04-12 13:12:31');
+INSERT INTO `sys_log` VALUES (1116569810776391682, 1, 'admin', '更新菜单', 85, 'POST /sys/menu/update', '{\"parentId\":[\"1115183012166799361\"],\"id\":[\"1115184208369717275\"],\"type\":[\"1\"],\"name\":[\"导航管理\"],\"url\":[\"/cms/nav\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-file-code-o\"]}', '127.0.0.1', '2019-04-12 13:12:42');
+INSERT INTO `sys_log` VALUES (1116569893454512129, 1, 'admin', '更新菜单', 68, 'POST /sys/menu/update', '{\"parentId\":[\"1115183012166799361\"],\"id\":[\"1115183444654067714\"],\"type\":[\"1\"],\"name\":[\"首页管理\"],\"url\":[\"\"],\"perms\":[\"\"],\"orderNum\":[\"2\"],\"icon\":[\"\"]}', '127.0.0.1', '2019-04-12 13:13:02');
+INSERT INTO `sys_log` VALUES (1116569925381554177, 1, 'admin', '更新菜单', 61, 'POST /sys/menu/update', '{\"parentId\":[\"1115183012166799361\"],\"id\":[\"1115184160676286466\"],\"type\":[\"1\"],\"name\":[\"消息管理\"],\"url\":[\"\"],\"perms\":[\"\"],\"orderNum\":[\"3\"],\"icon\":[\"\"]}', '127.0.0.1', '2019-04-12 13:13:10');
+INSERT INTO `sys_log` VALUES (1116569968113123329, 1, 'admin', '更新菜单', 45, 'POST /sys/menu/update', '{\"parentId\":[\"1115183012166799361\"],\"id\":[\"1115184208369717250\"],\"type\":[\"1\"],\"name\":[\"媒体管理\"],\"url\":[\"\"],\"perms\":[\"\"],\"orderNum\":[\"4\"],\"icon\":[\"\"]}', '127.0.0.1', '2019-04-12 13:13:20');
+INSERT INTO `sys_log` VALUES (1116595667150602241, 1, 'admin', '登录', 12, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 14:55:27');
+INSERT INTO `sys_log` VALUES (1116603066250985474, 1, 'admin', '添加文章表', 31, 'POST /cms/article/save', '{\"title\":[\"13\"],\"summary\":[\"123\"],\"author\":[\"123\"],\"style\":[\"4\"],\"social[0][type]\":[\"\"],\"social[0][url]\":[\"\"],\"social[0][order]\":[\"\"],\"social[1][type]\":[\"\"],\"social[1][url]\":[\"\"],\"social[1][order]\":[\"\"],\"social[2][type]\":[\"\"],\"social[2][url]\":[\"\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"tag[0]\":[\"\"],\"tag[1]\":[\"\"],\"tag[2]\":[\"\"],\"content\":[\"<p>Balala...</p><p><br></p><p><img alt=\\\"Image\\\" src=\\\"https://n.sinaimg.cn/news/crawl/726/w550h976/20190412/OfKe-hvntnkq9510568.jpg\\\" data-image-size=\\\"550,976\\\"><br></p><p>afafasfasdf</p><p><br></p><p>sdfsd</p><p>sdfsds</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 15:24:51');
+INSERT INTO `sys_log` VALUES (1116603310623719426, 1, 'admin', '添加文章表', 53, 'POST /cms/article/save', '{\"id\":[\"13\"],\"title\":[\"13\"],\"summary\":[\"\"],\"createTime\":[\"Fri Apr 12 15:24:51 CST 2019\"],\"author\":[\"123\"],\"style\":[\"4\"],\"content\":[\"<p data-indent=\\\"1\\\">Balala...</p><p><br></p><p data-indent=\\\"3\\\"><img alt=\\\"Image\\\" src=\\\"https://n.sinaimg.cn/news/crawl/726/w550h976/20190412/OfKe-hvntnkq9510568.jpg\\\"><br></p><p>afafasfasdf</p><p><br></p><p>sdfsd</p><p>sdfsds</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 15:25:49');
+INSERT INTO `sys_log` VALUES (1116603543487283202, 1, 'admin', '添加文章表', 32, 'POST /cms/article/save', '{\"title\":[\"asfsaf\"],\"summary\":[\"savasdv\"],\"author\":[\"svasv\"],\"style\":[\"4\"],\"social[0][type]\":[\"\"],\"social[0][url]\":[\"\"],\"social[0][order]\":[\"\"],\"social[1][type]\":[\"\"],\"social[1][url]\":[\"\"],\"social[1][order]\":[\"\"],\"social[2][type]\":[\"\"],\"social[2][url]\":[\"\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"tag[0]\":[\"\"],\"tag[1]\":[\"\"],\"tag[2]\":[\"\"],\"content\":[\"<p data-indent=\\\"10\\\">Balala...</p><p data-indent=\\\"10\\\">svsvasv</p><p data-indent=\\\"8\\\">svasvasvasv</p><p data-indent=\\\"8\\\">svasvasv</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 15:26:45');
+INSERT INTO `sys_log` VALUES (1116603951001665537, 1, 'admin', '添加文章表', 50, 'POST /cms/article/save', '{\"title\":[\"12313\"],\"summary\":[\"1313\"],\"author\":[\"13123\"],\"style\":[\"4\"],\"social[0][type]\":[\"\"],\"social[0][url]\":[\"\"],\"social[0][order]\":[\"\"],\"social[1][type]\":[\"\"],\"social[1][url]\":[\"\"],\"social[1][order]\":[\"\"],\"social[2][type]\":[\"\"],\"social[2][url]\":[\"\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"tag[0]\":[\"\"],\"tag[1]\":[\"\"],\"tag[2]\":[\"\"],\"content\":[\"<p data-indent=\\\"0\\\">Balala... 12123e123</p><p data-indent=\\\"0\\\">131231312313</p><p data-indent=\\\"4\\\">13123123</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 15:28:22');
+INSERT INTO `sys_log` VALUES (1116605301412442113, 1, 'admin', '登录', 47, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 15:33:44');
+INSERT INTO `sys_log` VALUES (1116606739605626881, 1, 'admin', '登录', 49, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 15:39:27');
+INSERT INTO `sys_log` VALUES (1116611144853757954, 1, 'admin', '添加文章表', 53, 'POST /cms/article/save', '{\"title\":[\"123\"],\"summary\":[\"123\"],\"author\":[\"123\"],\"style\":[\"4\"],\"social[0][type]\":[\"\"],\"social[0][url]\":[\"\"],\"social[0][order]\":[\"\"],\"social[1][type]\":[\"\"],\"social[1][url]\":[\"\"],\"social[1][order]\":[\"\"],\"social[2][type]\":[\"\"],\"social[2][url]\":[\"\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"tag[0]\":[\"\"],\"tag[1]\":[\"\"],\"tag[2]\":[\"\"],\"content\":[\"<p style=\\\"text-align: center;\\\">Balala...</p><p style=\\\"text-align: center;\\\">sfasfasfoajhfoewnfpowufe hwjefnwoehfauwehfwo;efjowihfwjebnfwefhj</p><p style=\\\"text-align: center;\\\">wnefojwhnefowefjwbfeowehfwjebfwoefhewjfn</p>\"],\"metaTitle\":[\"\"],\"metaKeywords\":[\"\"],\"metaDescription\":[\"\"],\"createUserName\":[\"\"]}', '127.0.0.1', '2019-04-12 15:56:57');
+INSERT INTO `sys_log` VALUES (1116614261171298306, 1, 'admin', '根据数据表生成代码', 238, 'GET /common/generator/code/tag', '{}', '127.0.0.1', '2019-04-12 16:09:20');
+INSERT INTO `sys_log` VALUES (1116615265690329089, 1, 'admin', '更新角色', 179, 'POST /sys/role/update', '{\"id\":[\"1\"],\"menuIds\":[\"193,194,195,196,197,79,80,81,83,176,177,178,179,180,207,208,209,210,211,20,21,22,61,12,13,14,24,25,26,15,55,56,62,74,75,76,48,72,28,29,30,57,92,1115184208369717252,1115184208369717253,1115184208369717254,1115184208369717255,1115184208369717256,1115184208369717264,1115184208369717265,1115184208369717266,1115184208369717267,1115184208369717268,1115184208369717258,1115184208369717259,1115184208369717260,1115184208369717261,1115184208369717262,1115184208369717270,1115184208369717271,1115184208369717272,1115184208369717273,1115184208369717274,1115183444654067714,1115184160676286466,1115184208369717250,1115184208369717276,1115184208369717277,1115184208369717278,1115184208369717279,1115184208369717280,1115184208369717282,1115184208369717283,1115184208369717284,1115184208369717285,1115184208369717286,1115183213711495170,1115183247500808194,71,78,175,206,1,2,6,7,73,3,77,27,91,1115184208369717251,1115184208369717263,1115179024377745410,1115184208369717257,1115184208369717269,1115182776430137345,1115184208369717281,1115184208369717275,1115183127149449218,1115184208369717287,1115184208369717288,1115184208369717289,1115184208369717290,1115184208369717291,1115184208369717292,1115183012166799361,-1\"],\"roleName\":[\"??????\"],\"remark\":[\"?????\"]}', '127.0.0.1', '2019-04-12 16:13:20');
+INSERT INTO `sys_log` VALUES (1116623088008687617, 1, 'admin', '登录', 47, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 16:44:25');
+INSERT INTO `sys_log` VALUES (1116623107776442369, 1, 'admin', '根据数据表生成代码', 121, 'GET /common/generator/code/article_tag', '{}', '127.0.0.1', '2019-04-12 16:44:29');
+INSERT INTO `sys_log` VALUES (1116625019456192514, 1, 'admin', '登录', 45, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 16:52:05');
+INSERT INTO `sys_log` VALUES (1116625377301635073, 1, 'admin', '登录', 46, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 16:53:30');
+INSERT INTO `sys_log` VALUES (1116635441060122625, 1, 'admin', '登录', 48, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 17:33:30');
+INSERT INTO `sys_log` VALUES (1116635948868808706, 1, 'admin', '登录', 48, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 17:35:31');
+INSERT INTO `sys_log` VALUES (1116646760735944706, 1, 'admin', '登录', 10, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 18:18:29');
+INSERT INTO `sys_log` VALUES (1116647347791593474, 1, 'admin', '登录', 45, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 18:20:49');
+INSERT INTO `sys_log` VALUES (1116649102747107330, 1, 'admin', '登录', 45, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 18:27:47');
+INSERT INTO `sys_log` VALUES (1116649837866049537, 1, 'admin', '登录', 48, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 18:30:42');
+INSERT INTO `sys_log` VALUES (1116651443516923906, 1, 'admin', '登录', 47, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-12 18:37:05');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -682,7 +732,7 @@ CREATE TABLE `sys_menu`  (
   `gmtCreate` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `gmtModified` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1115184208369717287 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1115184208369717293 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -767,10 +817,10 @@ INSERT INTO `sys_menu` VALUES (1115183012166799361, 0, '运营管理', '', '', 0
 INSERT INTO `sys_menu` VALUES (1115183127149449218, 0, '个人设置', '', '', 0, 'fa fa-address-card-o', 3, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115183213711495170, 1115183127149449218, '个人资料', '', '', 1, '', NULL, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115183247500808194, 1115183127149449218, '我的通知', '', '', 1, '', NULL, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115183444654067714, 1115183012166799361, '首页管理', '', '', 1, '', NULL, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184160676286466, 1115183012166799361, '消息管理', '', '', 1, '', NULL, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184208369717250, 1115183012166799361, '媒体管理', '', '', 1, '', NULL, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184208369717251, 1115179024377745410, '文章内容管理', '/cms/article', '', 1, 'fa fa-file-code-o', 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115183444654067714, 1115183012166799361, '首页管理', '', '', 1, '', 2, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184160676286466, 1115183012166799361, '消息管理', '', '', 1, '', 3, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717250, 1115183012166799361, '媒体管理', '', '', 1, '', 4, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717251, 1115179024377745410, '文章内容管理', '/cms/article', '', 1, 'fa fa-file-code-o', 1, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717252, 1115184208369717251, '查看', NULL, 'cms:article:article', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717253, 1115184208369717251, '新增', NULL, 'cms:article:add', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717254, 1115184208369717251, '修改', NULL, 'cms:article:edit', 2, NULL, 6, NULL, NULL);
@@ -782,7 +832,7 @@ INSERT INTO `sys_menu` VALUES (1115184208369717259, 1115184208369717257, '新增
 INSERT INTO `sys_menu` VALUES (1115184208369717260, 1115184208369717257, '修改', NULL, 'cms:category:edit', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717261, 1115184208369717257, '删除', NULL, 'cms:category:remove', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717262, 1115184208369717257, '批量删除', NULL, 'cms:category:batchRemove', 2, NULL, 6, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184208369717263, 1115179024377745410, '活动内容管理', '/cms/event', NULL, 1, 'fa fa-file-code-o', 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717263, 1115179024377745410, '活动内容管理', '/cms/event', '', 1, 'fa fa-file-code-o', 2, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717264, 1115184208369717263, '查看', NULL, 'cms:event:event', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717265, 1115184208369717263, '新增', NULL, 'cms:event:add', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717266, 1115184208369717263, '修改', NULL, 'cms:event:edit', 2, NULL, 6, NULL, NULL);
@@ -794,7 +844,7 @@ INSERT INTO `sys_menu` VALUES (1115184208369717271, 1115184208369717269, '新增
 INSERT INTO `sys_menu` VALUES (1115184208369717272, 1115184208369717269, '修改', NULL, 'cms:product:edit', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717273, 1115184208369717269, '删除', NULL, 'cms:product:remove', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717274, 1115184208369717269, '批量删除', NULL, 'cms:product:batchRemove', 2, NULL, 6, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184208369717275, 1115183012166799361, '导航管理', '/cms/nav', NULL, 1, 'fa fa-file-code-o', 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717275, 1115183012166799361, '导航管理', '/cms/nav', '', 1, 'fa fa-file-code-o', 1, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717276, 1115184208369717275, '查看', NULL, 'cms:nav:nav', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717277, 1115184208369717275, '新增', NULL, 'cms:nav:add', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717278, 1115184208369717275, '修改', NULL, 'cms:nav:edit', 2, NULL, 6, NULL, NULL);
@@ -806,6 +856,12 @@ INSERT INTO `sys_menu` VALUES (1115184208369717283, 1115184208369717281, '新增
 INSERT INTO `sys_menu` VALUES (1115184208369717284, 1115184208369717281, '修改', NULL, 'cms:website:edit', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717285, 1115184208369717281, '删除', NULL, 'cms:website:remove', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717286, 1115184208369717281, '批量删除', NULL, 'cms:website:batchRemove', 2, NULL, 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717287, 1115183012166799361, '标签管理', '/cms/tag', NULL, 1, 'fa fa-file-code-o', 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717288, 1115184208369717287, '查看', NULL, 'cms:tag:tag', 2, NULL, 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717289, 1115184208369717287, '新增', NULL, 'cms:tag:add', 2, NULL, 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717290, 1115184208369717287, '修改', NULL, 'cms:tag:edit', 2, NULL, 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717291, 1115184208369717287, '删除', NULL, 'cms:tag:remove', 2, NULL, 6, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717292, 1115184208369717287, '批量删除', NULL, 'cms:tag:batchRemove', 2, NULL, 6, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -838,7 +894,7 @@ CREATE TABLE `sys_role_menu`  (
   `roleId` bigint(20) NULL DEFAULT NULL COMMENT '角色ID',
   `menuId` bigint(20) NULL DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5134 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色与菜单对应关系' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5242 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色与菜单对应关系' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -996,108 +1052,114 @@ INSERT INTO `sys_role_menu` VALUES (3185, 56, -1);
 INSERT INTO `sys_role_menu` VALUES (4544, 1034088931742957569, 1034089959238385666);
 INSERT INTO `sys_role_menu` VALUES (4545, 1034088931742957569, 1034090238251876354);
 INSERT INTO `sys_role_menu` VALUES (4546, 1034088931742957569, -1);
-INSERT INTO `sys_role_menu` VALUES (5032, 1, 193);
-INSERT INTO `sys_role_menu` VALUES (5033, 1, 194);
-INSERT INTO `sys_role_menu` VALUES (5034, 1, 195);
-INSERT INTO `sys_role_menu` VALUES (5035, 1, 196);
-INSERT INTO `sys_role_menu` VALUES (5036, 1, 197);
-INSERT INTO `sys_role_menu` VALUES (5037, 1, 79);
-INSERT INTO `sys_role_menu` VALUES (5038, 1, 80);
-INSERT INTO `sys_role_menu` VALUES (5039, 1, 81);
-INSERT INTO `sys_role_menu` VALUES (5040, 1, 83);
-INSERT INTO `sys_role_menu` VALUES (5041, 1, 176);
-INSERT INTO `sys_role_menu` VALUES (5042, 1, 177);
-INSERT INTO `sys_role_menu` VALUES (5043, 1, 178);
-INSERT INTO `sys_role_menu` VALUES (5044, 1, 179);
-INSERT INTO `sys_role_menu` VALUES (5045, 1, 180);
-INSERT INTO `sys_role_menu` VALUES (5046, 1, 207);
-INSERT INTO `sys_role_menu` VALUES (5047, 1, 208);
-INSERT INTO `sys_role_menu` VALUES (5048, 1, 209);
-INSERT INTO `sys_role_menu` VALUES (5049, 1, 210);
-INSERT INTO `sys_role_menu` VALUES (5050, 1, 211);
-INSERT INTO `sys_role_menu` VALUES (5051, 1, 20);
-INSERT INTO `sys_role_menu` VALUES (5052, 1, 21);
-INSERT INTO `sys_role_menu` VALUES (5053, 1, 22);
-INSERT INTO `sys_role_menu` VALUES (5054, 1, 61);
-INSERT INTO `sys_role_menu` VALUES (5055, 1, 12);
-INSERT INTO `sys_role_menu` VALUES (5056, 1, 13);
-INSERT INTO `sys_role_menu` VALUES (5057, 1, 14);
-INSERT INTO `sys_role_menu` VALUES (5058, 1, 24);
-INSERT INTO `sys_role_menu` VALUES (5059, 1, 25);
-INSERT INTO `sys_role_menu` VALUES (5060, 1, 26);
-INSERT INTO `sys_role_menu` VALUES (5061, 1, 15);
-INSERT INTO `sys_role_menu` VALUES (5062, 1, 55);
-INSERT INTO `sys_role_menu` VALUES (5063, 1, 56);
-INSERT INTO `sys_role_menu` VALUES (5064, 1, 62);
-INSERT INTO `sys_role_menu` VALUES (5065, 1, 74);
-INSERT INTO `sys_role_menu` VALUES (5066, 1, 75);
-INSERT INTO `sys_role_menu` VALUES (5067, 1, 76);
-INSERT INTO `sys_role_menu` VALUES (5068, 1, 48);
-INSERT INTO `sys_role_menu` VALUES (5069, 1, 72);
-INSERT INTO `sys_role_menu` VALUES (5070, 1, 28);
-INSERT INTO `sys_role_menu` VALUES (5071, 1, 29);
-INSERT INTO `sys_role_menu` VALUES (5072, 1, 30);
-INSERT INTO `sys_role_menu` VALUES (5073, 1, 57);
-INSERT INTO `sys_role_menu` VALUES (5074, 1, 92);
-INSERT INTO `sys_role_menu` VALUES (5075, 1, 1115184208369717252);
-INSERT INTO `sys_role_menu` VALUES (5076, 1, 1115184208369717253);
-INSERT INTO `sys_role_menu` VALUES (5077, 1, 1115184208369717254);
-INSERT INTO `sys_role_menu` VALUES (5078, 1, 1115184208369717255);
-INSERT INTO `sys_role_menu` VALUES (5079, 1, 1115184208369717256);
-INSERT INTO `sys_role_menu` VALUES (5080, 1, 1115184208369717264);
-INSERT INTO `sys_role_menu` VALUES (5081, 1, 1115184208369717265);
-INSERT INTO `sys_role_menu` VALUES (5082, 1, 1115184208369717266);
-INSERT INTO `sys_role_menu` VALUES (5083, 1, 1115184208369717267);
-INSERT INTO `sys_role_menu` VALUES (5084, 1, 1115184208369717268);
-INSERT INTO `sys_role_menu` VALUES (5085, 1, 1115184208369717258);
-INSERT INTO `sys_role_menu` VALUES (5086, 1, 1115184208369717259);
-INSERT INTO `sys_role_menu` VALUES (5087, 1, 1115184208369717260);
-INSERT INTO `sys_role_menu` VALUES (5088, 1, 1115184208369717261);
-INSERT INTO `sys_role_menu` VALUES (5089, 1, 1115184208369717262);
-INSERT INTO `sys_role_menu` VALUES (5090, 1, 1115184208369717270);
-INSERT INTO `sys_role_menu` VALUES (5091, 1, 1115184208369717271);
-INSERT INTO `sys_role_menu` VALUES (5092, 1, 1115184208369717272);
-INSERT INTO `sys_role_menu` VALUES (5093, 1, 1115184208369717273);
-INSERT INTO `sys_role_menu` VALUES (5094, 1, 1115184208369717274);
-INSERT INTO `sys_role_menu` VALUES (5095, 1, 1115183444654067714);
-INSERT INTO `sys_role_menu` VALUES (5096, 1, 1115184160676286466);
-INSERT INTO `sys_role_menu` VALUES (5097, 1, 1115184208369717250);
-INSERT INTO `sys_role_menu` VALUES (5098, 1, 1115184208369717276);
-INSERT INTO `sys_role_menu` VALUES (5099, 1, 1115184208369717277);
-INSERT INTO `sys_role_menu` VALUES (5100, 1, 1115184208369717278);
-INSERT INTO `sys_role_menu` VALUES (5101, 1, 1115184208369717279);
-INSERT INTO `sys_role_menu` VALUES (5102, 1, 1115184208369717280);
-INSERT INTO `sys_role_menu` VALUES (5103, 1, 1115183213711495170);
-INSERT INTO `sys_role_menu` VALUES (5104, 1, 1115183247500808194);
-INSERT INTO `sys_role_menu` VALUES (5105, 1, 71);
-INSERT INTO `sys_role_menu` VALUES (5106, 1, 78);
-INSERT INTO `sys_role_menu` VALUES (5107, 1, 175);
-INSERT INTO `sys_role_menu` VALUES (5108, 1, 206);
-INSERT INTO `sys_role_menu` VALUES (5109, 1, 1);
-INSERT INTO `sys_role_menu` VALUES (5110, 1, 2);
-INSERT INTO `sys_role_menu` VALUES (5111, 1, 6);
-INSERT INTO `sys_role_menu` VALUES (5112, 1, 7);
-INSERT INTO `sys_role_menu` VALUES (5113, 1, 73);
-INSERT INTO `sys_role_menu` VALUES (5114, 1, 3);
-INSERT INTO `sys_role_menu` VALUES (5115, 1, 77);
-INSERT INTO `sys_role_menu` VALUES (5116, 1, 27);
-INSERT INTO `sys_role_menu` VALUES (5117, 1, 91);
-INSERT INTO `sys_role_menu` VALUES (5118, 1, 1115184208369717251);
-INSERT INTO `sys_role_menu` VALUES (5119, 1, 1115184208369717263);
-INSERT INTO `sys_role_menu` VALUES (5120, 1, 1115179024377745410);
-INSERT INTO `sys_role_menu` VALUES (5121, 1, 1115184208369717257);
-INSERT INTO `sys_role_menu` VALUES (5122, 1, 1115184208369717269);
-INSERT INTO `sys_role_menu` VALUES (5123, 1, 1115182776430137345);
-INSERT INTO `sys_role_menu` VALUES (5124, 1, 1115183127149449218);
-INSERT INTO `sys_role_menu` VALUES (5125, 1, 1115184208369717281);
-INSERT INTO `sys_role_menu` VALUES (5126, 1, 1115184208369717282);
-INSERT INTO `sys_role_menu` VALUES (5127, 1, 1115184208369717283);
-INSERT INTO `sys_role_menu` VALUES (5128, 1, 1115184208369717284);
-INSERT INTO `sys_role_menu` VALUES (5129, 1, 1115184208369717285);
-INSERT INTO `sys_role_menu` VALUES (5130, 1, 1115184208369717286);
-INSERT INTO `sys_role_menu` VALUES (5131, 1, 1115184208369717275);
-INSERT INTO `sys_role_menu` VALUES (5132, 1, 1115183012166799361);
-INSERT INTO `sys_role_menu` VALUES (5133, 1, -1);
+INSERT INTO `sys_role_menu` VALUES (5134, 1, 193);
+INSERT INTO `sys_role_menu` VALUES (5135, 1, 194);
+INSERT INTO `sys_role_menu` VALUES (5136, 1, 195);
+INSERT INTO `sys_role_menu` VALUES (5137, 1, 196);
+INSERT INTO `sys_role_menu` VALUES (5138, 1, 197);
+INSERT INTO `sys_role_menu` VALUES (5139, 1, 79);
+INSERT INTO `sys_role_menu` VALUES (5140, 1, 80);
+INSERT INTO `sys_role_menu` VALUES (5141, 1, 81);
+INSERT INTO `sys_role_menu` VALUES (5142, 1, 83);
+INSERT INTO `sys_role_menu` VALUES (5143, 1, 176);
+INSERT INTO `sys_role_menu` VALUES (5144, 1, 177);
+INSERT INTO `sys_role_menu` VALUES (5145, 1, 178);
+INSERT INTO `sys_role_menu` VALUES (5146, 1, 179);
+INSERT INTO `sys_role_menu` VALUES (5147, 1, 180);
+INSERT INTO `sys_role_menu` VALUES (5148, 1, 207);
+INSERT INTO `sys_role_menu` VALUES (5149, 1, 208);
+INSERT INTO `sys_role_menu` VALUES (5150, 1, 209);
+INSERT INTO `sys_role_menu` VALUES (5151, 1, 210);
+INSERT INTO `sys_role_menu` VALUES (5152, 1, 211);
+INSERT INTO `sys_role_menu` VALUES (5153, 1, 20);
+INSERT INTO `sys_role_menu` VALUES (5154, 1, 21);
+INSERT INTO `sys_role_menu` VALUES (5155, 1, 22);
+INSERT INTO `sys_role_menu` VALUES (5156, 1, 61);
+INSERT INTO `sys_role_menu` VALUES (5157, 1, 12);
+INSERT INTO `sys_role_menu` VALUES (5158, 1, 13);
+INSERT INTO `sys_role_menu` VALUES (5159, 1, 14);
+INSERT INTO `sys_role_menu` VALUES (5160, 1, 24);
+INSERT INTO `sys_role_menu` VALUES (5161, 1, 25);
+INSERT INTO `sys_role_menu` VALUES (5162, 1, 26);
+INSERT INTO `sys_role_menu` VALUES (5163, 1, 15);
+INSERT INTO `sys_role_menu` VALUES (5164, 1, 55);
+INSERT INTO `sys_role_menu` VALUES (5165, 1, 56);
+INSERT INTO `sys_role_menu` VALUES (5166, 1, 62);
+INSERT INTO `sys_role_menu` VALUES (5167, 1, 74);
+INSERT INTO `sys_role_menu` VALUES (5168, 1, 75);
+INSERT INTO `sys_role_menu` VALUES (5169, 1, 76);
+INSERT INTO `sys_role_menu` VALUES (5170, 1, 48);
+INSERT INTO `sys_role_menu` VALUES (5171, 1, 72);
+INSERT INTO `sys_role_menu` VALUES (5172, 1, 28);
+INSERT INTO `sys_role_menu` VALUES (5173, 1, 29);
+INSERT INTO `sys_role_menu` VALUES (5174, 1, 30);
+INSERT INTO `sys_role_menu` VALUES (5175, 1, 57);
+INSERT INTO `sys_role_menu` VALUES (5176, 1, 92);
+INSERT INTO `sys_role_menu` VALUES (5177, 1, 1115184208369717252);
+INSERT INTO `sys_role_menu` VALUES (5178, 1, 1115184208369717253);
+INSERT INTO `sys_role_menu` VALUES (5179, 1, 1115184208369717254);
+INSERT INTO `sys_role_menu` VALUES (5180, 1, 1115184208369717255);
+INSERT INTO `sys_role_menu` VALUES (5181, 1, 1115184208369717256);
+INSERT INTO `sys_role_menu` VALUES (5182, 1, 1115184208369717264);
+INSERT INTO `sys_role_menu` VALUES (5183, 1, 1115184208369717265);
+INSERT INTO `sys_role_menu` VALUES (5184, 1, 1115184208369717266);
+INSERT INTO `sys_role_menu` VALUES (5185, 1, 1115184208369717267);
+INSERT INTO `sys_role_menu` VALUES (5186, 1, 1115184208369717268);
+INSERT INTO `sys_role_menu` VALUES (5187, 1, 1115184208369717258);
+INSERT INTO `sys_role_menu` VALUES (5188, 1, 1115184208369717259);
+INSERT INTO `sys_role_menu` VALUES (5189, 1, 1115184208369717260);
+INSERT INTO `sys_role_menu` VALUES (5190, 1, 1115184208369717261);
+INSERT INTO `sys_role_menu` VALUES (5191, 1, 1115184208369717262);
+INSERT INTO `sys_role_menu` VALUES (5192, 1, 1115184208369717270);
+INSERT INTO `sys_role_menu` VALUES (5193, 1, 1115184208369717271);
+INSERT INTO `sys_role_menu` VALUES (5194, 1, 1115184208369717272);
+INSERT INTO `sys_role_menu` VALUES (5195, 1, 1115184208369717273);
+INSERT INTO `sys_role_menu` VALUES (5196, 1, 1115184208369717274);
+INSERT INTO `sys_role_menu` VALUES (5197, 1, 1115183444654067714);
+INSERT INTO `sys_role_menu` VALUES (5198, 1, 1115184160676286466);
+INSERT INTO `sys_role_menu` VALUES (5199, 1, 1115184208369717250);
+INSERT INTO `sys_role_menu` VALUES (5200, 1, 1115184208369717276);
+INSERT INTO `sys_role_menu` VALUES (5201, 1, 1115184208369717277);
+INSERT INTO `sys_role_menu` VALUES (5202, 1, 1115184208369717278);
+INSERT INTO `sys_role_menu` VALUES (5203, 1, 1115184208369717279);
+INSERT INTO `sys_role_menu` VALUES (5204, 1, 1115184208369717280);
+INSERT INTO `sys_role_menu` VALUES (5205, 1, 1115184208369717282);
+INSERT INTO `sys_role_menu` VALUES (5206, 1, 1115184208369717283);
+INSERT INTO `sys_role_menu` VALUES (5207, 1, 1115184208369717284);
+INSERT INTO `sys_role_menu` VALUES (5208, 1, 1115184208369717285);
+INSERT INTO `sys_role_menu` VALUES (5209, 1, 1115184208369717286);
+INSERT INTO `sys_role_menu` VALUES (5210, 1, 1115183213711495170);
+INSERT INTO `sys_role_menu` VALUES (5211, 1, 1115183247500808194);
+INSERT INTO `sys_role_menu` VALUES (5212, 1, 71);
+INSERT INTO `sys_role_menu` VALUES (5213, 1, 78);
+INSERT INTO `sys_role_menu` VALUES (5214, 1, 175);
+INSERT INTO `sys_role_menu` VALUES (5215, 1, 206);
+INSERT INTO `sys_role_menu` VALUES (5216, 1, 1);
+INSERT INTO `sys_role_menu` VALUES (5217, 1, 2);
+INSERT INTO `sys_role_menu` VALUES (5218, 1, 6);
+INSERT INTO `sys_role_menu` VALUES (5219, 1, 7);
+INSERT INTO `sys_role_menu` VALUES (5220, 1, 73);
+INSERT INTO `sys_role_menu` VALUES (5221, 1, 3);
+INSERT INTO `sys_role_menu` VALUES (5222, 1, 77);
+INSERT INTO `sys_role_menu` VALUES (5223, 1, 27);
+INSERT INTO `sys_role_menu` VALUES (5224, 1, 91);
+INSERT INTO `sys_role_menu` VALUES (5225, 1, 1115184208369717251);
+INSERT INTO `sys_role_menu` VALUES (5226, 1, 1115184208369717263);
+INSERT INTO `sys_role_menu` VALUES (5227, 1, 1115179024377745410);
+INSERT INTO `sys_role_menu` VALUES (5228, 1, 1115184208369717257);
+INSERT INTO `sys_role_menu` VALUES (5229, 1, 1115184208369717269);
+INSERT INTO `sys_role_menu` VALUES (5230, 1, 1115182776430137345);
+INSERT INTO `sys_role_menu` VALUES (5231, 1, 1115184208369717281);
+INSERT INTO `sys_role_menu` VALUES (5232, 1, 1115184208369717275);
+INSERT INTO `sys_role_menu` VALUES (5233, 1, 1115183127149449218);
+INSERT INTO `sys_role_menu` VALUES (5234, 1, 1115184208369717287);
+INSERT INTO `sys_role_menu` VALUES (5235, 1, 1115184208369717288);
+INSERT INTO `sys_role_menu` VALUES (5236, 1, 1115184208369717289);
+INSERT INTO `sys_role_menu` VALUES (5237, 1, 1115184208369717290);
+INSERT INTO `sys_role_menu` VALUES (5238, 1, 1115184208369717291);
+INSERT INTO `sys_role_menu` VALUES (5239, 1, 1115184208369717292);
+INSERT INTO `sys_role_menu` VALUES (5240, 1, 1115183012166799361);
+INSERT INTO `sys_role_menu` VALUES (5241, 1, -1);
 
 -- ----------------------------
 -- Table structure for sys_task
@@ -1209,11 +1271,13 @@ INSERT INTO `sys_user_role` VALUES (133, 1034088697579159554, 103408893174295756
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `add_time` datetime(0) NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用途',
+  `isEnable` int(1) NULL DEFAULT NULL COMMENT '是否可用',
+  `createTime` datetime(0) NULL DEFAULT NULL COMMENT '创建时间按',
   `creator` int(11) NULL DEFAULT NULL,
-  `update_time` datetime(0) NULL DEFAULT NULL,
+  `updateTime` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `version` int(11) NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 

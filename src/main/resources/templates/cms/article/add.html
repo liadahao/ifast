@@ -6,12 +6,11 @@
 <link rel="stylesheet" href="/js/plugins/webuploader/webuploader.css" media="all">
 <link rel="stylesheet" type="text/css" href="/css/plugins/simditor/simditor.css"/>
 <style>
-    .wizard-big.wizard > .content {
-        min-height: 800px;
-    }
 
-    #content ul li {
-        display: block;
+    .link-table {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
     }
 </style>
 <body class="gray-bg">
@@ -20,9 +19,9 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <form id="article-form" class="wizard-big wizard clearfix form-horizontal m-t" action="#">
+                    <form id="article-form" class="form-horizontal m-t" action="#">
                         <h3>基本信息</h3>
-                        <fieldset>
+                        <fieldset class="ibox-content">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">标题：</label>
                                 <div class="col-sm-8">
@@ -78,19 +77,136 @@
                                     <div id="filePicker">选择图片</div>
                                 </div>
                             </div>
-                        </fieldset>
+                            <div class="col-sm-12">
+                                <div class="col-sm-8 link-table">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
+                                            <div class="ibox-tools">
 
-                        <h3>正文内容</h3>
-                        <fieldset>
-                            <div id="content" class="ibox">
-                                <div class="ibox-content">
-                                    <textarea id="editor" name="content" autofocus required="required">
-                                        Balala...
-                                    </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>社交媒体名称</th>
+                                                    <th>url链接</th>
+                                                    <th>排序</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><select class="form-control m-b" name="social[0][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input name="social[0][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input name="social[0][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select class="form-control m-b" name="social[1][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input name="social[1][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input name="social[1][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select class="form-control m-b" name="social[2][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input name="social[2][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input name="social[2][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select class="form-control m-b" name="social[3][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input name="social[3][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input name="social[3][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select class="form-control m-b" name="social[4][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input name="social[4][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input name="social[4][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标签1：</label>
+                                <div class="col-sm-8">
+                                    <input name="tag[0]" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标签2：</label>
+                                <div class="col-sm-8">
+                                    <input name="tag[1]" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标签3：</label>
+                                <div class="col-sm-8">
+                                    <input name="tag[2]" class="form-control"
+                                           type="text">
                                 </div>
                             </div>
                         </fieldset>
-
+                        <h3>正文内容</h3>
+                        <fieldset>
+                            <div id="content">
+                                <textarea id="editor" name="content" required="required">
+                                        Balala...
+                                </textarea>
+                            </div>
+                        </fieldset>
                         <h3>SEO设置</h3>
                         <fieldset>
                             <div class="form-group">
@@ -126,9 +242,9 @@
 <script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/article/add.js">
 </script>
-<script type="text/javascript" src="/js/plugins/simditor/module.js"></script>
-<script type="text/javascript" src="/js/plugins/simditor/hotkeys.js"></script>
-<script type="text/javascript" src="/js/plugins/simditor/uploader.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/module.min.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/hotkeys.min.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/uploader.min.js"></script>
 <script type="text/javascript" src="/js/plugins/simditor/simditor.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
 
@@ -170,6 +286,9 @@
         onFinishing: function (event, currentIndex) {
             form.validate().settings.ignore = ":disabled";
             return form.valid();
+        },
+        onCanceled: function (event, currentIndex) {
+            window.location.href ="/cms/article/"
         },
         onFinished: function (event, currentIndex) {
             $.ajax({
@@ -283,18 +402,29 @@
         $('#' + file.id).find('.progress').remove();
     });
 
-    var editor = new Simditor({
-        textarea: $('#editor'),
-        placeholder: '这里输入文字...',
-        toolbar: toolbar,
-        pasteImage: true,
-        defaultImage: 'assets/images/image.png',
-        upload: location.search === '?upload' ? {
-            url: '/upload'
-        } : false
-    });
+    (function () {
+        $(function () {
+            var $preview, editor, toolbar;
+            toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
+            editor = new Simditor({
+                textarea: $('#editor'),
+                placeholder: '这里输入文字...',
+                toolbar: toolbar,
+                pasteImage: true,
+                defaultImage: 'assets/images/image.png',
+                upload: location.search === '?upload' ? {
+                    url: '/upload'
+                } : false
+            });
+            $preview = $('#preview');
+            if ($preview.length > 0) {
+                return editor.on('valuechanged', function (e) {
+                    return $preview.html(editor.getValue());
+                });
+            }
+        });
 
-    $('.simditor-toolbar').width('100%');
+    }).call(this);
 </script>
 </body>
 </html>

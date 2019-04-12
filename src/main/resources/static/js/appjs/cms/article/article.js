@@ -74,8 +74,8 @@ function load() {
                         title: '状态'
                     },
                     {
-                        field: 'userId',
-                        title: '创建者id'
+                        field: 'createUserName',
+                        title: '创建者'
                     },
                     {
                         field: 'createTime',
@@ -114,14 +114,7 @@ function add() {
 }
 
 function edit(id) {
-    layer.open({
-        type: 2,
-        title: '编辑',
-        maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
-        area: ['800px', '520px'],
-        content: prefix + '/edit/' + id // iframe的url
-    });
+    window.location.href = prefix + '/edit?id=' + id // iframe的url
 }
 
 function remove(id) {

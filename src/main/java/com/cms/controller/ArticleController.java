@@ -1,9 +1,15 @@
 package com.cms.controller;
 
 
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
+import java.util.stream.Collectors;
 
+import com.alibaba.fastjson.JSON;
+import com.cms.domain.ArticleTagDO;
+import com.cms.domain.TagDO;
+import com.cms.service.ArticleTagService;
+import com.cms.service.TagService;
+import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +42,10 @@ import com.ifast.common.utils.Result;
 public class ArticleController extends AdminBaseController {
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private TagService tagService;
+    @Autowired
+    private ArticleTagService articleTagService;
 
     @GetMapping()
     @RequiresPermissions("cms:article:article")
@@ -57,12 +67,42 @@ public class ArticleController extends AdminBaseController {
         return "cms/article/add";
     }
 
-    @GetMapping("/edit/{id}")
-    @RequiresPermissions("cms:article:edit")
-    String edit(@PathVariable("id") Integer id, Model model) {
-        ArticleDO article = articleService.selectById(id);
-        model.addAttribute("article", article);
+    @GetMapping("/edit")
+    String editPage(@RequestParam Integer id, Model model) {
+        model.addAttribute("id", id);
         return "cms/article/edit";
+    }
+
+    @GetMapping("/edit/{id}")
+    @ResponseBody
+    ArticleDO edit(@PathVariable("id") Integer id) {
+        ArticleDO article = articleService.selectById(id);
+        List<Map<String, String>> mapList = new LinkedList<>();
+        if (!StringUtils.isEmpty(article.getFackbook())) {
+            Map<String, String> map = JSON.parseObject(article.getFackbook(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getLinkedin())) {
+            Map<String, String> map = JSON.parseObject(article.getLinkedin(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getTwitter())) {
+            Map<String, String> map = JSON.parseObject(article.getTwitter(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getMedium())) {
+            Map<String, String> map = JSON.parseObject(article.getMedium(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getInstagram())) {
+            Map<String, String> map = JSON.parseObject(article.getInstagram(), Map.class);
+            mapList.add(map);
+        }
+        article.setSocial(mapList);
+        List<TagDO> tagList = tagService.selectByArticleId(article.getId());
+        List<String> tagNameList = tagList.stream().map(TagDO::getName).collect(Collectors.toList());
+        article.setTag(tagNameList);
+        return article;
     }
 
     @Log("添加文章表")
@@ -76,7 +116,55 @@ public class ArticleController extends AdminBaseController {
         if (article.getCreateTime() == null) {
             article.setCreateTime(new Date());
         }
+        if (article.getSocial() != null && !article.getSocial().isEmpty()) {
+            for (Map<String, String> map : article.getSocial()) {
+                String type = map.get("type");
+                if (!StringUtils.isEmpty(type)) {
+                    if ("fackbook".equalsIgnoreCase(type)) {
+                        article.setFackbook(JSON.toJSONString(map));
+                    }
+                    if ("linkedin".equalsIgnoreCase(type)) {
+                        article.setLinkedin(JSON.toJSONString(map));
+                    }
+                    if ("twitter".equalsIgnoreCase(type)) {
+                        article.setTwitter(JSON.toJSONString(map));
+                    }
+                    if ("medium".equalsIgnoreCase(type)) {
+                        article.setMedium(JSON.toJSONString(map));
+                    }
+                    if ("instagram".equalsIgnoreCase(type)) {
+                        article.setInstagram(JSON.toJSONString(map));
+                    }
+                }
+            }
+        }
+        article.setCreateUserName(getUsername());
         articleService.insert(article);
+        if (article.getTag() != null && !article.getTag().isEmpty()) {
+            for (String tagName : article.getTag()) {
+                EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
+                entityWrapper.eq("name", tagName);
+                TagDO tag = tagService.selectOne(entityWrapper);
+                if (tag == null) {
+                    tag = new TagDO();
+                    tag.setName(tagName);
+                    tag.setCreatetime(new Date());
+                    tag.setType("文章");
+                    tag.setIsenable(1);
+                    tagService.insert(tag);
+                }
+                EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
+                articleTagDOEntityWrapper.eq("articleId", article.getId())
+                        .eq("tagId", tag.getId());
+                ArticleTagDO articleTagDO = articleTagService.selectOne(articleTagDOEntityWrapper);
+                if (articleTagDO == null) {
+                    articleTagDO = new ArticleTagDO();
+                    articleTagDO.setArticleId(article.getId().longValue());
+                    articleTagDO.setTagId(tag.getId());
+                    articleTagService.insert(articleTagDO);
+                }
+            }
+        }
         return Result.ok();
     }
 
@@ -85,7 +173,57 @@ public class ArticleController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:article:edit")
     public Result<String> update(ArticleDO article) {
+        if (article.getSocial() != null && !article.getSocial().isEmpty()) {
+            for (Map<String, String> map : article.getSocial()) {
+                String type = map.get("type");
+                if (!StringUtils.isEmpty(type)) {
+                    if ("fackbook".equalsIgnoreCase(type)) {
+                        article.setFackbook(JSON.toJSONString(map));
+                    }
+                    if ("linkedin".equalsIgnoreCase(type)) {
+                        article.setLinkedin(JSON.toJSONString(map));
+                    }
+                    if ("twitter".equalsIgnoreCase(type)) {
+                        article.setTwitter(JSON.toJSONString(map));
+                    }
+                    if ("medium".equalsIgnoreCase(type)) {
+                        article.setMedium(JSON.toJSONString(map));
+                    }
+                    if ("instagram".equalsIgnoreCase(type)) {
+                        article.setInstagram(JSON.toJSONString(map));
+                    }
+                }
+            }
+        }
         boolean update = articleService.updateById(article);
+        EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
+        articleTagDOEntityWrapper.eq("articleId", article.getId());
+        articleTagService.delete(articleTagDOEntityWrapper);
+        if (article.getTag() != null && !article.getTag().isEmpty()) {
+            for (String tagName : article.getTag()) {
+                EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
+                entityWrapper.eq("name", tagName);
+                TagDO tag = tagService.selectOne(entityWrapper);
+                if (tag == null) {
+                    tag = new TagDO();
+                    tag.setName(tagName);
+                    tag.setCreatetime(new Date());
+                    tag.setType("文章");
+                    tag.setIsenable(1);
+                    tagService.insert(tag);
+                }
+                articleTagDOEntityWrapper = new EntityWrapper<>();
+                articleTagDOEntityWrapper.eq("articleId", article.getId())
+                        .eq("tagId", tag.getId());
+                ArticleTagDO articleTagDO = articleTagService.selectOne(articleTagDOEntityWrapper);
+                if (articleTagDO == null) {
+                    articleTagDO = new ArticleTagDO();
+                    articleTagDO.setArticleId(article.getId().longValue());
+                    articleTagDO.setTagId(tag.getId());
+                    articleTagService.insert(articleTagDO);
+                }
+            }
+        }
         return update ? Result.ok() : Result.fail();
     }
 
