@@ -170,7 +170,6 @@ public class ShiroConfiguration {
         // 添加jwt过滤器
         Map<String, Filter> filterMap = new HashMap<>();
         filterMap.put("jwt", new JWTAuthenticationFilter());
-        filterMap.put("authc", new MyFormAuthenticationFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

@@ -158,24 +158,8 @@
     width: 65%;
 }
 
-.wizard > .content > .body
-{
-    float: left;
-    position: absolute;
-    width: 95%;
-    height: 95%;
-    padding: 2.5%;
-}
 
-.wizard > .content > .body ul
-{
-    list-style: disc !important;
-}
 
-.wizard > .content > .body ul > li
-{
-    display: list-item;
-}
 
 .wizard > .content > .body > iframe
 {

@@ -2,7 +2,10 @@ package com.cms.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -59,9 +62,9 @@ public class ArticleDO implements Serializable {
      */
     private String author;
     /**
-     * 用户ID
+     * 创建用户名
      */
-    private Integer userId;
+    private String createUserName;
 
     /**
      * 排序编号
@@ -124,9 +127,20 @@ public class ArticleDO implements Serializable {
      */
     private String remarks;
 
+    private String fackbook;
+    private String linkedin;
+    private String twitter;
+    private String medium;
+    private String instagram;
+
     /**
      *
      */
     private Integer style;
+
+    @TableField(exist = false)
+    private List<Map<String, String>> social;
+    @TableField(exist = false)
+    private List<String> tag;
 
 }

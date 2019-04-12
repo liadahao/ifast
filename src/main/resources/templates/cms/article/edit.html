@@ -6,12 +6,11 @@
 <link rel="stylesheet" href="/js/plugins/webuploader/webuploader.css" media="all">
 <link rel="stylesheet" type="text/css" href="/css/plugins/simditor/simditor.css"/>
 <style>
-    .wizard-big.wizard > .content {
-        min-height: 800px;
-    }
 
-    #content ul li {
-        display: block;
+    .link-table {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
     }
 </style>
 <body class="gray-bg">
@@ -20,37 +19,29 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <form id="article-form" class="wizard-big wizard clearfix form-horizontal m-t" action="#">
-                        <input id="id" name="id" th:value="${article.id}" type="hidden">
+                    <form id="article-form" class="form-horizontal m-t" action="#">
+                        <input id="id" name="id" th:value="${id}" type="hidden">
                         <h3>基本信息</h3>
-                        <fieldset>
+                        <fieldset class="ibox-content">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">标题：</label>
                                 <div class="col-sm-8">
                                     <input id="title" name="title" class="form-control"
-                                           type="text" th:value="${article.title}">
+                                           type="text" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">摘要：</label>
                                 <div class="col-sm-8">
                                 <textarea id="summary" name="summary" class="form-control"
-                                          rows="5" th:value="${article.summary}"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">创建时间：</label>
-                                <div class="input-group date col-sm-8">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" class="form-control" name="createTime" th:value="${article.createTime}"
-                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                                          rows="5" required="required"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">作者：</label>
                                 <div class="col-sm-8">
                                     <input id="author" name="author" class="form-control"
-                                           type="text" th:value="${article.author}">
+                                           type="text" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -58,22 +49,22 @@
                                 <div class="col-sm-8">
                                     <div class="radio">
                                         <label>
-                                            <input th:checked="${article.style eq 1}" type="radio" value="1" id="optionsRadios1"
+                                            <input type="radio" value="1" id="optionsRadios1"
                                                    name="style">大图封面</label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input th:checked="${article.style eq 2}" type="radio" value="2" id="optionsRadios2"
+                                            <input type="radio" value="2" id="optionsRadios2"
                                                    name="style">大图封面</label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input th:checked="${article.style eq 3}" type="radio" value="3" id="optionsRadios3"
+                                            <input type="radio" value="3" id="optionsRadios3"
                                                    name="style">底图封面</label>
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" th:checked="${article.style eq 4}" value="4" id="optionsRadios4"
+                                            <input type="radio" checked="" value="4" id="optionsRadios4"
                                                    name="style">默认状态</label>
                                     </div>
                                 </div>
@@ -87,39 +78,156 @@
                                     <div id="filePicker">选择图片</div>
                                 </div>
                             </div>
-                        </fieldset>
+                            <div class="col-sm-12">
+                                <div class="col-sm-8 link-table">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
+                                            <div class="ibox-tools">
 
-                        <h3>正文内容</h3>
-                        <fieldset>
-                            <div id="content" class="ibox">
-                                <div class="ibox-content">
-                                    <textarea th:text="${article.content}" id="editor" name="content" autofocus required>
-                                        Balala...
-                                    </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>社交媒体名称</th>
+                                                    <th>url链接</th>
+                                                    <th>排序</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><select id=social0type class="form-control m-b" name="social[0][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input id=social0url name="social[0][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input id=social0order name="social[0][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select id=social1type class="form-control m-b" name="social[1][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input id=social1url name="social[1][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input id=social1order name="social[1][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select id=social2type class="form-control m-b" name="social[2][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input id=social2url name="social[2][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input id=social2order name="social[2][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select id=social3type class="form-control m-b" name="social[3][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input id=social3url name="social[3][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input id=social3order name="social[3][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select id=social4type class="form-control m-b" name="social[4][type]">
+                                                        <option value=></option>
+                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Linkedin">Linkedin</option>
+                                                        <option value="Twitter">Twitter</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Instagram">Instagram</option>
+                                                    </select></td>
+                                                    <td><input id=social4url name="social[4][url]" class="form-control"
+                                                               type="url"></td>
+                                                    <td><input id=social4order name="social[4][order]"
+                                                               class="form-control"
+                                                               type="number"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标签1：</label>
+                                <div class="col-sm-8">
+                                    <input id="tag0" name="tag[0]" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标签2：</label>
+                                <div class="col-sm-8">
+                                    <input id="tag1" name="tag[1]" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标签3：</label>
+                                <div class="col-sm-8">
+                                    <input id="tag2" name="tag[2]" class="form-control"
+                                           type="text">
                                 </div>
                             </div>
                         </fieldset>
-
+                        <h3>正文内容</h3>
+                        <fieldset>
+                            <div id="content">
+                                <textarea id="editor" name="content" required="required">
+                                        Balala...
+                                </textarea>
+                            </div>
+                        </fieldset>
                         <h3>SEO设置</h3>
                         <fieldset>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">SEO栏目标题：</label>
                                 <div class="col-sm-8">
-                                        <textarea th:text="${article.metaTitle}" id="metaTitle" name="metaTitle" class="form-control"
+                                        <textarea id="metaTitle" name="metaTitle" class="form-control"
                                                   rows="5"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">SEO栏目关键字：</label>
                                 <div class="col-sm-8">
-                                        <textarea th:text="${article.metaKeywords}" id="metaKeywords" name="metaKeywords" class="form-control"
+                                        <textarea id="metaKeywords" name="metaKeywords" class="form-control"
                                                   rows="5"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">SEO栏目简介：</label>
                                 <div class="col-sm-8">
-                                    <input th:text="${article.metaDescription}" id="metaDescription" name="metaDescription" class="form-control"
+                                    <input id="metaDescription" name="metaDescription" class="form-control"
                                            type="text">
                                 </div>
                             </div>
@@ -135,9 +243,9 @@
 <script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/article/edit.js">
 </script>
-<script type="text/javascript" src="/js/plugins/simditor/module.js"></script>
-<script type="text/javascript" src="/js/plugins/simditor/hotkeys.js"></script>
-<script type="text/javascript" src="/js/plugins/simditor/uploader.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/module.min.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/hotkeys.min.js"></script>
+<script type="text/javascript" src="/js/plugins/simditor/uploader.min.js"></script>
 <script type="text/javascript" src="/js/plugins/simditor/simditor.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
 
@@ -180,11 +288,14 @@
             form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
+        onCanceled: function (event, currentIndex) {
+            window.location.href ="/cms/article/"
+        },
         onFinished: function (event, currentIndex) {
             $.ajax({
                 cache: true,
                 type: "POST",
-                url: "/cms/article/save",
+                url: "/cms/article/update",
                 data: $('#article-form').serialize(),// 你的formid
                 async: false,
                 error: function (request) {
@@ -292,18 +403,29 @@
         $('#' + file.id).find('.progress').remove();
     });
 
-    var editor = new Simditor({
-        textarea: $('#editor'),
-        placeholder: '这里输入文字...',
-        toolbar: toolbar,
-        pasteImage: true,
-        defaultImage: 'assets/images/image.png',
-        upload: location.search === '?upload' ? {
-            url: '/upload'
-        } : false
-    });
+    (function () {
+        $(function () {
+            var $preview, editor, toolbar;
+            toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
+            editor = new Simditor({
+                textarea: $('#editor'),
+                placeholder: '这里输入文字...',
+                toolbar: toolbar,
+                pasteImage: true,
+                defaultImage: 'assets/images/image.png',
+                upload: location.search === '?upload' ? {
+                    url: '/upload'
+                } : false
+            });
+            $preview = $('#preview');
+            if ($preview.length > 0) {
+                return editor.on('valuechanged', function (e) {
+                    return $preview.html(editor.getValue());
+                });
+            }
+        });
 
-    $('.simditor-toolbar').width('100%');
+    }).call(this);
 </script>
 </body>
 </html>

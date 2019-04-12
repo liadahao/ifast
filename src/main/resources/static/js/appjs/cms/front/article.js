@@ -15,6 +15,9 @@ function load() {
             handleData(data);
         }
     });
+    $('.box').click(function () {
+        window.location.href = "/article/" + $(this).attr("id");
+    })
 }
 
 function handleData(data) {
@@ -53,7 +56,7 @@ function handleData(data) {
         }
         var html;
         if (style == 1) {
-            html = '<div class="box box1">\n' +
+            html = '<div id="' + obj.id + '" class="box box1">\n' +
                 '            <img src="' + obj.thumbnail + '"/>\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +

@@ -38,7 +38,7 @@ public class FrontController {
     @Autowired
     EventService eventService;
 
-    @GetMapping({ "/", "" })
+    @GetMapping({"/", ""})
     String welcome(Model model) {
         return "redirect:/page/index";
     }
@@ -72,6 +72,13 @@ public class FrontController {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
         Page<ArticleDO> page = articleService.selectPage(getPage(ArticleDO.class), wrapper);
         return Result.ok(page);
+    }
+
+    @GetMapping("/article/{id}")
+    public String articleDetail(@PathVariable Integer id, Model model) {
+        ArticleDO article = articleService.selectById(id);
+        model.addAttribute("article", article);
+        return "/cms/front/pages/articleDetail";
     }
 
     @ResponseBody
