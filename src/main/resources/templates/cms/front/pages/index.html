@@ -53,12 +53,27 @@
             border-radius: 34px;
         }
 
+        .get-btn:hover {
+            background-color: #7dfeff;
+        }
+
         .watch-icon {
             margin-right: 1%;
         }
 
         .watch-video {
             margin-top: 3%;
+        }
+
+        .watch-video:hover {
+            margin-top: 3%;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #my-popup{
+            width: 1080px;
+            height: 720px;
         }
 
     </style>
@@ -74,11 +89,14 @@
                 Shenzhen Legendary Tour
             </div>
             <div class="am-text-xxl">
-                <a href="http://www.baidu.com" class="am-btn am-btn-xl get-btn">Learn More</a>
+                <a href="/page/techtour" class="am-btn am-btn-xl get-btn">Learn More</a>
             </div>
-            <div class="watch-video">
+            <div class="watch-video" data-am-modal="{target: '#my-popup',width:800,height:800}">
                 <i class="am-icon-play-circle-o am-icon-sm watch-icon"></i>
                 Watch Video
+            </div>
+            <div class="am-popup" id="my-popup">
+                <video src="/video/城市.mov" type="video/mov"></video>
             </div>
         </div>
     </div>
