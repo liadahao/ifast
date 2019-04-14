@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <link rel="stylesheet" href="https://res.layui.com/layui/dist/css/layui.css?t=1551352891272" media="all">
+<link href="/css/plugins/steps/jquery.steps.css" rel="stylesheet">
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
     <div class="row">
@@ -10,201 +11,212 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>标题块</legend>
-                                </fieldset>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">标题：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="title" name="title" class="form-control" rows="5"></textarea>
-                                    </div>
+                        <h3>菜单信息</h3>
+                        <fieldset class="ibox-content">
+                            <div th:include="allnav :: menu-info"></div>
+                        </fieldset>
+                        <h3>菜单信息</h3>
+                        <fieldset class="ibox-content">
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                        <legend>标题块</legend>
+                                    </fieldset>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">内容：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="content" name="content" class="form-control" rows="5"></textarea>
+                                <!-- /.box-header -->
+                                <div class="layui-card-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题：</label>
+                                        <div class="col-sm-8">
+                                            <textarea id="title" name="title" class="form-control" rows="5"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接：</label>
-                                    <div class="col-sm-8">
-                                        <input id="video" name="video" class="form-control" type="text">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">内容：</label>
+                                        <div class="col-sm-8">
+                                            <textarea id="content" name="content" class="form-control"
+                                                      rows="5"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">排序：</label>
-                                    <div class="col-sm-8">
-                                        <input id="order" name="order" class="form-control" type="text">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接：</label>
+                                        <div class="col-sm-8">
+                                            <input id="video" name="video" class="form-control" type="text">
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>模块1</legend>
-                                </fieldset>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">标题：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-1-title" name="model1title" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">内容：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-1-content" name="model1content" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-1-video" name="model1video" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">排序：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-1-order" name="model1order" class="form-control" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>模块2</legend>
-                                </fieldset>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">标题：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-2-title" name="model2title" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">内容：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-2-content" name="model2content" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-2-video" name="model2video" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">排序：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-2-order" name="model2order" class="form-control" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>模块3</legend>
-                                </fieldset>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">标题：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-3-title" name="model3title" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">内容：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-3-content" name="model3content" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-3-video" name="model3video" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">排序：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-3-order" name="model3order" class="form-control" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>模块4</legend>
-                                </fieldset>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">标题：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-4-title" name="model4title" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="ibox">
-                                        <div class="ibox-body">
-                                            <div class="fixed-table-toolbar">
-                                                <div class="columns pull-left">
-                                                    <button shiro:hasPermission="cms:link:add" type="button" class="btn  btn-primary" onclick="add()">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>添加
-                                                    </button>
-                                                    <button shiro:hasPermission="cms:link:batchRemove" type="button" class="btn  btn-danger"
-                                                            onclick="batchRemove()">
-                                                        <i class="fa fa-trash" aria-hidden="true"></i>删除
-                                                    </button>
-                                                </div>
-                                                <div class="columns pull-right">
-                                                    <button class="btn btn-success" onclick="reLoad()">查询</button>
-                                                </div>
-                                                <div class="columns pull-right col-md-2 nopadding">
-                                                    <input id="searchName" type="text" class="form-control"
-                                                           placeholder="">
-                                                </div>
-                                            </div>
-                                            <table id="linkTable" data-mobile-responsive="true">
-                                            </table>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">排序：</label>
+                                        <div class="col-sm-8">
+                                            <input id="order" name="order" class="form-control" type="text">
                                         </div>
                                     </div>
                                 </div>
+                                <!-- /.box-body -->
                             </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                        <legend>模块1</legend>
+                                    </fieldset>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="layui-card-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-1-title" name="model1title" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">内容：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-1-content" name="model1content" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接：</label>
+                                        <div class="col-sm-8">
+                                            <input id="model-1-video" name="model1video" class="form-control"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">排序：</label>
+                                        <div class="col-sm-8">
+                                            <input id="model-1-order" name="model1order" class="form-control"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
                             </div>
-                        </div>
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                        <legend>模块2</legend>
+                                    </fieldset>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="layui-card-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-2-title" name="model2title" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">内容：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-2-content" name="model2content" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接：</label>
+                                        <div class="col-sm-8">
+                                            <input id="model-2-video" name="model2video" class="form-control"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">排序：</label>
+                                        <div class="col-sm-8">
+                                            <input id="model-2-order" name="model2order" class="form-control"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                        <legend>模块3</legend>
+                                    </fieldset>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="layui-card-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-3-title" name="model3title" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">内容：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-3-content" name="model3content" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接：</label>
+                                        <div class="col-sm-8">
+                                            <input id="model-3-video" name="model3video" class="form-control"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">排序：</label>
+                                        <div class="col-sm-8">
+                                            <input id="model-3-order" name="model3order" class="form-control"
+                                                   type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                        <legend>模块4</legend>
+                                    </fieldset>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="layui-card-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题：</label>
+                                        <div class="col-sm-8">
+                                        <textarea id="model-4-title" name="model4title" class="form-control"
+                                                  rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="ibox">
+                                            <div class="ibox-body">
+                                                <div class="fixed-table-toolbar">
+                                                    <div class="columns pull-left">
+                                                        <button shiro:hasPermission="cms:link:add" type="button"
+                                                                class="btn  btn-primary" onclick="add()">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>添加
+                                                        </button>
+                                                        <button shiro:hasPermission="cms:link:batchRemove" type="button"
+                                                                class="btn  btn-danger"
+                                                                onclick="batchRemove()">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>删除
+                                                        </button>
+                                                    </div>
+                                                    <div class="columns pull-right">
+                                                        <button class="btn btn-success" onclick="reLoad()">查询</button>
+                                                    </div>
+                                                    <div class="columns pull-right col-md-2 nopadding">
+                                                        <input id="searchName" type="text" class="form-control"
+                                                               placeholder="">
+                                                    </div>
+                                                </div>
+                                                <table id="linkTable" data-mobile-responsive="true">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -212,8 +224,73 @@
     </div>
 </div>
 <div th:include="include::footer"></div>
-<script type="text/javascript" src="/js/appjs/cms/nav/add2.js">
-</script>
+<script type="text/javascript" src="/js/appjs/cms/nav/add2.js"></script>
+<script src="/js/plugins/staps/jquery.steps.min.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
+<script>
+    <
+    script >
+    var form = $("#article-form").show();
+    form.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex) {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex) {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18) {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex) {
+                // To remove error styles
+                form.find(".body:eq(" + newIndex + ") label.error").remove();
+                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number($("#age-2").val()) >= 18) {
+                form.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3) {
+                form.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex) {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onCanceled: function (event, currentIndex) {
+            window.location.href = "/cms/nav/"
+        },
+        onFinished: function (event, currentIndex) {
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "/cms/nav/save",
+                data: $('#article-form').serialize(),// 你的formid
+                async: false,
+                error: function (request) {
+                    parent.layer.alert("Connection error");
+                },
+                success: function (data) {
+                    if (data.code == 0) {
+                        parent.layer.msg("操作成功");
+                        window.location.href = "/cms/nav";
+                    } else {
+                        parent.layer.alert(data.msg)
+                    }
+                }
+            });
+        }
+    }).validate({});
+</script>
 </body>
 </html>

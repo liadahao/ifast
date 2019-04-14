@@ -8,6 +8,17 @@
 			<div class="ibox">
 				<div class="ibox-body">
 					<div class="fixed-table-toolbar">
+						<div role="form" class="form-inline">
+							<div class="form-group">
+								<label for="title-search">按活动标题查询：</label>
+								<input type="text" placeholder="请输入标题" id="title-search" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="id-search">按活动id查询：</label>
+								<input type="text" placeholder="请输入id" id="id-search" class="form-control">
+							</div>
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
 						<div class="columns pull-left">
 							<button shiro:hasPermission="cms:category:add" type="button" class="btn  btn-primary" onclick="add()">
 								<i class="fa fa-plus" aria-hidden="true"></i>添加

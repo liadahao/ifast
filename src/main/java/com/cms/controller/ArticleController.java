@@ -55,8 +55,22 @@ public class ArticleController extends AdminBaseController {
 
     @ResponseBody
     @GetMapping("/list")
-    public Result<Page<ArticleDO>> list(ArticleDO articleDTO) {
+    public Result<Page<ArticleDO>> list(ArticleDO articleDTO, Date startTime, Date endTime) {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
+
+        if (articleDTO.getId() != null) {
+            wrapper.eq("id", articleDTO.getId().toString());
+        } else {
+            if (!StringUtils.isEmpty(articleDTO.getTitle())) {
+                wrapper.like("title", articleDTO.getTitle());
+            }
+            if (startTime != null) {
+                wrapper.ge("createTime", startTime);
+            }
+            if (endTime != null) {
+                wrapper.le("createTime", endTime);
+            }
+        }
         Page<ArticleDO> page = articleService.selectPage(getPage(ArticleDO.class), wrapper);
         return Result.ok(page);
     }
@@ -142,6 +156,9 @@ public class ArticleController extends AdminBaseController {
         articleService.insert(article);
         if (article.getTag() != null && !article.getTag().isEmpty()) {
             for (String tagName : article.getTag()) {
+                if (StringUtils.isEmpty(tagName)) {
+                    continue;
+                }
                 EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
                 entityWrapper.eq("name", tagName);
                 TagDO tag = tagService.selectOne(entityWrapper);
@@ -201,6 +218,9 @@ public class ArticleController extends AdminBaseController {
         articleTagService.delete(articleTagDOEntityWrapper);
         if (article.getTag() != null && !article.getTag().isEmpty()) {
             for (String tagName : article.getTag()) {
+                if (StringUtils.isEmpty(tagName)) {
+                    continue;
+                }
                 EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
                 entityWrapper.eq("name", tagName);
                 TagDO tag = tagService.selectOne(entityWrapper);

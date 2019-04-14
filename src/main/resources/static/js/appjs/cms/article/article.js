@@ -31,9 +31,11 @@ function load() {
                     return {
                         //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         pageNumber: params.pageNumber,
-                        pageSize: params.pageSize
-                        // name:$('#searchName').val(),
-                        // username:$('#searchName').val()
+                        pageSize: params.pageSize,
+                        id:$('#id-search').val(),
+                        title:$('#title-search').val(),
+                        startTime:$('#starttime').val(),
+                        endTime:$('#endtime').val(),
                     };
                 },
                 // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
@@ -71,11 +73,26 @@ function load() {
                     },
                     {
                         field: 'status',
-                        title: '状态'
+                        title: '状态',
+                        formatter: function (value, row, index) {
+                            if (row['status'] == 0) {
+                                return '已发布';
+                            }
+                            if (row['status'] == 1) {
+                                return '审核中';
+                            }
+                            if (row['status'] == 2) {
+                                return '未通过审核';
+                            }
+                            if (row['status'] == 3) {
+                                return '已隐藏';
+                            }
+                            return value;
+                        }
                     },
                     {
                         field: 'createUserName',
-                        title: '创建者'
+                        title: '发布人'
                     },
                     {
                         field: 'createTime',
@@ -96,14 +113,15 @@ function load() {
                             var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
                                 + row.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
-                            var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
+                            var f = '<a class="btn btn-success btn-sm" href="#" title="预览"  mce_href="#" onclick="preview(\''
                                 + row.id
-                                + '\')"><i class="fa fa-key"></i></a> ';
-                            return e + d;
+                                + '\')"><i class="fa fa-link"></i></a> ';
+                            return e + f + d;
                         }
                     }]
             });
 }
+
 
 function reLoad() {
     $('#exampleTable').bootstrapTable('refresh');
@@ -115,6 +133,10 @@ function add() {
 
 function edit(id) {
     window.location.href = prefix + '/edit?id=' + id // iframe的url
+}
+
+function preview(id) {
+    window.open("/article/" + id, "_blank");
 }
 
 function remove(id) {

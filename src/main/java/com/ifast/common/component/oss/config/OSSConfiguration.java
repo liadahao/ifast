@@ -9,6 +9,7 @@ import com.ifast.common.component.oss.support.qiniu.QiNiuOSSProperties;
 import com.ifast.common.component.oss.support.qiniu.QiNiuUploadServer;
 import com.qiniu.common.Zone;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.EnableCaching;
@@ -29,24 +30,27 @@ public class OSSConfiguration {
      * 阿里云OSS上传
      */
     @Bean
-    @ConditionalOnProperty(prefix="ifast.oss.aliyun", name="accessKeySecret")
+    @ConditionalOnProperty(prefix = "ifast.oss.aliyun", name = "isEnable", havingValue = "true")
     @ConditionalOnMissingBean(UploadServer.class)
     public UploadServer aliyunUploadServer(AliyunOSSProperties properties) {
-    	if(log.isDebugEnabled()){
-    		log.debug("启用阿里云上传服务");
-    	}
-    	return new AliyunUploadServer(properties);
+        if (log.isDebugEnabled()) {
+            log.debug("启用阿里云上传服务");
+        }
+        return new AliyunUploadServer(properties);
     }
 
     /**
      * 七牛上传
      */
     @Bean
-    @ConditionalOnProperty(prefix="ifast.oss.qiniu", name="accessKey")
+    @ConditionalOnProperty(prefix = "ifast.oss.qiniu", name = "isEnable", havingValue = "true")
     @ConditionalOnMissingBean(UploadServer.class)
     public UploadServer qiNiuUploadServer(QiNiuOSSProperties ossConfig) {
-        if(log.isDebugEnabled()){
+        if (log.isDebugEnabled()) {
             log.debug("启用七牛云上传服务");
+        }
+        if (StringUtils.isEmpty(ossConfig.getSecretKey())) {
+            return null;
         }
         return new QiNiuUploadServer(ossConfig, Zone.zone2());
     }
@@ -55,10 +59,10 @@ public class OSSConfiguration {
      * 本地上传(默认)，需配合Nginx解析静态资源
      */
     @Bean
-    @ConditionalOnProperty(prefix="ifast.oss.local", name="localPath")
+    @ConditionalOnProperty(prefix = "ifast.oss.local", name = "localPath")
     @ConditionalOnMissingBean(UploadServer.class)
     public UploadServer localUploadServer(LocalUploadProperties properties) {
-        if(log.isDebugEnabled()){
+        if (log.isDebugEnabled()) {
             log.debug("启用本地上传服务");
         }
         return new LocalUploadServer(properties);

@@ -3,6 +3,7 @@ package com.cms.controller;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,6 +48,19 @@ public class EventController extends AdminBaseController {
 	@RequiresPermissions("cms:event:event")
 	public Result<Page<EventDO>> list(EventDO eventDTO){
         Wrapper<EventDO> wrapper = new EntityWrapper<EventDO>().orderBy("id", false);
+		if (eventDTO.getId() != null) {
+			wrapper.eq("id", eventDTO.getId().toString());
+		} else {
+			if (!StringUtils.isEmpty(eventDTO.getTitle())) {
+				wrapper.like("title", eventDTO.getTitle());
+			}
+			if (eventDTO.getStarttime() != null) {
+				wrapper.ge("createTime", eventDTO.getStarttime());
+			}
+			if (eventDTO.getEndtime() != null) {
+				wrapper.le("createTime", eventDTO.getEndtime());
+			}
+		}
         Page<EventDO> page = eventService.selectPage(getPage(EventDO.class), wrapper);
         return Result.ok(page);
 	}

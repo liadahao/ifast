@@ -75,6 +75,8 @@
                                     <!--用来存放item-->
                                     <div id="fileList" class="uploader-list"></div>
                                     <div id="filePicker">选择图片</div>
+                                    <input id="thumbnail" name="thumbnail" class="form-control"
+                                           type="hidden">
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -307,7 +309,6 @@
                     } else {
                         parent.layer.alert(data.msg)
                     }
-
                 }
             });
         }
@@ -323,7 +324,7 @@
         swf: '/js/Uploader.swf',
 
         // 文件接收服务端。
-        server: 'http://webuploader.duapp.com/server/fileupload.php',
+        server: '/common/sysFile/upload',
 
         // 选择文件的按钮。可选。
         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -349,7 +350,7 @@
 
         let $list = $("#fileList");
         // $list为容器jQuery实例
-        $list.append($li);
+        $list.html($li);
 
         // 创建缩略图
         // 如果为非图片文件，可以不用调用此方法。
@@ -361,7 +362,7 @@
             }
 
             $img.attr('src', src);
-        }, 200, 200);
+        }, 400, 400);
     });
 
     // 文件上传过程中创建进度条实时显示。
@@ -380,8 +381,9 @@
     });
 
     // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-    uploader.on('uploadSuccess', function (file) {
+    uploader.on('uploadSuccess', function (file, response) {
         $('#' + file.id).addClass('upload-state-done');
+        $('#thumbnail').val(response.data);
     });
 
     // 文件上传失败，显示上传出错。

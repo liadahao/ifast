@@ -2,94 +2,142 @@
 <html>
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
+<link rel="stylesheet" href="/js/plugins/webuploader/webuploader.css" media="all">
+<link rel="stylesheet" href="/css/plugins/webuploader/uploader.css" media="all">
 <body class="gray-bg">
-	<div class="wrapper wrapper-content ">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<form class="form-horizontal m-t" id="signupForm">
-						<input id="id" name="id" th:value="${product.id}"  type="hidden">
-												
-																																	<div class="form-group">	
-								<label class="col-sm-3 control-label">分类id：</label>
-								<div class="col-sm-8">
-																		<input id="categoryid" name="categoryid" th:value="${product.categoryid}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">产品名称：</label>
-								<div class="col-sm-8">
-																		<input id="name" name="name" th:value="${product.name}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">产品简要描述：</label>
-								<div class="col-sm-8">
-																		<textarea id="description" name="description" th:text="${product.description}" class="form-control" rows="5"></textarea>
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">产品详细描述：</label>
-								<div class="col-sm-8">
-																		<textarea id="detail" name="detail" th:text="${product.detail}" class="form-control" rows="5"></textarea>
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">产品主图：</label>
-								<div class="col-sm-8">
-																		<input id="image" name="image" th:value="${product.image}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">价格：</label>
-								<div class="col-sm-8">
-																		<input id="price" name="price" th:value="${product.price}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">打折价：</label>
-								<div class="col-sm-8">
-																		<input id="sale" name="sale" th:value="${product.sale}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">跳转url：</label>
-								<div class="col-sm-8">
-																		<input id="url" name="url" th:value="${product.url}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">排序：</label>
-								<div class="col-sm-8">
-																		<input id="order" name="order" th:value="${product.order}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">标签：</label>
-								<div class="col-sm-8">
-																		<input id="tags" name="tags" th:value="${product.tags}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">状态：</label>
-								<div class="col-sm-8">
-																		<input id="status" name="status" th:value="${product.status}" class="form-control" type="text">
-																	</div>
-							</div>
-																				<div class="form-group">
-								<div class="col-sm-8 col-sm-offset-3">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-	<div th:include="include::footer"></div>
-	<script type="text/javascript" src="/js/appjs/cms/product/edit.js">
-	</script>
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <div class="ibox-title">
+                            <h5>一、选择商品品类</h5>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品分类：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control m-b" name="categoryid">
+                                    <option value=></option>
+                                    <option value="Fackbook">Fackbook</option>
+                                    <option value="Linkedin">Linkedin</option>
+                                    <option value="Twitter">Twitter</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Instagram">Instagram</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ibox-title">
+                            <h5>二、填写商品基本信息</h5>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">产品名称：</label>
+                            <div class="col-sm-8">
+                                <input id="name" name="name" class="form-control" type="text"
+                                       th:value="${product.name}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">产品简要描述：</label>
+                            <div class="col-sm-8">
+								<textarea id="description" name="description" class="form-control" rows="5"
+                                          th:value="${product.description}"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">产品详细描述：</label>
+                            <div class="col-sm-8">
+								<textarea id="detail" name="detail" class="form-control" rows="5"
+                                          th:value="${product.detail}"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12">* 商品图片：
+                                上传图片的最佳尺寸：720像素*720像素，其他尺寸会影响页面效果，格式png，jpeg，jpg，gif，大小不超过2M，商品图片一共可以上传5张，默认第一张为主图。</label>
+                        </div>
+                        <div class="form-group">
+                            <div id="uploader" class="wu-example">
+                                <div class="queueList">
+                                    <div id="dndArea" class="placeholder">
+                                        <div id="filePicker"></div>
+                                        <p>最多可选5张</p>
+                                    </div>
+                                </div>
+                                <div class="statusBar" style="display:none;">
+                                    <div class="progress">
+                                        <span class="text">0%</span>
+                                        <span class="percentage"></span>
+                                    </div>
+                                    <div class="info"></div>
+                                    <div class="btns">
+                                        <div id="filePicker2"></div>
+                                        <div class="uploadBtn">开始上传</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div th:each="image,imageStat : ${product.image}" class="form-group">
+                                <input th:id="image+${imageStat.index}" th:attr="name=image[+${imageStat.index}+]"
+                                       class="form-control" type="hidden"
+                                       th:value="${image}">
+                            </div>
+                        </div>
+                        <div class="ibox-title">
+                            <h5>三、商品销售属性</h5>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">价格：</label>
+                            <div class="col-sm-8">
+                                <input id="price" name="price" class="form-control" type="text" required="required"
+                                       th:value="${product.price}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">打折价：</label>
+                            <div class="col-sm-8">
+                                <input id="sale" name="sale" class="form-control" type="text" required="required"
+                                       th:value="${product.sale}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">跳转url：</label>
+                            <div class="col-sm-8">
+                                <input id="url" name="url" class="form-control" type="url" required="required"
+                                       th:value="${product.url}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">排序：</label>
+                            <div class="col-sm-8">
+                                <input id="order" name="order" class="form-control" type="text"
+                                       th:value="${product.order}">
+                            </div>
+                        </div>
+                        <div th:each="tag,tagStat : ${product.tagList}" class="form-group">
+                            <label th:text="'标签'+${tagStat.count}+':'" class="col-sm-3 control-label"></label>
+                            <div class="col-sm-8">
+                                <input th:id="tagList+${tagStat.index}" th:attr="name=tagList[+${tagStat.index}+]"
+                                       class="form-control" type="text"
+                                       th:value="${tag}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn-lg btn-success">提交</button>
+                                <button type="submit" class="btn-lg btn-success">保存并预览</button>
+                                <button type="submit" class="btn-lg btn-success">审核</button>
+                                <button type="submit" class="btn-lg btn-success">上架</button>
+                                <button type="submit" class="btn-lg btn-success">下架</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/cms/product/add.js"></script>
+<script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/product/uploader.js"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
         .main-body .left-side {
             padding-top: 50px;
             height: 658px;
-            background: url(/img/0201.png) no-repeat left center;
+            background: url(/img/0201.png) no-repeat center center;
         }
 
         .left-side .title {
@@ -77,7 +77,6 @@
 
         .left-side .content {
             margin: 0 0 0 39%;
-            width: 274px;
             font-size: 14px;
             font-family: PingFangSC-Regular;
             font-weight: 400;
@@ -132,7 +131,7 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g">
-        <div class="am-u-lg-2">
+        <div class="am-u-sm-2">
             <div class="left-nav">
                 <div class="top">
                     <a href="/page/index">
@@ -148,8 +147,8 @@
                 </div>
             </div>
         </div>
-        <div class="main-body am-u-lg-8">
-            <div class="left-side am-u-lg-5">
+        <div class="main-body am-u-sm-8">
+            <div class="left-side am-u-sm-5">
                 <div class="title">
                     <div class="left-title am-text-center">Tech</div>
                     <div class="right-title am-text-center">Tour</div>
@@ -166,7 +165,7 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="am-panel-group am-u-lg-7" id="accordion">
+            <div class="am-panel-group am-u-sm-7" id="accordion">
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201enterprise.png"></span>
@@ -183,9 +182,9 @@
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <p th:if="${data['model1content'] != null}" th:text="${data['model1content']}"
-                                   class="am-u-lg-9">
+                                   class="am-u-sm-9">
                                 </p>
-                                <p th:if="${data['model1content'] == null}" class="am-u-lg-9">
+                                <p th:if="${data['model1content'] == null}" class="am-u-sm-9">
                                     Learn from professionals who work for Chinese companies in a variety of
                                     industries,
                                     such
@@ -201,7 +200,7 @@
                                 <video th:src="${data['model1video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
                                        height="90"
-                                       controls="controls" class="am-u-lg-3">
+                                       controls="controls" class="am-u-sm-3">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -225,9 +224,9 @@
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <p th:if="${data['model2content'] != null}" th:text="${data['model2content']}"
-                                   class="am-u-lg-9">
+                                   class="am-u-sm-9">
                                 </p>
-                                <p th:if="${data['model2content'] == null}" class="am-u-lg-9">
+                                <p th:if="${data['model2content'] == null}" class="am-u-sm-9">
                                     Learn from professionals who work for Chinese companies in a variety of
                                     industries,
                                     such
@@ -243,7 +242,7 @@
                                 <video th:src="${data['model2video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
                                        height="90"
-                                       controls="controls" class="am-u-lg-3">
+                                       controls="controls" class="am-u-sm-3">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -266,9 +265,9 @@
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <p th:if="${data['model3content'] != null}" th:text="${data['model3content']}"
-                                   class="am-u-lg-9">
+                                   class="am-u-sm-9">
                                 </p>
-                                <p th:if="${data['model3content'] == null}" class="am-u-lg-9">
+                                <p th:if="${data['model3content'] == null}" class="am-u-sm-9">
                                     Learn from professionals who work for Chinese companies in a variety of
                                     industries,
                                     such
@@ -284,7 +283,7 @@
                                 <video th:src="${data['model3video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
                                        height="90"
-                                       controls="controls" class="am-u-lg-3">
+                                       controls="controls" class="am-u-sm-3">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -317,7 +316,7 @@
                 </div>
             </div>
         </div>
-        <div class="am-u-lg-2">
+        <div class="am-u-sm-2">
             <div class="right-nav">
                 <a class="select-circular"></a>
                 <a href="/page/workshop" class="circular"></a>

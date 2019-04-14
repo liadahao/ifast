@@ -76,6 +76,8 @@
                                     <!--用来存放item-->
                                     <div id="fileList" class="uploader-list"></div>
                                     <div id="filePicker">选择图片</div>
+                                    <input id="thumbnail" name="thumbnail" class="form-control"
+                                           type="hidden">
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -83,9 +85,6 @@
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
                                             <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
-                                            <div class="ibox-tools">
-
-                                            </div>
                                         </div>
                                         <div class="ibox-content">
                                             <table class="table">
@@ -98,7 +97,8 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td><select id=social0type class="form-control m-b" name="social[0][type]">
+                                                    <td><select id=social0type class="form-control m-b"
+                                                                name="social[0][type]">
                                                         <option value=></option>
                                                         <option value="Fackbook">Fackbook</option>
                                                         <option value="Linkedin">Linkedin</option>
@@ -113,7 +113,8 @@
                                                                type="number"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><select id=social1type class="form-control m-b" name="social[1][type]">
+                                                    <td><select id=social1type class="form-control m-b"
+                                                                name="social[1][type]">
                                                         <option value=></option>
                                                         <option value="Fackbook">Fackbook</option>
                                                         <option value="Linkedin">Linkedin</option>
@@ -128,7 +129,8 @@
                                                                type="number"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><select id=social2type class="form-control m-b" name="social[2][type]">
+                                                    <td><select id=social2type class="form-control m-b"
+                                                                name="social[2][type]">
                                                         <option value=></option>
                                                         <option value="Fackbook">Fackbook</option>
                                                         <option value="Linkedin">Linkedin</option>
@@ -143,7 +145,8 @@
                                                                type="number"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><select id=social3type class="form-control m-b" name="social[3][type]">
+                                                    <td><select id=social3type class="form-control m-b"
+                                                                name="social[3][type]">
                                                         <option value=></option>
                                                         <option value="Fackbook">Fackbook</option>
                                                         <option value="Linkedin">Linkedin</option>
@@ -158,7 +161,8 @@
                                                                type="number"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><select id=social4type class="form-control m-b" name="social[4][type]">
+                                                    <td><select id=social4type class="form-control m-b"
+                                                                name="social[4][type]">
                                                         <option value=></option>
                                                         <option value="Fackbook">Fackbook</option>
                                                         <option value="Linkedin">Linkedin</option>
@@ -289,7 +293,7 @@
             return form.valid();
         },
         onCanceled: function (event, currentIndex) {
-            window.location.href ="/cms/article/"
+            window.location.href = "/cms/article/"
         },
         onFinished: function (event, currentIndex) {
             $.ajax({
@@ -324,7 +328,7 @@
         swf: '/js/Uploader.swf',
 
         // 文件接收服务端。
-        server: 'http://webuploader.duapp.com/server/fileupload.php',
+        server: '/common/sysFile/upload',
 
         // 选择文件的按钮。可选。
         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -350,7 +354,7 @@
 
         let $list = $("#fileList");
         // $list为容器jQuery实例
-        $list.append($li);
+        $list.html($li);
 
         // 创建缩略图
         // 如果为非图片文件，可以不用调用此方法。
@@ -381,8 +385,9 @@
     });
 
     // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-    uploader.on('uploadSuccess', function (file) {
+    uploader.on('uploadSuccess', function (file, response) {
         $('#' + file.id).addClass('upload-state-done');
+        $('#thumbnail').val(response.data);
     });
 
     // 文件上传失败，显示上传出错。
