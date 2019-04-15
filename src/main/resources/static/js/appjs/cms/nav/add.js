@@ -13,11 +13,7 @@ $.validator.setDefaults({
  */
 function save() {
     var obj = $('#signupForm').serializeJSON();
-    var data = JSON.stringify(obj);
-    console.log(data);
-    $.cookie("nav_1", null, {path: '/'});
-    $.cookie("nav_1", data, {path: '/'});
-    window.location.href = '/cms/nav/edit/' + obj.type;
+    window.location.href = '/cms/nav/add/' + obj.type;
 }
 
 function validateRule() {

@@ -52,12 +52,9 @@ public class NavController extends AdminBaseController {
         return "cms/nav/add";
     }
 
-    @GetMapping("/add/{type}")
+    @GetMapping("/add/{suffix}")
     @RequiresPermissions("cms:nav:add")
-    String add(@PathVariable("type") Integer type, Integer navId, Model model) {
-        String suffix;
-        suffix = HtmlConstant.getHtml(type);
-        model.addAttribute("navId", navId);
+    String add(@PathVariable("suffix") String suffix) {
         return "cms/nav/" + suffix;
     }
 
