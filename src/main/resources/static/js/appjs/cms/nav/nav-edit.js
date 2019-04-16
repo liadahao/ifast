@@ -39,7 +39,7 @@ form.steps({
         window.location.href = "/cms/nav/"
     },
     onFinished: function (event, currentIndex) {
-        var nav = $('#signupForm').serializeJSON();
+        var nav = $('#signupForm').serializeJSON({useIntKeysAsArrayIndex: true});
         var content = JSON.stringify(nav['content']);
         nav['content'] = content;
         var data = JSON.stringify(nav);

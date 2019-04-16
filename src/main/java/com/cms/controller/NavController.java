@@ -4,6 +4,7 @@ package com.cms.controller;
 import java.util.Arrays;
 
 import com.cms.core.HtmlConstant;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,6 +78,9 @@ public class NavController extends AdminBaseController {
     @PostMapping("/save")
     @RequiresPermissions("cms:nav:add")
     public Result<String> save(@RequestBody NavDO nav) {
+        if (StringUtils.isEmpty(nav.getIsShowFlag())) {
+            nav.setIsshow(0);
+        }
         navService.insert(nav);
         return Result.ok();
     }
@@ -86,6 +90,9 @@ public class NavController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:nav:edit")
     public Result<String> update(NavDO nav) {
+        if (StringUtils.isEmpty(nav.getIsShowFlag())) {
+            nav.setIsshow(0);
+        }
         boolean update = navService.updateById(nav);
         return update ? Result.ok() : Result.fail();
     }
