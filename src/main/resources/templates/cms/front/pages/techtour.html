@@ -9,123 +9,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
-    <script type="text/javascript">
-        $(function () {
-            var id = '#doc-oc-demo3';
-            var $myOc = $(id);
-            $('.side-close').on('click', function () {
-                $myOc.offCanvas($(this).data('rel'));
-            });
-        });
-    </script>
-
-
-    <style>
-
-        html, body {
-            background: url("/img/01.png") no-repeat fixed center center;
-        }
-
-        .main {
-            margin-top: 106px;
-        }
-
-        .main-body {
-            padding-right: 3.63%;
-            padding-left: 3.63%;
-            padding-top: 56px;
-        }
-
-        .main-body .left-side {
-            padding-top: 50px;
-            height: 658px;
-            background: url(/img/0201.png) no-repeat center center;
-        }
-
-        .left-side .title {
-            overflow: hidden
-        }
-
-        .left-side .title p {
-            margin-top: 0;
-        }
-
-        .left-side .left-title {
-            margin-left: 17px;
-            width: 141px;
-            height: 49px;
-            font-size: 64px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(0, 253, 255, 1);
-            display: inline;
-        }
-
-        .left-side .right-title {
-            width: 136px;
-            font-size: 64px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(73, 18, 139, 1);
-            padding-left: 39px;
-            display: inline;
-        }
-
-        .left-side .content {
-            margin: 0 0 0 39%;
-            font-size: 14px;
-            font-family: PingFangSC-Regular;
-            font-weight: 400;
-            color: rgba(73, 18, 139, 1);
-        }
-
-        .left-side video {
-            margin-top: 47px;
-            margin-left: 39%;
-            width: 280px;
-            height: 168px;
-        }
-
-        .am-panel-hd {
-            background: rgba(0, 0, 0, 0);
-            font-size: 20px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(246, 246, 246, 1);
-        }
-
-        .am-panel {
-            background: rgba(0, 0, 0, 0);
-            border-bottom-color: rgba(0, 253, 255, 1);
-        }
-
-        .am-panel:first-child {
-            border-top: 1px solid rgba(0, 253, 255, 1);
-        }
-
-        #accordion {
-            padding-left: 20px;
-            padding-top: 50px;
-        }
-
-        #accordion .am-panel-bd {
-            font-size: 14px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(246, 246, 246, 1);
-            padding: 1.00rem 1.00rem 0;
-            border-top: 0;
-        }
-
-        #accordion .am-panel-title {
-            margin-left: 21px;
-        }
-
-    </style>
+    <link th:href="@{/css/techtour.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
@@ -153,12 +39,8 @@
                     <div class="left-title am-text-center">Tech</div>
                     <div class="right-title am-text-center">Tour</div>
                 </div>
-                <p class="content">
-                    Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life
-                    business
-                    not only in the tech industry, but also manufacturing and market trade. Our tours provide a
-                    thoroughly educational experience for business school students, and give professors a unique
-                    teaching opportunity that can’t be found in books
+                <p th:text="${data['content']}" class="content">
+
                 </p>
                 <video src="/video/WeChat_20190327231432.mp4"
                        controls="controls">
@@ -169,33 +51,18 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201enterprise.png"></span>
-                        <span th:if="${data['model1title'] != null}" th:text="${data['model1title']}"
+                        <span th:if="${data['model1title'] != null}"
+                              th:text="${data['model1title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
-                    </span>
-                        <span th:if="${data['model1title'] == null}" class="am-panel-title"
-                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
-                        Enterprise
                     </span>
                     </div>
                     <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
                         <div class="am-panel-bd">
                             <div class="am-g">
-                                <p th:if="${data['model1content'] != null}" th:text="${data['model1content']}"
+                                <p th:if="${data['model1content'] != null}"
+                                   th:text="${data['model1content']}"
                                    class="am-u-sm-9">
-                                </p>
-                                <p th:if="${data['model1content'] == null}" class="am-u-sm-9">
-                                    Learn from professionals who work for Chinese companies in a variety of
-                                    industries,
-                                    such
-                                    as
-                                    Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more.
-                                    This
-                                    eye-opening tour can help you determine what specific direction to take your
-                                    education,
-                                    while providing you with plenty of insight into what to expect, no matter what
-                                    specific
-                                    field you ultimately choose.
                                 </p>
                                 <video th:src="${data['model1video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
@@ -210,34 +77,16 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201manufacturing.png"></span>
-                        <span th:if="${data['model2title'] != null}" th:text="${data['model1title']}"
+                        <span th:if="${data['model2title'] != null}" th:text="${data['model2title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                     </span>
-                        <span th:if="${data['model2title'] == null}" class="am-panel-title"
-                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
-                        Enterprise
-                    </span>
-
                     </div>
                     <div id="do-not-say-2" class="am-panel-collapse am-collapse">
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <p th:if="${data['model2content'] != null}" th:text="${data['model2content']}"
                                    class="am-u-sm-9">
-                                </p>
-                                <p th:if="${data['model2content'] == null}" class="am-u-sm-9">
-                                    Learn from professionals who work for Chinese companies in a variety of
-                                    industries,
-                                    such
-                                    as
-                                    Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more.
-                                    This
-                                    eye-opening tour can help you determine what specific direction to take your
-                                    education,
-                                    while providing you with plenty of insight into what to expect, no matter what
-                                    specific
-                                    field you ultimately choose.
                                 </p>
                                 <video th:src="${data['model2video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
@@ -256,29 +105,12 @@
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
                     </span>
-                        <span th:if="${data['model3title'] == null}" class="am-panel-title"
-                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
-                        Startups
-                    </span>
                     </div>
                     <div id="do-not-say-3" class="am-panel-collapse am-collapse">
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <p th:if="${data['model3content'] != null}" th:text="${data['model3content']}"
                                    class="am-u-sm-9">
-                                </p>
-                                <p th:if="${data['model3content'] == null}" class="am-u-sm-9">
-                                    Learn from professionals who work for Chinese companies in a variety of
-                                    industries,
-                                    such
-                                    as
-                                    Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more.
-                                    This
-                                    eye-opening tour can help you determine what specific direction to take your
-                                    education,
-                                    while providing you with plenty of insight into what to expect, no matter what
-                                    specific
-                                    field you ultimately choose.
                                 </p>
                                 <video th:src="${data['model3video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
@@ -296,10 +128,6 @@
                         <span th:if="${data['model4title'] != null}" th:text="${data['model4title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
-                    </span>
-                        <span th:if="${data['model4title'] == null}" class="am-panel-title"
-                              data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
-                        Startups
                     </span>
                     </div>
                     <div id="do-not-say-4" class="am-panel-collapse am-collapse">
@@ -335,5 +163,17 @@
 
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        var id = '#doc-oc-demo3';
+        var $myOc = $(id);
+        $('.side-close').on('click', function () {
+            $myOc.offCanvas($(this).data('rel'));
+        });
+        alert(window.screen.width);
+    });
+</script>
 </body>
 </html>

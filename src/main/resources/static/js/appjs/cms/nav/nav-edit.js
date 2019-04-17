@@ -155,3 +155,21 @@ uploader.on('uploadError', function (file) {
 uploader.on('uploadComplete', function (file) {
     $('#' + file.id).find('.progress').remove();
 });
+
+function addTechtourLink(id) {
+    var tbody = $("#linktable-" + id);
+    var len = tbody.children('tr').length;
+    if (len >= 12) {
+        alert('链接已到达12个');
+        return;
+    }
+    //iframe层-父子操作
+    layer.open({
+        type: 2,
+        area: ['700px', '450px'],
+        fixed: false, //不固定
+        maxmin: true,
+        content: '/cms/nav/add/7'
+    });
+
+}

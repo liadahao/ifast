@@ -2,10 +2,17 @@ package com.cms.controller;
 
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cms.core.HtmlConstant;
+import com.cms.domain.NavVo;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.formula.functions.Na;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,24 +60,31 @@ public class NavController extends AdminBaseController {
         return "cms/nav/add";
     }
 
-    @GetMapping("/add/{suffix}")
+    @GetMapping("/add/{type}")
     @RequiresPermissions("cms:nav:add")
-    String add(@PathVariable("suffix") String suffix) {
+    String add(@PathVariable("type") Integer type, Model model) {
+        String suffix = HtmlConstant.getHtml(type);
+        NavDO navDO = new NavDO();
+        navDO.setType(type);
+        model.addAttribute("nav", navDO);
         return "cms/nav/" + suffix;
-    }
-
-    @GetMapping("/add/seo")
-    @RequiresPermissions("cms:nav:add")
-    String addSeo() {
-        return "cms/nav/seo";
     }
 
     @GetMapping("/edit/{id}")
     @RequiresPermissions("cms:nav:edit")
     String edit(@PathVariable("id") Long id, Model model) {
         NavDO nav = navService.selectById(id);
-        model.addAttribute("nav", nav);
-        return "cms/nav/edit";
+        String suffix = HtmlConstant.getHtml(nav.getType());
+        NavVo navVo = new NavVo();
+        BeanUtils.copyProperties(nav, navVo, "content");
+        Map<String, Object> map = JSON.parseObject(nav.getContent(), Map.class);
+        if (map != null) {
+            navVo.setContent(map);
+        } else {
+            navVo.setContent(new HashMap<>());
+        }
+        model.addAttribute("nav", navVo);
+        return "cms/nav/" + suffix;
     }
 
     @Log("添加")

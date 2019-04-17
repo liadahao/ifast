@@ -18,7 +18,9 @@ public enum HtmlConstant {
 
     TESTIMONIALS(5, "testimonials"),
 
-    ABOUT(6, "about");
+    ABOUT(6, "about"),
+
+    ADD_LINK(7, "add-link");
 
     public int type;
     public String html;

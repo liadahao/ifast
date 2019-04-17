@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 15/04/2019 19:13:26
+ Date: 17/04/2019 18:40:54
 */
 
 SET NAMES utf8mb4;
@@ -83,7 +83,7 @@ CREATE TABLE `article`  (
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (10, '视觉中国开盘封死跌停 创始人身家瞬间缩水1.3亿', '<p>原标题：视觉中国开盘封死跌停 柴继军身价瞬间缩水1.3亿</p><p>　　4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。</p><p>　　早些时候，视觉中国发公告称，天津市互联网信息办公室依法约谈其网站负责人，责令公司网站全面彻底整改并在此期间暂时关闭网站。</p><p>　　4月11日，因“人类首张黑洞照片”版权标注问题，A股上市公司视觉中国陷入舆论风暴。网友和机构随即发现，国旗国徽也被视觉中国打了版权售卖。国徽图片页面“价格提示”显示，“用于内文不低于150元，整版跨页不低于500元，杂志封面不低于1000元，商业使用价格另议。”虽然连续发声明解释、道歉，但是网友并不买账，直至该公司关闭网站。</p><p>　　根据计划，视觉中国4月12日有3.88亿股限售股上市流通，占公司总股本比例的55.39%。此次解禁是五年前视觉中国借壳远东股份所定向增发的股份，当时定增发行价为5.28元/股，五年期间未实施过股份送转。</p>', 'html', '4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。', NULL, 'http://localhost:8088/upload/20190414\\8\\f\\about-bg.jpg', 'admin', 0, 0, 1, 0, NULL, 0, '2019-04-12 11:59:12', NULL, '你好', '我好', '大家好', NULL, 4, '北京青年报', '{\"order\":\"\",\"type\":\"Fackbook\",\"url\":\"http://www.baidu.com\"}', NULL, NULL, NULL, NULL);
+INSERT INTO `article` VALUES (10, '视觉中国开盘封死跌停 创始人身家瞬间缩水1.3亿', '<p>原标题：视觉中国开盘封死跌停 柴继军身价瞬间缩水1.3亿</p><p>　　4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。</p><p>　　早些时候，视觉中国发公告称，天津市互联网信息办公室依法约谈其网站负责人，责令公司网站全面彻底整改并在此期间暂时关闭网站。</p><p>　　4月11日，因“人类首张黑洞照片”版权标注问题，A股上市公司视觉中国陷入舆论风暴。网友和机构随即发现，国旗国徽也被视觉中国打了版权售卖。国徽图片页面“价格提示”显示，“用于内文不低于150元，整版跨页不低于500元，杂志封面不低于1000元，商业使用价格另议。”虽然连续发声明解释、道歉，但是网友并不买账，直至该公司关闭网站。</p><p>　　根据计划，视觉中国4月12日有3.88亿股限售股上市流通，占公司总股本比例的55.39%。此次解禁是五年前视觉中国借壳远东股份所定向增发的股份，当时定增发行价为5.28元/股，五年期间未实施过股份送转。</p>', 'html', '4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。', NULL, '', 'admin', 0, 0, 1, 0, NULL, 0, '2019-04-12 11:59:12', NULL, '你好', '我好', '大家好', NULL, 4, '北京青年报', '{\"order\":\"\",\"type\":\"Fackbook\",\"url\":\"http://www.baidu.com\"}', NULL, NULL, NULL, NULL);
 INSERT INTO `article` VALUES (11, '1231fsv etget', '<p>Balala...</p>', 'html', '123123', NULL, NULL, 'admin', 0, 0, 1, 0, NULL, 0, '2019-04-12 13:02:00', NULL, '', '', '', NULL, 4, '1231', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `article` VALUES (12, 'swfwsfasf', '<p style=\"text-align: center;\">Balala...acvasasfc</p>', 'html', 'dsvgffwef', NULL, NULL, 'admin', 0, 0, 1, 0, NULL, 0, '2019-04-12 13:07:35', NULL, '', '', '', NULL, 4, 'ad', '{\"order\":\"1\",\"type\":\"Fackbook\",\"url\":\"http://www.baidu.com\"}', '{\"order\":\"\",\"type\":\"Linkedin\",\"url\":\"http://www.baidu.com\"}', '{\"order\":\"\",\"type\":\"Twitter\",\"url\":\"http://www.baidu.com\"}', NULL, NULL);
 INSERT INTO `article` VALUES (13, '13', '<p>Balala...</p><p><br></p><p><img alt=\"Image\" src=\"https://n.sinaimg.cn/news/crawl/726/w550h976/20190412/OfKe-hvntnkq9510568.jpg\"><br></p><p>afafasfasdf</p><p><br></p><p>sdfsd</p><p>sdfsds</p>', 'html', '123', NULL, NULL, 'admin', 0, 0, 1, 0, NULL, 0, '2019-04-12 15:24:51', NULL, '', '', '', NULL, 4, '123', NULL, NULL, NULL, NULL, NULL);
@@ -183,18 +183,19 @@ CREATE TABLE `nav`  (
   `url` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '访问链接',
   `order` int(11) NULL DEFAULT NULL COMMENT '排序',
   `type` int(11) NULL DEFAULT NULL COMMENT '类型',
-  `isShow` int(11) NULL DEFAULT 0 COMMENT '是否显示',
+  `isShow` int(11) NULL DEFAULT 1 COMMENT '是否显示',
   `updateTime` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `metaTitle` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'SEO标题',
+  `metaKeywords` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'SEO关键字',
+  `metaDescription` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'SEO描述信息',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of nav
 -- ----------------------------
-INSERT INTO `nav` VALUES (33, 'techtour', NULL, '/techtour', 1, 2, 0, '2019-04-14 17:49:12', '{\"title\":\"1212\",\"content\":\"121\",\"video\":\"\",\"order\":\"\",\"model1title\":\"\",\"model1content\":\"\",\"model1video\":\"\",\"model1order\":\"\",\"model2title\":\"\",\"model2content\":\"\",\"model2video\":\"\",\"model2order\":\"\",\"model3title\":\"\",\"model3content\":\"\",\"model3video\":\"\",\"model3order\":\"\",\"model4title\":\"\"}');
-INSERT INTO `nav` VALUES (34, 'techtour', '', '/techtour', 1, NULL, 0, NULL, '{\"model1title\":\"\",\"model1content\":\"\",\"model1image\":\"\",\"model1isShow\":\"on\",\"model2title\":\"\",\"model2content\":\"\",\"model2image\":\"\",\"model2isShow\":\"on\",\"model3title\":\"\",\"model3content\":\"\",\"model3image\":\"\",\"model3isShow\":\"on\",\"model4title\":\"\",\"model4content\":\"\",\"model4image\":\"\",\"model4isShow\":\"on\",\"model5title\":\"\",\"model5content\":\"\",\"model5image\":\"\",\"model5isShow\":\"on\"}');
-INSERT INTO `nav` VALUES (35, '123', '', '13', 1, NULL, 0, NULL, '{\"model1title\":\"13123\",\"model1content\":\"12123\",\"model1image\":\"\",\"model2title\":\"\",\"model2content\":\"\",\"model2image\":\"\",\"model2isShow\":\"on\",\"model3title\":\"\",\"model3content\":\"\",\"model3image\":\"\",\"model3isShow\":\"on\",\"model4title\":\"\",\"model4content\":\"\",\"model4image\":\"\",\"model4isShow\":\"on\",\"model5title\":\"\",\"model5content\":\"\",\"model5image\":\"\",\"model5isShow\":\"on\"}');
+INSERT INTO `nav` VALUES (1, 'techtour', '', '/techtour', 1, 2, 0, NULL, '{\"model1title\":\"Enterprise\",\"model1content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model1video\":\"\",\"model2title\":\"Manufacturing\",\"model2content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model2video\":\"\",\"model3title\":\"Startups\",\"model3content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model3video\":\"\",\"model4title\":\"We often visit\"}', 'techtour', 'techtour', 'techtour');
 
 -- ----------------------------
 -- Table structure for product
@@ -448,7 +449,7 @@ CREATE TABLE `sys_file`  (
   `url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'URL地址',
   `createDate` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1117354582574391298 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '文件上传' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1118453357372059650 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '文件上传' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_file
@@ -505,6 +506,17 @@ INSERT INTO `sys_file` VALUES (1117351912564338689, 0, 'http://localhost:8088/up
 INSERT INTO `sys_file` VALUES (1117351912748888065, 0, 'http://localhost:8088/upload/20190414\\6\\6\\home-bg.jpg', '2019-04-14 17:00:30');
 INSERT INTO `sys_file` VALUES (1117353586871787521, 0, 'http://localhost:8088/upload/20190414\\5\\8\\post-bg.jpg', '2019-04-14 17:07:09');
 INSERT INTO `sys_file` VALUES (1117354582574391297, 0, 'http://localhost:8088/upload/20190414\\8\\f\\post-sample-image.jpg', '2019-04-14 17:11:07');
+INSERT INTO `sys_file` VALUES (1118055010236637186, 0, 'http://localhost:8088/upload/20190416/2/b/u5898.png', '2019-04-16 15:34:22');
+INSERT INTO `sys_file` VALUES (1118066220105469954, 0, 'http://localhost:8088/upload/20190416/2/b/u5898.png', '2019-04-16 16:18:54');
+INSERT INTO `sys_file` VALUES (1118066523190071297, 0, 'http://localhost:8088/upload/20190416/2/b/u5898.png', '2019-04-16 16:20:06');
+INSERT INTO `sys_file` VALUES (1118066575916666881, 0, 'http://localhost:8088/upload/20190416/5/9/u5967.png', '2019-04-16 16:20:19');
+INSERT INTO `sys_file` VALUES (1118066757571973122, 0, 'http://localhost:8088/upload/20190416/2/b/u5898.png', '2019-04-16 16:21:02');
+INSERT INTO `sys_file` VALUES (1118066769936781314, 0, 'http://localhost:8088/upload/20190416/5/9/u5967.png', '2019-04-16 16:21:05');
+INSERT INTO `sys_file` VALUES (1118066843462930433, 0, 'http://localhost:8088/upload/20190416/2/b/u5898.png', '2019-04-16 16:21:23');
+INSERT INTO `sys_file` VALUES (1118371646881689602, 0, 'http://localhost:8088/upload/20190417/2/b/u5898.png', '2019-04-17 12:32:34');
+INSERT INTO `sys_file` VALUES (1118452952261013506, 0, 'http://localhost:8088/upload/20190417/5/9/u5967.png', '2019-04-17 17:55:38');
+INSERT INTO `sys_file` VALUES (1118453199007723522, 0, 'http://localhost:8088/upload/20190417/2/b/u5898.png', '2019-04-17 17:56:37');
+INSERT INTO `sys_file` VALUES (1118453357372059649, 0, 'http://localhost:8088/upload/20190417/7/a/261_expand_12rollover1.png', '2019-04-17 17:57:15');
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -521,7 +533,7 @@ CREATE TABLE `sys_log`  (
   `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'IP地址',
   `gmtCreate` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1117746863391408130 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1118463803168743426 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
@@ -895,6 +907,43 @@ INSERT INTO `sys_log` VALUES (1117732165715554305, 1, 'admin', '登录', 157, 'P
 INSERT INTO `sys_log` VALUES (1117739051948998657, 1, 'admin', '登录', 166, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-15 18:38:51');
 INSERT INTO `sys_log` VALUES (1117746466912239617, 1, 'admin', '添加', 89, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-15 19:08:19');
 INSERT INTO `sys_log` VALUES (1117746863391408129, 1, 'admin', '添加', 42, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-15 19:09:54');
+INSERT INTO `sys_log` VALUES (1118054810877173762, 1, 'admin', '登录', 45, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 15:33:34');
+INSERT INTO `sys_log` VALUES (1118055010400215042, 1, 'admin', '上传文件', 40, 'POST /common/sysFile/upload', '{\"id\":[\"WU_FILE_0\"],\"name\":[\"u5898.png\"],\"type\":[\"image/png\"],\"lastModifiedDate\":[\"Tue Mar 26 2019 18:27:19 GMT+0800 (China Standard Time)\"],\"size\":[\"555\"]}', '127.0.0.1', '2019-04-16 15:34:22');
+INSERT INTO `sys_log` VALUES (1118055175207002113, 1, 'admin', '添加', 60, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-16 15:35:01');
+INSERT INTO `sys_log` VALUES (1118060967721177089, 1, 'admin', '登录', 34, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 15:58:02');
+INSERT INTO `sys_log` VALUES (1118066011715670018, 1, 'admin', '登录', 13, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 16:18:05');
+INSERT INTO `sys_log` VALUES (1118066220298407938, 1, 'admin', '上传文件', 53, 'POST /common/sysFile/upload', '{}', '127.0.0.1', '2019-04-16 16:18:54');
+INSERT INTO `sys_log` VALUES (1118066523433340930, 1, 'admin', '上传文件', 59, 'POST /common/sysFile/upload', '{}', '127.0.0.1', '2019-04-16 16:20:07');
+INSERT INTO `sys_log` VALUES (1118066576050884610, 1, 'admin', '上传文件', 33, 'POST /common/sysFile/upload', '{}', '127.0.0.1', '2019-04-16 16:20:19');
+INSERT INTO `sys_log` VALUES (1118066757915906050, 1, 'admin', '上传文件', 70, 'POST /common/sysFile/upload', '{}', '127.0.0.1', '2019-04-16 16:21:02');
+INSERT INTO `sys_log` VALUES (1118066770180050945, 1, 'admin', '上传文件', 59, 'POST /common/sysFile/upload', '{}', '127.0.0.1', '2019-04-16 16:21:05');
+INSERT INTO `sys_log` VALUES (1118066843769114626, 1, 'admin', '上传文件', 74, 'POST /common/sysFile/upload', '{}', '127.0.0.1', '2019-04-16 16:21:23');
+INSERT INTO `sys_log` VALUES (1118072817921822721, 1, 'admin', '登录', 3, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 16:45:07');
+INSERT INTO `sys_log` VALUES (1118074951891423234, 1, 'admin', '添加', 42, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-16 16:53:36');
+INSERT INTO `sys_log` VALUES (1118078133124206593, 1, 'admin', '登录', 6, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 17:06:14');
+INSERT INTO `sys_log` VALUES (1118081872308473858, 1, 'admin', '登录', 3, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 17:21:06');
+INSERT INTO `sys_log` VALUES (1118093414492016642, 1, 'admin', '添加', 68, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-16 18:06:58');
+INSERT INTO `sys_log` VALUES (1118094900793970689, 1, 'admin', '修改文章表', 18262, 'POST /cms/article/update', '{\"id\":[\"10\"],\"title\":[\"视觉中国开盘封死跌停 创始人身家瞬间缩水1.3亿\"],\"summary\":[\"4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。\"],\"author\":[\"北京青年报\"],\"style\":[\"4\"],\"thumbnail\":[\"\"],\"social[0][type]\":[\"Fackbook\"],\"social[0][url]\":[\"http://www.baidu.com\"],\"social[0][order]\":[\"\"],\"social[1][type]\":[\"\"],\"social[1][url]\":[\"\"],\"social[1][order]\":[\"\"],\"social[2][type]\":[\"\"],\"social[2][url]\":[\"\"],\"social[2][order]\":[\"\"],\"social[3][type]\":[\"\"],\"social[3][url]\":[\"\"],\"social[3][order]\":[\"\"],\"social[4][type]\":[\"\"],\"social[4][url]\":[\"\"],\"social[4][order]\":[\"\"],\"tag[0]\":[\"\"],\"tag[1]\":[\"\"],\"tag[2]\":[\"\"],\"content\":[\"<p>原标题：视觉中国开盘封死跌停 柴继军身价瞬间缩水1.3亿</p><p>　　4月12日早盘，视觉中国开盘无悬念跌停，封单近41万手，报25.20元/股，一夜间总市值从196亿元缩水至176.5亿元，市值蒸发19.6亿元。</p><p>　　早些时候，视觉中国发公告称，天津市互联网信息办公室依法约谈其网站负责人，责令公司网站全面彻底整改并在此期间暂时关闭网站。</p><p>　　4月11日，因“人类首张黑洞照片”版权标注问题，A股上市公司视觉中国陷入舆论风暴。网友和机构随即发现，国旗国徽也被视觉中国打了版权售卖。国徽图片页面“价格提示”显示，“用于内文不低于150元，整版跨页不低于500元，杂志封面不低于1000元，商业使用价格另议。”虽然连续发声明解释、道歉，但是网友并不买账，直至该公司关闭网站。</p><p>　　根据计划，视觉中国4月12日有3.88亿股限售股上市流通，占公司总股本比例的55.39%。此次解禁是五年前视觉中国借壳远东股份所定向增发的股份，当时定增发行价为5.28元/股，五年期间未实施过股份送转。</p>\"],\"metaTitle\":[\"你好\"],\"metaKeywords\":[\"我好\"],\"metaDescription\":[\"大家好\"]}', '127.0.0.1', '2019-04-16 18:12:52');
+INSERT INTO `sys_log` VALUES (1118095958677131266, 1, 'admin', '添加', 31, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-16 18:17:04');
+INSERT INTO `sys_log` VALUES (1118102222933069825, 1, 'admin', '登录', 6, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-16 18:41:58');
+INSERT INTO `sys_log` VALUES (1118102283247161346, 1, 'admin', '添加', 57, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-16 18:42:12');
+INSERT INTO `sys_log` VALUES (1118349295230152706, 1, 'admin', '登录', 33, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 11:03:45');
+INSERT INTO `sys_log` VALUES (1118355196414554113, 1, 'admin', '登录', 6, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 11:27:12');
+INSERT INTO `sys_log` VALUES (1118359324998004738, 1, 'admin', '登录', 4, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 11:43:36');
+INSERT INTO `sys_log` VALUES (1118362426442543105, 1, 'admin', '登录', 14, 'POST /login', '{\"username\":[\"admi\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 11:55:55');
+INSERT INTO `sys_log` VALUES (1118362439264530434, 1, 'admin', '登录', 5, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 11:55:58');
+INSERT INTO `sys_log` VALUES (1118371647041073153, 1, 'admin', '上传文件', 42, 'POST /common/sysFile/upload', '{\"id\":[\"WU_FILE_0\"],\"name\":[\"u5898.png\"],\"type\":[\"image/png\"],\"lastModifiedDate\":[\"Tue Mar 26 2019 18:27:19 GMT+0800 (China Standard Time)\"],\"size\":[\"555\"]}', '127.0.0.1', '2019-04-17 12:32:34');
+INSERT INTO `sys_log` VALUES (1118438778302656513, 1, 'admin', '登录', 4, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 16:59:19');
+INSERT INTO `sys_log` VALUES (1118442748081385473, 1, 'admin', '登录', 157, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 17:15:05');
+INSERT INTO `sys_log` VALUES (1118444975894417409, 1, 'admin', '登录', 156, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 17:23:57');
+INSERT INTO `sys_log` VALUES (1118448755775946754, 1, 'admin', '登录', 158, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 17:38:58');
+INSERT INTO `sys_log` VALUES (1118451654824370178, 1, 'admin', '登录', 157, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 17:50:29');
+INSERT INTO `sys_log` VALUES (1118452897084944386, 1, 'admin', '登录', 162, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 17:55:25');
+INSERT INTO `sys_log` VALUES (1118452952382648322, 1, 'admin', '上传文件', 31, 'POST /common/sysFile/upload', '{\"id\":[\"WU_FILE_0\"],\"name\":[\"u5967.png\"],\"type\":[\"image/png\"],\"lastModifiedDate\":[\"Tue Mar 26 2019 18:27:19 GMT+0800 (China Standard Time)\"],\"size\":[\"791\"]}', '127.0.0.1', '2019-04-17 17:55:38');
+INSERT INTO `sys_log` VALUES (1118453199175495682, 1, 'admin', '上传文件', 40, 'POST /common/sysFile/upload', '{\"id\":[\"WU_FILE_0\"],\"name\":[\"u5898.png\"],\"type\":[\"image/png\"],\"lastModifiedDate\":[\"Tue Mar 26 2019 18:27:19 GMT+0800 (China Standard Time)\"],\"size\":[\"555\"]}', '127.0.0.1', '2019-04-17 17:56:37');
+INSERT INTO `sys_log` VALUES (1118453357468528642, 1, 'admin', '上传文件', 23, 'POST /common/sysFile/upload', '{\"id\":[\"WU_FILE_1\"],\"name\":[\"261_expand_12rollover1.png\"],\"type\":[\"image/png\"],\"lastModifiedDate\":[\"Tue Feb 06 2018 07:13:03 GMT+0800 (China Standard Time)\"],\"size\":[\"2835\"]}', '127.0.0.1', '2019-04-17 17:57:15');
+INSERT INTO `sys_log` VALUES (1118453445519552514, 1, 'admin', '添加', 58, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-17 17:57:36');
+INSERT INTO `sys_log` VALUES (1118463803168743425, 1, 'admin', '登录', 159, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 18:38:45');
 
 -- ----------------------------
 -- Table structure for sys_menu

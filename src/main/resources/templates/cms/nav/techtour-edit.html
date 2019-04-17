@@ -29,22 +29,20 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
-                                            <input id="title" name="content[title]" class="form-control" type="text"
-                                            th:value="${nav.content.title}"/>
+                                            <input id="title" name="title" class="form-control" type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">内容：</label>
                                         <div class="col-sm-8">
-                                            <textarea id="content" name="content[content]" class="form-control"
-                                                      rows="5" th:value="${nav.content.content}"></textarea>
+                                            <textarea id="content" name="content" class="form-control"
+                                                      rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
-                                            <input id="video" name="video" class="form-control" type="text"
-                                                   th:value="${nav.content.video}">
+                                            <input id="video" name="video" class="form-control" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +60,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-1-title" name="content[model1title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model1title}"/>
+                                                   type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -70,14 +68,14 @@
                                         <div class="col-sm-8">
                                         <textarea id="model-1-content" name="content[model1content]"
                                                   class="form-control"
-                                                  rows="5" th:value="${nav.content.model1content}"></textarea>
+                                                  rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
                                             <input id="model-1-video" name="content[model1video]" class="form-control"
-                                                   type="text" th:value="${nav.content.model1video}">
+                                                   type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +93,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-2-title" name="content[model2title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model2title}"/>
+                                                   type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -103,14 +101,14 @@
                                         <div class="col-sm-8">
                                         <textarea id="model-2-content" name="content[model2content]"
                                                   class="form-control"
-                                                  rows="5" th:value="${nav.content.model2content}"></textarea>
+                                                  rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
                                             <input id="model-2-video" name="content[model2video]" class="form-control"
-                                                   type="text" th:value="${nav.content.model2video}">
+                                                   type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +126,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-3-title" name="content[model3title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model3title}"/>
+                                                   type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -136,14 +134,14 @@
                                         <div class="col-sm-8">
                                         <textarea id="model-3-content" name="content[model3content]"
                                                   class="form-control"
-                                                  rows="5" th:value="${nav.content.model3content}"></textarea>
+                                                  rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
                                             <input id="model-3-video" name="content[model3video]" class="form-control"
-                                                   type="text" th:value="${nav.content.model3video}">
+                                                   type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +159,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-4-title" name="content[model4title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model4title}"/>
+                                                   type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -177,14 +175,28 @@
                                                         <thead>
                                                         <tr>
                                                             <th>社交媒体名称</th>
-                                                            <th>是否显示</th>
-                                                            <th>Logo图</th>
-                                                            <th>排序</th>
                                                             <th>url链接</th>
+                                                            <th>排序</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody id="linktable-0">
-
+                                                        <tr>
+                                                            <td><select class="form-control m-b"
+                                                                        name="content[social][0][type]">
+                                                                <option value=></option>
+                                                                <option value="Fackbook">Fackbook</option>
+                                                                <option value="Linkedin">Linkedin</option>
+                                                                <option value="Twitter">Twitter</option>
+                                                                <option value="Medium">Medium</option>
+                                                                <option value="Instagram">Instagram</option>
+                                                            </select></td>
+                                                            <td><input name="content[social][0][url]"
+                                                                       class="form-control"
+                                                                       type="url"></td>
+                                                            <td><input name="content[social][0][order]"
+                                                                       class="form-control"
+                                                                       type="number"></td>
+                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>

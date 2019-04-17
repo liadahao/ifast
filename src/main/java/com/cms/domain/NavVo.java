@@ -1,16 +1,10 @@
 package com.cms.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.IdType;
-import com.ifast.common.base.BaseDO;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import java.util.Map;
 
 /**
  * <pre>
@@ -19,10 +13,7 @@ import lombok.EqualsAndHashCode;
  * <small> 2019-04-08 23:53:56 | Aron</small>
  */
 @Data
-@SuppressWarnings("serial")
-@TableName("nav")
-public class NavDO implements Serializable {
-    @TableId(type = IdType.AUTO)
+public class NavVo implements Serializable {
     private Long id;
 
     /**
@@ -30,7 +21,7 @@ public class NavDO implements Serializable {
      */
     private String name;
 
-    private String content;
+    private Map<String,Object> content;
     /**
      *
      */
@@ -63,8 +54,4 @@ public class NavDO implements Serializable {
      *
      */
     private Date updatetime;
-
-    @TableField(exist = false)
-    private String isShowFlag;
-
 }

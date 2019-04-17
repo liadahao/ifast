@@ -11,22 +11,36 @@
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">页面导航名称：</label>
+                            <label class="col-sm-3 control-label">外链名称：</label>
                             <div class="col-sm-8">
                                 <input id="name" name="name" class="form-control" type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">背景图：</label>
+                            <label class="col-sm-3 control-label">是否显示：</label>
+                            <div class="switch col-sm-8">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" checked="" class="onoffswitch-checkbox" id="isShow"
+                                           name="isShow">
+                                    <label class="onoffswitch-label" for="isShow">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Logo图：</label>
                             <!--dom结构部分-->
                             <div id="uploader-demo" class="col-sm-8">
                                 <!--用来存放item-->
                                 <div id="fileList" class="uploader-list"></div>
                                 <div id="filePicker">选择图片</div>
                             </div>
+                            <input id="logo" name="logo" class="form-control" type="hidden">
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">访问链接：</label>
+                            <label class="col-sm-3 control-label">链接地址：</label>
                             <div class="col-sm-8">
                                 <input id="url" name="url" class="form-control" type="text">
                             </div>
@@ -38,40 +52,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">类型：</label>
-                            <div class="col-sm-9">
-                                <select class="form-control m-b" name="type">
-                                    <option value="2">手风琴页面（Techtour）</option>
-                                    <option value="3">轮播式（Workshop）</option>
-                                    <option value="4">单模块静态（Service）</option>
-                                    <option value="5">单模块评价（Testimonials）</option>
-                                    <option value="6">多模块特征（About）</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">是否显示：</label>
-                            <div class="switch col-sm-8">
-                                <div class="onoffswitch">
-                                    <input type="checkbox" checked="" class="onoffswitch-checkbox" id="example1"
-                                           name="isShow">
-                                    <label class="onoffswitch-label" for="example1">
-                                        <span class="onoffswitch-inner"></span>
-                                        <span class="onoffswitch-switch"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">更新时间：</label>
-                            <div class="col-sm-8">
-                                <input id="updatetime" name="updatetime" class="form-control" type="text"
-                                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">下一步</button>
+                                <button id="closeIframe" class="btn btn-primary">保存</button>
                             </div>
                         </div>
                     </form>
@@ -82,7 +64,6 @@
 </div>
 <div th:include="include::footer"></div>
 <script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript" src="/js/appjs/cms/nav/add.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
 <script type="text/javascript">
     // 初始化Web Uploader
@@ -95,7 +76,7 @@
         swf: '/js/Uploader.swf',
 
         // 文件接收服务端。
-        server: 'http://webuploader.duapp.com/server/fileupload.php',
+        server: '/common/sysFile/upload',
 
         // 选择文件的按钮。可选。
         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -152,8 +133,9 @@
     });
 
     // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-    uploader.on('uploadSuccess', function (file) {
+    uploader.on('uploadSuccess', function (file, response) {
         $('#' + file.id).addClass('upload-state-done');
+        $('#logo').val(response.data);
     });
 
     // 文件上传失败，显示上传出错。
@@ -172,6 +154,33 @@
     // 完成上传完了，成功或者失败，先删除进度条。
     uploader.on('uploadComplete', function (file) {
         $('#' + file.id).find('.progress').remove();
+    });
+
+    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+    $('#closeIframe').click(function () {
+        var tbody = parent.$('#linktable-0');
+        var len = tbody.children('tr').length;
+        var html = '<tr>\n' +
+            '<td><input name="content[social][' + (len - 1) + '][name]"\n' +
+            '           class="form-control"\n' +
+            '           type="text" value="' + $("#name").val() + '" disabled /></td>\n' +
+            '<td><input name="content[social][' + (len - 1) + '][isShow]"\n' +
+            '           class="form-control"\n' +
+            '           type="text" value="' + $("#isShow").val() + '" disabled/></td>\n' +
+            '<td><input name="content[social][' + (len - 1) + '][logo]"\n' +
+            '           class="form-control"\n' +
+            '           type="hidden" value="' + $("#logo").val() + '" disabled/>' +
+            '<img src="' + ($("#fileList").find('img').attr('src')) + '"/>' +
+            '</td>\n' +
+            '<td><input name="content[social][' + (len - 1) + '][order]"\n' +
+            '           class="form-control"\n' +
+            '           type="number" value="' + $("#order").val() + '" disabled/></td>\n' +
+            '<td><input name="content[social][' + (len - 1) + '][url]"\n' +
+            '           class="form-control"\n' +
+            '           type="text" value="' + $("#url").val() + '" disabled/></td>\n' +
+            '</tr>';
+        parent.$('#linktable-0').append(html);
+        parent.layer.close(index);
     });
 </script>
 </body>
