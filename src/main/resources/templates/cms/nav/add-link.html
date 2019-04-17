@@ -10,6 +10,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" class="form-control" type="hidden">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">外链名称：</label>
                             <div class="col-sm-8">
@@ -42,7 +43,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">链接地址：</label>
                             <div class="col-sm-8">
-                                <input id="url" name="url" class="form-control" type="text">
+                                <input id="url" name="url" class="form-control" type="url">
                             </div>
                         </div>
                         <div class="form-group">
@@ -160,26 +161,70 @@
     $('#closeIframe').click(function () {
         var tbody = parent.$('#linktable-0');
         var len = tbody.children('tr').length;
-        var html = '<tr>\n' +
-            '<td><input name="content[social][' + (len - 1) + '][name]"\n' +
-            '           class="form-control"\n' +
-            '           type="text" value="' + $("#name").val() + '" disabled /></td>\n' +
-            '<td><input name="content[social][' + (len - 1) + '][isShow]"\n' +
-            '           class="form-control"\n' +
-            '           type="text" value="' + $("#isShow").val() + '" disabled/></td>\n' +
-            '<td><input name="content[social][' + (len - 1) + '][logo]"\n' +
-            '           class="form-control"\n' +
-            '           type="hidden" value="' + $("#logo").val() + '" disabled/>' +
-            '<img src="' + ($("#fileList").find('img').attr('src')) + '"/>' +
-            '</td>\n' +
-            '<td><input name="content[social][' + (len - 1) + '][order]"\n' +
-            '           class="form-control"\n' +
-            '           type="number" value="' + $("#order").val() + '" disabled/></td>\n' +
-            '<td><input name="content[social][' + (len - 1) + '][url]"\n' +
-            '           class="form-control"\n' +
-            '           type="text" value="' + $("#url").val() + '" disabled/></td>\n' +
-            '</tr>';
-        parent.$('#linktable-0').append(html);
+        var id = $("#id").val();
+        if (id === '') {
+            id = 'tr-' + len;
+            var html = '<tr id="' + id + '">\n' +
+                '<td><input name="content[social][' + (len) + '][name]"\n' +
+                '           class="form-control"\n' +
+                '           type="text" value="' + $("#name").val() + '" readonly="readonly" /></td>\n' +
+                '<td><input name="content[social][' + (len) + '][isShow]"\n' +
+                '           class="form-control"\n' +
+                '           type="text" value="' + $("#isShow").val() + '" readonly="readonly"/></td>\n' +
+                '<td><input name="content[social][' + (len) + '][logo]"\n' +
+                '           class="form-control"\n' +
+                '           type="hidden" value="' + $("#logo").val() + '" readonly="readonly"/>' +
+                '<img src="' + ($("#fileList").find('img').attr('src')) + '"/>' +
+                '</td>\n' +
+                '<td><input name="content[social][' + (len) + '][order]"\n' +
+                '           class="form-control"\n' +
+                '           type="number" value="' + $("#order").val() + '" readonly="readonly"/></td>\n' +
+                '<td><input name="content[social][' + (len) + '][url]"\n' +
+                '           class="form-control"\n' +
+                '           type="text" value="' + $("#url").val() + '" readonly="readonly"/></td>\n' +
+                '<td style="text-align: center; "><a\n' +
+                '        class="btn btn-primary btn-sm "\n' +
+                '        title="编辑" onclick="editTechtourLink(this)"><i\n' +
+                '        class="fa fa-edit"></i></a> <a\n' +
+                '        class="btn btn-warning btn-sm " title="删除"\n' +
+                '        onclick="removeLink(this)"><i\n' +
+                '        class="fa fa-remove"></i></a>\n' +
+                '</td>' +
+                '</tr>';
+        } else {
+            var html =
+                '<td><input name="content[social][' + (len) + '][name]"\n' +
+                '           class="form-control"\n' +
+                '           type="text" value="' + $("#name").val() + '" readonly="readonly" /></td>\n' +
+                '<td><input name="content[social][' + (len) + '][isShow]"\n' +
+                '           class="form-control"\n' +
+                '           type="text" value="' + $("#isShow").val() + '" readonly="readonly"/></td>\n' +
+                '<td><input name="content[social][' + (len) + '][logo]"\n' +
+                '           class="form-control"\n' +
+                '           type="hidden" value="' + $("#logo").val() + '" readonly="readonly"/>' +
+                '<img src="' + ($("#fileList").find('img').attr('src')) + '"/>' +
+                '</td>\n' +
+                '<td><input name="content[social][' + (len) + '][order]"\n' +
+                '           class="form-control"\n' +
+                '           type="number" value="' + $("#order").val() + '" readonly="readonly"/></td>\n' +
+                '<td><input name="content[social][' + (len) + '][url]"\n' +
+                '           class="form-control"\n' +
+                '           type="text" value="' + $("#url").val() + '" readonly="readonly"/></td>\n' +
+                '<td style="text-align: center; "><a\n' +
+                '        class="btn btn-primary btn-sm "\n' +
+                '        title="编辑" onclick="editTechtourLink(this)"><i\n' +
+                '        class="fa fa-edit"></i></a> <a\n' +
+                '        class="btn btn-warning btn-sm " title="删除"\n' +
+                '        onclick="removeLink(this)"><i\n' +
+                '        class="fa fa-remove"></i></a>\n' +
+                '</td>'
+        }
+
+        if (parent.$('#' + id).length !== 0) {
+            parent.$('#' + id).html(html);
+        } else {
+            parent.$('#linktable-0').append(html);
+        }
         parent.layer.close(index);
     });
 </script>

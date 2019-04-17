@@ -30,21 +30,21 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="title" name="content[title]" class="form-control" type="text"
-                                            th:value="${nav.content.title}"/>
+                                                   th:value="${nav['content']['title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">内容：</label>
                                         <div class="col-sm-8">
                                             <textarea id="content" name="content[content]" class="form-control"
-                                                      rows="5" th:value="${nav.content.content}"></textarea>
+                                                      rows="5" th:text="${nav['content']['content']}"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
-                                            <input id="video" name="video" class="form-control" type="text"
-                                                   th:value="${nav.content.video}">
+                                            <input id="video" name="content[video]" class="form-control" type="text"
+                                                   th:value="${nav['content']['video']}">
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-1-title" name="content[model1title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model1title}"/>
+                                                   type="text" th:value="${nav['content']['model1title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -70,14 +70,14 @@
                                         <div class="col-sm-8">
                                         <textarea id="model-1-content" name="content[model1content]"
                                                   class="form-control"
-                                                  rows="5" th:value="${nav.content.model1content}"></textarea>
+                                                  rows="5" th:text="${nav['content']['model1content']}"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
                                             <input id="model-1-video" name="content[model1video]" class="form-control"
-                                                   type="text" th:value="${nav.content.model1video}">
+                                                   type="text" th:value="${nav['content']['model1video']}">
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-2-title" name="content[model2title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model2title}"/>
+                                                   type="text" th:value="${nav['content']['model2title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -103,14 +103,14 @@
                                         <div class="col-sm-8">
                                         <textarea id="model-2-content" name="content[model2content]"
                                                   class="form-control"
-                                                  rows="5" th:value="${nav.content.model2content}"></textarea>
+                                                  rows="5" th:text="${nav['content']['model2content']}"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
                                             <input id="model-2-video" name="content[model2video]" class="form-control"
-                                                   type="text" th:value="${nav.content.model2video}">
+                                                   type="text" th:value="${nav['content']['model2video']}">
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-3-title" name="content[model3title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model3title}"/>
+                                                   type="text" th:value="${nav['content']['model3title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -136,14 +136,14 @@
                                         <div class="col-sm-8">
                                         <textarea id="model-3-content" name="content[model3content]"
                                                   class="form-control"
-                                                  rows="5" th:value="${nav.content.model3content}"></textarea>
+                                                  rows="5" th:text="${nav['content']['model3content']}"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接：</label>
                                         <div class="col-sm-8">
                                             <input id="model-3-video" name="content[model3video]" class="form-control"
-                                                   type="text" th:value="${nav.content.model3video}">
+                                                   type="text" th:value="${nav['content']['model3video']}">
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="model-4-title" name="content[model4title]" class="form-control"
-                                                   type="text" th:value="${nav.content.model4title}"/>
+                                                   type="text" th:value="${nav['content']['model4title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -181,11 +181,51 @@
                                                             <th>Logo图</th>
                                                             <th>排序</th>
                                                             <th>url链接</th>
+                                                            <th>操作</th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody id="linktable-0">
-
+                                                        <tbody th:if="${nav['content']['social']!=null}"
+                                                               th:each="social,socialStat:${nav['content']['social']}"
+                                                               th:id="linktable-0">
+                                                        <tr th:id="tr-+${socialStat.index}">
+                                                            <td><input
+                                                                    th:attr="name=content[social][+${socialStat.index}+][name]"
+                                                                    class="form-control" type="text"
+                                                                    readonly="readonly"
+                                                                    th:value="${social.name}"></td>
+                                                            <td><input
+                                                                    th:attr="name=content[social][+${socialStat.index}+][isShow]"
+                                                                    class="form-control valid" type="text" value="on"
+                                                                    readonly="readonly"
+                                                                    th:value="${social.isShow}"></td>
+                                                            <td><input
+                                                                    th:attr="name=content[social][+${socialStat.index}+][logo]"
+                                                                    class="form-control" type="hidden" value=""
+                                                                    readonly="readonly"
+                                                                    th:value="${social.logo}"><img src="undefined"></td>
+                                                            <td><input
+                                                                    th:attr="name=content[social][+${socialStat.index}+][order]"
+                                                                    class="form-control" type="number" value="1"
+                                                                    readonly="readonly"
+                                                                    th:value="${social.order}"></td>
+                                                            <td><input
+                                                                    th:attr="name=content[social][+${socialStat.index}+][url]"
+                                                                    class="form-control" type="text"
+                                                                    value="http://www.baidu.com" readonly="readonly"
+                                                                    th:value="${social.url}">
+                                                            </td>
+                                                            <td style="text-align: center; "><a
+                                                                    class="btn btn-primary btn-sm "
+                                                                    title="编辑" onclick="editTechtourLink(this)"><i
+                                                                    class="fa fa-edit"></i></a> <a
+                                                                    class="btn btn-warning btn-sm " title="删除"
+                                                                    onclick="removeLink(this)"><i
+                                                                    class="fa fa-remove"></i></a>
+                                                            </td>
+                                                        </tr>
                                                         </tbody>
+                                                        <tbody th:if="${nav['content']['social']==null}"
+                                                               th:id="linktable-0"></tbody>
                                                     </table>
                                                 </div>
                                             </div>

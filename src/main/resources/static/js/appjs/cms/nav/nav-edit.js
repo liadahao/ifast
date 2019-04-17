@@ -43,10 +43,16 @@ form.steps({
         var content = JSON.stringify(nav['content']);
         nav['content'] = content;
         var data = JSON.stringify(nav);
+        var url;
+        if (nav['id'] == null || nav['id'] === '') {
+            url = '/cms/nav/save';
+        } else {
+            url = '/cms/nav/update';
+        }
         $.ajax({
             cache: true,
             type: "POST",
-            url: "/cms/nav/save",
+            url: url,
             data: data,// 你的formid
             async: false,
             dataType: 'json',
@@ -160,8 +166,7 @@ function addTechtourLink(id) {
     var tbody = $("#linktable-" + id);
     var len = tbody.children('tr').length;
     if (len >= 12) {
-        alert('链接已到达12个');
-        return;
+        parent.layer.msg("链接已到达12个");
     }
     //iframe层-父子操作
     layer.open({
@@ -171,5 +176,41 @@ function addTechtourLink(id) {
         maxmin: true,
         content: '/cms/nav/add/7'
     });
+}
 
+function editTechtourLink(selector) {
+    var trSelector = $(selector).parent().parent('tr');
+    var trId = trSelector.attr('id');
+    var nameSelector = trSelector.find('td:first-child');
+    var name = nameSelector.find('input').val();
+    var isShow = nameSelector.next().find('input').val();
+    var logo = nameSelector.next().next().find('input').val();
+    var order = nameSelector.next().next().next().find('input').val();
+    var url = nameSelector.next().next().next().next().find('input').val();
+    //iframe层-父子操作
+    layer.open({
+        type: 2,
+        area: ['700px', '450px'],
+        fixed: false, //不固定
+        maxmin: true,
+        content: '/cms/nav/add/7',
+        success: function (layero, index) {
+            var childId = layer.getChildFrame('#id', index);
+            childId.val(trId);
+            var childName = layer.getChildFrame('#name', index);
+            childName.val(name);
+            var childShow = layer.getChildFrame('#isShow', index);
+            childShow.val(isShow);
+            var childLogo = layer.getChildFrame('#logo', index);
+            childLogo.val(logo);
+            var childOrder = layer.getChildFrame('#order', index);
+            childOrder.val(order);
+            var childUrl = layer.getChildFrame('#url', index);
+            childUrl.val(url);
+        }
+    });
+}
+
+function removeLink(selector) {
+    $(selector).parent().parent('tr').remove();
 }

@@ -83,7 +83,7 @@ function load() {
                         formatter: function (value, row, index) {
                             if (row.isshow == '1') {
                                 return '正常';
-                            }else{
+                            } else {
                                 return '隐藏'
                             }
                         }
@@ -121,14 +121,7 @@ function add() {
 }
 
 function edit(id) {
-    layer.open({
-        type: 2,
-        title: '编辑',
-        maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
-        area: ['800px', '520px'],
-        content: prefix + '/edit/' + id // iframe的url
-    });
+    window.location.href = prefix + '/edit/' + id // iframe的url
 }
 
 function remove(id) {

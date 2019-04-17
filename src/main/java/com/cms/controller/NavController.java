@@ -64,9 +64,10 @@ public class NavController extends AdminBaseController {
     @RequiresPermissions("cms:nav:add")
     String add(@PathVariable("type") Integer type, Model model) {
         String suffix = HtmlConstant.getHtml(type);
-        NavDO navDO = new NavDO();
-        navDO.setType(type);
-        model.addAttribute("nav", navDO);
+        NavVo navVo = new NavVo();
+        navVo.setType(type);
+        navVo.setContent(new HashMap<>());
+        model.addAttribute("nav", navVo);
         return "cms/nav/" + suffix;
     }
 
@@ -103,7 +104,7 @@ public class NavController extends AdminBaseController {
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("cms:nav:edit")
-    public Result<String> update(NavDO nav) {
+    public Result<String> update(@RequestBody NavDO nav) {
         if (StringUtils.isEmpty(nav.getIsShowFlag())) {
             nav.setIsshow(0);
         }
