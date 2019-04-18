@@ -1,12 +1,7 @@
-$().ready(function() {
-	validateRule();
-});
+function cancel() {
+	window.location.href = "/cms/product";
+}
 
-$.validator.setDefaults({
-	submitHandler : function() {
-		save();
-	}
-});
 function save() {
 	$.ajax({
 		cache : true,
@@ -27,19 +22,4 @@ function save() {
 		}
 	});
 
-}
-function validateRule() {
-	var icon = "<i class='fa fa-times-circle'></i> ";
-	$("#signupForm").validate({
-		rules : {
-			name : {
-				required : true
-			}
-		},
-		messages : {
-			name : {
-				required : icon + "请输入姓名"
-			}
-		}
-	})
 }
