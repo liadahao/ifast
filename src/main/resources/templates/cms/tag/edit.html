@@ -3,65 +3,53 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content ">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<form class="form-horizontal m-t" id="signupForm">
-						<input id="id" name="id" th:value="${tag.id}"  type="hidden">
-												<input id="version" name="version" th:value="${tag.version}"  type="hidden">
-												
-																																	<div class="form-group">	
-								<label class="col-sm-3 control-label">名称：</label>
-								<div class="col-sm-8">
-																		<input id="name" name="name" th:value="${tag.name}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">用途：</label>
-								<div class="col-sm-8">
-																		<input id="type" name="type" th:value="${tag.type}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">是否可用：</label>
-								<div class="col-sm-8">
-																		<input id="isenable" name="isenable" th:value="${tag.isenable}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">创建时间按：</label>
-								<div class="col-sm-8">
-																		<input id="createtime" name="createtime" th:value="${tag.createtime} eq null ? '' : ${#dates.format(tag.createtime, 'yyyy-MM-dd HH:mm:ss')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">：</label>
-								<div class="col-sm-8">
-																		<input id="creator" name="creator" th:value="${tag.creator}" class="form-control" type="text">
-																	</div>
-							</div>
-																											<div class="form-group">	
-								<label class="col-sm-3 control-label">更新时间：</label>
-								<div class="col-sm-8">
-																		<input id="updatetime" name="updatetime" th:value="${tag.updatetime} eq null ? '' : ${#dates.format(tag.updatetime, 'yyyy-MM-dd HH:mm:ss')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="form-control" type="text">
-																	</div>
-							</div>
-																				<div class="form-group">
-								<div class="col-sm-8 col-sm-offset-3">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-	<div th:include="include::footer"></div>
-	<script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
-	<script type="text/javascript" src="/js/appjs/cms/tag/edit.js">
-	</script>
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" th:value="${tag.id}" type="hidden">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">名称：</label>
+                            <div class="col-sm-8">
+                                <input id="name" name="name" th:value="${tag.name}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-3 control-label">用途：</label>
+                            <div class="col-sm-9">
+                                <select id="type" class="form-control m-b" name="type">
+                                    <option th:selected="${tag.type eq 1}" value="1">文章</option>
+                                    <option th:selected="${tag.type eq 2}" value="2">活动</option>
+                                    <option th:selected="${tag.type eq 3}" value="3">商品</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否可用：</label>
+                            <div class="col-sm-8">
+                                <label>
+                                    <input type="radio" th:checked="${tag.isenable eq 1}" value="1" id="optionsRadios1"
+                                           name="isenable">启用</label>
+                                <label><input type="radio" th:checked="${tag.isenable eq 0}" value="0"
+                                              id="optionsRadios2" name="isenable">禁用</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/tag/edit.js">
+</script>
 </body>
 </html>

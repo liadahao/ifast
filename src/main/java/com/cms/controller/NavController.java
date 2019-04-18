@@ -66,7 +66,10 @@ public class NavController extends AdminBaseController {
         String suffix = HtmlConstant.getHtml(type);
         NavVo navVo = new NavVo();
         navVo.setType(type);
-        navVo.setContent(new HashMap<>());
+        Map<String, Object> map = new HashMap<>();
+        map.put("tab1",new HashMap<>());
+        map.put("tab2",new HashMap<>());
+        navVo.setContent(map);
         model.addAttribute("nav", navVo);
         return "cms/nav/" + suffix;
     }
@@ -79,11 +82,12 @@ public class NavController extends AdminBaseController {
         NavVo navVo = new NavVo();
         BeanUtils.copyProperties(nav, navVo, "content");
         Map<String, Object> map = JSON.parseObject(nav.getContent(), Map.class);
-        if (map != null) {
-            navVo.setContent(map);
-        } else {
-            navVo.setContent(new HashMap<>());
+        if (map == null) {
+            map = new HashMap<>();
+            map.put("tab1",new HashMap<>());
+            map.put("tab2",new HashMap<>());
         }
+        navVo.setContent(map);
         model.addAttribute("nav", navVo);
         return "cms/nav/" + suffix;
     }

@@ -12,6 +12,7 @@
     <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/front/workshop.css}" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
     <script type="text/javascript">
         $(function () {
@@ -22,125 +23,9 @@
             });
         });
     </script>
-
-
-    <style>
-
-        html, body {
-            background: url("/img/02.png") no-repeat fixed center center;
-        }
-
-        .main {
-            margin-top: 106px;
-        }
-
-        .main-body {
-            margin-left: 340px;
-            margin-right: 340px;
-            padding-left: 71px;
-            padding-right: 71px;
-            height: 100%;
-            display: block;
-        }
-
-        .left-nav {
-            position: absolute;
-        }
-
-        .title {
-            position: relative
-        }
-
-        .title-content {
-            font-size: 80px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(0, 253, 255, 1);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-
-        .title-background {
-            width: 500px;
-            height: 44px;
-            background: rgba(73, 18, 139, 1);
-            position: absolute;
-            top: 75px;
-            left: 192px;
-        }
-
-        .content {
-            width: 673px;
-            font-size: 16px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 1);
-            position: absolute;
-            margin-top: 177px;
-        }
-
-        .video-content {
-            margin-top: 325px;
-        }
-
-        .video-content .right-side {
-            padding-left: 84px;
-        }
-
-        .video-content .right-side .title {
-            padding-left: 25px;
-            margin: 0;
-            font-size: 26px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(0, 253, 255, 1);
-        }
-
-        .right-side-content {
-            font-size: 16px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 1);
-        }
-
-        .right-side-locat img {
-            vertical-align: bottom
-        }
-
-        .locat-img-l {
-            width: 4px;
-            height: 26px;
-            margin-right: 15px;
-            clear: none;
-        }
-
-        .locat-img-s {
-            width: 4px;
-            height: 16px;
-            margin-right: 15px;
-            clear: none;
-        }
-
-        .right-side-nav {
-            float: right;
-        }
-
-        .right-side-nav img {
-            width: 70px;
-            height: 38px;
-        }
-
-        .right-side-nav img:first-child {
-            margin-right: 24px;
-        }
-
-    </style>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-
 <div class="main">
     <div class="am-g">
         <div class="left-nav">
@@ -159,68 +44,48 @@
         </div>
         <div class="main-body">
             <div class="title">
-                <h1 class="title-content">
-                    Workshops
+                <h1 th:text="${data['content']['title']}" class="title-content">
                 </h1>
                 <div class="title-background"></div>
             </div>
-            <div class="content">
-                Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life business not
-                only in the tech industry, but also manufacturing and market trade. Our tours provide a thoroughly
-                educational experience for business school students, and give professors a unique teaching opportunity
-                that
-                can’t be found in books.
+            <div th:text="${data['content']['content']}" class="content">
             </div>
-            <div class="video-content am-u-lg-12">
-                <div data-am-widget="slider" class="am-slider am-slider-default am-u-lg-5"
-                     data-am-slider='{&quot;animation&quot;:&quot;slide&quot;,&quot;controlNav&quot;:&quot;thumbnails&quot;}'>
-                    <ul class="am-slides">
-                        <li data-thumb="http://s.amazeui.org/media/i/demos/bing-1.jpg">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg">
-
+            <div class="video-content am-u-sm-12">
+                <div class="am-u-sm-5">
+                    <ul class="am-avg-sm-3" id="thumbnail-list">
+                        <li th:attr="data-thumb=${data['content']['video1']}">
+                            <img class="video-thumbnail" th:src="${data['content']['video1']}">
                         </li>
-                        <li data-thumb="http://s.amazeui.org/media/i/demos/bing-2.jpg">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg">
-
+                        <li th:attr="data-thumb=${data['content']['video2']}">
+                            <img class="video-thumbnail" th:src="${data['content']['video2']}">
                         </li>
-                        <li data-thumb="http://s.amazeui.org/media/i/demos/bing-3.jpg">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg">
-
-                        </li>
-                        <li data-thumb="http://s.amazeui.org/media/i/demos/bing-4.jpg">
-                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg">
-
+                        <li th:attr="data-thumb=${data['content']['video3']}">
+                            <img class="video-thumbnail" th:src="${data['content']['video3']}">
                         </li>
                     </ul>
+                    <img id="carousel-img" class="video-thumbnail" src=""/>
                 </div>
-                <div class="right-side am-u-lg-7">
-                    <img class="am-u-lg-6" src="/img/K_03_01_workshop.png">
-                    <h1 class="title am-u-lg-6">
-                        How To Work In Tech
-                        In Shenzhen
-                    </h1>
-                    <p class="right-side-content am-u-lg-11">
-                        Whether you are a returning Chinese student from overseas or an expat who wants to get a taste
-                        of
-                        the
-                        tech excitement, this workshop will prepare you for entering the tech industry in Shenzhen. We
-                        cover
-                        how to go about getting a job, where to apply, how to prepare a resume, how to improve your
-                        chances
-                        of getting hired, and how to give an unforgettable interview that is specific to the tech
-                        industry.
-                    </p>
-                    <div class="right-side-footer am-u-lg-12">
-                        <div class="right-side-locat am-u-lg-8">
-                            <img class="locat-img-l" src="/img/0301locaL.png"/>
-                            <img class="locat-img-s" src="/img/0301locaS.png"/>
-                            <img class="locat-img-s" src="/img/0301locaS.png"/>
-                            <img class="locat-img-s" src="/img/0301locaS.png"/>
-                            <img class="locat-img-s" src="/img/0301locaS.png"/>
+                <div class="right-side am-u-sm-7">
+                    <div id="right-side-content-list" class="am-u-sm-12">
+                        <div class="am-u-sm-12" th:each="model,modelStat : ${data['content']['model']}"
+                             th:if="${model.title ne ''}">
+                            <div class="title-img-div am-vertical-align">
+                                <img class="am-u-sm-6" th:src="${model['image']}">
+                                <div th:text="${model['title']}" class="title am-vertical-align-bottom">
+                                </div>
+                            </div>
+                            <p th:text="${model['content']}" class="right-side-content">
+
+                            </p>
                         </div>
-                        <div class="right-side-nav am-u-lg-4">
-                            <img src="/img/0301L_def.png"/>
-                            <img src="/img/0301R_def.png"/>
+                    </div>
+                    <div class="right-side-footer am-u-sm-12">
+                        <div class="right-side-locat am-u-sm-8">
+
+                        </div>
+                        <div class="right-side-nav am-u-sm-4">
+                            <img id="right-side-prev" src="/img/0301L_def.png"/>
+                            <img id="right-side-next" src="/img/0301R_def.png"/>
                         </div>
                     </div>
                 </div>
@@ -242,5 +107,63 @@
 </div>
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
+<script>
+    var url = $('#thumbnail-list').find('li:first-child').find('img').attr('src');
+    $("#carousel-img").attr('src', url);
+    var list = $('#right-side-content-list').children();
+    var locatList = $('.right-side-locat');
+    var len = list.length;
+    for (var i = 1; i <= len; i++) {
+        var html = '<img class="locat-img-s" src="/img/0301locaS.png"/>';
+        locatList.append(html);
+    }
+    list.each(function (index) {
+        if (index !== 0) {
+            $(this).hide();
+        } else {
+            locatList.children().eq(index)
+                .attr("src", "/img/0301locaL.png")
+                .attr("class", "locat-img-l");
+        }
+    });
+    $("#right-side-prev").click(function () {
+        $('#right-side-content-list').children().each(function (index) {
+            if (index === 0) {
+                return true;
+            }
+            if (!$(this).is(':hidden')) {
+                locatList.children().eq(index - 1)
+                    .attr("src", "/img/0301locaL.png")
+                    .attr("class", "locat-img-l");
+                locatList.children().eq(index)
+                    .attr("src", "/img/0301locaS.png")
+                    .attr("class", "locat-img-s");
+                $(this).prev().show();
+                $(this).hide();
+                return false;
+            }
+        });
+
+    })
+    ;
+    $("#right-side-next").click(function () {
+        $('#right-side-content-list').children().each(function (index) {
+            if (index === (len - 1)) {
+                return true;
+            }
+            if (!$(this).is(':hidden')) {
+                locatList.children().eq(index + 1)
+                    .attr("src", "/img/0301locaL.png")
+                    .attr("class", "locat-img-l");
+                locatList.children().eq(index)
+                    .attr("src", "/img/0301locaS.png")
+                    .attr("class", "locat-img-s");
+                $(this).next().show();
+                $(this).hide();
+                return false;
+            }
+        });
+    });
+</script>
 </body>
 </html>

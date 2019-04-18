@@ -11,7 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/techtour.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/front/techtour.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
@@ -39,7 +39,7 @@
                     <div class="left-title am-text-center">Tech</div>
                     <div class="right-title am-text-center">Tour</div>
                 </div>
-                <p th:text="${data['content']}" class="content">
+                <p th:text="${data['content']['content']}" class="content">
 
                 </p>
                 <video src="/video/WeChat_20190327231432.mp4"
@@ -51,8 +51,8 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201enterprise.png"></span>
-                        <span th:if="${data['model1title'] != null}"
-                              th:text="${data['model1title']}"
+                        <span th:if="${data['content']['model1title'] != null}"
+                              th:text="${data['content']['model1title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">
                     </span>
@@ -60,11 +60,11 @@
                     <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
                         <div class="am-panel-bd">
                             <div class="am-g">
-                                <p th:if="${data['model1content'] != null}"
-                                   th:text="${data['model1content']}"
+                                <p th:if="${data['content']['model1content'] != null}"
+                                   th:text="${data['content']['model1content']}"
                                    class="am-u-sm-9">
                                 </p>
-                                <video th:src="${data['model1video']}" src="/video/WeChat_20190327231432.mp4"
+                                <video th:src="${data['content']['model1video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
                                        height="90"
                                        controls="controls" class="am-u-sm-3">
@@ -77,7 +77,7 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201manufacturing.png"></span>
-                        <span th:if="${data['model2title'] != null}" th:text="${data['model2title']}"
+                        <span th:if="${data['content']['model2title'] != null}" th:text="${data['content']['model2title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                     </span>
@@ -85,10 +85,10 @@
                     <div id="do-not-say-2" class="am-panel-collapse am-collapse">
                         <div class="am-panel-bd">
                             <div class="am-g">
-                                <p th:if="${data['model2content'] != null}" th:text="${data['model2content']}"
+                                <p th:if="${data['content']['model2content'] != null}" th:text="${data['content']['model2content']}"
                                    class="am-u-sm-9">
                                 </p>
-                                <video th:src="${data['model2video']}" src="/video/WeChat_20190327231432.mp4"
+                                <video th:src="${data['content']['model2video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
                                        height="90"
                                        controls="controls" class="am-u-sm-3">
@@ -101,7 +101,7 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201startups.png"></span>
-                        <span th:if="${data['model3title'] != null}" th:text="${data['model3title']}"
+                        <span th:if="${data['content']['model3title'] != null}" th:text="${data['content']['model3title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
                     </span>
@@ -109,10 +109,10 @@
                     <div id="do-not-say-3" class="am-panel-collapse am-collapse">
                         <div class="am-panel-bd">
                             <div class="am-g">
-                                <p th:if="${data['model3content'] != null}" th:text="${data['model3content']}"
+                                <p th:if="${data['content']['model3content'] != null}" th:text="${data['content']['model3content']}"
                                    class="am-u-sm-9">
                                 </p>
-                                <video th:src="${data['model3video']}" src="/video/WeChat_20190327231432.mp4"
+                                <video th:src="${data['content']['model3video']}" src="/video/WeChat_20190327231432.mp4"
                                        width="150"
                                        height="90"
                                        controls="controls" class="am-u-sm-3">
@@ -125,7 +125,7 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201visit.png"></span>
-                        <span th:if="${data['model4title'] != null}" th:text="${data['model4title']}"
+                        <span th:if="${data['content']['model4title'] != null}" th:text="${data['content']['model4title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
                     </span>
@@ -134,7 +134,7 @@
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
-                                    <li th:each="menu : ${data['model4content']}">
+                                    <li th:each="menu : ${data['content']['model4content']}">
                                         <img class="footer-icon" th:src="${menu}" src="/img/air.png">
                                     </li>
                                 </ul>
@@ -172,7 +172,6 @@
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
-        alert(window.screen.width);
     });
 </script>
 </body>

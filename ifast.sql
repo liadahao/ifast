@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 17/04/2019 18:40:54
+ Date: 18/04/2019 17:56:29
 */
 
 SET NAMES utf8mb4;
@@ -190,12 +190,15 @@ CREATE TABLE `nav`  (
   `metaKeywords` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'SEO关键字',
   `metaDescription` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'SEO描述信息',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of nav
 -- ----------------------------
-INSERT INTO `nav` VALUES (1, 'techtour', '', '/techtour', 1, 2, 0, NULL, '{\"model1title\":\"Enterprise\",\"model1content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model1video\":\"\",\"model2title\":\"Manufacturing\",\"model2content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model2video\":\"\",\"model3title\":\"Startups\",\"model3content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model3video\":\"\",\"model4title\":\"We often visit\"}', 'techtour', 'techtour', 'techtour');
+INSERT INTO `nav` VALUES (1, 'techtour', '', '/techtour', 1, 2, 0, '2019-04-18 10:31:31', '{\"title\":\"Tech Tour\",\"content\":\"Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life business not only in the tech industry, but also manufacturing and market trade. Our tours provide a thoroughly educational experience for business school students, and give professors a unique teaching opportunity that can’t be found in books\",\"video\":\"\",\"model1title\":\"Enterprise\",\"model1content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model1video\":\"\",\"model2title\":\"Manufacturing\",\"model2content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model2video\":\"\",\"model3title\":\"Startups\",\"model3content\":\"Learn from professionals who work for Chinese companies in a variety of industries, such as Tencent, DJI, PingAn, Huawei, Country Garden, Dentons Law Offices, and more. This eye-opening tour can help you determine what specific direction to take your education, while providing you with plenty of insight into what to expect, no matter what specific field you ultimately choose.\",\"model3video\":\"\",\"model4title\":\"We often visit\"}', 'techtour', 'techtour', '');
+INSERT INTO `nav` VALUES (2, 'workshop', '', '/workshop', 2, 3, 1, '2019-04-18 16:23:40', '{\"title\":\"Workshops\",\"content\":\"Tours4Tech offers a range of study tours in Shenzhen that allow you to experience real-life business not only in the tech industry, but also manufacturing and market trade. Our tours provide a thoroughly educational experience for business school students, and give professors a unique teaching opportunity that can’t be found in books.\",\"video1\":\"http://s.amazeui.org/media/i/demos/bing-1.jpg\",\"video2\":\"http://s.amazeui.org/media/i/demos/bing-2.jpg\",\"video3\":\"http://s.amazeui.org/media/i/demos/bing-3.jpg\",\"model\":[{\"title\":\"How To Work In Tech In Shenzhen\",\"content\":\"Whether you are a returning Chinese student from overseas or an expat who wants to get a taste of the tech excitement, this workshop will prepare you for entering the tech industry in Shenzhen. We cover how to go about getting a job, where to apply, how to prepare a resume, how to improve your chances of getting hired, and how to give an unforgettable interview that is specific to the tech industry.\",\"image\":\"http://s.amazeui.org/media/i/demos/bing-4.jpg\",\"isShow\":\"on\"},{\"title\":\"How To Work In Tech In GuangZhou\",\"content\":\"Whether you are a returning Chinese student from overseas or an expat who wants to get a taste of the tech excitement, this workshop will prepare you for entering the tech industry in Shenzhen. We cover how to go about getting a job, where to apply, how to prepare a resume, how to improve your chances of getting hired, and how to give an unforgettable interview that is specific to the tech industry.\",\"image\":\"http://s.amazeui.org/media/i/demos/bing-4.jpg\",\"isShow\":\"on\"},{\"title\":\"\",\"content\":\"\",\"image\":\"\",\"isShow\":\"on\"},{\"title\":\"\",\"content\":\"\",\"image\":\"\",\"isShow\":\"on\"},{\"title\":\"\",\"content\":\"\",\"image\":\"\",\"isShow\":\"on\"}]}', 'workshop', 'workshop', '');
+INSERT INTO `nav` VALUES (3, 'service', '', '/service', 3, 4, 0, '2019-04-18 16:39:05', '{\"headtitle\":\"Consultancy Service\",\"headcontent\":\"Your customized consultancy service will focus on your most critical issues and opportunities in China. Whether it’s business matching, partnership, supply chain management, marketing strategy, or other custom services, you will be helped by a team with a wealth of experience, meaningful connections, and enduring value. Since 2015, many of America’s and Japan’s largest organizations have already trusted this team to guide them through the challenging processes in China with practical support.\",\"model1title\":\"Ecosystem Partnership\",\"model1content\":\"Finding the right local partners can help you strengthen your business in China. Tours4tech consultancy service can help identify and connect you with the right partners, including those in supply chain partners that can help accelerate your manufacturing process and innovative IT solutions partners that can help increase your ability to accomplish your business goals. For us, a productive cooperation between our clients and partners matters.\",\"model1image\":\"\",\"model2title\":\"Tailored and Supportive Advice\",\"model2content\":\"Your consultancy service will start with tailored advice and practical support. This is ideal for private sector companies, regulated industries, government departments, or other public institutions. Tours4tech will analyze multiple strategies and work with you to identify the best for achieving your objectives. No matter what, your team will understand how to execute your projects in China to bring the greatest benefit to your company\",\"model2image\":\"\",\"model3title\":\"Step-by-Step Guide\",\"model3content\":\"You will always get actionable information and value out of Tour4Tech’s consulting services. Step by step, we can help you connect to the local mindset of business in China to achieve success. Most of our clients find our project based pricing to be ideal, as it enables them to always consult with us no matter what challenge arises. Now you can take advantage of the opportunities in China with confidence.\",\"model3image\":\"\"}', 'service', 'service', '');
+INSERT INTO `nav` VALUES (4, 'about', '', '/about', 4, 6, 1, '2019-04-18 17:35:20', '{\"tab1\":{\"title\":\"WHO\",\"content\":\"Founded by the best ，Not robots but humans\",\"model\":[{\"name\":\"Marc Gutierrez\",\"description\":\"Co-fouder and CEO\",\"order\":\"1\",\"content\":\"How to make effective business? Best software platform for running an internet business. We build the most powerful and flexible tools for internet commerce. Our company make high responce products.How to make effective business? Best software platform for running an internet business. We build the most powerful and flexible tools for internet commerce. Our company make high responce products.How to make effective business? Best software platform for running an internet business. We build the most powerful and flexible tools for internet commerce. \",\"social\":[{\"type\":\"Linkedin\",\"url\":\"http://www.qq.com\",\"order\":\"2\"},{\"type\":\"Fackbook\",\"url\":\"http://www.baidu.com\",\"order\":\"1\"}]}]},\"tab2\":{\"title\":\"WHAT\",\"content\":\"We inspire people to impact 。By giving them a closer look at the best companies\",\"model\":[{\"content\":\"Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese marke\"},{\"content\":\"Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market.\"},{\"content\":\"Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market.\"},{\"content\":\"Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. Tours4Tech Was founded by - you know- amazing people that wanted to bring you a better insight of china. People with experience in the Tech industry and in the chinese market. \"}]}}', 'about', 'about', '');
 
 -- ----------------------------
 -- Table structure for product
@@ -533,7 +536,7 @@ CREATE TABLE `sys_log`  (
   `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'IP地址',
   `gmtCreate` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1118463803168743426 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1118815007333724163 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
@@ -944,6 +947,39 @@ INSERT INTO `sys_log` VALUES (1118453199175495682, 1, 'admin', '上传文件', 4
 INSERT INTO `sys_log` VALUES (1118453357468528642, 1, 'admin', '上传文件', 23, 'POST /common/sysFile/upload', '{\"id\":[\"WU_FILE_1\"],\"name\":[\"261_expand_12rollover1.png\"],\"type\":[\"image/png\"],\"lastModifiedDate\":[\"Tue Feb 06 2018 07:13:03 GMT+0800 (China Standard Time)\"],\"size\":[\"2835\"]}', '127.0.0.1', '2019-04-17 17:57:15');
 INSERT INTO `sys_log` VALUES (1118453445519552514, 1, 'admin', '添加', 58, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-17 17:57:36');
 INSERT INTO `sys_log` VALUES (1118463803168743425, 1, 'admin', '登录', 159, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-17 18:38:45');
+INSERT INTO `sys_log` VALUES (1118703383771893762, 1, 'admin', '登录', 72, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 10:30:46');
+INSERT INTO `sys_log` VALUES (1118703576835706881, 1, 'admin', '修改', 86, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 10:31:32');
+INSERT INTO `sys_log` VALUES (1118707136466014210, 1, 'admin', '添加', 57, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-18 10:45:41');
+INSERT INTO `sys_log` VALUES (1118707194871697409, 1, 'admin', '修改', 40, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 10:45:54');
+INSERT INTO `sys_log` VALUES (1118708365954928642, 1, 'admin', '修改', 37, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 10:50:34');
+INSERT INTO `sys_log` VALUES (1118772877915697153, 1, 'admin', '登录', 40, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 15:06:55');
+INSERT INTO `sys_log` VALUES (1118789852188487682, 1, 'admin', '登录', 4, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 16:14:22');
+INSERT INTO `sys_log` VALUES (1118792074032951297, 1, 'admin', '修改', 57, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 16:23:11');
+INSERT INTO `sys_log` VALUES (1118792195969757185, 1, 'admin', '修改', 33, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 16:23:40');
+INSERT INTO `sys_log` VALUES (1118792793033125890, 1, 'admin', '添加', 67, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-18 16:26:03');
+INSERT INTO `sys_log` VALUES (1118796075721928705, 1, 'admin', '修改', 26, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 16:39:05');
+INSERT INTO `sys_log` VALUES (1118796358648705026, 1, 'admin', '修改', 3, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 16:40:13');
+INSERT INTO `sys_log` VALUES (1118796571589324801, 1, 'admin', '修改', 2, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 16:41:04');
+INSERT INTO `sys_log` VALUES (1118798073217265665, 1, 'admin', '添加', 133, 'POST /cms/nav/save', '{}', '127.0.0.1', '2019-04-18 16:47:02');
+INSERT INTO `sys_log` VALUES (1118803463808069634, 1, 'admin', '登录', 5, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:08:27');
+INSERT INTO `sys_log` VALUES (1118808448012726274, 1, 'admin', '登录', 160, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:28:15');
+INSERT INTO `sys_log` VALUES (1118808756138885121, 1, 'admin', '登录', 155, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:29:29');
+INSERT INTO `sys_log` VALUES (1118809263817416705, 1, 'admin', '登录', 162, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:31:30');
+INSERT INTO `sys_log` VALUES (1118810233670524930, 1, 'admin', '修改', 51, 'POST /cms/nav/update', '{}', '127.0.0.1', '2019-04-18 17:35:21');
+INSERT INTO `sys_log` VALUES (1118812653834260482, 1, 'admin', '登录', 157, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:44:58');
+INSERT INTO `sys_log` VALUES (1118812723346460673, 1, 'admin', '添加', 87, 'POST /cms/tag/save', '{\"name\":[\"水果\"],\"type\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:45:14');
+INSERT INTO `sys_log` VALUES (1118813400697188353, 1, 'admin', '登录', 157, 'POST /login', '{\"username\":[\"admin\"],\"password\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:47:56');
+INSERT INTO `sys_log` VALUES (1118813433458896897, 1, 'admin', '修改', 156, 'POST /cms/tag/update', '{\"id\":[\"1\"],\"name\":[\"水果\"],\"type\":[\"2\"],\"isenable\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:48:04');
+INSERT INTO `sys_log` VALUES (1118813465557905409, 1, 'admin', '修改', 89, 'POST /cms/tag/update', '{\"id\":[\"1\"],\"name\":[\"水果\"],\"type\":[\"1\"],\"isenable\":[\"0\"]}', '127.0.0.1', '2019-04-18 17:48:11');
+INSERT INTO `sys_log` VALUES (1118814069386686465, 1, 'admin', '修改', 61, 'POST /cms/tag/update', '{\"id\":[\"1\"],\"name\":[\"水果\"],\"type\":[\"1\"],\"isenable\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:50:35');
+INSERT INTO `sys_log` VALUES (1118814082267394050, 1, 'admin', '修改', 92, 'POST /cms/tag/update', '{\"id\":[\"1\"],\"name\":[\"水果\"],\"type\":[\"1\"],\"isenable\":[\"0\"]}', '127.0.0.1', '2019-04-18 17:50:38');
+INSERT INTO `sys_log` VALUES (1118814097274613761, 1, 'admin', '修改', 69, 'POST /cms/tag/update', '{\"id\":[\"1\"],\"name\":[\"水果\"],\"type\":[\"3\"],\"isenable\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:50:42');
+INSERT INTO `sys_log` VALUES (1118814140140400642, 1, 'admin', '删除', 72, 'POST /cms/tag/remove', '{\"id\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:50:52');
+INSERT INTO `sys_log` VALUES (1118814157597093890, 1, 'admin', '添加', 83, 'POST /cms/tag/save', '{\"name\":[\"水果\"],\"type\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:50:56');
+INSERT INTO `sys_log` VALUES (1118814176098168834, 1, 'admin', '修改', 95, 'POST /cms/tag/update', '{\"id\":[\"2\"],\"name\":[\"水果\"],\"type\":[\"1\"],\"isenable\":[\"0\"]}', '127.0.0.1', '2019-04-18 17:51:01');
+INSERT INTO `sys_log` VALUES (1118814208209760257, 1, 'admin', '添加', 109, 'POST /cms/tag/save', '{\"name\":[\"123\"],\"type\":[\"1\"]}', '127.0.0.1', '2019-04-18 17:51:08');
+INSERT INTO `sys_log` VALUES (1118814242791796738, 1, 'admin', '删除', 29, 'POST /cms/tag/remove', '{\"id\":[\"3\"]}', '127.0.0.1', '2019-04-18 17:51:17');
+INSERT INTO `sys_log` VALUES (1118815007333724162, 1, 'admin', '更新角色', 247, 'POST /sys/role/update', '{\"id\":[\"1\"],\"menuIds\":[\"193,194,195,196,197,79,80,81,83,176,177,178,179,180,207,208,209,210,211,20,21,22,61,12,13,14,24,25,26,15,55,56,62,74,75,76,48,28,29,30,57,92,1115184208369717252,1115184208369717253,1115184208369717254,1115184208369717255,1115184208369717256,1115184208369717264,1115184208369717265,1115184208369717266,1115184208369717267,1115184208369717268,1115184208369717258,1115184208369717259,1115184208369717260,1115184208369717261,1115184208369717262,1115184208369717270,1115184208369717271,1115184208369717272,1115184208369717273,1115184208369717274,1115183444654067714,1115184160676286466,1115184208369717250,1115184208369717276,1115184208369717277,1115184208369717278,1115184208369717279,1115184208369717280,1115184208369717282,1115184208369717283,1115184208369717284,1115184208369717285,1115184208369717286,1115184208369717288,1115184208369717289,1115184208369717290,1115184208369717291,1115184208369717292,1115183213711495170,1115183247500808194,71,78,175,206,1,2,6,7,73,3,77,27,91,1115184208369717251,1115184208369717263,1115179024377745410,1115184208369717257,1115184208369717269,1115182776430137345,1115184208369717281,1115184208369717275,1115184208369717287,1115183012166799361,1115183127149449218,-1\"],\"roleName\":[\"超级管理员\"],\"remark\":[\"超级管理员\"]}', '127.0.0.1', '2019-04-18 17:54:19');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1046,8 +1082,8 @@ INSERT INTO `sys_menu` VALUES (1115183127149449218, 0, '个人设置', '', '', 0
 INSERT INTO `sys_menu` VALUES (1115183213711495170, 1115183127149449218, '个人资料', '', '', 1, '', NULL, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115183247500808194, 1115183127149449218, '我的通知', '', '', 1, '', NULL, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115183444654067714, 1115183012166799361, '首页管理', '', '', 1, '', 2, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184160676286466, 1115183012166799361, '消息管理', '', '', 1, '', 3, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (1115184208369717250, 1115183012166799361, '媒体管理', '', '', 1, '', 4, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184160676286466, 1115183012166799361, '消息管理', '/common/log', '', 1, '', 3, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1115184208369717250, 1115183012166799361, '媒体管理', '/common/sysFile', '', 1, '', 4, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717251, 1115179024377745410, '文章内容管理', '/cms/article', '', 1, 'fa fa-file-code-o', 1, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717252, 1115184208369717251, '查看', NULL, 'cms:article:article', 2, NULL, 6, NULL, NULL);
 INSERT INTO `sys_menu` VALUES (1115184208369717253, 1115184208369717251, '新增', NULL, 'cms:article:add', 2, NULL, 6, NULL, NULL);
@@ -1109,7 +1145,7 @@ CREATE TABLE `sys_role`  (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES (1, '??????', 'adminRole', '?????', 2, '2017-08-12 00:43:52', '2017-08-12 19:14:59');
+INSERT INTO `sys_role` VALUES (1, '超级管理员', 'adminRole', '超级管理员', 2, '2017-08-12 00:43:52', '2017-08-12 19:14:59');
 INSERT INTO `sys_role` VALUES (56, '普通用户', NULL, '普通用户', NULL, NULL, NULL);
 INSERT INTO `sys_role` VALUES (1034088931742957569, '前端API', 'apiRole', '前端API', NULL, NULL, NULL);
 
@@ -1122,7 +1158,7 @@ CREATE TABLE `sys_role_menu`  (
   `roleId` bigint(20) NULL DEFAULT NULL COMMENT '角色ID',
   `menuId` bigint(20) NULL DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5242 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色与菜单对应关系' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5349 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色与菜单对应关系' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -1280,114 +1316,113 @@ INSERT INTO `sys_role_menu` VALUES (3185, 56, -1);
 INSERT INTO `sys_role_menu` VALUES (4544, 1034088931742957569, 1034089959238385666);
 INSERT INTO `sys_role_menu` VALUES (4545, 1034088931742957569, 1034090238251876354);
 INSERT INTO `sys_role_menu` VALUES (4546, 1034088931742957569, -1);
-INSERT INTO `sys_role_menu` VALUES (5134, 1, 193);
-INSERT INTO `sys_role_menu` VALUES (5135, 1, 194);
-INSERT INTO `sys_role_menu` VALUES (5136, 1, 195);
-INSERT INTO `sys_role_menu` VALUES (5137, 1, 196);
-INSERT INTO `sys_role_menu` VALUES (5138, 1, 197);
-INSERT INTO `sys_role_menu` VALUES (5139, 1, 79);
-INSERT INTO `sys_role_menu` VALUES (5140, 1, 80);
-INSERT INTO `sys_role_menu` VALUES (5141, 1, 81);
-INSERT INTO `sys_role_menu` VALUES (5142, 1, 83);
-INSERT INTO `sys_role_menu` VALUES (5143, 1, 176);
-INSERT INTO `sys_role_menu` VALUES (5144, 1, 177);
-INSERT INTO `sys_role_menu` VALUES (5145, 1, 178);
-INSERT INTO `sys_role_menu` VALUES (5146, 1, 179);
-INSERT INTO `sys_role_menu` VALUES (5147, 1, 180);
-INSERT INTO `sys_role_menu` VALUES (5148, 1, 207);
-INSERT INTO `sys_role_menu` VALUES (5149, 1, 208);
-INSERT INTO `sys_role_menu` VALUES (5150, 1, 209);
-INSERT INTO `sys_role_menu` VALUES (5151, 1, 210);
-INSERT INTO `sys_role_menu` VALUES (5152, 1, 211);
-INSERT INTO `sys_role_menu` VALUES (5153, 1, 20);
-INSERT INTO `sys_role_menu` VALUES (5154, 1, 21);
-INSERT INTO `sys_role_menu` VALUES (5155, 1, 22);
-INSERT INTO `sys_role_menu` VALUES (5156, 1, 61);
-INSERT INTO `sys_role_menu` VALUES (5157, 1, 12);
-INSERT INTO `sys_role_menu` VALUES (5158, 1, 13);
-INSERT INTO `sys_role_menu` VALUES (5159, 1, 14);
-INSERT INTO `sys_role_menu` VALUES (5160, 1, 24);
-INSERT INTO `sys_role_menu` VALUES (5161, 1, 25);
-INSERT INTO `sys_role_menu` VALUES (5162, 1, 26);
-INSERT INTO `sys_role_menu` VALUES (5163, 1, 15);
-INSERT INTO `sys_role_menu` VALUES (5164, 1, 55);
-INSERT INTO `sys_role_menu` VALUES (5165, 1, 56);
-INSERT INTO `sys_role_menu` VALUES (5166, 1, 62);
-INSERT INTO `sys_role_menu` VALUES (5167, 1, 74);
-INSERT INTO `sys_role_menu` VALUES (5168, 1, 75);
-INSERT INTO `sys_role_menu` VALUES (5169, 1, 76);
-INSERT INTO `sys_role_menu` VALUES (5170, 1, 48);
-INSERT INTO `sys_role_menu` VALUES (5171, 1, 72);
-INSERT INTO `sys_role_menu` VALUES (5172, 1, 28);
-INSERT INTO `sys_role_menu` VALUES (5173, 1, 29);
-INSERT INTO `sys_role_menu` VALUES (5174, 1, 30);
-INSERT INTO `sys_role_menu` VALUES (5175, 1, 57);
-INSERT INTO `sys_role_menu` VALUES (5176, 1, 92);
-INSERT INTO `sys_role_menu` VALUES (5177, 1, 1115184208369717252);
-INSERT INTO `sys_role_menu` VALUES (5178, 1, 1115184208369717253);
-INSERT INTO `sys_role_menu` VALUES (5179, 1, 1115184208369717254);
-INSERT INTO `sys_role_menu` VALUES (5180, 1, 1115184208369717255);
-INSERT INTO `sys_role_menu` VALUES (5181, 1, 1115184208369717256);
-INSERT INTO `sys_role_menu` VALUES (5182, 1, 1115184208369717264);
-INSERT INTO `sys_role_menu` VALUES (5183, 1, 1115184208369717265);
-INSERT INTO `sys_role_menu` VALUES (5184, 1, 1115184208369717266);
-INSERT INTO `sys_role_menu` VALUES (5185, 1, 1115184208369717267);
-INSERT INTO `sys_role_menu` VALUES (5186, 1, 1115184208369717268);
-INSERT INTO `sys_role_menu` VALUES (5187, 1, 1115184208369717258);
-INSERT INTO `sys_role_menu` VALUES (5188, 1, 1115184208369717259);
-INSERT INTO `sys_role_menu` VALUES (5189, 1, 1115184208369717260);
-INSERT INTO `sys_role_menu` VALUES (5190, 1, 1115184208369717261);
-INSERT INTO `sys_role_menu` VALUES (5191, 1, 1115184208369717262);
-INSERT INTO `sys_role_menu` VALUES (5192, 1, 1115184208369717270);
-INSERT INTO `sys_role_menu` VALUES (5193, 1, 1115184208369717271);
-INSERT INTO `sys_role_menu` VALUES (5194, 1, 1115184208369717272);
-INSERT INTO `sys_role_menu` VALUES (5195, 1, 1115184208369717273);
-INSERT INTO `sys_role_menu` VALUES (5196, 1, 1115184208369717274);
-INSERT INTO `sys_role_menu` VALUES (5197, 1, 1115183444654067714);
-INSERT INTO `sys_role_menu` VALUES (5198, 1, 1115184160676286466);
-INSERT INTO `sys_role_menu` VALUES (5199, 1, 1115184208369717250);
-INSERT INTO `sys_role_menu` VALUES (5200, 1, 1115184208369717276);
-INSERT INTO `sys_role_menu` VALUES (5201, 1, 1115184208369717277);
-INSERT INTO `sys_role_menu` VALUES (5202, 1, 1115184208369717278);
-INSERT INTO `sys_role_menu` VALUES (5203, 1, 1115184208369717279);
-INSERT INTO `sys_role_menu` VALUES (5204, 1, 1115184208369717280);
-INSERT INTO `sys_role_menu` VALUES (5205, 1, 1115184208369717282);
-INSERT INTO `sys_role_menu` VALUES (5206, 1, 1115184208369717283);
-INSERT INTO `sys_role_menu` VALUES (5207, 1, 1115184208369717284);
-INSERT INTO `sys_role_menu` VALUES (5208, 1, 1115184208369717285);
-INSERT INTO `sys_role_menu` VALUES (5209, 1, 1115184208369717286);
-INSERT INTO `sys_role_menu` VALUES (5210, 1, 1115183213711495170);
-INSERT INTO `sys_role_menu` VALUES (5211, 1, 1115183247500808194);
-INSERT INTO `sys_role_menu` VALUES (5212, 1, 71);
-INSERT INTO `sys_role_menu` VALUES (5213, 1, 78);
-INSERT INTO `sys_role_menu` VALUES (5214, 1, 175);
-INSERT INTO `sys_role_menu` VALUES (5215, 1, 206);
-INSERT INTO `sys_role_menu` VALUES (5216, 1, 1);
-INSERT INTO `sys_role_menu` VALUES (5217, 1, 2);
-INSERT INTO `sys_role_menu` VALUES (5218, 1, 6);
-INSERT INTO `sys_role_menu` VALUES (5219, 1, 7);
-INSERT INTO `sys_role_menu` VALUES (5220, 1, 73);
-INSERT INTO `sys_role_menu` VALUES (5221, 1, 3);
-INSERT INTO `sys_role_menu` VALUES (5222, 1, 77);
-INSERT INTO `sys_role_menu` VALUES (5223, 1, 27);
-INSERT INTO `sys_role_menu` VALUES (5224, 1, 91);
-INSERT INTO `sys_role_menu` VALUES (5225, 1, 1115184208369717251);
-INSERT INTO `sys_role_menu` VALUES (5226, 1, 1115184208369717263);
-INSERT INTO `sys_role_menu` VALUES (5227, 1, 1115179024377745410);
-INSERT INTO `sys_role_menu` VALUES (5228, 1, 1115184208369717257);
-INSERT INTO `sys_role_menu` VALUES (5229, 1, 1115184208369717269);
-INSERT INTO `sys_role_menu` VALUES (5230, 1, 1115182776430137345);
-INSERT INTO `sys_role_menu` VALUES (5231, 1, 1115184208369717281);
-INSERT INTO `sys_role_menu` VALUES (5232, 1, 1115184208369717275);
-INSERT INTO `sys_role_menu` VALUES (5233, 1, 1115183127149449218);
-INSERT INTO `sys_role_menu` VALUES (5234, 1, 1115184208369717287);
-INSERT INTO `sys_role_menu` VALUES (5235, 1, 1115184208369717288);
-INSERT INTO `sys_role_menu` VALUES (5236, 1, 1115184208369717289);
-INSERT INTO `sys_role_menu` VALUES (5237, 1, 1115184208369717290);
-INSERT INTO `sys_role_menu` VALUES (5238, 1, 1115184208369717291);
-INSERT INTO `sys_role_menu` VALUES (5239, 1, 1115184208369717292);
-INSERT INTO `sys_role_menu` VALUES (5240, 1, 1115183012166799361);
-INSERT INTO `sys_role_menu` VALUES (5241, 1, -1);
+INSERT INTO `sys_role_menu` VALUES (5242, 1, 193);
+INSERT INTO `sys_role_menu` VALUES (5243, 1, 194);
+INSERT INTO `sys_role_menu` VALUES (5244, 1, 195);
+INSERT INTO `sys_role_menu` VALUES (5245, 1, 196);
+INSERT INTO `sys_role_menu` VALUES (5246, 1, 197);
+INSERT INTO `sys_role_menu` VALUES (5247, 1, 79);
+INSERT INTO `sys_role_menu` VALUES (5248, 1, 80);
+INSERT INTO `sys_role_menu` VALUES (5249, 1, 81);
+INSERT INTO `sys_role_menu` VALUES (5250, 1, 83);
+INSERT INTO `sys_role_menu` VALUES (5251, 1, 176);
+INSERT INTO `sys_role_menu` VALUES (5252, 1, 177);
+INSERT INTO `sys_role_menu` VALUES (5253, 1, 178);
+INSERT INTO `sys_role_menu` VALUES (5254, 1, 179);
+INSERT INTO `sys_role_menu` VALUES (5255, 1, 180);
+INSERT INTO `sys_role_menu` VALUES (5256, 1, 207);
+INSERT INTO `sys_role_menu` VALUES (5257, 1, 208);
+INSERT INTO `sys_role_menu` VALUES (5258, 1, 209);
+INSERT INTO `sys_role_menu` VALUES (5259, 1, 210);
+INSERT INTO `sys_role_menu` VALUES (5260, 1, 211);
+INSERT INTO `sys_role_menu` VALUES (5261, 1, 20);
+INSERT INTO `sys_role_menu` VALUES (5262, 1, 21);
+INSERT INTO `sys_role_menu` VALUES (5263, 1, 22);
+INSERT INTO `sys_role_menu` VALUES (5264, 1, 61);
+INSERT INTO `sys_role_menu` VALUES (5265, 1, 12);
+INSERT INTO `sys_role_menu` VALUES (5266, 1, 13);
+INSERT INTO `sys_role_menu` VALUES (5267, 1, 14);
+INSERT INTO `sys_role_menu` VALUES (5268, 1, 24);
+INSERT INTO `sys_role_menu` VALUES (5269, 1, 25);
+INSERT INTO `sys_role_menu` VALUES (5270, 1, 26);
+INSERT INTO `sys_role_menu` VALUES (5271, 1, 15);
+INSERT INTO `sys_role_menu` VALUES (5272, 1, 55);
+INSERT INTO `sys_role_menu` VALUES (5273, 1, 56);
+INSERT INTO `sys_role_menu` VALUES (5274, 1, 62);
+INSERT INTO `sys_role_menu` VALUES (5275, 1, 74);
+INSERT INTO `sys_role_menu` VALUES (5276, 1, 75);
+INSERT INTO `sys_role_menu` VALUES (5277, 1, 76);
+INSERT INTO `sys_role_menu` VALUES (5278, 1, 48);
+INSERT INTO `sys_role_menu` VALUES (5279, 1, 28);
+INSERT INTO `sys_role_menu` VALUES (5280, 1, 29);
+INSERT INTO `sys_role_menu` VALUES (5281, 1, 30);
+INSERT INTO `sys_role_menu` VALUES (5282, 1, 57);
+INSERT INTO `sys_role_menu` VALUES (5283, 1, 92);
+INSERT INTO `sys_role_menu` VALUES (5284, 1, 1115184208369717252);
+INSERT INTO `sys_role_menu` VALUES (5285, 1, 1115184208369717253);
+INSERT INTO `sys_role_menu` VALUES (5286, 1, 1115184208369717254);
+INSERT INTO `sys_role_menu` VALUES (5287, 1, 1115184208369717255);
+INSERT INTO `sys_role_menu` VALUES (5288, 1, 1115184208369717256);
+INSERT INTO `sys_role_menu` VALUES (5289, 1, 1115184208369717264);
+INSERT INTO `sys_role_menu` VALUES (5290, 1, 1115184208369717265);
+INSERT INTO `sys_role_menu` VALUES (5291, 1, 1115184208369717266);
+INSERT INTO `sys_role_menu` VALUES (5292, 1, 1115184208369717267);
+INSERT INTO `sys_role_menu` VALUES (5293, 1, 1115184208369717268);
+INSERT INTO `sys_role_menu` VALUES (5294, 1, 1115184208369717258);
+INSERT INTO `sys_role_menu` VALUES (5295, 1, 1115184208369717259);
+INSERT INTO `sys_role_menu` VALUES (5296, 1, 1115184208369717260);
+INSERT INTO `sys_role_menu` VALUES (5297, 1, 1115184208369717261);
+INSERT INTO `sys_role_menu` VALUES (5298, 1, 1115184208369717262);
+INSERT INTO `sys_role_menu` VALUES (5299, 1, 1115184208369717270);
+INSERT INTO `sys_role_menu` VALUES (5300, 1, 1115184208369717271);
+INSERT INTO `sys_role_menu` VALUES (5301, 1, 1115184208369717272);
+INSERT INTO `sys_role_menu` VALUES (5302, 1, 1115184208369717273);
+INSERT INTO `sys_role_menu` VALUES (5303, 1, 1115184208369717274);
+INSERT INTO `sys_role_menu` VALUES (5304, 1, 1115183444654067714);
+INSERT INTO `sys_role_menu` VALUES (5305, 1, 1115184160676286466);
+INSERT INTO `sys_role_menu` VALUES (5306, 1, 1115184208369717250);
+INSERT INTO `sys_role_menu` VALUES (5307, 1, 1115184208369717276);
+INSERT INTO `sys_role_menu` VALUES (5308, 1, 1115184208369717277);
+INSERT INTO `sys_role_menu` VALUES (5309, 1, 1115184208369717278);
+INSERT INTO `sys_role_menu` VALUES (5310, 1, 1115184208369717279);
+INSERT INTO `sys_role_menu` VALUES (5311, 1, 1115184208369717280);
+INSERT INTO `sys_role_menu` VALUES (5312, 1, 1115184208369717282);
+INSERT INTO `sys_role_menu` VALUES (5313, 1, 1115184208369717283);
+INSERT INTO `sys_role_menu` VALUES (5314, 1, 1115184208369717284);
+INSERT INTO `sys_role_menu` VALUES (5315, 1, 1115184208369717285);
+INSERT INTO `sys_role_menu` VALUES (5316, 1, 1115184208369717286);
+INSERT INTO `sys_role_menu` VALUES (5317, 1, 1115184208369717288);
+INSERT INTO `sys_role_menu` VALUES (5318, 1, 1115184208369717289);
+INSERT INTO `sys_role_menu` VALUES (5319, 1, 1115184208369717290);
+INSERT INTO `sys_role_menu` VALUES (5320, 1, 1115184208369717291);
+INSERT INTO `sys_role_menu` VALUES (5321, 1, 1115184208369717292);
+INSERT INTO `sys_role_menu` VALUES (5322, 1, 1115183213711495170);
+INSERT INTO `sys_role_menu` VALUES (5323, 1, 1115183247500808194);
+INSERT INTO `sys_role_menu` VALUES (5324, 1, 71);
+INSERT INTO `sys_role_menu` VALUES (5325, 1, 78);
+INSERT INTO `sys_role_menu` VALUES (5326, 1, 175);
+INSERT INTO `sys_role_menu` VALUES (5327, 1, 206);
+INSERT INTO `sys_role_menu` VALUES (5328, 1, 1);
+INSERT INTO `sys_role_menu` VALUES (5329, 1, 2);
+INSERT INTO `sys_role_menu` VALUES (5330, 1, 6);
+INSERT INTO `sys_role_menu` VALUES (5331, 1, 7);
+INSERT INTO `sys_role_menu` VALUES (5332, 1, 73);
+INSERT INTO `sys_role_menu` VALUES (5333, 1, 3);
+INSERT INTO `sys_role_menu` VALUES (5334, 1, 77);
+INSERT INTO `sys_role_menu` VALUES (5335, 1, 27);
+INSERT INTO `sys_role_menu` VALUES (5336, 1, 91);
+INSERT INTO `sys_role_menu` VALUES (5337, 1, 1115184208369717251);
+INSERT INTO `sys_role_menu` VALUES (5338, 1, 1115184208369717263);
+INSERT INTO `sys_role_menu` VALUES (5339, 1, 1115179024377745410);
+INSERT INTO `sys_role_menu` VALUES (5340, 1, 1115184208369717257);
+INSERT INTO `sys_role_menu` VALUES (5341, 1, 1115184208369717269);
+INSERT INTO `sys_role_menu` VALUES (5342, 1, 1115182776430137345);
+INSERT INTO `sys_role_menu` VALUES (5343, 1, 1115184208369717281);
+INSERT INTO `sys_role_menu` VALUES (5344, 1, 1115184208369717275);
+INSERT INTO `sys_role_menu` VALUES (5345, 1, 1115184208369717287);
+INSERT INTO `sys_role_menu` VALUES (5346, 1, 1115183012166799361);
+INSERT INTO `sys_role_menu` VALUES (5347, 1, 1115183127149449218);
+INSERT INTO `sys_role_menu` VALUES (5348, 1, -1);
 
 -- ----------------------------
 -- Table structure for sys_task
@@ -1501,12 +1536,17 @@ CREATE TABLE `tag`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用途',
-  `isEnable` int(1) NULL DEFAULT NULL COMMENT '是否可用',
+  `isEnable` int(1) NOT NULL DEFAULT 1 COMMENT '是否可用',
   `createTime` datetime(0) NULL DEFAULT NULL COMMENT '创建时间按',
   `creator` int(11) NULL DEFAULT NULL,
   `updateTime` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `version` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tag
+-- ----------------------------
+INSERT INTO `tag` VALUES (2, '水果', '1', 0, '2019-04-18 17:50:56', NULL, '2019-04-18 17:51:01', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

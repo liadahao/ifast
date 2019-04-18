@@ -22,6 +22,7 @@ import lombok.EqualsAndHashCode;
 @SuppressWarnings("serial")
 @TableName("tag")
 public class TagDO implements Serializable {
+
 	@TableId(type = IdType.AUTO)
 	private Long id;
 

@@ -29,41 +29,45 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
-                                            <textarea id="title" name="title" class="form-control" rows="5"></textarea>
+                                            <input id="title" name="content[title]" class="form-control" type="text"
+                                                   required="" th:value="${nav['content']['title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">内容：</label>
                                         <div class="col-sm-8">
-                                            <textarea id="content" name="content" class="form-control"
-                                                      rows="5"></textarea>
+                                            <textarea id="content" name="content[content]" class="form-control"
+                                                      rows="5" th:text="${nav['content']['content']}"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接1：</label>
                                         <div class="col-sm-8">
-                                            <input id="video1" name="video1" class="form-control" type="text">
+                                            <input id="video1" name="content[video1]" class="form-control" type="url"
+                                                   th:value="${nav['content']['video1']}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接2：</label>
                                         <div class="col-sm-8">
-                                            <input id="video2" name="video2" class="form-control" type="text">
+                                            <input id="video2" name="content[video2]" class="form-control" type="url"
+                                                   th:value="${nav['content']['video2']}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">视频链接3：</label>
                                         <div class="col-sm-8">
-                                            <input id="video3" name="video3" class="form-control" type="text">
+                                            <input id="video3" name="content[video3]" class="form-control" type="url"
+                                                   th:value="${nav['content']['video3']}">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
-                            <div class="layui-card">
+                            <div th:each="model,modelStat : ${nav['content']['model']}" class="layui-card">
                                 <div class="layui-card-header">
                                     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块1</legend>
+                                        <legend th:text="模块+${modelStat.count}">模块1</legend>
                                     </fieldset>
                                 </div>
                                 <!-- /.box-header -->
@@ -71,22 +75,25 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
-                                        <textarea id="model-1-title" name="content[model1title]" class="form-control"
-                                                  rows="5"></textarea>
+                                            <input th:attr="name=content[model][+${modelStat.index}+][title]"
+                                                   class="form-control"
+                                                   type="text" th:value="${model['title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">内容：</label>
                                         <div class="col-sm-8">
-                                        <textarea id="model-1-content" name="content[model1content]" class="form-control"
-                                                  rows="5"></textarea>
+                                        <textarea th:attr="name=content[model][+${modelStat.index}+][content]"
+                                                  class="form-control"
+                                                  rows="5" th:text="${model['content']}"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">图片链接：</label>
                                         <div class="col-sm-8">
-                                            <input id="model-1-image" name="content[model1image]" class="form-control"
-                                                   type="text">
+                                            <input th:attr="name=content[model][+${modelStat.index}+][image]"
+                                                   class="form-control"
+                                                   type="text" th:value="${model['image']}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -94,193 +101,11 @@
                                         <div class="switch col-sm-8">
                                             <div class="onoffswitch">
                                                 <input type="checkbox" checked="" class="onoffswitch-checkbox"
-                                                       id="content[model1isShow]"
-                                                       name="content[model1isShow]">
-                                                <label class="onoffswitch-label" for="content[model1isShow]">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块2</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-2-title" name="content[model2title]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">内容：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-2-content" name="content[model2content]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">图片链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-2-image" name="content[model2image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">是否显示：</label>
-                                        <div class="switch col-sm-8">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" class="onoffswitch-checkbox"
-                                                       id="content[model2isShow]"
-                                                       name="content[model2isShow]">
-                                                <label class="onoffswitch-label" for="content[model2isShow]">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块3</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-3-title" name="content[model3title]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">内容：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-3-content" name="content[model3content]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">视频链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-3-image" name="content[model3image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">是否显示：</label>
-                                        <div class="switch col-sm-8">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" class="onoffswitch-checkbox"
-                                                       id="content[model3isShow]"
-                                                       name="content[model3isShow]">
-                                                <label class="onoffswitch-label" for="content[model3isShow]">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块4</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-4-title" name="content[model4title]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">内容：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-4-content" name="content[model4content]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">视频链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-4-image" name="content[model4image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">是否显示：</label>
-                                        <div class="switch col-sm-8">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" class="onoffswitch-checkbox"
-                                                       id="content[model4isShow]"
-                                                       name="content[model4isShow]">
-                                                <label class="onoffswitch-label" for="content[model4isShow]">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块5</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-5-title" name="content[model5title]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">内容：</label>
-                                        <div class="col-sm-8">
-                                        <textarea id="model-5-content" name="content[model5content]" class="form-control"
-                                                  rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">视频链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-5-image" name="content[model5image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">是否显示：</label>
-                                        <div class="switch col-sm-8">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" class="onoffswitch-checkbox"
-                                                       id="content[model5isShow]"
-                                                       name="content[model5isShow]">
-                                                <label class="onoffswitch-label" for="content[model5isShow]">
+                                                       th:id="content[model][+${modelStat.index}+][isShow]"
+                                                       th:attr="name=content[model][+${modelStat.index}+][isShow]"
+                                                       th:value="${model['isShow']}">
+                                                <label class="onoffswitch-label"
+                                                       th:attr="for=content[model][+${modelStat.index}+][isShow]">
                                                     <span class="onoffswitch-inner"></span>
                                                     <span class="onoffswitch-switch"></span>
                                                 </label>
@@ -308,7 +133,55 @@
 <script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
 <script>
-
+    var page = $('#signupForm-p-1');
+    var len = page.children().length;
+    for (var i = len; i <= 5; i++) {
+        var html = '<div class="layui-card">\n' +
+            '    <div class="layui-card-header">\n' +
+            '        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">\n' +
+            '            <legend>模块' + (i + 1) + '</legend>\n' +
+            '        </fieldset>\n' +
+            '    </div>\n' +
+            '    <div class="layui-card-body">\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">标题：</label>\n' +
+            '            <div class="col-sm-8">\n' +
+            '            <input name="content[model][' + i + '][title]" class="form-control"\n' +
+            '                      type="text"/>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">内容：</label>\n' +
+            '            <div class="col-sm-8">\n' +
+            '            <textarea name="content[model][' + i + '][content]"\n' +
+            '                      class="form-control"\n' +
+            '                      rows="5"></textarea>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">图片链接：</label>\n' +
+            '            <div class="col-sm-8">\n' +
+            '                <input name="content[model][' + i + '][image]" class="form-control"\n' +
+            '                       type="text">\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">是否显示：</label>\n' +
+            '            <div class="switch col-sm-8">\n' +
+            '                <div class="onoffswitch">\n' +
+            '                    <input type="checkbox" checked="" class="onoffswitch-checkbox"\n' +
+            '                           name="content[model][' + i + '][isShow]">\n' +
+            '                    <label class="onoffswitch-label" for="content[model][' + i + '][isShow]">\n' +
+            '                        <span class="onoffswitch-inner"></span>\n' +
+            '                        <span class="onoffswitch-switch"></span>\n' +
+            '                    </label>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '</div>';
+        page.append(html);
+    }
 </script>
 </body>
 </html>

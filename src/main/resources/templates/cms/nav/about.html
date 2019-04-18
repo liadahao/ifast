@@ -30,116 +30,134 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="tab1title" name="content[tab1][title]" class="form-control"
-                                                   type="text"/>
+                                                   type="text" th:value="${nav['content']['tab1']['title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">摘要：</label>
                                         <div class="col-sm-8">
                                         <textarea id="tab1content" name="content[tab1][content]" class="form-control"
-                                                  rows="3"></textarea>
+                                                  rows="3" th:text="${nav['content']['tab1']['content']}"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
-                            <div id="model" class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块1</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-1 control-label">人物姓名：</label>
-                                        <div class="col-sm-4">
-                                            <input id="model-1-name" name="content[tab1][model][0][name]"
-                                                   class="form-control"
-                                                   rows="5" type="text"/>
-                                        </div>
-                                        <label class="col-sm-1 control-label">人物简介 ：</label>
-                                        <div class="col-sm-4">
+                            <div id="tab1-model-list">
+                                <div id="model" class="layui-card"
+                                     th:each="model,modelStat:${nav['content']['tab1']['model']}">
+                                    <div class="layui-card-header">
+                                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                            <legend th:text="模块+${modelStat.count}"></legend>
+                                        </fieldset>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="layui-card-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">人物姓名：</label>
+                                            <div class="col-sm-4">
+                                                <input id="model-1-name" name="content[tab1][model][0][name]"
+                                                       class="form-control"
+                                                       type="text" th:value="${model['name']}"/>
+                                            </div>
+                                            <label class="col-sm-1 control-label">人物简介 ：</label>
+                                            <div class="col-sm-4">
                                         <textarea id="model-1-description" name="content[tab1][model][0][description]"
                                                   class="form-control"
-                                                  rows="3"></textarea>
+                                                  rows="3" th:text="${model['description']}"></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-1 control-label">人物排序 ：</label>
-                                        <div class="col-sm-4">
-                                            <input id="model-1-order" name="content[tab1][model][0][order]"
-                                                   class="form-control"
-                                                   type="number"/>
-                                        </div>
-                                        <label class="col-sm-1 control-label">段落 ：</label>
-                                        <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">人物排序 ：</label>
+                                            <div class="col-sm-4">
+                                                <input id="model-1-order" name="content[tab1][model][0][order]"
+                                                       class="form-control"
+                                                       type="number" th:value="${model['order']}"/>
+                                            </div>
+                                            <label class="col-sm-1 control-label">段落 ：</label>
+                                            <div class="col-sm-6">
                                         <textarea id="model-1-content" name="content[tab1][model][0][content]"
                                                   class="form-control"
-                                                  rows="5"></textarea>
+                                                  rows="5" th:text="${model['content']}"></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-1 control-label">任务肖像：</label>
-                                        <div id="uploader-demo" class="col-sm-4">
-                                            <div class="layui-upload">
-                                                <button type="button" class="layui-btn" id="pic1">上传图片</button>
-                                                <div class="layui-upload-list">
-                                                    <h1 id="picTitle"></h1>
-                                                    <img class="layui-upload-img" id="picDemo1">
-                                                    <p id="picText"></p>
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">任务肖像：</label>
+                                            <div id="uploader-demo" class="col-sm-4">
+                                                <div class="layui-upload">
+                                                    <button type="button" class="layui-btn" id="pic1">上传图片</button>
+                                                    <div class="layui-upload-list">
+                                                        <h1 id="picTitle"></h1>
+                                                        <img class="layui-upload-img" id="picDemo1"
+                                                             th:src="${model['pic']}">
+                                                        <p id="picText"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label class="col-sm-1 control-label">背景图：</label>
+                                            <div id="uploader-demo2" class="col-sm-4">
+                                                <div class="layui-upload">
+                                                    <button type="button" class="layui-btn" id="image1">上传图片</button>
+                                                    <div class="layui-upload-list">
+                                                        <h1 id="imageTitle1"></h1>
+                                                        <img class="layui-upload-img" id="imageDemo1"
+                                                             th:value="${model['image']}">
+                                                        <p id="iamgeText1"></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <label class="col-sm-1 control-label">背景图：</label>
-                                        <div id="uploader-demo2" class="col-sm-4">
-                                            <div class="layui-upload">
-                                                <button type="button" class="layui-btn" id="image1">上传图片</button>
-                                                <div class="layui-upload-list">
-                                                    <h1 id="imageTitle1"></h1>
-                                                    <img class="layui-upload-img" id="imageDemo1">
-                                                    <p id="iamgeText1"></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-8 link-table">
-                                            <div class="ibox float-e-margins">
-                                                <div class="ibox-title">
-                                                    <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
-                                                </div>
-                                                <span id="addLink" class="btn btn-primary"
-                                                      onclick="addLink(0)">添加</span>
-                                                <div class="ibox-content">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>社交媒体名称</th>
-                                                            <th>url链接</th>
-                                                            <th>排序</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="linktable-0">
-                                                        <tr>
-                                                            <td><select class="form-control m-b"
-                                                                        name="content[tab1][model][0][social][0][type]">
-                                                                <option value=></option>
-                                                                <option value="Fackbook">Fackbook</option>
-                                                                <option value="Linkedin">Linkedin</option>
-                                                                <option value="Twitter">Twitter</option>
-                                                                <option value="Medium">Medium</option>
-                                                                <option value="Instagram">Instagram</option>
-                                                            </select></td>
-                                                            <td><input name="content[tab1][model][0][social][0][url]"
-                                                                       class="form-control"
-                                                                       type="url"></td>
-                                                            <td><input name="content[tab1][model][0][social][0][order]"
-                                                                       class="form-control"
-                                                                       type="number"></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+                                        <div class="form-group">
+                                            <div class="col-sm-8 link-table">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-title">
+                                                        <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
+                                                    </div>
+                                                    <span id="addLink" class="btn btn-primary"
+                                                          onclick="addLink(0)">添加</span>
+                                                    <div class="ibox-content">
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>社交媒体名称</th>
+                                                                <th>url链接</th>
+                                                                <th>排序</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="linktable-0">
+                                                            <tr th:each="social,socialStat:${model['social']}">
+                                                                <td><select class="form-control m-b"
+                                                                            th:attr="name=content[tab1][model][+${modelStat.index}+][social][+${socialStat.index}+][type]">
+                                                                    <option value=></option>
+                                                                    <option th:selected="${social.type eq 'Fackbook'}"
+                                                                            value="Fackbook">Fackbook
+                                                                    </option>
+                                                                    <option th:selected="${social.type eq 'Linkedin'}"
+                                                                            value="Linkedin">Linkedin
+                                                                    </option>
+                                                                    <option th:selected="${social.type eq 'Twitter'}"
+                                                                            value="Twitter">Twitter
+                                                                    </option>
+                                                                    <option th:selected="${social.type eq 'Medium'}"
+                                                                            value="Medium">Medium
+                                                                    </option>
+                                                                    <option th:selected="${social.type eq 'Instagram'}"
+                                                                            value="Instagram">Instagram
+                                                                    </option>
+                                                                </select></td>
+                                                                <td><input
+                                                                        th:attr="name=content[tab1][model][+${modelStat.index}+][social][+${socialStat.index}+][url]"
+                                                                        class="form-control"
+                                                                        type="url" th:value="${social['url']}"></td>
+                                                                <td><input
+                                                                        th:attr="name=content[tab1][model][+${modelStat.index}+][social][+${socialStat.index}+][order]"
+                                                                        class="form-control"
+                                                                        type="number" th:value="${social['order']}">
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,146 +179,56 @@
                                         <label class="col-sm-3 control-label">标题：</label>
                                         <div class="col-sm-8">
                                             <input id="tab2title" name="content[tab2][title]" class="form-control"
-                                                   type="text"/>
+                                                   type="text" th:value="${nav['content']['tab2']['title']}"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">摘要：</label>
                                         <div class="col-sm-8">
                                         <textarea id="tab2content" name="content[tab2][content]" class="form-control"
-                                                  rows="3"></textarea>
+                                                  rows="3" th:text="${nav['content']['tab2']['content']}"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块1</legend>
-                                    </fieldset>
+                            <div id="tab2">
+                                <div class="layui-card" th:each="model,modelStat : ${nav['content']['tab2']['model']}">
+                                    <div class="layui-card-header">
+                                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                            <legend th:text="模块+${modelStat.count}"></legend>
+                                        </fieldset>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="layui-card-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">标题：</label>
+                                            <div class="col-sm-8">
+                                                <input name="content[tab2][model][+${modelStat.index}+][title]"
+                                                       class="form-control"
+                                                       type="text" th:value="${model['title']}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">段落：</label>
+                                            <div class="col-sm-8">
+                                            <textarea
+                                                    th:attr="name=content[tab2][model][+${modelStat.index}+][content]"
+                                                    class="form-control"
+                                                    rows="3" th:text="${model['content']}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">媒体图片：</label>
+                                            <div class="col-sm-8">
+                                                <input name="content[tab2][model][+${modelStat.index}+][image]"
+                                                       class="form-control"
+                                                       type="text" th:value="${model['image']}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
                                 </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][0][title]" class="form-control"
-                                                   type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">段落：</label>
-                                        <div class="col-sm-8">
-                                        <textarea name="content[tab2][model][0][content]" class="form-control"
-                                                  rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">媒体图片：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][0][image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块2</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][1][title]" class="form-control"
-                                                   type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">段落：</label>
-                                        <div class="col-sm-8">
-                                        <textarea name="content[tab2][model][1][content]" class="form-control"
-                                                  rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">媒体图片：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][1][image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块3</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][2][title]" class="form-control"
-                                                   type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">段落：</label>
-                                        <div class="col-sm-8">
-                                        <textarea name="content[tab2][model][2][content]" class="form-control"
-                                                  rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">媒体图片：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][2][image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                        <legend>模块4</legend>
-                                    </fieldset>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="layui-card-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">标题：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][3][title]" class="form-control"
-                                                   type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">段落：</label>
-                                        <div class="col-sm-8">
-                                        <textarea name="content[tab2][model][3][content]" class="form-control"
-                                                  rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">媒体图片：</label>
-                                        <div class="col-sm-8">
-                                            <input name="content[tab2][model][3][image]" class="form-control"
-                                                   type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
                             </div>
                         </fieldset>
                         <h3>SEO信息</h3>
@@ -366,7 +294,7 @@
         }
         var html = '<tr>\n' +
             '<td><select class="form-control m-b"\n' +
-            ' name="content[tab1][model][' + id + '][social][' + (len - 1) + '][type]">\n' +
+            ' name="content[tab1][model][' + id + '][social][' + (len) + '][type]">\n' +
             '        <option value=></option>\n' +
             '        <option value="Fackbook">Fackbook</option>\n' +
             '        <option value="Linkedin">Linkedin</option>\n' +
@@ -374,10 +302,10 @@
             '        <option value="Medium">Medium</option>\n' +
             '        <option value="Instagram">Instagram</option>\n' +
             '    </select></td>\n' +
-            '    <td><input name="content[tab1][model][' + id + '][social][' + (len - 1) + '][url]"\n' +
+            '    <td><input name="content[tab1][model][' + id + '][social][' + (len) + '][url]"\n' +
             '               class="form-control"\n' +
             '               type="url"></td>\n' +
-            '    <td><input name="content[tab1][model][' + id + '][social][' + (len - 1) + '][order]"\n' +
+            '    <td><input name="content[tab1][model][' + id + '][social][' + (len) + '][order]"\n' +
             '               class="form-control"\n' +
             '               type="number"></td>\n' +
             '</tr>';
@@ -385,33 +313,44 @@
     }
 
     function addModel(id) {
-        var tbody = $("#linktable-" + id);
-        var len = tbody.children('tr').length;
-        if (len >= 6) {
-            alert('链接已到达6个');
-        }
-        var html = '<tr>\n' +
-            '<td><select class="form-control m-b"\n' +
-            ' name="content[tab1][model][' + id + '][social][' + (len - 1) + '][type]">\n' +
-            '        <option value=></option>\n' +
-            '        <option value="Fackbook">Fackbook</option>\n' +
-            '        <option value="Linkedin">Linkedin</option>\n' +
-            '        <option value="Twitter">Twitter</option>\n' +
-            '        <option value="Medium">Medium</option>\n' +
-            '        <option value="Instagram">Instagram</option>\n' +
-            '    </select></td>\n' +
-            '    <td><input name="content[tab1][model][' + id + '][social][' + (len - 1) + '][url]"\n' +
-            '               class="form-control"\n' +
-            '               type="url"></td>\n' +
-            '    <td><input name="content[tab1][model][' + id + '][social][' + (len - 1) + '][order]"\n' +
-            '               class="form-control"\n' +
-            '               type="number"></td>\n' +
-            '</tr>';
-        tbody.append(html)
+
     }
 
-    function addModel() {
 
+    var page = $('#tab2');
+    var len = page.children().length + 1;
+    for (var i = len; i <= 4; i++) {
+        var html = '<div class="layui-card">\n' +
+            '    <div class="layui-card-header">\n' +
+            '        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">\n' +
+            '            <legend>模块' + i + '</legend>\n' +
+            '        </fieldset>\n' +
+            '    </div>\n' +
+            '    <div class="layui-card-body">\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">标题：</label>\n' +
+            '            <div class="col-sm-8">\n' +
+            '                <input name="content[tab2][model][' + i + '][title]" class="form-control"\n' +
+            '                       type="text"/>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">段落：</label>\n' +
+            '            <div class="col-sm-8">\n' +
+            '            <textarea name="content[tab2][model][' + i + '][content]" class="form-control"\n' +
+            '                      rows="3"></textarea>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-3 control-label">媒体图片：</label>\n' +
+            '            <div class="col-sm-8">\n' +
+            '                <input name="content[tab2][model][' + i + '][image]" class="form-control"\n' +
+            '                       type="text">\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '</div>';
+        page.append(html);
     }
 </script>
 </body>

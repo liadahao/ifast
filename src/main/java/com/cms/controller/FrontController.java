@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.cms.core.HtmlConstant;
-import com.cms.domain.ArticleDO;
-import com.cms.domain.EventDO;
-import com.cms.domain.NavDO;
-import com.cms.domain.ProductDO;
+import com.cms.domain.*;
 import com.cms.service.ArticleService;
 import com.cms.service.EventService;
 import com.cms.service.NavService;
@@ -16,6 +13,7 @@ import com.ifast.common.utils.HttpContextUtils;
 import com.ifast.common.utils.Result;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,12 +51,17 @@ public class FrontController {
         Wrapper<NavDO> wrapper = new EntityWrapper<NavDO>().eq("name", name);
         NavDO navDO = navService.selectOne(wrapper);
         String suffix = "";
-        Map data = new HashMap<>();
+        Map data;
         if (navDO != null && !StringUtils.isEmpty(navDO.getContent())) {
             data = JSON.parseObject(navDO.getContent(), Map.class);
+            NavVo navVo = new NavVo();
+            BeanUtils.copyProperties(navDO, navVo);
+            navVo.setContent(data);
             suffix = HtmlConstant.getHtml(navDO.getType());
+            model.addAttribute("data", navVo);
+        }else{
+            model.addAttribute("data", new HashMap<>());
         }
-        model.addAttribute("data", data);
         if (!StringUtils.isEmpty(suffix)) {
             return "/cms/front/pages/" + suffix;
         } else {
