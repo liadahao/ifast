@@ -34,6 +34,8 @@
             padding-top: 40px;
             padding-left: 19.53%;
             padding-right: 19.53%;
+            background: rgba(247, 247, 247, 1);
+
         }
 
         .article-haed {
@@ -123,11 +125,7 @@
         </div>
         <div class="main-body">
             <div class="tag-list">
-                <div class="tag">
-                    Mask
-                </div>
-                <div class="tag">
-                    Vincent
+                <div class="tag" th:each="tag :${tags}" th:if="${tag!=null}" th:text="${tag['name']}">
                 </div>
             </div>
             <div th:utext="${article.content}" class="article-content">
@@ -140,10 +138,10 @@
             </div>
             <div class="article-info am-g">
                 <div class="share-icon am-u-md-4">
-                    <a href="##" class="am-icon-btn am-icon-facebook"></a>
-                    <a href="##" class="am-icon-btn am-icon-twitter"></a>
-                    <a href="##" class="am-icon-btn am-icon-instagram"></a>
-                    <a href="##" class="am-icon-btn am-icon-linkedin"></a>
+                    <a href="#" class="am-icon-btn am-icon-facebook"></a>
+                    <a href="#" class="am-icon-btn am-icon-twitter"></a>
+                    <a href="#" class="am-icon-btn am-icon-instagram"></a>
+                    <a href="#" class="am-icon-btn am-icon-linkedin"></a>
                 </div>
                 <div class="custom-icon am-u-md-2">
                     <div class="am-u-md-2">

@@ -72,7 +72,7 @@ function handleData(data) {
                 '        </div>'
         }
         if (style == 2) {
-            html = '<div class="box box2">\n' +
+            html = '<div id="' + obj.id + '" class="box box2">\n' +
                 '            <img src="' + obj.thumbnail + '"/>\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +
@@ -88,7 +88,7 @@ function handleData(data) {
                 '        </div>'
         }
         if (style == 3) {
-            html = '<div class="box box3">\n' +
+            html = '<div id="' + obj.id + '" class="box box3">\n' +
                 '            <img src="' + obj.thumbnail + '"/>\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +
@@ -104,5 +104,10 @@ function handleData(data) {
                 '        </div>'
         }
         selector.append(html);
+        var tagList = $("#" + obj.id + " .tag-list");
+        for (var i = 0; i < obj.tag.length; i++) {
+            var tagHtml = '<div class="tag">' + obj.tag[i] + '</div>';
+            tagList.append(tagHtml);
+        }
     }
 }

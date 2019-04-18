@@ -4,7 +4,7 @@
 <mapper namespace="com.cms.dao.TagDao">
 
     <select id="selectByArticleId" resultType="com.cms.domain.TagDO">
-        select t.name
+        select t.id,t.name
         from article_tag at
                  left join tag t on t.id = at.tagId
         where articleId = #{id}

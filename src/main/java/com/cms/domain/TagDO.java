@@ -30,7 +30,7 @@ public class TagDO implements Serializable {
     private String name;
 
     /** 用途 */
-    private String type;
+    private Integer type;
 
     /** 是否可用 */
     private Integer isenable;

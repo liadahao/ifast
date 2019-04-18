@@ -9,20 +9,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/front/workshop.css}" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
-    <script type="text/javascript">
-        $(function () {
-            var id = '#doc-oc-demo3';
-            var $myOc = $(id);
-            $('.side-close').on('click', function () {
-                $myOc.offCanvas($(this).data('rel'));
-            });
-        });
-    </script>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
@@ -107,7 +96,16 @@
 </div>
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script>
+    $(function () {
+        var id = '#doc-oc-demo3';
+        var $myOc = $(id);
+        $('.side-close').on('click', function () {
+            $myOc.offCanvas($(this).data('rel'));
+        });
+    });
     var url = $('#thumbnail-list').find('li:first-child').find('img').attr('src');
     $("#carousel-img").attr('src', url);
     var list = $('#right-side-content-list').children();

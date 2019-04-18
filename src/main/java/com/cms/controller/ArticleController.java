@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.cms.core.TagConstant;
 import com.cms.domain.ArticleDO;
 import com.cms.domain.ArticleTagDO;
 import com.cms.domain.TagDO;
@@ -159,7 +160,7 @@ public class ArticleController extends AdminBaseController {
                     tag = new TagDO();
                     tag.setName(tagName);
                     tag.setCreatetime(new Date());
-                    tag.setType("文章");
+                    tag.setType(TagConstant.ARTICLE.type);
                     tag.setIsenable(1);
                     tagService.insert(tag);
                 }
@@ -221,7 +222,7 @@ public class ArticleController extends AdminBaseController {
                     tag = new TagDO();
                     tag.setName(tagName);
                     tag.setCreatetime(new Date());
-                    tag.setType("文章");
+                    tag.setType(TagConstant.ARTICLE.type);
                     tag.setIsenable(1);
                     tagService.insert(tag);
                 }
@@ -246,6 +247,9 @@ public class ArticleController extends AdminBaseController {
     @RequiresPermissions("cms:article:remove")
     public Result<String> remove(Integer id) {
         articleService.deleteById(id);
+        EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
+        articleTagDOEntityWrapper.eq("articleId", id);
+        articleTagService.delete(articleTagDOEntityWrapper);
         return Result.ok();
     }
 
@@ -255,6 +259,11 @@ public class ArticleController extends AdminBaseController {
     @RequiresPermissions("cms:article:batchRemove")
     public Result<String> remove(@RequestParam("ids[]") Integer[] ids) {
         articleService.deleteBatchIds(Arrays.asList(ids));
+        for (Integer id : ids) {
+            EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
+            articleTagDOEntityWrapper.eq("articleId", id);
+            articleTagService.delete(articleTagDOEntityWrapper);
+        }
         return Result.ok();
     }
 

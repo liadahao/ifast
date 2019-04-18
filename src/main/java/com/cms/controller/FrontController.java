@@ -6,9 +6,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.cms.core.HtmlConstant;
 import com.cms.domain.*;
-import com.cms.service.ArticleService;
-import com.cms.service.EventService;
-import com.cms.service.NavService;
+import com.cms.service.*;
 import com.ifast.common.utils.HttpContextUtils;
 import com.ifast.common.utils.Result;
 import org.apache.commons.lang3.StringUtils;
@@ -22,8 +20,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class FrontController {
@@ -33,6 +34,9 @@ public class FrontController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    TagService tagService;
     @Autowired
     EventService eventService;
 
@@ -59,7 +63,9 @@ public class FrontController {
             navVo.setContent(data);
             suffix = HtmlConstant.getHtml(navDO.getType());
             model.addAttribute("data", navVo);
-        }else{
+        } else {
+            Map<String, Object> map = new HashMap<>();
+            map.put("content", new HashMap<>());
             model.addAttribute("data", new HashMap<>());
         }
         if (!StringUtils.isEmpty(suffix)) {
@@ -74,13 +80,23 @@ public class FrontController {
     public Result<Page<ArticleDO>> articleList() {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
         Page<ArticleDO> page = articleService.selectPage(getPage(ArticleDO.class), wrapper);
+        for (ArticleDO articleDO : page.getRecords()) {
+            List<TagDO> tagDOList = tagService.selectByArticleId(articleDO.getId());
+            if (tagDOList != null && !tagDOList.isEmpty()) {
+                articleDO.setTag(tagDOList.stream().map(TagDO::getName).collect(Collectors.toList()));
+            } else {
+                articleDO.setTag(new ArrayList<>());
+            }
+        }
         return Result.ok(page);
     }
 
     @GetMapping("/article/{id}")
     public String articleDetail(@PathVariable Integer id, Model model) {
         ArticleDO article = articleService.selectById(id);
+        List<TagDO> tagList = tagService.selectByArticleId(id);
         model.addAttribute("article", article);
+        model.addAttribute("tags", tagList);
         return "/cms/front/pages/articleDetail";
     }
 

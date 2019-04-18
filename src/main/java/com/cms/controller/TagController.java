@@ -4,6 +4,8 @@ package com.cms.controller;
 import java.util.Arrays;
 import java.util.Date;
 
+import com.cms.domain.ArticleTagDO;
+import com.cms.service.ArticleTagService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,9 @@ import com.ifast.common.utils.Result;
 public class TagController extends AdminBaseController {
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private ArticleTagService articleTagService;
 
     @GetMapping()
     @RequiresPermissions("cms:tag:tag")
@@ -91,6 +96,9 @@ public class TagController extends AdminBaseController {
     @RequiresPermissions("cms:tag:remove")
     public Result<String> remove(Long id) {
         tagService.deleteById(id);
+        EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
+        articleTagDOEntityWrapper.eq("tagId", id);
+        articleTagService.delete(articleTagDOEntityWrapper);
         return Result.ok();
     }
 
@@ -100,6 +108,11 @@ public class TagController extends AdminBaseController {
     @RequiresPermissions("cms:tag:batchRemove")
     public Result<String> remove(@RequestParam("ids[]") Long[] ids) {
         tagService.deleteBatchIds(Arrays.asList(ids));
+        for (Long id : ids) {
+            EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
+            articleTagDOEntityWrapper.eq("tagId", id);
+            articleTagService.delete(articleTagDOEntityWrapper);
+        }
         return Result.ok();
     }
 
