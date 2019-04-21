@@ -85,6 +85,8 @@ public class ArticleDO implements Serializable {
      * 评论总数
      */
     private Integer commentCount;
+    private Integer goodCount;
+    private Integer keepTryingCount;
 
     /**
      * 最后评论时间
@@ -127,7 +129,7 @@ public class ArticleDO implements Serializable {
      */
     private String remarks;
 
-    private String fackbook;
+    private String facebook;
     private String linkedin;
     private String twitter;
     private String medium;

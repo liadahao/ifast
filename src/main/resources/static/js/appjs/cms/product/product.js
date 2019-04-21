@@ -60,8 +60,8 @@ function load() {
                         title: '产品名称'
                     },
                     {
-                        field: 'categoryid',
-                        title: '分类id',
+                        field: 'categoryName',
+                        title: '所属类目',
 
                     },
                     {
@@ -79,6 +79,17 @@ function load() {
                     {
                         field: 'order',
                         title: '排序'
+                    },
+                    {
+                        field: 'status',
+                        title: '状态',
+                        formatter: function (value, row, index) {
+                            if (row.status == 0) {
+                                return "上架";
+                            } else {
+                                return "下架";
+                            }
+                        }
                     },
                     {
                         title: '操作',

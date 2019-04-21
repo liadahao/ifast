@@ -15,15 +15,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -91,19 +87,105 @@ public class FrontController {
         return Result.ok(page);
     }
 
+    @ResponseBody
+    @GetMapping("/article/{id}/maylike")
+    public Result<Page<ArticleDO>> mayLikeArticleList(@PathVariable Integer id) {
+        Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
+        wrapper.ne("id", id);
+        int pageNumber = getParaToInt("pageNumber", 1);
+        int pageSize = getParaToInt("pageSize", 3);
+        Page<ArticleDO> page = new Page<>(pageNumber, pageSize);
+        page = articleService.selectPage(page, wrapper);
+        for (ArticleDO articleDO : page.getRecords()) {
+            List<TagDO> tagDOList = tagService.selectByArticleId(articleDO.getId());
+            if (tagDOList != null && !tagDOList.isEmpty()) {
+                articleDO.setTag(tagDOList.stream().map(TagDO::getName).collect(Collectors.toList()));
+            } else {
+                articleDO.setTag(new ArrayList<>());
+            }
+        }
+        return Result.ok(page);
+    }
+
     @GetMapping("/article/{id}")
     public String articleDetail(@PathVariable Integer id, Model model) {
         ArticleDO article = articleService.selectById(id);
+        Integer viewCount = article.getViewCount();
+        if (viewCount != null && viewCount >= 0) {
+            viewCount++;
+            article.setViewCount(viewCount);
+            articleService.updateById(article);
+        }
+        List<Map<String, String>> mapList = new LinkedList<>();
+        if (!StringUtils.isEmpty(article.getFacebook())) {
+            Map<String, String> map = JSON.parseObject(article.getFacebook(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getLinkedin())) {
+            Map<String, String> map = JSON.parseObject(article.getLinkedin(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getTwitter())) {
+            Map<String, String> map = JSON.parseObject(article.getTwitter(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getMedium())) {
+            Map<String, String> map = JSON.parseObject(article.getMedium(), Map.class);
+            mapList.add(map);
+        }
+        if (!StringUtils.isEmpty(article.getInstagram())) {
+            Map<String, String> map = JSON.parseObject(article.getInstagram(), Map.class);
+            mapList.add(map);
+        }
+        article.setSocial(mapList);
         List<TagDO> tagList = tagService.selectByArticleId(id);
         model.addAttribute("article", article);
         model.addAttribute("tags", tagList);
         return "/cms/front/pages/articleDetail";
     }
 
+    @PostMapping("/article/{id}/good")
+    @ResponseBody
+    public Integer good(@PathVariable Integer id) {
+        ArticleDO article = articleService.selectById(id);
+        Integer goodCount = article.getGoodCount();
+        if (goodCount != null && goodCount >= 0) {
+            goodCount++;
+        } else {
+            goodCount = 0;
+        }
+        article.setGoodCount(goodCount);
+        articleService.updateById(article);
+        return goodCount;
+    }
+
+    @PostMapping("/article/{id}/keepTrying")
+    @ResponseBody
+    public Integer keepTrying(@PathVariable Integer id) {
+        ArticleDO article = articleService.selectById(id);
+        Integer keepTryingCount = article.getKeepTryingCount();
+        if (keepTryingCount != null && keepTryingCount >= 0) {
+            keepTryingCount++;
+        } else {
+            keepTryingCount = 0;
+        }
+        article.setKeepTryingCount(keepTryingCount);
+        articleService.updateById(article);
+        return keepTryingCount;
+    }
+
     @ResponseBody
     @GetMapping("/event/list")
-    public Result<Page<EventDO>> eventList() {
+    public Result<Page<EventDO>> eventList(Integer type, String starttime) throws ParseException {
         Wrapper<EventDO> wrapper = new EntityWrapper<EventDO>().orderBy("id", false);
+        if (type != null) {
+            wrapper.eq("type", type);
+        }
+        if (!StringUtils.isEmpty(starttime)) {
+            SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM" );
+            Date d = sdf.parse(starttime);
+            wrapper.ge("startTime", d);
+        }
         Page<EventDO> page = eventService.selectPage(getPage(EventDO.class), wrapper);
         return Result.ok(page);
     }

@@ -27,9 +27,30 @@ function handleData(data) {
     if (data.author) {
         $('#author').val(data.author);
     }
+    if (data.linkTo) {
+        $('#linkTo').val(data.linkTo);
+    }
     if (data.style) {
         $('#optionsRadios' + data.style).attr('checked', 'checked');
     }
+
+    if (data.thumbnail) {
+        $('#thumbnail').val(data.thumbnail);
+        var $li = $(
+            '<div class="file-item">' +
+            '<img style="width: 400px;height: 400px;margin-bottom: 10px">' +
+            '<div class="info"></div>' +
+            '</div>'
+            ),
+            $img = $li.find('img');
+
+        let $list = $("#fileList");
+        // $list为容器jQuery实例
+        $list.html($li);
+
+        $img.attr('src', data.thumbnail);
+    }
+
     if (data.social) {
         for (var i = 0; i < data.social.length; i++) {
             var obj = data.social[i];

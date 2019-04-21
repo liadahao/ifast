@@ -86,8 +86,8 @@ public class ArticleController extends AdminBaseController {
     ArticleDO edit(@PathVariable("id") Integer id) {
         ArticleDO article = articleService.selectById(id);
         List<Map<String, String>> mapList = new LinkedList<>();
-        if (!StringUtils.isEmpty(article.getFackbook())) {
-            Map<String, String> map = JSON.parseObject(article.getFackbook(), Map.class);
+        if (!StringUtils.isEmpty(article.getFacebook())) {
+            Map<String, String> map = JSON.parseObject(article.getFacebook(), Map.class);
             mapList.add(map);
         }
         if (!StringUtils.isEmpty(article.getLinkedin())) {
@@ -128,8 +128,8 @@ public class ArticleController extends AdminBaseController {
             for (Map<String, String> map : article.getSocial()) {
                 String type = map.get("type");
                 if (!StringUtils.isEmpty(type)) {
-                    if ("fackbook".equalsIgnoreCase(type)) {
-                        article.setFackbook(JSON.toJSONString(map));
+                    if ("facebook".equalsIgnoreCase(type)) {
+                        article.setFacebook(JSON.toJSONString(map));
                     }
                     if ("linkedin".equalsIgnoreCase(type)) {
                         article.setLinkedin(JSON.toJSONString(map));
@@ -188,8 +188,8 @@ public class ArticleController extends AdminBaseController {
             for (Map<String, String> map : article.getSocial()) {
                 String type = map.get("type");
                 if (!StringUtils.isEmpty(type)) {
-                    if ("fackbook".equalsIgnoreCase(type)) {
-                        article.setFackbook(JSON.toJSONString(map));
+                    if ("facebook".equalsIgnoreCase(type)) {
+                        article.setFacebook(JSON.toJSONString(map));
                     }
                     if ("linkedin".equalsIgnoreCase(type)) {
                         article.setLinkedin(JSON.toJSONString(map));

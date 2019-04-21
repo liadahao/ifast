@@ -16,10 +16,27 @@ function load() {
     });
 }
 
+function search() {
+    var type = $("#search-type").val();
+    var date = $("#search-date").val();
+    $.ajax({
+        type: "GET",
+        url: "/event/list",
+        data: {"pageNumber": "1", "pageSize": "8", "type": type, "starttime": date},
+        async: false,
+        error: function (request) {
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+}
+
 function handleData(data) {
     var row = data.data.records;
     var line = 0;
     var selector;
+    $('#event-list').empty()
     for (var j = 0, len = row.length; j < len; j++) {
         var obj = row[j];
         if (j % 4 === 0) {
@@ -31,7 +48,7 @@ function handleData(data) {
         }
         var html = '<li class="box">\n' +
             '            <img src="/img/8a30e88df3c32bc450f315ec62283436.jpg"/>\n' +
-            '            <div class="text">\n' +
+            '            <div class="text" data-url="' + obj.linkto + '">\n' +
             '                <h3 class="event-title">\n' +
             obj.title +
             '                </h3>\n' +
@@ -49,4 +66,9 @@ function handleData(data) {
             '        </li>';
         selector.append(html);
     }
+    $(".text").click(function () {
+        var url = $(this).attr("data-url");
+        window.open(url);
+    })
 }
+

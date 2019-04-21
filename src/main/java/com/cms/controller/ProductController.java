@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.cms.domain.CategoryDO;
+import com.cms.service.CategoryService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -38,6 +40,8 @@ import com.ifast.common.utils.Result;
 public class ProductController extends AdminBaseController {
     @Autowired
     private ProductService productService;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping()
     @RequiresPermissions("cms:product:product")
@@ -62,7 +66,9 @@ public class ProductController extends AdminBaseController {
 
     @GetMapping("/add")
     @RequiresPermissions("cms:product:add")
-    String add() {
+    String add(Model model) {
+        List<CategoryDO> categoryList = categoryService.selectList(new EntityWrapper<>());
+        model.addAttribute("categoryList", categoryList);
         return "cms/product/add";
     }
 
@@ -93,6 +99,8 @@ public class ProductController extends AdminBaseController {
         }
         product.setImage(imageList);
         model.addAttribute("product", product);
+        List<CategoryDO> categoryList = categoryService.selectList(new EntityWrapper<>());
+        model.addAttribute("categoryList", categoryList);
         return "cms/product/edit";
     }
 
@@ -128,6 +136,10 @@ public class ProductController extends AdminBaseController {
             String tag = StringUtils.join(product.getTagList(), ",");
             product.setTags(tag);
         }
+        if (product.getCategoryid() != null) {
+            CategoryDO categoryDO = categoryService.selectById(product.getCategoryid());
+            product.setCategoryName(categoryDO.getName());
+        }
         productService.insert(product);
         return Result.ok();
     }
@@ -137,6 +149,10 @@ public class ProductController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:product:edit")
     public Result<String> update(ProductDO product) {
+        if (product.getCategoryid() != null) {
+            CategoryDO categoryDO = categoryService.selectById(product.getCategoryid());
+            product.setCategoryName(categoryDO.getName());
+        }
         boolean update = productService.updateById(product);
         return update ? Result.ok() : Result.fail();
     }

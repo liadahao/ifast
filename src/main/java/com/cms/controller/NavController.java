@@ -1,14 +1,15 @@
 package com.cms.controller;
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.cms.core.HtmlConstant;
 import com.cms.domain.NavVo;
+import com.ifast.common.domain.ConfigDO;
+import com.ifast.common.service.ConfigService;
+import com.ifast.generator.type.EnumGen;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.formula.functions.Na;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -38,6 +39,8 @@ import com.ifast.common.utils.Result;
 public class NavController extends AdminBaseController {
     @Autowired
     private NavService navService;
+    @Autowired
+    private ConfigService configService;
 
     @GetMapping()
     @RequiresPermissions("cms:nav:nav")
@@ -54,6 +57,45 @@ public class NavController extends AdminBaseController {
         return Result.ok(page);
     }
 
+    @GetMapping("/indexpage")
+    @RequiresPermissions("cms:nav:add")
+    String indexpage(Model model) {
+        List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
+        Map<String, Object> map = new HashMap<>();
+        map.put("content", new HashMap<>());
+        for (ConfigDO configDO : configDOList) {
+            if (configDO.getK().equals("content")) {
+                HashMap<String, Object> contentMap = JSON.parseObject(configDO.getV(), HashMap.class);
+                map.put(configDO.getK(), contentMap);
+            } else {
+                map.put(configDO.getK(), configDO.getV());
+            }
+        }
+        model.addAttribute("data", map);
+        return "cms/nav/indexpage";
+    }
+
+    @Log("添加")
+    @ResponseBody
+    @PostMapping("/indexpage/save")
+    public Result<String> saveIndexpage(@RequestBody String json) {
+        HashMap<String, Object> map = JSON.parseObject(json, HashMap.class);
+        for (Map.Entry entry : map.entrySet()) {
+            String k = String.valueOf(entry.getKey());
+            Object v = entry.getValue();
+            ConfigDO configDO = configService.getByKey(k);
+            if (configDO == null) {
+                configDO = new ConfigDO();
+                configDO.setCreateTime(new Date());
+            }
+            configDO.setK(k);
+            configDO.setV(String.valueOf(v));
+            configDO.setKvType(EnumGen.KvType.index.getValue());
+            configService.insertOrUpdate(configDO);
+        }
+        return Result.ok();
+    }
+
     @GetMapping("/add")
     @RequiresPermissions("cms:nav:add")
     String add() {
@@ -67,8 +109,8 @@ public class NavController extends AdminBaseController {
         NavVo navVo = new NavVo();
         navVo.setType(type);
         Map<String, Object> map = new HashMap<>();
-        map.put("tab1",new HashMap<>());
-        map.put("tab2",new HashMap<>());
+        map.put("tab1", new HashMap<>());
+        map.put("tab2", new HashMap<>());
         navVo.setContent(map);
         model.addAttribute("nav", navVo);
         return "cms/nav/" + suffix;
@@ -84,8 +126,8 @@ public class NavController extends AdminBaseController {
         Map<String, Object> map = JSON.parseObject(nav.getContent(), Map.class);
         if (map == null) {
             map = new HashMap<>();
-            map.put("tab1",new HashMap<>());
-            map.put("tab2",new HashMap<>());
+            map.put("tab1", new HashMap<>());
+            map.put("tab2", new HashMap<>());
         }
         navVo.setContent(map);
         model.addAttribute("nav", navVo);

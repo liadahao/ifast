@@ -129,8 +129,8 @@
                                                                 <td><select class="form-control m-b"
                                                                             th:attr="name=content[tab1][model][+${modelStat.index}+][social][+${socialStat.index}+][type]">
                                                                     <option value=></option>
-                                                                    <option th:selected="${social.type eq 'Fackbook'}"
-                                                                            value="Fackbook">Fackbook
+                                                                    <option th:selected="${social.type eq 'Facebook'}"
+                                                                            value="Facebook">Facebook
                                                                     </option>
                                                                     <option th:selected="${social.type eq 'Linkedin'}"
                                                                             value="Linkedin">Linkedin
@@ -296,7 +296,7 @@
             '<td><select class="form-control m-b"\n' +
             ' name="content[tab1][model][' + id + '][social][' + (len) + '][type]">\n' +
             '        <option value=></option>\n' +
-            '        <option value="Fackbook">Fackbook</option>\n' +
+            '        <option value="Facebook">Facebook</option>\n' +
             '        <option value="Linkedin">Linkedin</option>\n' +
             '        <option value="Twitter">Twitter</option>\n' +
             '        <option value="Medium">Medium</option>\n' +

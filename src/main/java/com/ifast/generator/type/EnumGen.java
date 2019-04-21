@@ -3,13 +3,12 @@ package com.ifast.generator.type;
 /**
  * <pre>
  * </pre>
- * 
+ *
  * <small> 2018年5月30日 | Aron</small>
  */
 public class EnumGen {
     public static enum KvType {
-        mapping(4400, "java与db字段映射关系")
-        , base(4401, "生成注释基本配置");
+        mapping(4400, "java与db字段映射关系"), base(4401, "生成注释基本配置"), index(4402, "首页设置");
 
         private int value;
         private String desc;
@@ -44,6 +43,6 @@ public class EnumGen {
             }
             return "";
         }
-    }
+        }
 
 }

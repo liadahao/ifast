@@ -86,5 +86,7 @@ public class ProductDO implements Serializable {
     @TableField(exist = false)
     private List<String> image;
 
+    private String categoryName;
+
 
 }

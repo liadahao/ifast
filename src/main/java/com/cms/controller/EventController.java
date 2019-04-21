@@ -55,10 +55,10 @@ public class EventController extends AdminBaseController {
 				wrapper.like("title", eventDTO.getTitle());
 			}
 			if (eventDTO.getStarttime() != null) {
-				wrapper.ge("createTime", eventDTO.getStarttime());
+				wrapper.ge("startTime", eventDTO.getStarttime());
 			}
 			if (eventDTO.getEndtime() != null) {
-				wrapper.le("createTime", eventDTO.getEndtime());
+				wrapper.le("endTime", eventDTO.getEndtime());
 			}
 		}
         Page<EventDO> page = eventService.selectPage(getPage(EventDO.class), wrapper);

@@ -95,6 +95,18 @@ function load() {
                         title: '发布人'
                     },
                     {
+                        field: 'goodCount',
+                        title: '优秀反馈数量'
+                    },
+                    {
+                        field: 'keepTryingCount',
+                        title: '继续努力反馈数量'
+                    },
+                    {
+                        field: 'viewCount',
+                        title: '浏览数量'
+                    },
+                    {
                         field: 'createTime',
                         title: '创建日期'
                     },

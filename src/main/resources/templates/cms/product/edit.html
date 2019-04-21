@@ -21,16 +21,25 @@
                             <div class="col-sm-8">
                                 <select class="form-control m-b" name="categoryid">
                                     <option value=></option>
-                                    <option value="Fackbook">Fackbook</option>
-                                    <option value="Linkedin">Linkedin</option>
-                                    <option value="Twitter">Twitter</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Instagram">Instagram</option>
+                                    <option th:each="category : ${categoryList}" th:value="${category.id}"
+                                            th:text="${category.name}" th:selected="${category.id eq product.categoryid}">
+                                    </option>
                                 </select>
                             </div>
                         </div>
                         <div class="ibox-title">
                             <h5>二、填写商品基本信息</h5>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">产品状态：</label>
+                            <div class="col-sm-8">
+                                <label>
+                                    <input th:checked="${product.status eq 0}" type="radio" value="0" id="optionsRadios1"
+                                           name="status">上架</label>
+                                <label>
+                                    <input th:checked="${product.status eq 1}" type="radio" value="1" id="optionsRadios2"
+                                           name="status">下架</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">产品名称：</label>

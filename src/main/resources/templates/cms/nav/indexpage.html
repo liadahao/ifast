@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
-<link rel="stylesheet" href="https://res.layui.com/layui/dist/css/layui.css?t=1551352891272" media="all">
+<link rel="stylesheet" href="/css/layui.css" media="all">
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
     <div class="row">
@@ -21,13 +21,15 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">主标题：</label>
                                     <div class="col-sm-8">
-                                        <textarea id="main-title" name="main-title" class="form-control" rows="5"></textarea>
+                                        <input id="main-title" name="indexTitle" class="form-control" type="text"
+                                        th:value="${data['indexTitle']}"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">副标题：</label>
                                     <div class="col-sm-8">
-                                        <textarea id="sub-title" name="sub-title" class="form-control" rows="5"></textarea>
+                                        <input id="sub-title" name="indexSubTitle" class="form-control" type="text"
+                                               th:value="${data['indexSubTitle']}"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -48,12 +50,80 @@
                                         <div id="video-filePicker">选择视频</div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8 link-table">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
+                                            </div>
+                                            <span id="addLink" class="btn btn-primary"
+                                                  onclick="addTechtourLink(0)">添加</span>
+                                            <div class="ibox-content">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>社交媒体名称</th>
+                                                        <th>是否显示</th>
+                                                        <th>Logo图</th>
+                                                        <th>排序</th>
+                                                        <th>url链接</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody th:if="${data['content']['social']!=null}"
+                                                           th:each="social,socialStat:${data['content']['social']}"
+                                                           th:id="linktable-0">
+                                                    <tr th:id="tr-+${socialStat.index}">
+                                                        <td><input
+                                                                th:attr="name=content[social][+${socialStat.index}+][name]"
+                                                                class="form-control" type="text"
+                                                                readonly="readonly"
+                                                                th:value="${social.name}"></td>
+                                                        <td><input
+                                                                th:attr="name=content[social][+${socialStat.index}+][isShow]"
+                                                                class="form-control valid" type="text" value="on"
+                                                                readonly="readonly"
+                                                                th:value="${social.isShow}"></td>
+                                                        <td><input
+                                                                th:attr="name=content[social][+${socialStat.index}+][logo]"
+                                                                class="form-control" type="hidden" value=""
+                                                                readonly="readonly"
+                                                                th:value="${social.logo}"><img src="undefined"></td>
+                                                        <td><input
+                                                                th:attr="name=content[social][+${socialStat.index}+][order]"
+                                                                class="form-control" type="number" value="1"
+                                                                readonly="readonly"
+                                                                th:value="${social.order}"></td>
+                                                        <td><input
+                                                                th:attr="name=content[social][+${socialStat.index}+][url]"
+                                                                class="form-control" type="text"
+                                                                value="http://www.baidu.com" readonly="readonly"
+                                                                th:value="${social.url}">
+                                                        </td>
+                                                        <td style="text-align: center; "><a
+                                                                class="btn btn-primary btn-sm "
+                                                                title="编辑" onclick="editTechtourLink(this)"><i
+                                                                class="fa fa-edit"></i></a> <a
+                                                                class="btn btn-warning btn-sm " title="删除"
+                                                                onclick="removeLink(this)"><i
+                                                                class="fa fa-remove"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <tbody th:if="${data['content']['social']==null}"
+                                                           th:id="linktable-0"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /.box-body -->
                             </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                            <div class="form-group">
+                                <div class="col-sm-8 col-sm-offset-3">
+                                    <button onclick="go()" type="submit" class="btn btn-primary">提交</button>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -63,8 +133,32 @@
     </div>
 </div>
 <div th:include="include::footer"></div>
-<script type="text/javascript" src="/js/appjs/cms/nav/add2.js">
-</script>
-<script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
 </body>
+<script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
+<script>
+    function go() {
+        var nav = $('#signupForm').serializeJSON({useIntKeysAsArrayIndex: true});
+        var content = JSON.stringify(nav);
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/cms/nav/indexpage/save",
+            data: content,// 你的formid
+            async: false,
+            dataType: 'json',
+            contentType: 'application/json',
+            error: function (request) {
+                parent.layer.alert("Connection error");
+            },
+            success: function (data) {
+                if (data.code == 0) {
+                    parent.layer.msg("操作成功");
+                    window.location.href = "/cms/nav";
+                } else {
+                    parent.layer.alert(data.msg)
+                }
+            }
+        });
+    }
+</script>
 </html>

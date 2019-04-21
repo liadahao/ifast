@@ -45,6 +45,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-3 control-label">文章来源地址：</label>
+                                <div class="col-sm-8">
+                                    <input id="linkTo" name="linkTo" class="form-control"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-3 control-label">封面类型：</label>
                                 <div class="col-sm-8">
                                     <div class="radio">
@@ -55,7 +62,7 @@
                                     <div class="radio">
                                         <label>
                                             <input type="radio" value="2" id="optionsRadios2"
-                                                   name="style">大图封面</label>
+                                                   name="style">小图封面</label>
                                     </div>
                                     <div class="radio">
                                         <label>
@@ -100,7 +107,7 @@
                                                     <td><select id=social0type class="form-control m-b"
                                                                 name="social[0][type]">
                                                         <option value=></option>
-                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Facebook">Facebook</option>
                                                         <option value="Linkedin">Linkedin</option>
                                                         <option value="Twitter">Twitter</option>
                                                         <option value="Medium">Medium</option>
@@ -116,7 +123,7 @@
                                                     <td><select id=social1type class="form-control m-b"
                                                                 name="social[1][type]">
                                                         <option value=></option>
-                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Facebook">Facebook</option>
                                                         <option value="Linkedin">Linkedin</option>
                                                         <option value="Twitter">Twitter</option>
                                                         <option value="Medium">Medium</option>
@@ -132,7 +139,7 @@
                                                     <td><select id=social2type class="form-control m-b"
                                                                 name="social[2][type]">
                                                         <option value=></option>
-                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Facebook">Facebook</option>
                                                         <option value="Linkedin">Linkedin</option>
                                                         <option value="Twitter">Twitter</option>
                                                         <option value="Medium">Medium</option>
@@ -148,7 +155,7 @@
                                                     <td><select id=social3type class="form-control m-b"
                                                                 name="social[3][type]">
                                                         <option value=></option>
-                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Facebook">Facebook</option>
                                                         <option value="Linkedin">Linkedin</option>
                                                         <option value="Twitter">Twitter</option>
                                                         <option value="Medium">Medium</option>
@@ -164,7 +171,7 @@
                                                     <td><select id=social4type class="form-control m-b"
                                                                 name="social[4][type]">
                                                         <option value=></option>
-                                                        <option value="Fackbook">Fackbook</option>
+                                                        <option value="Facebook">Facebook</option>
                                                         <option value="Linkedin">Linkedin</option>
                                                         <option value="Twitter">Twitter</option>
                                                         <option value="Medium">Medium</option>
@@ -245,15 +252,13 @@
 </div>
 <div th:include="include::footer"></div>
 <script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript" src="/js/appjs/cms/article/edit.js">
-</script>
 <script type="text/javascript" src="/js/plugins/simditor/module.min.js"></script>
 <script type="text/javascript" src="/js/plugins/simditor/hotkeys.min.js"></script>
 <script type="text/javascript" src="/js/plugins/simditor/uploader.min.js"></script>
 <script type="text/javascript" src="/js/plugins/simditor/simditor.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
-
 <script src="/js/plugins/staps/jquery.steps.min.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/article/edit.js"></script>
 <script>
     var form = $("#article-form").show();
     form.steps({
@@ -366,7 +371,7 @@
             }
 
             $img.attr('src', src);
-        }, 200, 200);
+        }, 400, 400);
     });
 
     // 文件上传过程中创建进度条实时显示。
