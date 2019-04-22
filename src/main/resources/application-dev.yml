@@ -21,7 +21,7 @@ ifast:
   oss:
     local: # 配置 localPath 启用本地上传（默认方式）
       localPath: upload
-      rootURL: http://localhost/upload
+      rootURL: /upload
     aliyun: # 配置 accessKeySecret 启用阿里云OSS
       isEnable: false
       accessKeyId:
@@ -49,7 +49,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/tour?useUnicode=true&useSSL=false
     # 推荐utf8mb4编码以便支持表情字符，sys_log记录系统数据变动需要支持utf8mb4
     username: root
-    password: 123456
+    password: liadahao
     initialSize: 1
     minIdle: 3
     maxActive: 20

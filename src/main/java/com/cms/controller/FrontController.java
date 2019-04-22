@@ -7,8 +7,11 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.cms.core.HtmlConstant;
 import com.cms.domain.*;
 import com.cms.service.*;
+import com.ifast.common.domain.ConfigDO;
+import com.ifast.common.service.ConfigService;
 import com.ifast.common.utils.HttpContextUtils;
 import com.ifast.common.utils.Result;
+import com.ifast.generator.type.EnumGen;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.BeanUtils;
@@ -27,14 +30,14 @@ public class FrontController {
 
     @Autowired
     NavService navService;
-
     @Autowired
     private ArticleService articleService;
-
     @Autowired
     TagService tagService;
     @Autowired
     EventService eventService;
+    @Autowired
+    ConfigService configService;
 
     @GetMapping({"/", ""})
     String welcome(Model model) {
@@ -43,7 +46,7 @@ public class FrontController {
 
     @RequestMapping("/index")
     public String index(Model model) {
-        return "/cms/front/pages/index";
+        return "redirect:/page/index";
     }
 
     @RequestMapping("/page/{name}")
@@ -64,6 +67,18 @@ public class FrontController {
             map.put("content", new HashMap<>());
             model.addAttribute("data", new HashMap<>());
         }
+        List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
+        Map<String, Object> map = new HashMap<>();
+        map.put("content", new HashMap<>());
+        for (ConfigDO configDO : configDOList) {
+            if (configDO.getK().equals("content")) {
+                HashMap<String, Object> contentMap = JSON.parseObject(configDO.getV(), HashMap.class);
+                map.put(configDO.getK(), contentMap);
+            } else {
+                map.put(configDO.getK(), configDO.getV());
+            }
+        }
+        model.addAttribute("index", map);
         if (!StringUtils.isEmpty(suffix)) {
             return "/cms/front/pages/" + suffix;
         } else {
@@ -182,7 +197,7 @@ public class FrontController {
             wrapper.eq("type", type);
         }
         if (!StringUtils.isEmpty(starttime)) {
-            SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM" );
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
             Date d = sdf.parse(starttime);
             wrapper.ge("startTime", d);
         }

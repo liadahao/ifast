@@ -19,7 +19,7 @@ body {
 }
 
 .main-body .left-side {
-    padding-top: 50px;
+    padding-top: 5%;
     min-height: 658px;
     height: 100%;
     background-image: url(/img/0201.png);
@@ -28,6 +28,7 @@ body {
 }
 
 .left-side .title {
+    text-align: center;
     overflow: hidden
 }
 
@@ -36,7 +37,7 @@ body {
 }
 
 .left-side .left-title {
-    margin-left: 17px;
+    margin-left: -29%;
     width: 28.6%;
     height: 7.45%;
     font-size: 6.4rem;
@@ -50,6 +51,7 @@ body {
     .left-side .left-title {
         font-size: 4.5rem;
     }
+
     .main-body .left-side {
     }
 }
@@ -68,16 +70,21 @@ body {
     margin: 0 0 0 40.16%;
     font-size: 14px;
     font-family: PingFangSC-Regular;
-    padding-right: 4.26%;
+    padding-right: 4%;
     font-weight: 400;
     color: rgba(73, 18, 139, 1);
 }
 
-.left-side video {
-    margin-top: 47px;
-    margin-left: 39%;
-    width: 280px;
+.left-side .video-container {
+    padding-right: 4%;
+    margin: 47px 0 0 40.16%;
     height: 168px;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill
 }
 
 .am-panel-hd {

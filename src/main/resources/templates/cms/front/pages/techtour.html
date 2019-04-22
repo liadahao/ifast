@@ -42,10 +42,12 @@
                 <p th:text="${data['content']['content']}" class="content">
 
                 </p>
-                <video src="/video/WeChat_20190327231432.mp4"
-                       controls="controls">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="video-container">
+                    <video src="/video/WeChat_20190327231432.mp4"
+                           controls="controls">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
             <div class="am-panel-group am-u-sm-7" id="accordion">
                 <div class="am-panel">
@@ -77,7 +79,8 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201manufacturing.png"></span>
-                        <span th:if="${data['content']['model2title'] != null}" th:text="${data['content']['model2title']}"
+                        <span th:if="${data['content']['model2title'] != null}"
+                              th:text="${data['content']['model2title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
                     </span>
@@ -85,7 +88,8 @@
                     <div id="do-not-say-2" class="am-panel-collapse am-collapse">
                         <div class="am-panel-bd">
                             <div class="am-g">
-                                <p th:if="${data['content']['model2content'] != null}" th:text="${data['content']['model2content']}"
+                                <p th:if="${data['content']['model2content'] != null}"
+                                   th:text="${data['content']['model2content']}"
                                    class="am-u-sm-9">
                                 </p>
                                 <video th:src="${data['content']['model2video']}" src="/video/WeChat_20190327231432.mp4"
@@ -101,7 +105,8 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201startups.png"></span>
-                        <span th:if="${data['content']['model3title'] != null}" th:text="${data['content']['model3title']}"
+                        <span th:if="${data['content']['model3title'] != null}"
+                              th:text="${data['content']['model3title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">
                     </span>
@@ -109,7 +114,8 @@
                     <div id="do-not-say-3" class="am-panel-collapse am-collapse">
                         <div class="am-panel-bd">
                             <div class="am-g">
-                                <p th:if="${data['content']['model3content'] != null}" th:text="${data['content']['model3content']}"
+                                <p th:if="${data['content']['model3content'] != null}"
+                                   th:text="${data['content']['model3content']}"
                                    class="am-u-sm-9">
                                 </p>
                                 <video th:src="${data['content']['model3video']}" src="/video/WeChat_20190327231432.mp4"
@@ -125,7 +131,8 @@
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201visit.png"></span>
-                        <span th:if="${data['content']['model4title'] != null}" th:text="${data['content']['model4title']}"
+                        <span th:if="${data['content']['model4title'] != null}"
+                              th:text="${data['content']['model4title']}"
                               class="am-panel-title"
                               data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
                     </span>
