@@ -9,7 +9,7 @@ body {
 }
 
 .main {
-    margin-top: 106px;
+    margin-top: 5.5%;
 }
 
 .main-body {
@@ -20,8 +20,6 @@ body {
 
 .main-body .left-side {
     padding-top: 5%;
-    min-height: 658px;
-    height: 100%;
     background-image: url(/img/0201.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -38,8 +36,6 @@ body {
 
 .left-side .left-title {
     margin-left: -29%;
-    width: 28.6%;
-    height: 7.45%;
     font-size: 6.4rem;
     font-family: PingFangSC-Light;
     font-weight: 300;
@@ -47,22 +43,12 @@ body {
     display: inline;
 }
 
-@media screen and (max-width: 1366px) {
-    .left-side .left-title {
-        font-size: 4.5rem;
-    }
-
-    .main-body .left-side {
-    }
-}
-
 .left-side .right-title {
-    width: 136px;
-    font-size: 64px;
+    font-size: 6.4rem;
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(73, 18, 139, 1);
-    padding-left: 39px;
+    margin-left: 8%;
     display: inline;
 }
 
@@ -77,8 +63,7 @@ body {
 
 .left-side .video-container {
     padding-right: 4%;
-    margin: 47px 0 0 40.16%;
-    height: 168px;
+    margin: 4.35% 0 0 40.16%;
 }
 
 .video-container video {
@@ -120,4 +105,25 @@ body {
 
 #accordion .am-panel-title {
     margin-left: 21px;
+}
+
+@media screen and (max-width: 1440px){
+    .main-body .left-side {
+        background-image: url(/img/0201.png);
+        background-position: center 0;
+    }
+    .left-side .left-title {
+        font-size: 4.8rem;
+    }
+    .left-side .right-title {
+        font-size: 4.8rem;
+    }
+
+    .am-u-sm-2{
+        width: 8.333%;
+    }
+
+    .am-u-sm-8{
+        width: 83.33%;
+    }
 }

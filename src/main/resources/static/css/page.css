@@ -95,7 +95,6 @@ footer {
 .left-nav {
     padding-left: 17px;
     width: 50px;
-    height: 768px;
     background: transparent;
     font-size: 14px;
     font-family: PingFangSC-Light;
@@ -266,5 +265,14 @@ footer {
     color: rgba(255, 255, 255, 1);
 }
 
+@media screen and (max-width: 1440px){
+    .am-u-sm-2{
+        width: 8.333%;
+    }
+
+    .am-u-sm-8{
+        width: 83.33%;
+    }
+}
 
 

@@ -17,21 +17,23 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g">
-        <div class="left-nav">
-            <div class="top">
-                <a href="/page/techtour">
-                    <img src="/img/up.png"/>
-                    <div class="top-text">Tech Tour</div>
-                </a>
-            </div>
-            <div class="bottom">
-                <a href="/page/service">
-                    <div class="bottom-text">Consultancy Service</div>
-                    <img src="/img/down.png"/>
-                </a>
+        <div class="am-u-sm-2">
+            <div class="left-nav">
+                <div class="top">
+                    <a href="/page/techtour">
+                        <img src="/img/up.png"/>
+                        <div class="top-text">Tech Tour</div>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a href="/page/service">
+                        <div class="bottom-text">Consultancy Service</div>
+                        <img src="/img/down.png"/>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="main-body">
+        <div class="main-body am-u-sm-8">
             <div class="title">
                 <h1 th:text="${data['content']['title']}" class="title-content">
                 </h1>
@@ -80,17 +82,19 @@
                 </div>
             </div>
         </div>
-        <div class="right-nav">
-            <a href="/page/techtour" class="circular"></a>
-            <a class="select-circular"></a>
-            <a href="/page/service" class="circular"></a>
-            <a href="/page/article" class="circular"></a>
-            <a href="/page/gallery" class="circular"></a>
-            <a href="/page/event" class="circular"></a>
-            <a href="/page/testimonials" class="circular"></a>
-            <a href="/page/shop" class="circular"></a>
-            <a href="/page/about" class="circular"></a>
-            <a href="/page/contact" class="circular"></a>
+        <div class="am-u-sm-2">
+            <div class="right-nav">
+                <a href="/page/techtour" class="circular"></a>
+                <a class="select-circular"></a>
+                <a href="/page/service" class="circular"></a>
+                <a href="/page/article" class="circular"></a>
+                <a href="/page/gallery" class="circular"></a>
+                <a href="/page/event" class="circular"></a>
+                <a href="/page/testimonials" class="circular"></a>
+                <a href="/page/shop" class="circular"></a>
+                <a href="/page/about" class="circular"></a>
+                <a href="/page/contact" class="circular"></a>
+            </div>
         </div>
     </div>
 </div>
