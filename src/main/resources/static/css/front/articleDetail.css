@@ -56,9 +56,12 @@
     margin-top: 70px;
 }
 
+.article-content img{
+    max-width: 100%;
+}
+
 .am-article-divider {
     margin-top: 63px;
-    width: 1200px;
     height: 1px;
     background: rgba(73, 18, 139, 1);
 }
@@ -69,6 +72,10 @@
 
 .from-url {
     margin-top: 60px;
+}
+
+.article-info .custom-icon{
+    width: 16.66666667%;
 }
 
 .custom-icon p {

@@ -21,20 +21,21 @@ import java.util.Set;
 /**
  * <pre>
  * </pre>
- * 
+ *
  * <small> 2018年3月23日 | Aron</small>
  */
 @Component
 public class SysUserAuthorizingRealm extends AuthorizingRealm {
-    
+
     private final static Logger log = LoggerFactory.getLogger(SysUserAuthorizingRealm.class);
 
     private final MenuService menuService;
     private final RoleService roleService;
     private final UserService userService;
 
-    @Autowired public SysUserAuthorizingRealm(MenuService menuService, RoleService roleService,
-            UserService userService) {
+    @Autowired
+    public SysUserAuthorizingRealm(MenuService menuService, RoleService roleService,
+                                   UserService userService) {
         this.menuService = menuService;
         this.roleService = roleService;
         this.userService = userService;
@@ -45,12 +46,19 @@ public class SysUserAuthorizingRealm extends AuthorizingRealm {
         return token instanceof UsernamePasswordToken;
     }
 
+    /**
+     * 权限认证
+     *
+     * @param principals
+     * @return
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         Object next = principals.getPrimaryPrincipal();
         log.debug("auth class:" + next.getClass());
         SimpleAuthorizationInfo authz = null;
-        if(next instanceof UserDO) { // 避免授权报错
+        // 避免授权报错
+        if (next instanceof UserDO) {
             Long userId = ShiroUtils.getUserId();
             Set<String> permsSet = menuService.listPerms(userId);
             authz = new SimpleAuthorizationInfo();
@@ -64,9 +72,16 @@ public class SysUserAuthorizingRealm extends AuthorizingRealm {
         return authz;
     }
 
+    /**
+     * 登录认证
+     *
+     * @param token
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        if(!supports(token)) {
+        if (!supports(token)) {
             return null;
         }
         String username = (String) token.getPrincipal();

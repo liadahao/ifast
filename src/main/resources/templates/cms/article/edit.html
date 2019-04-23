@@ -301,11 +301,12 @@
             window.location.href = "/cms/article/"
         },
         onFinished: function (event, currentIndex) {
+            var data = $('#article-form').serialize();
             $.ajax({
                 cache: true,
                 type: "POST",
                 url: "/cms/article/update",
-                data: $('#article-form').serialize(),// 你的formid
+                data: data,// 你的formid
                 async: false,
                 error: function (request) {
                     parent.layer.alert("Connection error");
@@ -415,24 +416,21 @@
 
     (function () {
         $(function () {
-            var $preview, editor, toolbar;
+            var editor, toolbar;
             toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
             editor = new Simditor({
                 textarea: $('#editor'),
                 placeholder: '这里输入文字...',
                 toolbar: toolbar,
                 pasteImage: true,
-                defaultImage: 'assets/images/image.png',
-                upload: location.search === '?upload' ? {
-                    url: '/upload'
-                } : false
+                defaultImage: '/img/image.png',
+                upload: {
+                    url: '/common/sysFile/upload',
+                    fileKey: 'file',
+                    connectionCount: 3,
+                    leaveConfirm: '正在上传文件'
+                }
             });
-            $preview = $('#preview');
-            if ($preview.length > 0) {
-                return editor.on('valuechanged', function (e) {
-                    return $preview.html(editor.getValue());
-                });
-            }
         });
 
     }).call(this);

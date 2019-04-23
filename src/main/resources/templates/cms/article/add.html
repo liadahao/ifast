@@ -297,7 +297,7 @@
             return form.valid();
         },
         onCanceled: function (event, currentIndex) {
-            window.location.href ="/cms/article/"
+            window.location.href = "/cms/article/"
         },
         onFinished: function (event, currentIndex) {
             $.ajax({
@@ -413,24 +413,24 @@
 
     (function () {
         $(function () {
-            var $preview, editor, toolbar;
-            toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
-            editor = new Simditor({
+            var toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color',
+                '|', 'ol', 'ul', 'blockquote', 'code', 'table',
+                '|', 'link', 'image', 'hr',
+                '|', 'indent', 'outdent', 'alignment'];
+            var editor = new Simditor({
                 textarea: $('#editor'),
                 placeholder: '这里输入文字...',
                 toolbar: toolbar,
                 pasteImage: true,
-                defaultImage: 'assets/images/image.png',
-                upload: location.search === '?upload' ? {
-                    url: '/upload'
-                } : false
+                defaultImage: '/img/image.png',
+                upload: {
+                    url: '/common/sysFile/upload',
+                    fileKey: 'file',
+                    connectionCount: 3,
+                    leaveConfirm: '正在上传文件'
+                }
             });
-            $preview = $('#preview');
-            if ($preview.length > 0) {
-                return editor.on('valuechanged', function (e) {
-                    return $preview.html(editor.getValue());
-                });
-            }
+
         });
 
     }).call(this);

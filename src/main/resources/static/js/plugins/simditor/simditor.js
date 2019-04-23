@@ -4499,6 +4499,10 @@ ImageButton = (function(superClass) {
     this.editor.uploader.on('uploadsuccess', (function(_this) {
       return function(e, file, result) {
         var $img, img_path, msg;
+        if (result.code == 0) {
+            result.file_path = result.data;
+            result.success = true;
+        }
         if (!file.inline) {
           return;
         }

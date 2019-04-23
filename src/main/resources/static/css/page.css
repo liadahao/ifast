@@ -273,6 +273,10 @@ footer {
     .am-u-sm-8{
         width: 83.33%;
     }
+
+    .main-body .article-info .custom-icon{
+        width: 24%;
+    }
 }
 
 

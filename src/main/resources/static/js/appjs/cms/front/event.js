@@ -46,7 +46,7 @@ function handleData(data) {
             $('#event-list').append(box);
             selector = $('#' + id);
         }
-        var html = '<li class="box">\n' +
+        var html = '<li id="' + obj.id + '" class="box">\n' +
             '            <img src="/img/8a30e88df3c32bc450f315ec62283436.jpg"/>\n' +
             '            <div class="text" data-url="' + obj.linkto + '">\n' +
             '                <h3 class="event-title">\n' +
@@ -55,16 +55,19 @@ function handleData(data) {
             '                <p class="event-date">\n' +
             obj.starttime +
             '                </p>\n' +
-            '                <p class="event-address">\n' +
-            '                    <img src="/img/0701Location.png"/>\n' +
+            '                <div class="event-address am-u-sm-12">\n' +
+            '                    <img src="/img/0701Location.png"/>\n<p class="am-text-top">' +
             obj.address +
-            '                </p>\n' +
+            '                </p></div>\n' +
             '                <p class="event-price">\n' +
             obj.price +
             '                </p>\n' +
             '            </div>\n' +
             '        </li>';
         selector.append(html);
+        if (obj.thumbnail && obj.thumbnail !== '') {
+            $('#' + obj.id).children('img').attr('src', obj.thumbnail);
+        }
     }
     $(".text").click(function () {
         var url = $(this).attr("data-url");

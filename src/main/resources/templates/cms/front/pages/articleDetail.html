@@ -43,7 +43,7 @@
                 </a>
             </div>
             <div class="article-info am-g">
-                <div class="share-icon am-u-md-4">
+                <div class="share-icon am-u-sm-6">
                     <a th:if="${article['social']}" th:each="social,socialStat:${article['social']}" href="#"
                        th:attr="class=|am-icon-btn am-icon-${#strings.toLowerCase(social.type)}|"
                        th:href="${social['url']}"></a>

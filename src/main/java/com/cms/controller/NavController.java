@@ -65,8 +65,10 @@ public class NavController extends AdminBaseController {
         map.put("content", new HashMap<>());
         for (ConfigDO configDO : configDOList) {
             if (configDO.getK().equals("content")) {
-                HashMap<String, Object> contentMap = JSON.parseObject(configDO.getV(), HashMap.class);
-                map.put(configDO.getK(), contentMap);
+                if (!StringUtils.isEmpty(configDO.getV())) {
+                    HashMap<String, Object> contentMap = JSON.parseObject(configDO.getV(), HashMap.class);
+                    map.put(configDO.getK(), contentMap);
+                }
             } else {
                 map.put(configDO.getK(), configDO.getV());
             }
