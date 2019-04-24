@@ -34,21 +34,33 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Logo设置：</label>
-                                    <!--dom结构部分-->
-                                    <div id="logo-img" class="col-sm-8">
-                                        <!--用来存放item-->
-                                        <div id="img-fileList" class="uploader-list"></div>
-                                        <div id="img-filePicker" class="filePicker">选择图片</div>
+                                    <div class="layui-upload col-sm-8">
+                                        <button type="button" class="layui-btn" id="logo">上传图片</button>
+                                        <button type="button" class="layui-btn" id="logo-clear">清除</button>
+                                        <div class="layui-upload-list">
+                                            <img th:if="${data['indexLogo']!=null && data['indexLogo'] ne ''}" th:src="${data['indexLogo']}" class="layui-upload-img" id="logo-img">
+                                            <img th:if="${data['indexLogo']==null || data.indexLogo eq ''}" class="layui-upload-img" id="logo-img">
+                                            <p id="logo-text"></p>
+                                        </div>
                                     </div>
+                                    <input id="indexLogo" name="indexLogo" class="form-control" type="hidden"
+                                           th:value="${data['indexLogo']}"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">背景视频设置：</label>
-                                    <!--dom结构部分-->
-                                    <div id="uploader-demo" class="col-sm-8">
-                                        <!--用来存放item-->
-                                        <div id="video-fileList" class="uploader-list"></div>
-                                        <div id="video-filePicker" class="filePicker">选择视频</div>
+                                    <div class="layui-upload col-sm-8">
+                                        <button type="button" class="layui-btn" id="video">上传视频</button>
+                                        <button type="button" class="layui-btn" id="video-clear">清除</button>
+                                        <div class="layui-upload-list">
+                                            <video th:if="${data.indexVideo!=null && data['indexVideo'] ne ''}" th:src="${data.indexVideo}" id="video-img" controls style="width: 50%!important;">
+                                            </video>
+                                            <video th:if="${data.indexVideo==null || data.indexVideo eq ''}" id="video-img" controls style="width: 50%!important;display: none">
+                                            </video>
+                                            <p id="video-text"></p>
+                                        </div>
                                     </div>
+                                    <input id="indexVideo" name="indexVideo" class="form-control" type="hidden"
+                                           th:value="${data['indexVideo']}"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-8 link-table">
@@ -71,9 +83,9 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody th:if="${data['content']['social']!=null}"
-                                                           th:each="social,socialStat:${data['content']['social']}"
                                                            th:id="linktable-0">
-                                                    <tr th:id="tr-+${socialStat.index}">
+                                                    <tr th:each="social,socialStat:${data['content']['social']}"
+                                                        th:id="tr-+${socialStat.index}">
                                                         <td><input
                                                                 th:attr="name=content[social][+${socialStat.index}+][name]"
                                                                 class="form-control" type="text"
@@ -124,7 +136,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-8 col-sm-offset-3">
-                                    <button onclick="go()" type="submit" class="btn btn-primary">提交</button>
+                                    <button onclick="go()" type="submit" class="btn btn-primary">保存</button>
+                                    <button onclick="location.reload() " type="submit" class="btn btn-primary">取消</button>
                                 </div>
                             </div>
                         </div>
@@ -137,6 +150,7 @@
 <div th:include="include::footer"></div>
 </body>
 <script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
+<script src="/js/layui.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
 <script>
     function go() {
@@ -164,90 +178,62 @@
         });
     }
 
-    // 初始化Web Uploader
-    var uploader = WebUploader.create({
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
 
-        // 选完文件后，是否自动上传。
-        auto: true,
-
-        // swf文件路径
-        swf: '/js/Uploader.swf',
-
-        // 文件接收服务端。
-        server: '/common/sysFile/upload',
-
-        // 选择文件的按钮。可选。
-        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-        pick: '.filePicker'
-
-
-    });
-
-
-    // 当有文件添加进来的时候
-    uploader.on('fileQueued', function (file) {
-        var $li = $(
-            '<div id="' + file.id + '" class="file-item">' +
-            '<img>' +
-            '<div class="info">' + file.name + '</div>' +
-            '</div>'
-            ),
-            $img = $li.find('img');
-
-        let $list = $("#fileList");
-        // $list为容器jQuery实例
-        $list.html($li);
-
-        // 创建缩略图
-        // 如果为非图片文件，可以不用调用此方法。
-        // thumbnailWidth x thumbnailHeight 为 100 x 100
-        uploader.makeThumb(file, function (error, src) {
-            if (error) {
-                $img.replaceWith('<span>不能预览</span>');
-                return;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#logo'
+            , url: '/common/sysFile/upload'
+            ,accept:'images'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#logo-img').attr('src', result); //图片链接（base64）
+                });
             }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code != 0) {
+                    return layer.msg('上传失败');
+                }
+                layer.msg("上传成功");
+                //上传成功
+                $('#indexLogo').val(res.data);
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#logo-text');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
 
-            $img.attr('src', src);
-        }, 400, 400);
+        upload.render({
+            elem: '#video'
+            ,url: '/common/sysFile/upload'
+            ,accept: 'video' //视频
+            ,done: function(res){
+                layer.msg("上传成功");
+                $('#video-img').attr('src', res.data);
+                $('#indexVideo').val(res.data);
+                $('#video-img').show();
+            }
+        });
     });
 
-    // 文件上传过程中创建进度条实时显示。
-    uploader.on('uploadProgress', function (file, percentage) {
-        var $li = $('#' + file.id),
-            $percent = $li.find('.progress span');
-
-        // 避免重复创建
-        if (!$percent.length) {
-            $percent = $('<p class="progress"><span></span></p>')
-                .appendTo($li)
-                .find('span');
-        }
-
-        $percent.css('width', percentage * 100 + '%');
+    $('#logo-clear').click(function () {
+        $('#logo-img').removeAttr('src'); //图片链接（base64）
+        $('#indexLogo').removeAttr('value');
     });
 
-    // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-    uploader.on('uploadSuccess', function (file, response) {
-        $('#' + file.id).addClass('upload-state-done');
-        $('#thumbnail').val(response.data);
-    });
-
-    // 文件上传失败，显示上传出错。
-    uploader.on('uploadError', function (file) {
-        var $li = $('#' + file.id),
-            $error = $li.find('div.error');
-
-        // 避免重复创建
-        if (!$error.length) {
-            $error = $('<div class="error"></div>').appendTo($li);
-        }
-
-        $error.text('上传失败');
-    });
-
-    // 完成上传完了，成功或者失败，先删除进度条。
-    uploader.on('uploadComplete', function (file) {
-        $('#' + file.id).find('.progress').remove();
+    $('#video-clear').click(function () {
+        $('#video-img').removeAttr('src'); //图片链接（base64）
+        $('#video-img').hide(); //图片链接（base64）
+        $('#indexVideo').removeAttr('value');
     });
 
     function addTechtourLink(id) {
