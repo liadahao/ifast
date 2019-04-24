@@ -5,6 +5,7 @@ import com.ifast.common.exception.IFastException;
 import com.ifast.common.type.EnumErrorCode;
 import com.ifast.common.utils.HttpContextUtils;
 import com.ifast.common.utils.Result;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.ExpiredCredentialsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -96,6 +97,7 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Object handleException(Exception e) {
         if(!HttpContextUtils.isAjax()){
+            log.error(ExceptionUtils.getStackTrace(e));
             ModelAndView mv = new ModelAndView();
             mv.setViewName(ERROR_DEFAULT_PAGE);
             return mv;

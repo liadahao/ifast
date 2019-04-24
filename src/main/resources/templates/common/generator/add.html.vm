@@ -37,8 +37,8 @@
 	</div>
 	</div>
 	<div th:include="include::footer"></div>
-#if(${hasDatetime})	
-	<script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
+#if(${hasDatetime})
+<script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
 #end
 	<script type="text/javascript" src="/js/appjs/${pathName}/${classname}/add.js">
 	</script>

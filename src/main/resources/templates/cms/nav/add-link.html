@@ -64,7 +64,7 @@
     </div>
 </div>
 <div th:include="include::footer"></div>
-<script src="//s.xlongwei.com/res/js/My97DatePicker/WdatePicker.js"></script>
+<script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
 <script type="text/javascript">
     // 初始化Web Uploader
@@ -103,7 +103,7 @@
 
         let $list = $("#fileList");
         // $list为容器jQuery实例
-        $list.append($li);
+        $list.html($li);
 
         // 创建缩略图
         // 如果为非图片文件，可以不用调用此方法。
@@ -162,19 +162,33 @@
         var tbody = parent.$('#linktable-0');
         var len = tbody.children('tr').length;
         var id = $("#id").val();
+        var html;
+        var isShow = document.getElementById('isShow').checked;
+        var isShowStr;
+        if (isShow) {
+            isShowStr = "on";
+        } else {
+            isShowStr = "off";
+        }
+        var img;
+        if($("#fileList").find('img').attr('src')){
+            img = $("#fileList").find('img').attr('src');
+        }else{
+            img = $("#logo").val();
+        }
         if (id === '') {
             id = 'tr-' + len;
-            var html = '<tr id="' + id + '">\n' +
+            html = '<tr id="' + id + '">\n' +
                 '<td><input name="content[social][' + (len) + '][name]"\n' +
                 '           class="form-control"\n' +
                 '           type="text" value="' + $("#name").val() + '" readonly="readonly" /></td>\n' +
                 '<td><input name="content[social][' + (len) + '][isShow]"\n' +
                 '           class="form-control"\n' +
-                '           type="text" value="' + $("#isShow").val() + '" readonly="readonly"/></td>\n' +
+                '           type="text" value="' + isShowStr + '" readonly="readonly"/></td>\n' +
                 '<td><input name="content[social][' + (len) + '][logo]"\n' +
                 '           class="form-control"\n' +
                 '           type="hidden" value="' + $("#logo").val() + '" readonly="readonly"/>' +
-                '<img src="' + ($("#fileList").find('img').attr('src')) + '"/>' +
+                '<img src="' + img + '"/>' +
                 '</td>\n' +
                 '<td><input name="content[social][' + (len) + '][order]"\n' +
                 '           class="form-control"\n' +
@@ -192,22 +206,23 @@
                 '</td>' +
                 '</tr>';
         } else {
-            var html =
-                '<td><input name="content[social][' + (len) + '][name]"\n' +
+            var i = id.split('-')[1];
+            html =
+                '<td><input name="content[social][' + (i) + '][name]"\n' +
                 '           class="form-control"\n' +
                 '           type="text" value="' + $("#name").val() + '" readonly="readonly" /></td>\n' +
-                '<td><input name="content[social][' + (len) + '][isShow]"\n' +
+                '<td><input name="content[social][' + (i) + '][isShow]"\n' +
                 '           class="form-control"\n' +
-                '           type="text" value="' + $("#isShow").val() + '" readonly="readonly"/></td>\n' +
-                '<td><input name="content[social][' + (len) + '][logo]"\n' +
+                '           type="text" value="' + isShowStr + '" readonly="readonly"/></td>\n' +
+                '<td><input name="content[social][' + (i) + '][logo]"\n' +
                 '           class="form-control"\n' +
                 '           type="hidden" value="' + $("#logo").val() + '" readonly="readonly"/>' +
-                '<img src="' + ($("#fileList").find('img').attr('src')) + '"/>' +
+                '<img src="' + img + '"/>' +
                 '</td>\n' +
-                '<td><input name="content[social][' + (len) + '][order]"\n' +
+                '<td><input name="content[social][' + (i) + '][order]"\n' +
                 '           class="form-control"\n' +
                 '           type="number" value="' + $("#order").val() + '" readonly="readonly"/></td>\n' +
-                '<td><input name="content[social][' + (len) + '][url]"\n' +
+                '<td><input name="content[social][' + (i) + '][url]"\n' +
                 '           class="form-control"\n' +
                 '           type="text" value="' + $("#url").val() + '" readonly="readonly"/></td>\n' +
                 '<td style="text-align: center; "><a\n' +
