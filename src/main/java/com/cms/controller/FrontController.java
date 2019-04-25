@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.cms.core.HtmlConstant;
+import com.cms.core.TagConstant;
 import com.cms.domain.*;
 import com.cms.service.*;
 import com.ifast.common.domain.ConfigDO;
@@ -30,6 +31,8 @@ public class FrontController {
 
     @Autowired
     NavService navService;
+    @Autowired
+    ArticleTagService articleTagService;
     @Autowired
     private ArticleService articleService;
     @Autowired
@@ -90,8 +93,29 @@ public class FrontController {
 
     @ResponseBody
     @GetMapping("/article/list")
-    public Result<Page<ArticleDO>> articleList() {
+    public Result<Page<ArticleDO>> articleList(String searchTitle, String searchTag) {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
+        if (!StringUtils.isEmpty(searchTitle)) {
+            wrapper.like("title", searchTitle);
+        }
+        if (!StringUtils.isEmpty(searchTag)) {
+            Page<ArticleDO> page = getPage(ArticleDO.class);
+            Wrapper<TagDO> tagDOWrapper = new EntityWrapper<TagDO>().orderBy("id", false);
+            tagDOWrapper.eq("name", searchTag).eq("type", TagConstant.ARTICLE.type);
+            TagDO tagDO = tagService.selectOne(tagDOWrapper);
+            Wrapper<ArticleTagDO> articleTagDOWrapper = new EntityWrapper<ArticleTagDO>().orderBy("id", false);
+            if (tagDO != null) {
+                articleTagDOWrapper.eq("tagId", tagDO.getId());
+                articleTagDOWrapper.last("limit " + page.getCurrent() + "," + page.getSize());
+                List<ArticleTagDO> articleTagList = articleTagService.selectList(articleTagDOWrapper);
+                List<Long> articleIds = articleTagList.stream().map(ArticleTagDO::getArticleId).collect(Collectors.toList());
+                List<ArticleDO> articleList = articleService.selectBatchIds(articleIds);
+                page.setRecords(articleList);
+            }else{
+                return Result.ok(page);
+            }
+            return Result.ok(page);
+        }
         Page<ArticleDO> page = articleService.selectPage(getPage(ArticleDO.class), wrapper);
         for (ArticleDO articleDO : page.getRecords()) {
             List<TagDO> tagDOList = tagService.selectByArticleId(articleDO.getId());

@@ -42,7 +42,6 @@ html, body {
 
 .search {
     border: 0;
-    width: 280px;
     height: 40px;
 }
 
@@ -56,6 +55,10 @@ html, body {
 
 .search input:focus {
     background-color: transparent;
+}
+
+.am-input-group .am-form-field {
+    width: auto;
 }
 
 .search .search-btn {
@@ -82,7 +85,9 @@ html, body {
 
 .box {
     width: 100%;
-    float: left
+    float: left;
+    position: relative;
+
 }
 
 .box1 {
@@ -107,13 +112,13 @@ html, body {
     opacity: 0.7;
 }
 
-.box1 img {
+.box1 .background {
     width: 100%;
     height: 41.66%;
     cursor: pointer;
 }
 
-.box2 img{
+.box2 .background{
     width: 100%;
     height: 38%;
     cursor: pointer;
@@ -201,4 +206,16 @@ html, body {
     margin-top: 18px;
     font-size: 14px;
     font-weight: 300;
+}
+
+.social-icon{
+    top: 36%;
+    left: 78%;
+    position: absolute;
+}
+
+.box3 .social-icon{
+    top: 1%;
+    left: 75%;
+    position: absolute;
 }

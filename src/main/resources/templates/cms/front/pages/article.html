@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="main-body am-u-sm-8">
-            <div class="first-floor">
+            <div class="first-floor am-u-sm-12">
                 <div class="title">Article</div>
                 <div class="content">
                     Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
@@ -44,14 +44,14 @@
                     and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
                 </div>
             </div>
-            <div class="search">
+            <div class="search am-u-sm-12">
                 <div class="am-input-group">
-                    <input type="text" class="am-form-field">
-                    <span class="am-input-group-btn">
-        <button class="search-btn" type="button"></button>
-      </span>
+                    <input type="text" class="am-form-field" id="search-title" placeholder="请输入标题">
+                    <input type="text" class="am-form-field" id="search-tag" placeholder="请输入标签">
+                    <button class="search-btn" type="button" onclick="search()"></button>
                 </div>
             </div>
+            <div id="article-list"></div>
         </div>
         <div class="am-u-sm-2">
             <div class="right-nav">

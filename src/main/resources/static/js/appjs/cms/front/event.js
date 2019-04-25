@@ -33,10 +33,10 @@ function search() {
 }
 
 function handleData(data) {
+    $('#event-list').empty();
     var row = data.data.records;
     var line = 0;
     var selector;
-    $('#event-list').empty()
     for (var j = 0, len = row.length; j < len; j++) {
         var obj = row[j];
         if (j % 4 === 0) {

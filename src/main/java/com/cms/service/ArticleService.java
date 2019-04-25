@@ -11,5 +11,5 @@ import com.ifast.common.base.CoreService;
  * <small> 2019-04-08 18:31:25 | Aron</small>
  */
 public interface ArticleService extends CoreService<ArticleDO> {
-    
+
 }

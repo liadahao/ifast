@@ -51,7 +51,6 @@ public class ArticleController extends AdminBaseController {
     @GetMapping("/list")
     public Result<Page<ArticleDO>> list(ArticleDO articleDTO, Date startTime, Date endTime) {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
-
         if (articleDTO.getId() != null) {
             wrapper.eq("id", articleDTO.getId().toString());
         } else {
