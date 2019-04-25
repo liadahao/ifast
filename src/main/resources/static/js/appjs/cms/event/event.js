@@ -73,11 +73,26 @@ function load() {
                     },
                     {
                         field: 'status',
-                        title: '状态'
+                        title: '状态',
+                        formatter: function (value, row, index) {
+                            if (row['status'] == 0) {
+                                return '已发布';
+                            }
+                            if (row['status'] == 1) {
+                                return '审核中';
+                            }
+                            if (row['status'] == 2) {
+                                return '未通过审核';
+                            }
+                            if (row['status'] == 3) {
+                                return '已隐藏';
+                            }
+                            return value;
+                        }
                     },
                     {
                         field: 'createtime',
-                        title: '创建日期'
+                        title: '发布日期'
                     },
                     {
                         field: 'starttime',
@@ -93,7 +108,19 @@ function load() {
                     },
                     {
                         field: 'type',
-                        title: '类型（1：创业，2：公益，3：硬件）'
+                        title: '类型',
+                        formatter: function (value, row, index) {
+                            if (row['type'] == 1) {
+                                return '创业';
+                            }
+                            if (row['type'] == 2) {
+                                return '公益';
+                            }
+                            if (row['type'] == 3) {
+                                return '硬件';
+                            }
+                            return value;
+                        }
                     },
                     {
                         title: '操作',

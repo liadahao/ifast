@@ -89,7 +89,7 @@ function handleData(data) {
         }
         if (style == 3) {
             html = '<div id="' + obj.id + '" class="box box3">\n' +
-                '            <img src="' + obj.thumbnail + '"/>\n' +
+                '            <div class="overlay">\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +
                 obj.title +
@@ -101,9 +101,21 @@ function handleData(data) {
                 '                </div><div class="author">\n' +
                 obj.author +
                 '                </div><div class="create-time">' + obj.createTime + '</div></div>\n' +
-                '        </div>'
+                '        </div></div>'
         }
         selector.append(html);
+        var width = $("#" + obj.id).width();
+        var height = $("#" + obj.id).height();
+        if (style == 3) {
+            $("#" + obj.id).css({
+                "background": "url(" + obj.thumbnail + ")"
+                , "background-size": "cover"
+            });
+            $("#" + obj.id + " .overlay").css({
+                "width": "" + width + ""
+                , "height": "" + height + ""
+            })
+        }
         var tagList = $("#" + obj.id + " .tag-list");
         for (var i = 0; i < obj.tag.length; i++) {
             var tagHtml = '<div class="tag">' + obj.tag[i] + '</div>';
