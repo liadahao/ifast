@@ -153,7 +153,7 @@ public class ArticleController extends AdminBaseController {
                     continue;
                 }
                 EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
-                entityWrapper.eq("name", tagName);
+                entityWrapper.eq("name", tagName).eq("type", TagConstant.ARTICLE.type);
                 TagDO tag = tagService.selectOne(entityWrapper);
                 if (tag == null) {
                     tag = new TagDO();
@@ -215,7 +215,7 @@ public class ArticleController extends AdminBaseController {
                     continue;
                 }
                 EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
-                entityWrapper.eq("name", tagName);
+                entityWrapper.eq("name", tagName).eq("type", TagConstant.ARTICLE.type);;
                 TagDO tag = tagService.selectOne(entityWrapper);
                 if (tag == null) {
                     tag = new TagDO();

@@ -11,17 +11,6 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript">
-        $(function () {
-            var id = '#doc-oc-demo3';
-            var $myOc = $(id);
-            $('.side-close').on('click', function () {
-                $myOc.offCanvas($(this).data('rel'));
-            });
-        });
-    </script>
-
-
     <style>
 
         html, body {
@@ -167,6 +156,19 @@
             width: auto;
         }
 
+        .load-more{
+            padding-top: 12px;
+            height:50px;
+            border:1px solid rgba(0,253,255,1);
+            background: transparent;
+            font-size:18px;
+            font-family:PingFangSC-Light;
+            font-weight:300;
+            color:rgba(0,253,255,1);
+            text-align: center;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -211,8 +213,11 @@
                     <button class="search-btn" type="button" onclick="search()"></button>
                 </div>
             </div>
-            <div id="event-list">
+            <div id="event-list" class="am-u-sm-12">
 
+            </div>
+            <div class="am-u-sm-12" style="margin-top: 40px">
+                <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
             </div>
         </div>
         <div class="am-u-sm-2">
@@ -237,5 +242,14 @@
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/appjs/cms/front/event.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        var id = '#doc-oc-demo3';
+        var $myOc = $(id);
+        $('.side-close').on('click', function () {
+            $myOc.offCanvas($(this).data('rel'));
+        });
+    });
+</script>
 </body>
 </html>

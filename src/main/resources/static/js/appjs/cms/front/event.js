@@ -2,39 +2,84 @@ $(function () {
     load();
 });
 
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return '';
+    }
+})(jQuery);
+
 function load() {
+    var type = $.getUrlParam('type');
+    var date = $.getUrlParam('date');
+    var pageNumber = $.getUrlParam('pageNumber');
+    if (!pageNumber) {
+        pageNumber = 1;
+    }
     $.ajax({
         type: "GET",
         url: "/event/list",
-        data: {"pageNumber": "1", "pageSize": "8"},
+        data: {"pageNumber": pageNumber, "pageSize": "8", "type": type, "starttime": date},
         async: false,
         error: function (request) {
         },
         success: function (data) {
             handleData(data);
         }
+    });
+    $('.load-more').click(function () {
+        var type = $.getUrlParam('type');
+        var date = $.getUrlParam('date');
+        var pageNumber = $.getUrlParam('pageNumber');
+        if ((type != '' || date != '') || (type == '' && date == '')) {
+            var url = "/page/event?pageSize=8";
+            if (pageNumber != '') {
+                url = url + "&pageNumber=" + (parseInt(pageNumber) + 1);
+            } else {
+                url = url + "&pageNumber=2";
+            }
+            if (type != '') {
+                url = url + "&type=" + type;
+            }
+            if (date != '') {
+                url = url + "&starttime=" + date;
+            }
+            window.open(url);
+        }
+    });
+    $('.tag').click(function () {
+        var tag = $(this).text();
+        var url = "/page/event?pageNumber=1&pageSize=8";
+        if (tag != '') {
+            url = url + "&searchTag=" + tag;
+        }
+        window.open(url);
     });
 }
 
 function search() {
     var type = $("#search-type").val();
     var date = $("#search-date").val();
-    $.ajax({
-        type: "GET",
-        url: "/event/list",
-        data: {"pageNumber": "1", "pageSize": "8", "type": type, "starttime": date},
-        async: false,
-        error: function (request) {
-        },
-        success: function (data) {
-            handleData(data);
+    if ((type != '' || date != '') || (type == '' && date == '')) {
+        var url = "/page/event?pageNumber=1&pageSize=8";
+        if (type != '') {
+            url = url + "&type=" + type;
         }
-    });
+        if (date != '') {
+            url = url + "&starttime=" + date;
+        }
+        window.open(url);
+    }
 }
 
 function handleData(data) {
     $('#event-list').empty();
     var row = data.data.records;
+    if (row.length === 0) {
+        return;
+    }
     var line = 0;
     var selector;
     for (var j = 0, len = row.length; j < len; j++) {

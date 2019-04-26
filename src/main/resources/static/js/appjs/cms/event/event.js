@@ -107,20 +107,8 @@ function load() {
                         title: '地址'
                     },
                     {
-                        field: 'type',
-                        title: '类型',
-                        formatter: function (value, row, index) {
-                            if (row['type'] == 1) {
-                                return '创业';
-                            }
-                            if (row['type'] == 2) {
-                                return '公益';
-                            }
-                            if (row['type'] == 3) {
-                                return '硬件';
-                            }
-                            return value;
-                        }
+                        field: 'tag',
+                        title: '标签'
                     },
                     {
                         title: '操作',

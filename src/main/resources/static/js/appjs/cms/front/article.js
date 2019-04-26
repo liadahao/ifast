@@ -3,11 +3,26 @@ $(function () {
     load();
 });
 
+(function ($) {
+    $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return '';
+    }
+})(jQuery);
+
 function load() {
+    var searchTag = $.getUrlParam('searchTag');
+    var searchTitle = $.getUrlParam('searchTitle');
+    var pageNumber = $.getUrlParam('pageNumber');
+    if (!pageNumber) {
+        pageNumber = 1;
+    }
     $.ajax({
         type: "GET",
         url: "/article/list",
-        data: {"pageNumber": "1", "pageSize": "6"},
+        data: {"pageNumber": pageNumber, "pageSize": "6", "searchTag": searchTag, "searchTitle": searchTitle},
         async: false,
         error: function (request) {
         },
@@ -17,6 +32,42 @@ function load() {
     });
     $('.box').click(function () {
         window.location.href = "/article/" + $(this).attr("id");
+    });
+    $('.load-more').click(function () {
+        var title = $.getUrlParam('searchTitle');
+        var tag = $.getUrlParam('searchTag');
+        var pageNumber = $.getUrlParam('pageNumber');
+        if ((tag != '' || title != '') || (tag == '' && title == '')) {
+            var url = "/page/article?pageSize=6";
+            if (pageNumber != '') {
+                url = url + "&pageNumber=" + (parseInt(pageNumber) + 1);
+            } else {
+                url = url + "&pageNumber=2";
+            }
+            if (tag != '') {
+                url = url + "&searchTag=" + tag;
+            }
+            if (title != '') {
+                url = url + "&searchTitle=" + title;
+            }
+            window.open(url);
+        }
+    });
+    $('.tag').click(function () {
+        var tag = $(this).text();
+        if ((tag != '' || title != '') || (tag == '' && title == '')) {
+            var url = "/page/article?pageNumber=1&pageSize=6";
+            if (tag != '') {
+                url = url + "&searchTag=" + tag;
+            }
+            window.open(url);
+        }
+        e = window.event || e;
+        if (e.stopPropagation) {
+            e.stopPropagation();      //阻止事件 冒泡传播
+        } else {
+            e.cancelBubble = true;   //ie兼容
+        }
     });
     $('a').click(function () {
         e = window.event || e;
@@ -31,7 +82,7 @@ function load() {
 function handleData(data) {
     $('#article-list').empty();
     var row = data.data.records;
-    if(row.length===0){
+    if (row.length === 0) {
         return;
     }
     var line = 0;
@@ -62,7 +113,7 @@ function handleData(data) {
             num = 0;
             line = line + 1;
             var id = 'line-' + line;
-            var box = '<div class="boxes" id="' + id + '"></div>';
+            var box = '<div class="boxes am-u-sm-12" id="' + id + '"></div>';
             $('#article-list').append(box);
             selector = $('#' + id)
         }
@@ -170,16 +221,13 @@ function search() {
     var title = $("#search-title").val();
     var tag = $("#search-tag").val();
     if ((tag != '' || title != '') || (tag == '' && title == '')) {
-        $.ajax({
-            type: "GET",
-            url: "/article/list",
-            data: {"pageNumber": "1", "pageSize": "8", "searchTag": tag, "searchTitle": title},
-            async: false,
-            error: function (request) {
-            },
-            success: function (data) {
-                handleData(data);
-            }
-        });
+        var url = "/page/article?pageNumber=1&pageSize=6";
+        if (tag != '') {
+            url = url + "&searchTag=" + tag;
+        }
+        if (title != '') {
+            url = url + "&searchTitle=" + title;
+        }
+        window.open(url);
     }
 }

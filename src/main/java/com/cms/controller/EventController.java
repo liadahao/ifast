@@ -4,6 +4,9 @@ package com.cms.controller;
 import java.util.Arrays;
 import java.util.Date;
 
+import com.cms.core.TagConstant;
+import com.cms.domain.TagDO;
+import com.cms.service.TagService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,8 @@ import com.ifast.common.utils.Result;
 @Controller
 @RequestMapping("/cms/event")
 public class EventController extends AdminBaseController {
+    @Autowired
+    TagService tagService;
     @Autowired
     private EventService eventService;
 
@@ -84,6 +89,21 @@ public class EventController extends AdminBaseController {
     @PostMapping("/save")
     @RequiresPermissions("cms:event:add")
     public Result<String> save(EventDO event) {
+        String tagName = event.getTag();
+        if (!StringUtils.isEmpty(tagName)) {
+            EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
+            entityWrapper.eq("name", tagName).eq("type", TagConstant.EVNENT.type);
+            TagDO tag = tagService.selectOne(entityWrapper);
+            if (tag == null) {
+                tag = new TagDO();
+                tag.setName(tagName);
+                tag.setCreatetime(new Date());
+                tag.setType(TagConstant.EVNENT.type);
+                tag.setIsenable(1);
+                tagService.insert(tag);
+            }
+            event.setTagId(tag.getId());
+        }
         event.setCreatetime(new Date());
         eventService.insert(event);
         return Result.ok();
@@ -94,6 +114,21 @@ public class EventController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:event:edit")
     public Result<String> update(EventDO event) {
+        String tagName = event.getTag();
+        if (!StringUtils.isEmpty(tagName)) {
+            EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
+            entityWrapper.eq("name", tagName).eq("type", TagConstant.EVNENT.type);
+            TagDO tag = tagService.selectOne(entityWrapper);
+            if (tag == null) {
+                tag = new TagDO();
+                tag.setName(tagName);
+                tag.setCreatetime(new Date());
+                tag.setType(TagConstant.EVNENT.type);
+                tag.setIsenable(1);
+                tagService.insert(tag);
+            }
+            event.setTagId(tag.getId());
+        }
         event.setModifytime(new Date());
         boolean update = eventService.updateById(event);
         return update ? Result.ok() : Result.fail();

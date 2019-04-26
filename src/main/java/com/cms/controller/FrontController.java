@@ -106,12 +106,15 @@ public class FrontController {
             Wrapper<ArticleTagDO> articleTagDOWrapper = new EntityWrapper<ArticleTagDO>().orderBy("id", false);
             if (tagDO != null) {
                 articleTagDOWrapper.eq("tagId", tagDO.getId());
-                articleTagDOWrapper.last("limit " + page.getCurrent() + "," + page.getSize());
+                articleTagDOWrapper.last("limit " + page.getOffsetCurrent() + "," + page.getSize());
                 List<ArticleTagDO> articleTagList = articleTagService.selectList(articleTagDOWrapper);
                 List<Long> articleIds = articleTagList.stream().map(ArticleTagDO::getArticleId).collect(Collectors.toList());
-                List<ArticleDO> articleList = articleService.selectBatchIds(articleIds);
-                page.setRecords(articleList);
-            }else{
+                page.setRecords(new ArrayList<>());
+                if (!articleIds.isEmpty()) {
+                    List<ArticleDO> articleList = articleService.selectBatchIds(articleIds);
+                    page.setRecords(articleList);
+                }
+            } else {
                 return Result.ok(page);
             }
             return Result.ok(page);
