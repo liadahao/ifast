@@ -23,8 +23,10 @@
             <button type="button" class="layui-btn" id="background-button">上传图片</button>
             <button type="button" class="layui-btn" id="background-clear">清除</button>
             <div class="layui-upload-list">
-                <img th:if="${nav['background']!=null && nav['background'] ne ''}" th:src="${nav['indexLogo']}" class="layui-upload-img" id="background-img">
-                <img th:if="${nav['background']==null || nav.background eq ''}" class="layui-upload-img" id="background-img">
+                <img th:if="${nav['background']!=null && nav['background'] ne ''}" th:src="${nav['background']}"
+                     class="layui-upload-img" id="background-img">
+                <img th:if="${nav['background']==null || nav.background eq ''}" class="layui-upload-img"
+                     id="background-img">
                 <p id="background-text"></p>
             </div>
         </div>

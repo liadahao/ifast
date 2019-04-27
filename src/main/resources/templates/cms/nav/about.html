@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="/css/layui.css" media="all">
 <link href="/css/plugins/steps/jquery.steps.css" rel="stylesheet">
 <link rel="stylesheet" href="/js/plugins/webuploader/webuploader.css" media="all">
+<style>
+    .layui-upload-img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
     <div class="row">
@@ -56,13 +62,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">人物姓名：</label>
                                             <div class="col-sm-4">
-                                                <input name="content[tab1][model][+${modelStat.index}+][name]"
+                                                <input th:attr="name=content[tab1][model][+${modelStat.index}+][name]"
                                                        class="form-control"
                                                        type="text" th:value="${model['name']}"/>
                                             </div>
                                             <label class="col-sm-1 control-label">人物简介 ：</label>
                                             <div class="col-sm-4">
-                                        <textarea name="content[tab1][model][+${modelStat.index}+][description]"
+                                        <textarea th:attr="name=content[tab1][model][+${modelStat.index}+][description]"
                                                   class="form-control"
                                                   rows="3" th:text="${model['description']}"></textarea>
                                             </div>
@@ -70,42 +76,60 @@
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">人物排序 ：</label>
                                             <div class="col-sm-4">
-                                                <input name="content[tab1][model][+${modelStat.index}+][order]"
+                                                <input th:attr="name=content[tab1][model][+${modelStat.index}+][order]"
                                                        class="form-control"
                                                        type="number" th:value="${model['order']}"/>
                                             </div>
                                             <label class="col-sm-1 control-label">段落 ：</label>
                                             <div class="col-sm-6">
-                                        <textarea name="content[tab1][model][+${modelStat.index}+][content]"
+                                        <textarea th:attr="name=content[tab1][model][+${modelStat.index}+][content]"
                                                   class="form-control"
                                                   rows="5" th:text="${model['content']}"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">人物肖像：</label>
-                                            <div id="uploader-demo" class="col-sm-4">
-                                                <div class="layui-upload">
-                                                    <button type="button" class="layui-btn" id="pic1">上传图片</button>
-                                                    <div class="layui-upload-list">
-                                                        <h1 id="picTitle"></h1>
-                                                        <img class="layui-upload-img" id="picDemo1"
-                                                             th:src="${model['pic']}">
-                                                        <p id="picText"></p>
-                                                    </div>
+                                            <div class="layui-upload col-sm-4">
+                                                <button type="button" class="layui-btn about-upload-btn"
+                                                        th:id="pic-button-+${modelStat.index}">上传图片
+                                                </button>
+                                                <button type="button" class="layui-btn about-upload-clear"
+                                                        th:id="pic-clear-+${modelStat.index}">清除
+                                                </button>
+                                                <div class="layui-upload-list">
+                                                    <img th:if="${model['pic']!=null && model['pic'] ne ''}"
+                                                         th:src="${model['pic']}" class="layui-upload-img"
+                                                         th:id="pic-+${modelStat.index}">
+                                                    <img th:if="${model['pic']==null || model['pic'] eq ''}"
+                                                         class="layui-upload-img" th:id="pic-+${modelStat.index}">
+                                                    <p th:id="pic-text-+${modelStat.index}"></p>
                                                 </div>
                                             </div>
-                                            <label class="col-sm-1 control-label">背景图：</label>
-                                            <div id="uploader-demo2" class="col-sm-4">
-                                                <div class="layui-upload">
-                                                    <button type="button" class="layui-btn" id="image1">上传图片</button>
-                                                    <div class="layui-upload-list">
-                                                        <h1 id="imageTitle1"></h1>
-                                                        <img class="layui-upload-img" id="imageDemo1"
-                                                             th:value="${model['image']}">
-                                                        <p id="iamgeText1"></p>
-                                                    </div>
+                                            <input th:id="pic-value-+${modelStat.index}"
+                                                   th:attr="name=content[tab1][model][+${modelStat.index}+][pic]"
+                                                   class="form-control" type="hidden"
+                                                   th:value="${model['pic']}"/>
+                                            <label class="col-sm-1 control-label">图片：</label>
+                                            <div class="layui-upload col-sm-4">
+                                                <button type="button" class="layui-btn about-upload-btn"
+                                                        th:id="image-button-+${modelStat.index}">上传图片
+                                                </button>
+                                                <button type="button" class="layui-btn about-upload-clear"
+                                                        th:id="image-clear-+${modelStat.index}">清除
+                                                </button>
+                                                <div class="layui-upload-list">
+                                                    <img th:if="${model['image']!=null && model['image'] ne ''}"
+                                                         th:src="${model['image']}" class="layui-upload-img"
+                                                         th:id="image-+${modelStat.index}">
+                                                    <img th:if="${model['image']==null || model['image'] eq ''}"
+                                                         class="layui-upload-img" th:id="image-+${modelStat.index}">
+                                                    <p th:id="image-text-+${modelStat.index}"></p>
                                                 </div>
                                             </div>
+                                            <input th:id="image-value-+${modelStat.index}"
+                                                   th:attr="name=content[tab1][model][+${modelStat.index}+][image]"
+                                                   class="form-control" type="hidden"
+                                                   th:value="${model['image']}"/>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-8 link-table">
@@ -204,13 +228,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">标题：</label>
                                             <div class="col-sm-8">
-                                                <input name="content[tab2][model][+${modelStat.index}+][title]"
+                                                <input th:attr="name=content[tab2][model][+${modelStat.index}+][title]"
                                                        class="form-control"
                                                        type="text" th:value="${model['title']}"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">段落：</label>
+                                            <label class="col-sm-3 control-la bel">段落：</label>
                                             <div class="col-sm-8">
                                             <textarea
                                                     th:attr="name=content[tab2][model][+${modelStat.index}+][content]"
@@ -221,7 +245,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">媒体图片：</label>
                                             <div class="col-sm-8">
-                                                <input name="content[tab2][model][+${modelStat.index}+][image]"
+                                                <input th:attr="name=content[tab2][model][+${modelStat.index}+][image]"
                                                        class="form-control"
                                                        type="text" th:value="${model['image']}">
                                             </div>
@@ -248,43 +272,6 @@
 <script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
 <script>
-    layui.use('upload', function () {
-        var $ = layui.jquery
-            , upload = layui.upload;
-
-        //普通图片上传
-        var uploadInst = upload.render({
-            elem: '#test1'
-            , url: '/common/sysFile/upload'
-            , before: function (obj) {
-                //预读本地文件示例，不支持ie8
-                obj.preview(function (index, file, result) {
-                    $('#demo1').attr('src', result); //图片链接（base64）
-                });
-            }
-            , done: function (res) {
-                //如果上传失败
-                if (res.code > 0) {
-                    return layer.msg('上传失败');
-                } else {
-                    var demoTitle = $('#demoTitle');
-                    demoTitle.html('<span style="color: #FF5722;">缩略图</span>');
-                    var demoText = $('#demoText');
-                    demoText.html('<span style="color: #FF5722;">上传成功</span>');
-                }
-                //上传成功
-            }
-            , error: function () {
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function () {
-                    uploadInst.upload();
-                });
-            }
-        });
-    });
-
     function addLink(id) {
         var tbody = $("#linktable-" + id);
         var len = tbody.children('tr').length;
@@ -354,32 +341,42 @@
             '                  rows="5"></textarea>\n' +
             '            </div>\n' +
             '        </div>\n' +
-            '        <div class="form-group">\n' +
-            '            <label class="col-sm-1 control-label">人物肖像：</label>\n' +
-            '            <div id="uploader-demo" class="col-sm-4">\n' +
-            '                <div class="layui-upload">\n' +
-            '                    <button type="button" class="layui-btn" id="pic1">上传图片</button>\n' +
-            '                    <div class="layui-upload-list">\n' +
-            '                        <h1 id="picTitle"></h1>\n' +
-            '                        <img class="layui-upload-img" id="picDemo1"\n' +
-            '                             th:src="${model[\'pic\']}">\n' +
-            '                        <p id="picText"></p>\n' +
-            '                    </div>\n' +
-            '                </div>\n' +
-            '            </div>\n' +
-            '            <label class="col-sm-1 control-label">背景图：</label>\n' +
-            '            <div id="uploader-demo2" class="col-sm-4">\n' +
-            '                <div class="layui-upload">\n' +
-            '                    <button type="button" class="layui-btn" id="image1">上传图片</button>\n' +
-            '                    <div class="layui-upload-list">\n' +
-            '                        <h1 id="imageTitle1"></h1>\n' +
-            '                        <img class="layui-upload-img" id="imageDemo1"\n' +
-            '                             >\n' +
-            '                        <p id="iamgeText1"></p>\n' +
-            '                    </div>\n' +
-            '                </div>\n' +
-            '            </div>\n' +
+            '<div class="form-group">\n' +
+            '    <label class="col-sm-1 control-label">人物肖像：</label>\n' +
+            '    <div class="layui-upload col-sm-4">\n' +
+            '        <button type="button" class="layui-btn about-upload-btn"\n' +
+            '                id="pic-button-' + len + '">上传图片\n' +
+            '        </button>\n' +
+            '        <button type="button" class="layui-btn about-upload-clear"\n' +
+            '                id="pic-clear-' + len + '">清除\n' +
+            '        </button>\n' +
+            '        <div class="layui-upload-list">\n' +
+            '            <img \n' +
+            '                 class="layui-upload-img" id="pic-' + len + '">\n' +
+            '            <p id="pic-text-' + len + '"></p>\n' +
             '        </div>\n' +
+            '    </div>\n' +
+            '    <input id="pic-value-' + len + '"\n' +
+            '           name="content[tab1][model][' + len + '][pic]"\n' +
+            '           class="form-control" type="hidden"/>\n' +
+            '    <label class="col-sm-1 control-label">图片：</label>\n' +
+            '    <div class="layui-upload col-sm-4">\n' +
+            '        <button type="button" class="layui-btn about-upload-btn"\n' +
+            '                id="image-button-' + len + '">上传图片\n' +
+            '        </button>\n' +
+            '        <button type="button" class="layui-btn about-upload-clear"\n' +
+            '                id="image-clear-' + len + '">清除\n' +
+            '        </button>\n' +
+            '        <div class="layui-upload-list">\n' +
+            '            <img' +
+            '                 class="layui-upload-img"id="image-' + len + '">\n' +
+            '            <p id="image-text-' + len + '"></p>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <input id="image-value-' + len + '"\n' +
+            '           name="content[tab1][model][' + len + '][image]"\n' +
+            '           class="form-control" type="hidden"/>\n' +
+            '</div>' +
             '        <div class="form-group">\n' +
             '            <div class="col-sm-8 link-table">\n' +
             '                <div class="ibox float-e-margins">\n' +
@@ -407,7 +404,47 @@
             '    </div>\n' +
             '</div>\n';
         page.append(html);
-    }
+        layui.use('upload', function () {
+            var $ = layui.jquery
+                , upload = layui.upload;
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '.about-upload-btn'
+                , url: '/common/sysFile/upload'
+                , before: function (obj) {
+                    var id = this.item[0].id;
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        var type = id.split('-')[0];
+                        var count = id.split('-')[2];
+                        $('#' + type + '-' + count).attr('src', result); //图片链接（base64）
+                    });
+                }
+                , done: function (res) {
+                    //如果上传失败
+                    if (res.code > 0) {
+                        return layer.msg('上传失败');
+                    } else {
+                        var id = this.item[0].id;
+                        var type = id.split('-')[0];
+                        var count = id.split('-')[2];
+                        var demoText = $('#' + type + '-text-' + count);
+                        demoText.html('<span style="color: #FF5722;">上传成功</span>');
+                        $('#' + type + '-value-' + count).val(res.data); //图片链接（base64）
+                    }
+                    //上传成功
+                }
+                , error: function () {
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function () {
+                        uploadInst.upload();
+                    });
+                }
+            });
+        });
+    };
 
 
     var page = $('#tab2');

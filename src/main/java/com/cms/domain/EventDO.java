@@ -1,15 +1,12 @@
 package com.cms.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-import com.ifast.common.base.BaseDO;
-
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <pre>
@@ -127,8 +124,6 @@ public class EventDO implements Serializable {
     /**
      *
      */
-    private Integer type;
-
     private Long tagId;
     private String tag;
 

@@ -88,7 +88,7 @@ layui.use('upload', function () {
     var uploadInst = upload.render({
         elem: '#background-button'
         , url: '/common/sysFile/upload'
-        ,accept:'images'
+        , accept: 'images'
         , before: function (obj) {
             //预读本地文件示例，不支持ie8
             obj.preview(function (index, file, result) {
@@ -114,6 +114,42 @@ layui.use('upload', function () {
         }
     });
 
+    upload.render({
+        elem: '.about-upload-btn'
+        , url: '/common/sysFile/upload'
+        , before: function (obj) {
+            var id = this.item[0].id;
+            //预读本地文件示例，不支持ie8
+            obj.preview(function (index, file, result) {
+                var type = id.split('-')[0];
+                var count = id.split('-')[2];
+                $('#' + type + '-' + count).attr('src', result); //图片链接（base64）
+            });
+        }
+        , done: function (res) {
+            //如果上传失败
+            if (res.code > 0) {
+                return layer.msg('上传失败');
+            } else {
+                var id = this.item[0].id;
+                var type = id.split('-')[0];
+                var count = id.split('-')[2];
+                var demoText = $('#' + type + '-text-' + count);
+                demoText.html('<span style="color: #FF5722;">上传成功</span>');
+                $('#' + type + '-value-' + count).val(res.data); //图片链接（base64）
+            }
+            //上传成功
+        }
+        , error: function () {
+            //演示失败状态，并实现重传
+            var demoText = $('#demoText');
+            demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            demoText.find('.demo-reload').on('click', function () {
+                uploadInst.upload();
+            });
+        }
+    });
+
 
 });
 
@@ -126,6 +162,14 @@ $('#video-clear').click(function () {
     $('#video-img').removeAttr('src'); //图片链接（base64）
     $('#video-img').hide(); //图片链接（base64）
     $('#indexVideo').removeAttr('value');
+});
+
+$(".about-upload-clear").click(function () {
+    var id = $(this).attr("id");
+    var type = id.split('-')[0];
+    var count = id.split('-')[2];
+    $('#' + type + '-' + count).removeAttr('src');
+    $('#' + type + '-value-' + count).removeAttr('value');
 });
 
 function addTechtourLink(id) {

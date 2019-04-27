@@ -14,17 +14,9 @@
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
 
     <style>
-
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
-
-        .get {
+        .main {
             color: #fff;
             text-align: center;
-            padding-top: 16%;
-            line-height: 1;
         }
 
         .get-title {
@@ -37,7 +29,7 @@
         }
 
         .company-name {
-            margin-bottom: 4%;
+            margin-bottom: 5%;
             font-size: 36px;
             font-family: PingFangSC-Light;
             font-weight: 300;
@@ -45,7 +37,7 @@
         }
 
         .get-btn {
-            width: 17.71%;
+            width: 340px;
             background: rgba(0, 253, 255, 1);
             border-radius: 34px;
             font-size: 28px;
@@ -63,18 +55,16 @@
         }
 
         .watch-video {
-            margin-top: 3%;
-        }
-
-        .watch-video:hover {
-            margin-top: 3%;
-            text-decoration: underline;
+            margin-top: 4%;
+            font-size: 20px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
             cursor: pointer;
         }
 
-        #my-popup {
-            width: 1080px;
-            height: 720px;
+        .watch-video:hover {
+            text-decoration: underline;
         }
 
         .social-list {
@@ -110,23 +100,12 @@
             z-index: -999;
         }
 
-        .am-popup {
-            top: 14%;
-            left: 22%;
-            margin: 0;
-        }
-
-        .pop_video {
-            height: 100%;
-            width: 100%;
-        }
-
     </style>
 </head>
 <body>
 <div th:include="nav :: top-nav"></div>
-<div id="get" class="get">
-    <div class="am-g am-g-fixed">
+<div class="main am-vertical-align">
+    <div class="am-g am-vertical-align-middle" style="text-align: center">
         <div id="videocontainer">
             <video class="background_video" id="background_video" playsinline="" autoplay="" muted="" loop="">
                 <source th:if="${index['indexVideo']!=null}" src="" th:src="${index['indexVideo']}" type="video/mp4"/>
@@ -200,10 +179,10 @@
             // of different video formats to add
             src: []
         });
-        var bodyHeight = $('body').height();
-        $("#get").innerHeight(bodyHeight - 50);
-        var getHeight = $('#get').innerHeight();
-        $("#background_video").height(getHeight + 50);
+        // var bodyHeight = $('body').height();
+        // $("#get").innerHeight(bodyHeight - 50);
+        // var getHeight = $('#get').innerHeight();
+        // $("#background_video").height(getHeight + 50);
     });
 </script>
 </body>

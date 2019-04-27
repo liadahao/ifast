@@ -1,13 +1,12 @@
 
-
 body {
     background: url("/img/02.jpg") no-repeat top left;
 }
 
 
 .main-body {
-    padding-right: 3.63%;
-    padding-left: 3.63%;
+    padding-right: 3.65%;
+    padding-left: 3.65%;
 }
 
 .main-body > .title {
@@ -20,10 +19,10 @@ body {
     font-weight: 300;
     color: rgba(0, 253, 255, 1);
     position: absolute;
-    top: 0;
+    top: 43px;
     left: 0;
     z-index: 10;
-
+    line-height: 0.9;
 }
 
 .title-background {
@@ -31,7 +30,7 @@ body {
     height: 44px;
     background: rgba(73, 18, 139, 1);
     position: absolute;
-    top: 75px;
+    top: 82px;
     left: 192px;
 }
 
@@ -41,12 +40,13 @@ body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
-    position: absolute;
-    margin-top: 14%;
+    margin-top: 13.5%;
+    line-height: 1.6;
 }
 
 .video-content {
-    margin-top: 30%;
+    margin-top: 4.2%;
+    height: 53.4%
 }
 
 .video-content .right-side {
@@ -64,8 +64,12 @@ body {
     color: rgba(0, 253, 255, 1);
 }
 
-#right-side-content-list .title-img-div {
-    height: 140px;
+#right-side-content-list {
+    height: 90%;
+}
+
+#right-side-content-list .title-img-div{
+    height: 39%;
 }
 
 #right-side-content-list .title-img-div img {
@@ -78,6 +82,12 @@ body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
+    line-height: 1.6;
+}
+
+.right-side-locat{
+    padding-top: 12px;
+    height: 100%;
 }
 
 .right-side-locat img {
@@ -118,9 +128,14 @@ body {
     display: block;
     padding-left: 10px;
     padding-right: 10px;
-    margin-bottom: 2rem;
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
+#thumbnail-list{
+    margin-bottom: 23px;
+}
+
+
 
 

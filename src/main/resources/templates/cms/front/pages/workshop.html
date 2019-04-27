@@ -42,7 +42,7 @@
             <div th:text="${data['content']['content']}" class="content">
             </div>
             <div class="video-content am-u-sm-12">
-                <div class="am-u-sm-5">
+                <div class="am-u-sm-12" style="height: 100%;width: 43%">
                     <ul class="am-avg-sm-3" id="thumbnail-list">
                         <li th:attr="data-thumb=${data['content']['video1']}">
                             <img class="video-thumbnail" th:src="${data['content']['video1']}">
@@ -56,12 +56,12 @@
                     </ul>
                     <img id="carousel-img" class="video-thumbnail" src=""/>
                 </div>
-                <div class="right-side am-u-sm-7">
+                <div class="right-side am-u-sm-12" style="height: 100%;width: 57%">
                     <div id="right-side-content-list" class="am-u-sm-12">
-                        <div class="am-u-sm-12" th:each="model,modelStat : ${data['content']['model']}"
+                        <div class="am-u-sm-12" style="height: 100%" th:each="model,modelStat : ${data['content']['model']}"
                              th:if="${model.title ne ''}">
                             <div class="title-img-div am-vertical-align">
-                                <img class="am-u-sm-6" th:src="${model['image']}">
+                                <img class="am-u-sm-5" th:src="${model['image']}">
                                 <div th:text="${model['title']}" class="title am-vertical-align-bottom">
                                 </div>
                             </div>
@@ -71,8 +71,7 @@
                         </div>
                     </div>
                     <div class="right-side-footer am-u-sm-12">
-                        <div class="right-side-locat am-u-sm-8">
-
+                        <div class="right-side-locat am-u-sm-7">
                         </div>
                         <div class="right-side-nav am-u-sm-4">
                             <img id="right-side-prev" src="/img/0301L_def.png"/>
