@@ -36,6 +36,8 @@ public class FrontController {
     @Autowired
     private ArticleService articleService;
     @Autowired
+    private GalleryService galleryService;
+    @Autowired
     TagService tagService;
     @Autowired
     EventService eventService;
@@ -53,8 +55,13 @@ public class FrontController {
     }
 
     @RequestMapping("/page/{name}")
-    public String website(@PathVariable String name, Model model) {
-        Wrapper<NavDO> wrapper = new EntityWrapper<NavDO>().eq("name", name);
+    public String website(@PathVariable String name, Integer type, Model model) {
+        Wrapper<NavDO> wrapper;
+        if (type != null) {
+            wrapper = new EntityWrapper<NavDO>().eq("type", type);
+        } else {
+            wrapper = new EntityWrapper<NavDO>().eq("name", name);
+        }
         NavDO navDO = navService.selectOne(wrapper);
         String suffix = "";
         Map data;
@@ -65,10 +72,14 @@ public class FrontController {
             navVo.setContent(data);
             suffix = HtmlConstant.getHtml(navDO.getType());
             model.addAttribute("data", navVo);
+        } else if ("gallery".equals(name)) {
+            Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("id", false);
+            List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);
+            model.addAttribute("data", galleryDOList);
         } else {
             Map<String, Object> map = new HashMap<>();
             map.put("content", new HashMap<>());
-            model.addAttribute("data", new HashMap<>());
+            model.addAttribute("gallery", new HashMap<>());
         }
         List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
         Map<String, Object> map = new HashMap<>();
@@ -112,6 +123,14 @@ public class FrontController {
                 page.setRecords(new ArrayList<>());
                 if (!articleIds.isEmpty()) {
                     List<ArticleDO> articleList = articleService.selectBatchIds(articleIds);
+                    for (ArticleDO articleDO : articleList) {
+                        List<TagDO> tagDOList = tagService.selectByArticleId(articleDO.getId());
+                        if (tagDOList != null && !tagDOList.isEmpty()) {
+                            articleDO.setTag(tagDOList.stream().map(TagDO::getName).collect(Collectors.toList()));
+                        } else {
+                            articleDO.setTag(new ArrayList<>());
+                        }
+                    }
                     page.setRecords(articleList);
                 }
             } else {

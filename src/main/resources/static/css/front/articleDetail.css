@@ -1,6 +1,6 @@
-.article {
-    height: 100%;
-    display: block;
+html,body{
+    height: auto;
+    line-height: 1.6;
 }
 
 .main-body {
@@ -16,10 +16,12 @@
     height: 500px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    position: relative;
+    padding-top: 99px;
+
 }
 
 .head-body {
-    margin-top: 99px;
     padding-left: 360px;
     padding-right: 360px;
     font-family: PingFangSC-Regular;

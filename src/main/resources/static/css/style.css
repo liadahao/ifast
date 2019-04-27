@@ -7457,3 +7457,7 @@ body.skin-3 {
     border-color: #cccccc !important;
 }
 
+.layui-upload-img{
+    width: 100%;
+}
+

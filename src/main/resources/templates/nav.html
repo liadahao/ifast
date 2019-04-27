@@ -1,12 +1,11 @@
 <div th:fragment=top-nav>
     <header class="am-topbar">
-        <span th:if="${index!=null&&index['indexLogo']!=null}">
-            <a href="/"><img class="nav-logo" th:src="${index['indexLogo']}"/></a>
-        </span>
-        <span th:if="${index==null||index['indexLogo']==null}">
-            <a href="/"><img class="nav-logo" src="/img/logo.png"/></a>
-        </span>
-        <span><img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
+        <a href="/" th:if="${index!=null&&index['indexLogo']!=null}">
+            <img class="nav-logo" th:src="${index['indexLogo']}"/>
+        </a>
+        <a th:if="${index==null||index['indexLogo']==null}" href="/">
+            <img class="nav-logo" src="/img/logo.png"/></a>
+        <img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}">
     </header>
 </div>
 
@@ -18,13 +17,13 @@
             </div>
             <div class="am-offcanvas-content">
                 <h3>
-                    <a href="/page/techtour">Tech Tour</a>
+                    <a href="/page/techtour?type=2">Tech Tour</a>
                 </h3>
                 <h3>
-                    <a href="/page/workshop">Workshop</a>
+                    <a href="/page/workshop?type=3">Workshop</a>
                 </h3>
                 <h3>
-                    <a href="/page/service">Consultancy Service</a>
+                    <a href="/page/service?type=4">Consultancy Service</a>
                 </h3>
                 <h3>
                     <a href="/page/article">Article</a>
@@ -36,13 +35,13 @@
                     <a href="/page/event">Event</a>
                 </h3>
                 <h3>
-                    <a href="/page/testimonials">Testimonials</a>
+                    <a href="/page/testimonials?type=5">Testimonials</a>
                 </h3>
                 <h3>
                     <a href="/page/shop">Shop</a>
                 </h3>
                 <h3>
-                    <a href="/page/about">About us</a>
+                    <a href="/page/about?type=6">About us</a>
                 </h3>
                 <h3>
                     <a href="/page/contact">Contact us</a>

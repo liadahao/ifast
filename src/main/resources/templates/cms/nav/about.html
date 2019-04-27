@@ -44,8 +44,8 @@
                                 <!-- /.box-body -->
                             </div>
                             <div id="tab1-model-list">
-                                <div id="model" class="layui-card"
-                                     th:each="model,modelStat:${nav['content']['tab1']['model']}">
+                                <div th:each="model,modelStat:${nav['content']['tab1']['model']}"
+                                     th:id="mode+${modelStat.count}" class="layui-card">
                                     <div class="layui-card-header">
                                         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
                                             <legend th:text="模块+${modelStat.count}"></legend>
@@ -56,13 +56,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">人物姓名：</label>
                                             <div class="col-sm-4">
-                                                <input id="model-1-name" name="content[tab1][model][0][name]"
+                                                <input name="content[tab1][model][+${modelStat.index}+][name]"
                                                        class="form-control"
                                                        type="text" th:value="${model['name']}"/>
                                             </div>
                                             <label class="col-sm-1 control-label">人物简介 ：</label>
                                             <div class="col-sm-4">
-                                        <textarea id="model-1-description" name="content[tab1][model][0][description]"
+                                        <textarea name="content[tab1][model][+${modelStat.index}+][description]"
                                                   class="form-control"
                                                   rows="3" th:text="${model['description']}"></textarea>
                                             </div>
@@ -70,13 +70,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">人物排序 ：</label>
                                             <div class="col-sm-4">
-                                                <input id="model-1-order" name="content[tab1][model][0][order]"
+                                                <input name="content[tab1][model][+${modelStat.index}+][order]"
                                                        class="form-control"
                                                        type="number" th:value="${model['order']}"/>
                                             </div>
                                             <label class="col-sm-1 control-label">段落 ：</label>
                                             <div class="col-sm-6">
-                                        <textarea id="model-1-content" name="content[tab1][model][0][content]"
+                                        <textarea name="content[tab1][model][+${modelStat.index}+][content]"
                                                   class="form-control"
                                                   rows="5" th:text="${model['content']}"></textarea>
                                             </div>
@@ -245,7 +245,6 @@
 <script src="/js/plugins/staps/jquery.steps.min.js"></script>
 <script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
-<script src="/js/layui.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
 <script>
@@ -291,6 +290,7 @@
         var len = tbody.children('tr').length;
         if (len >= 6) {
             alert('链接已到达6个');
+            return;
         }
         var html = '<tr>\n' +
             '<td><select class="form-control m-b"\n' +
@@ -313,7 +313,100 @@
     }
 
     function addModel(id) {
-
+        var page = $('#tab1-model-list');
+        var len = page.children().length;
+        if (len >= 6) {
+            alert('模块已到达6个');
+            return;
+        }
+        var html = '<div class="layui-card">' +
+            '<div class="layui-card-header">\n' +
+            '        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">\n' +
+            '            <legend>模块' + (len + 1) + '</legend>\n' +
+            '        </fieldset>\n' +
+            '    </div>\n' +
+            '    <div class="layui-card-body">\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-1 control-label">人物姓名：</label>\n' +
+            '            <div class="col-sm-4">\n' +
+            '                <input id="model-' + len + '-name" name="content[tab1][model][' + len + '][name]"\n' +
+            '                       class="form-control"\n' +
+            '                       type="text"/>\n' +
+            '            </div>\n' +
+            '            <label class="col-sm-1 control-label">人物简介 ：</label>\n' +
+            '            <div class="col-sm-4">\n' +
+            '        <textarea id="model-' + len + '-description" name="content[tab1][model][' + len + '][description]"\n' +
+            '                  class="form-control"\n' +
+            '                  rows="3"></textarea>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-1 control-label">人物排序 ：</label>\n' +
+            '            <div class="col-sm-4">\n' +
+            '                <input id="model-' + len + '-order" name="content[tab1][model][' + len + '][order]"\n' +
+            '                       class="form-control"\n' +
+            '                       type="number"/>\n' +
+            '            </div>\n' +
+            '            <label class="col-sm-1 control-label">段落 ：</label>\n' +
+            '            <div class="col-sm-6">\n' +
+            '        <textarea id="model-' + len + '-content" name="content[tab1][model][' + len + '][content]"\n' +
+            '                  class="form-control"\n' +
+            '                  rows="5"></textarea>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <label class="col-sm-1 control-label">人物肖像：</label>\n' +
+            '            <div id="uploader-demo" class="col-sm-4">\n' +
+            '                <div class="layui-upload">\n' +
+            '                    <button type="button" class="layui-btn" id="pic1">上传图片</button>\n' +
+            '                    <div class="layui-upload-list">\n' +
+            '                        <h1 id="picTitle"></h1>\n' +
+            '                        <img class="layui-upload-img" id="picDemo1"\n' +
+            '                             th:src="${model[\'pic\']}">\n' +
+            '                        <p id="picText"></p>\n' +
+            '                    </div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '            <label class="col-sm-1 control-label">背景图：</label>\n' +
+            '            <div id="uploader-demo2" class="col-sm-4">\n' +
+            '                <div class="layui-upload">\n' +
+            '                    <button type="button" class="layui-btn" id="image1">上传图片</button>\n' +
+            '                    <div class="layui-upload-list">\n' +
+            '                        <h1 id="imageTitle1"></h1>\n' +
+            '                        <img class="layui-upload-img" id="imageDemo1"\n' +
+            '                             >\n' +
+            '                        <p id="iamgeText1"></p>\n' +
+            '                    </div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="form-group">\n' +
+            '            <div class="col-sm-8 link-table">\n' +
+            '                <div class="ibox float-e-margins">\n' +
+            '                    <div class="ibox-title">\n' +
+            '                        <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>\n' +
+            '                    </div>\n' +
+            '                    <span id="addLink" class="btn btn-primary"\n' +
+            '                          onclick="addLink(' + len + ')">添加</span>\n' +
+            '                    <div class="ibox-content">\n' +
+            '                        <table class="table">\n' +
+            '                            <thead>\n' +
+            '                            <tr>\n' +
+            '                                <th>社交媒体名称</th>\n' +
+            '                                <th>url链接</th>\n' +
+            '                                <th>排序</th>\n' +
+            '                            </tr>\n' +
+            '                            </thead>\n' +
+            '                            <tbody id="linktable-' + len + '">\n' +
+            '                            </tbody>\n' +
+            '                        </table>\n' +
+            '                    </div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '</div>\n';
+        page.append(html);
     }
 
 

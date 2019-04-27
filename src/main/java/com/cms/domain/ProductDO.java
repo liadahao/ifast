@@ -23,6 +23,10 @@ import java.util.List;
 @SuppressWarnings("serial")
 @TableName("product")
 public class ProductDO implements Serializable {
+
+    public static final int ON_SHELVES = 0;
+    public static final int OFF_SHELVES = 1;
+
     @TableId(type = IdType.AUTO)
     private Integer id;
 

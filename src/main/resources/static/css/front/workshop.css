@@ -1,16 +1,9 @@
-html, body {
-    width: 100%;
-    height: auto;
-}
+
 
 body {
     background: url("/img/02.jpg") no-repeat top left;
-    background-size: cover;
 }
 
-.main {
-    margin-top: 5.5%;
-}
 
 .main-body {
     padding-right: 3.63%;

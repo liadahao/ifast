@@ -1,14 +1,6 @@
 html, body {
     background: url("/img/02.jpg") no-repeat center center;
     font-family: PingFangSC-Light;
-    background-size: cover;
-    height: auto;
-}
-
-.article {
-    margin-top: 106px;
-    height: 100%;
-    display: block;
 }
 
 .main-body {
@@ -212,6 +204,12 @@ html, body {
 .social-icon{
     top: 36%;
     left: 78%;
+    position: absolute;
+}
+
+.box2 .social-icon{
+    top: 32%;
+    left: 74%;
     position: absolute;
 }
 

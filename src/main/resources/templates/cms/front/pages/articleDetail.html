@@ -8,24 +8,21 @@
           content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
-    <meta name="title" th:attr="content=${article['metaTitle']}" />
+    <meta name="title" th:attr="content=${article['metaTitle']}"/>
     <meta name="keywords" th:attr="content=${article.metaKeywords}"/>
-    <meta name="description" th:attr="content=${article.metaDescription}" />
+    <meta name="description" th:attr="content=${article.metaDescription}"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/front/articleDetail.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="article">
+<div th:include="nav :: top-nav"></div>
+<div class="main">
     <div class="am-g">
         <input id="id" type="hidden" th:value="${article.id}">
         <div th:style="'background-image:url(' + @{(${article.thumbnail}=='' ? '' : ${article.thumbnail})} + ')'"
              class="article-haed">
-            <div class="am-topbar">
-                <span><a href="/"><img class="nav-logo" src="/img/logo.png"/></a></span>
-                <span><img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}"></span>
-            </div>
             <div class="head-body">
                 <h1 th:text="${article.title}" class="am-text-center"></h1>
                 <h2 th:text="${article.author +'&nbsp;&nbsp;&nbsp;'+ article.createTime}" class="am-text-center"></h2>

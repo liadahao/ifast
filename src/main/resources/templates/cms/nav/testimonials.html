@@ -2,110 +2,132 @@
 <html>
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
-<link rel="stylesheet" href="https://res.layui.com/layui/dist/css/layui.css?t=1551352891272" media="all">
-<body class="gray-bg">
+<link rel="stylesheet" href="/css/layui.css" media="all">
+<link href="/css/plugins/steps/jquery.steps.css" rel="stylesheet">
 <div class="wrapper wrapper-content ">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>标题块</legend>
-                                </fieldset>
+                        <h3>菜单信息</h3>
+                        <fieldset id="menu-info" class="ibox-content">
+                            <div th:include="allnav :: menu-info"></div>
+                        </fieldset>
+                        <h3>页面信息</h3>
+                        <fieldset id="page-info" class="ibox-content">
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                        <legend>标题块</legend>
+                                    </fieldset>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="layui-card-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题：</label>
+                                        <div class="col-sm-8">
+                                            <input id="title" name="content[title]" class="form-control" type="text"
+                                                   th:value="${nav['content']['title']}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">内容：</label>
+                                        <div class="col-sm-8">
+                                            <textarea id="content" name="content[content]" class="form-control"
+                                                      rows="5" th:text="${nav['content']['content']}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接1：</label>
+                                        <div class="col-sm-8">
+                                            <input id="video1" name="content[video1]" class="form-control" type="text"
+                                                   th:value="${nav['content']['video1']}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接2：</label>
+                                        <div class="col-sm-8">
+                                            <input id="video2" name="content[video2]" class="form-control" type="text"
+                                                   th:value="${nav['content']['video2']}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接3：</label>
+                                        <div class="col-sm-8">
+                                            <input id="video3" name="content[video3]" class="form-control" type="text"
+                                                   th:value="${nav['content']['video3']}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接4：</label>
+                                        <div class="col-sm-8">
+                                            <input id="video4" name="content[video4]" class="form-control" type="text"
+                                                   th:value="${nav['content']['video4']}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">视频链接5：</label>
+                                        <div class="col-sm-8">
+                                            <input id="video5" name="content[video5]" class="form-control" type="text"
+                                                   th:value="${nav['content']['video5']}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
                             </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">标题：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="title" name="title" class="form-control" rows="5"></textarea>
+                            <div id="model-list">
+                                <div th:each="model,modelStat:${nav['content']['model']}"
+                                     th:id="mode+${modelStat.count}" class="layui-card">
+                                    <div class="layui-card-header">
+                                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                            <legend th:text="模块+${modelStat.count}"></legend>
+                                        </fieldset>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">内容：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="content" name="content" class="form-control" rows="5"></textarea>
+                                    <!-- /.box-header -->
+                                    <div class="layui-card-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">人物姓名：</label>
+                                            <div class="col-sm-4">
+                                                <input th:attr="name=content[model][+${modelStat.index}+][name]"
+                                                       class="form-control"
+                                                       type="text" th:value="${model['name']}"/>
+                                            </div>
+                                            <label class="col-sm-1 control-label">人物简介 ：</label>
+                                            <div class="col-sm-4">
+                                        <textarea th:attr="name=content[model][+${modelStat.index}+][description]"
+                                                  class="form-control"
+                                                  rows="3" th:text="${model['description']}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">内容：</label>
+                                            <div class="col-sm-4">
+                                        <textarea th:attr="name=content[model][+${modelStat.index}+][content]"
+                                                  class="form-control"
+                                                  rows="5" th:text="${model['content']}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">任务肖像：</label>
+                                            <div class="col-sm-4">
+                                                <input th:attr="name=content[model][+${modelStat.index}+][pic]"
+                                                       class="form-control"
+                                                       type="hidden" th:value="${model['pic']}"/>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接1：</label>
-                                    <div class="col-sm-8">
-                                        <input id="video1" name="video1" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接2：</label>
-                                    <div class="col-sm-8">
-                                        <input id="video2" name="video2" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接3：</label>
-                                    <div class="col-sm-8">
-                                        <input id="video3" name="video3" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接4：</label>
-                                    <div class="col-sm-8">
-                                        <input id="video4" name="video4" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">视频链接5：</label>
-                                    <div class="col-sm-8">
-                                        <input id="video5" name="video5" class="form-control" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="layui-card">
-                            <div class="layui-card-header">
-                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                                    <legend>模块1</legend>
-                                </fieldset>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="layui-card-body">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">人物姓名：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-1-name" name="model1name" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">人物简介：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-1-description" name="model1description" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">内容：</label>
-                                    <div class="col-sm-8">
-                                        <textarea id="model-1-content" name="model1content" class="form-control"
-                                                  rows="5"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">任务肖像：</label>
-                                    <div class="col-sm-8">
-                                        <input id="model-1-image" name="model1image" class="form-control" type="text">
-                                    </div>
+                                    <!-- /.box-body -->
                                 </div>
                             </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                            <div id="addModel" class="ibox-title" style="height: 20px;cursor: pointer;font-size: 24px">
+                                <i class="fa fa-plus-square-o col-sm-6 control-label" onclick="addModel()">新增模块</i>
                             </div>
-                        </div>
+                        </fieldset>
+                        <h3>SEO信息</h3>
+                        <fieldset id="seo-info" class="ibox-content">
+                            <div th:include="allnav :: seo-info"></div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -113,8 +135,59 @@
     </div>
 </div>
 <div th:include="include::footer"></div>
-<script type="text/javascript" src="/js/appjs/cms/nav/add2.js">
-</script>
+<script src="/js/plugins/staps/jquery.steps.min.js"></script>
+<script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
+<script>
+    function addModel(id) {
+        var page = $('#model-list');
+        var len = page.children().length;
+        if (len >= 6) {
+            alert('模块已到达6个');
+            return;
+        }
+        var html = '<div class="layui-card">' +
+            '<div class="layui-card-header">\n' +
+            '        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">\n' +
+            '            <legend>模块' + (len + 1) + '</legend>\n' +
+            '        </fieldset>\n' +
+            '    </div>\n' +
+            '<div class="layui-card-body">\n' +
+            '    <div class="form-group">\n' +
+            '        <label class="col-sm-1 control-label">人物姓名：</label>\n' +
+            '        <div class="col-sm-4">\n' +
+            '            <input name="content[model][' + len + '][name]"\n' +
+            '                   class="form-control"\n' +
+            '                   type="text" th:value="${model[\'name\']}"/>\n' +
+            '        </div>\n' +
+            '        <label class="col-sm-1 control-label">人物简介 ：</label>\n' +
+            '        <div class="col-sm-4">\n' +
+            '        <textarea name="content[model][' + len + '][description]"\n' +
+            '                  class="form-control"\n' +
+            '                  rows="3" th:text="${model[\'description\']}"></textarea>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <div class="form-group">\n' +
+            '        <label class="col-sm-1 control-label">内容：</label>\n' +
+            '        <div class="col-sm-4">\n' +
+            '        <textarea name="content[model][' + len + '][content]"\n' +
+            '                  class="form-control"\n' +
+            '                  rows="5" th:text="${model[\'content\']}"></textarea>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <div class="form-group">\n' +
+            '        <label class="col-sm-1 control-label">任务肖像：</label>\n' +
+            '        <div class="col-sm-4">\n' +
+            '            <input name="content[model][' + len + '][pic]" class="form-control"\n' +
+            '                   type="hidden" th:value="${model[\'pic\']}"/>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '</div>' +
+            '</div>\n';
+        page.append(html);
+    }
+</script>
 </body>
 </html>

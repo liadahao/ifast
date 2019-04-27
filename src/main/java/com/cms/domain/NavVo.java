@@ -20,6 +20,7 @@ public class NavVo implements Serializable {
      *
      */
     private String name;
+    private String navname;
 
     private Map<String,Object> content;
     /**

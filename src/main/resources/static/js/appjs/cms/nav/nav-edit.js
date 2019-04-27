@@ -46,7 +46,7 @@ form.steps({
         if (isShow) {
             isShowStr = 1;
         } else {
-            isShowStr = 2;
+            isShowStr = 0;
         }
         nav['isshow'] = isShowStr;
         nav['content'] = content;

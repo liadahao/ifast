@@ -1,21 +1,10 @@
-html, body {
-    width: 100%;
-    height: auto;
-}
-
 body {
     background: url("/img/01.jpg") no-repeat top left;
-    background-size: cover;
-}
-
-.main {
-    margin-top: 5.5%;
 }
 
 .main-body {
-    padding-right: 3.63%;
-    padding-left: 3.63%;
-    padding-top: 56px;
+    padding: 3% 3.63%;
+    height: 100%;
 }
 
 .main-body .left-side {
@@ -23,7 +12,7 @@ body {
     background-image: url(/img/0201.png);
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 658px;
+    height: 100%;
 }
 
 .left-side .title {
@@ -75,6 +64,7 @@ body {
 
 .am-collapse p{
     padding-right: 1.09%;
+    padding-left: 3%
 }
 
 .am-panel-hd {

@@ -1,4 +1,4 @@
-var prefix = "/cms/article"
+var prefix = "/cms/gallery"
 $(function () {
     load();
 });
@@ -32,10 +32,9 @@ function load() {
                         //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         pageNumber: params.pageNumber,
                         pageSize: params.pageSize,
-                        id:$('#id-search').val(),
-                        title:$('#title-search').val(),
-                        startTime:$('#starttime').val(),
-                        endTime:$('#endtime').val()
+                        id: $('#id-search').val(),
+                        startTime: $('#starttime').val(),
+                        endTime: $('#endtime').val()
                     };
                 },
                 // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
@@ -57,62 +56,42 @@ function load() {
                     },
                     {
                         field: 'id',
-                        title: '主键ID'
+                        title: '图片Id'
                     },
                     {
-                        field: 'title',
-                        title: '标题'
+                        field: 'description',
+                        title: '图片简介'
                     },
                     {
-                        field: 'author',
-                        title: '作者'
+                        field: 'createtime',
+                        title: '发布时间'
                     },
                     {
-                        field: 'orderNumber',
-                        title: '排序编号'
-                    },
-                    {
-                        field: 'status',
-                        title: '状态',
+                        field: 'isshow',
+                        title: '显示',
                         formatter: function (value, row, index) {
-                            if (row['status'] == 0) {
-                                return '已发布';
+                            if (row.isshow == 1) {
+                                return "显示"
+                            } else {
+                                return "隐藏"
                             }
-                            if (row['status'] == 1) {
-                                return '审核中';
-                            }
-                            if (row['status'] == 2) {
-                                return '未通过审核';
-                            }
-                            if (row['status'] == 3) {
-                                return '已隐藏';
-                            }
-                            return value;
                         }
                     },
                     {
-                        field: 'createUserName',
-                        title: '发布人'
+                        field: 'url',
+                        title: '图片',
+                        width: '50px',
+                        formatter: function (value, row, index) {
+                            return '<img src="' + row.url + '" style="width: 100px;height: 100px">'
+                        }
                     },
                     {
-                        field: 'goodCount',
-                        title: '优秀反馈数量'
+                        field: 'linkTo',
+                        title: '外部链接',
                     },
                     {
-                        field: 'keepTryingCount',
-                        title: '继续努力反馈数量'
-                    },
-                    {
-                        field: 'viewCount',
-                        title: '浏览数量'
-                    },
-                    {
-                        field: 'createTime',
-                        title: '创建日期'
-                    },
-                    {
-                        field: 'modifyTime',
-                        title: '最后更新日期'
+                        field: 'weight',
+                        title: '权重'
                     },
                     {
                         title: '操作',
@@ -125,30 +104,92 @@ function load() {
                             var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
                                 + row.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
-                            var f = '<a class="btn btn-success btn-sm" href="#" title="预览"  mce_href="#" onclick="preview(\''
-                                + row.id
-                                + '\')"><i class="fa fa-link"></i></a> ';
+                            var f;
+                            if (row.isshow == 1) {
+                                f = '<a class="btn btn-success btn-sm" href="#" title="隐藏"  mce_href="#" onclick="hide(\''
+                                    + row.id
+                                    + '\')"><i class="fa fa-key"></i></a> ';
+                            } else {
+                                f = '<a class="btn btn-success btn-sm" href="#" title="显示"  mce_href="#" onclick="show(\''
+                                    + row.id
+                                    + '\')"><i class="fa fa-key"></i></a> ';
+                            }
                             return e + f + d;
                         }
                     }]
             });
 }
 
-
 function reLoad() {
     $('#exampleTable').bootstrapTable('refresh');
 }
 
 function add() {
-    window.location.href = prefix + '/add'
+    layer.open({
+        type: 2,
+        title: '增加',
+        maxmin: true,
+        shadeClose: false, // 点击遮罩关闭层
+        area: ['800px', '520px'],
+        content: prefix + '/add' // iframe的url
+    });
 }
 
 function edit(id) {
-    window.location.href = prefix + '/edit?id=' + id // iframe的url
+    layer.open({
+        type: 2,
+        title: '编辑',
+        maxmin: true,
+        shadeClose: false, // 点击遮罩关闭层
+        area: ['800px', '520px'],
+        content: prefix + '/edit/' + id // iframe的url
+    });
 }
 
-function preview(id) {
-    window.open("/article/" + id, "_blank");
+function show(id) {
+    layer.confirm('确定要显示选中的记录？', {
+        btn: ['确定', '取消']
+    }, function () {
+        $.ajax({
+            url: prefix + '/update',
+            type: "post",
+            data: {
+                'id': id,
+                'isshow': 1
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    layer.msg(r.msg);
+                    reLoad();
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    })
+}
+
+function hide(id) {
+    layer.confirm('确定要隐藏选中的记录？', {
+        btn: ['确定', '取消']
+    }, function () {
+        $.ajax({
+            url: prefix + '/update',
+            type: "post",
+            data: {
+                'id': id,
+                'isshow': 0
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    layer.msg(r.msg);
+                    reLoad();
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    })
 }
 
 function remove(id) {

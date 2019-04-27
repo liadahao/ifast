@@ -13,14 +13,7 @@
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
     <style>
         html, body {
-            background: url("/img/02.jpg") no-repeat fixed center center;
-            background-size: cover;
-        }
-
-        .main {
-            margin-top: 106px;
-            height: 100%;
-            display: block;
+            background: url("/img/about-background.jpg") no-repeat fixed center center;
         }
 
         .main-body{
@@ -33,10 +26,10 @@
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="main">
-    <div class="am-g">
-        <div class="am-u-sm-2">
-            <div class="left-nav">
+<div class="main am-vertical-align">
+    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
+        <div class="am-u-sm-2 am-vertical-align">
+            <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/testimonials">
                         <img src="/img/up.png"/>
@@ -137,8 +130,8 @@
                 </ul>
             </div>
         </div>
-        <div class="am-u-sm-2">
-            <div class="right-nav">
+        <div class="am-u-sm-2 am-vertical-align">
+            <div class="right-nav am-vertical-align-middle">
                 <a href="/page/techtour" class="circular"></a>
                 <a href="/page/workshop" class="circular"></a>
                 <a href="/page/service" class="circular"></a>

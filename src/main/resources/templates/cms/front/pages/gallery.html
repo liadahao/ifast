@@ -13,16 +13,8 @@
     <link th:href="@{/css/flexslider.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
     <style>
-        html, body {
+        body {
             background: url("/img/05.jpg") no-repeat center center;
-            background-size: cover;
-            height: auto;
-        }
-
-        .main {
-            margin-top: 106px;
-            height: 100%;
-            display: block;
         }
 
         .main-body {
@@ -42,6 +34,7 @@
         .flexslider {
             border: 0;
             background: transparent;
+            margin-top: 7%;
         }
 
         #slider img {
@@ -64,10 +57,10 @@
             width: 695px;
             padding-left: 70px;
             padding-top: 70px;
-            font-size:14px;
-            font-family:PingFangSC-Light;
-            font-weight:300;
-            color:rgba(255,255,255,1);
+            font-size: 14px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
             background-image: url("/img/0601ornament.png");
             background-repeat: no-repeat;
             background-position: left center;
@@ -78,11 +71,10 @@
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-
-<div class="main">
-    <div class="am-g">
-        <div class="am-u-sm-2">
-            <div class="left-nav">
+<div class="main am-vertical-align">
+    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
+        <div class="am-u-sm-2 am-vertical-align">
+            <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/article">
                         <img src="/img/up.png"/>
@@ -98,111 +90,112 @@
             </div>
         </div>
         <div class="main-body am-u-sm-8">
-            <section class="slider">
-                <div id="slider" class="flexslider">
-                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                        <ul class="slides"
-                            style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                                <p class="gallery-title">GALLERY</p>
-                                <p class="gallery-content">So many of us are demotivated to achieve anything. Such people are not enthusiastic
-                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
-                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;"
-                                class="flex-active-slide">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                                <p class="gallery-title">GALLERY</p>
-                                <p class="gallery-content">So many of us are demotivated to achieve anything. Such people are not enthusiastic
-                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
-                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                                <p class="gallery-title">GALLERY</p>
-                                <p class="gallery-content">So many of us are demotivated to achieve anything. Such people are not enthusiastic
-                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
-                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                            </li>
-                            <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                            </li>
-                        </ul>
-                    </div>
+            <div id="slider" class="flexslider">
+                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                    <ul class="slides"
+                        style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                            <p class="gallery-title">GALLERY</p>
+                            <p class="gallery-content">So many of us are demotivated to achieve anything. Such
+                                people are not enthusiastic
+                                about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;"
+                            class="flex-active-slide">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                            <p class="gallery-title">GALLERY</p>
+                            <p class="gallery-content">So many of us are demotivated to achieve anything. Such
+                                people are not enthusiastic
+                                about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                            <p class="gallery-title">GALLERY</p>
+                            <p class="gallery-content">So many of us are demotivated to achieve anything. Such
+                                people are not enthusiastic
+                                about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                        </li>
+                        <li style="width: 1395px; margin-right: 0px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                        </li>
+                    </ul>
                 </div>
-                <div id="carousel" class="flexslider">
-                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                        <ul class="slides"
-                            style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;"
-                                class="flex-active-slide">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
-                            </li>
-                            <li style="width: 140px; margin-right: 5px; float: left; display: block;">
-                                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
-                            </li>
-                        </ul>
-                    </div>
+            </div>
+            <div id="carousel" class="flexslider">
+                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                    <ul class="slides"
+                        style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;"
+                            class="flex-active-slide">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" draggable="false">
+                        </li>
+                        <li style="width: 140px; margin-right: 5px; float: left; display: block;">
+                            <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" draggable="false">
+                        </li>
+                    </ul>
                 </div>
-            </section>
+            </div>
         </div>
-        <div class="am-u-sm-2">
-            <div class="right-nav">
+        <div class="am-u-sm-2 am-vertical-align">
+            <div class="right-nav am-vertical-align-middle">
                 <a href="/page/techtour" class="circular"></a>
                 <a href="/page/workshop" class="circular"></a>
                 <a href="/page/service" class="circular"></a>

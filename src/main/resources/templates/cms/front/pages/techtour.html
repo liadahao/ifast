@@ -15,10 +15,10 @@
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="main">
-    <div class="am-g">
-        <div class="am-u-sm-2">
-            <div class="left-nav">
+<div class="main am-vertical-align">
+    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
+        <div class="am-u-sm-2 am-vertical-align">
+            <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/index">
                         <img src="/img/up.png"/>
@@ -141,8 +141,10 @@
                         <div class="am-panel-bd">
                             <div class="am-g">
                                 <ul class="am-avg-sm-4 am-thumbnails">
-                                    <li th:each="menu : ${data['content']['model4content']}">
-                                        <img class="footer-icon" th:src="${menu}" src="/img/air.png">
+                                    <li th:each="social : ${data['content']['social']}">
+                                        <a th:if="${social.isShow eq 'on'}" th:href="${social.url}" target="_blank">
+                                            <img class="footer-icon" th:src="${social.logo}"
+                                                 src="/img/air.png"></a>
                                     </li>
                                 </ul>
                             </div>
@@ -151,8 +153,8 @@
                 </div>
             </div>
         </div>
-        <div class="am-u-sm-2">
-            <div class="right-nav">
+        <div class="am-u-sm-2 am-vertical-align" style="height: 100%">
+            <div class="right-nav am-vertical-align-middle">
                 <a class="select-circular"></a>
                 <a href="/page/workshop" class="circular"></a>
                 <a href="/page/service" class="circular"></a>

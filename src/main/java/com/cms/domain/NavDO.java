@@ -30,6 +30,9 @@ public class NavDO implements Serializable {
      */
     private String name;
 
+    private String navname;
+
+
     private String content;
     /**
      *
