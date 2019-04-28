@@ -40,11 +40,11 @@ body {
 }
 
 .box:first-child {
-    margin-right: 2.14%;
+    margin-right: 40px;
 }
 
 .box:last-child {
-    margin-left: 2.14%;
+    margin-left: 40px;
 }
 
 .box {
@@ -75,6 +75,7 @@ body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
+    line-height: 1.6;
 }
 
 .box-conetnt {
@@ -85,5 +86,5 @@ body {
     margin-top: 20px;
     width:310px;
     height:241px;
-    line-height: 1.6;
+    line-height: 1.5;
 }

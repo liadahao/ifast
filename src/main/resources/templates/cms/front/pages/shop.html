@@ -11,25 +11,19 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/front/shop.css}" rel="stylesheet" type="text/css"/>
     <style>
         html, body {
             background: url("/img/about-background.jpg") no-repeat fixed left top;
-            line-height: 1.6;
         }
-
-        .main-body{
-            padding-left: 5.65%;
-            padding-right: 5.65%;
-        }
-
 
     </style>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="main am-vertical-align">
-    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
-        <div class="am-u-sm-2 am-vertical-align">
+<div class="main">
+    <div class="am-g" style="height:768px">
+        <div class="am-u-sm-2 am-vertical-align" style="width: 50px">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/testimonials">
@@ -46,82 +40,88 @@
             </div>
         </div>
         <div class="main-body am-u-sm-8">
-            <div class="am-u-sm-7">
-                <h1 class="product-title">
-                    Daniel Wellington Women's 0511DWDaniel Wellington Women's 0511DW
-                </h1>
-                <div class="tag-list">
-                </div>
-                <p class="product-description">
-                    Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                    organically
-                    tanned leather strap.Our interpretation of 1950’s simplicity. Expressed completely in black with a
-                    black
-                    Swedish organically tanned leather strap.
-                </p>
-                <div class="price-line">
-                    <div class="price am-u-sm-3">
-                        $250
+            <div class="product am-u-sm-12">
+                <div class="product-text">
+                    <h1 class="product-title">
+                        Daniel Wellington Women's 0511DW Daniel Wellington Women's 0511DW
+                    </h1>
+                    <div class="tag-list">
                     </div>
-                    <button class="am-btn am-btn-warning am-btn-xl" href="#">
-                        <i class="am-icon-shopping-cart"></i>
-                        Add To Bag
-                    </button>
+                    <p class="product-description">
+                        Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
+                        organically
+                        tanned leather strap.Our interpretation of 1950’s simplicity. Expressed completely in black with
+                        a
+                        black
+                        Swedish organically tanned leather strap.
+                    </p>
+                    <div class="price-line">
+                        <div class="price am-u-sm-3">
+                            $250
+                        </div>
+                        <button class="am-btn am-btn-warning am-btn-xl" href="#">
+                            <i class="am-icon-shopping-cart"></i>
+                            Add To Bag
+                        </button>
+                    </div>
+                    <div class="product-detail">
+                        <ul>
+                            <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black
+                                Swedish
+                                organically tanned leather strap.
+                            </li>
+                            <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black
+                                Swedish
+                                organically tanned leather strap.
+                            </li>
+                            <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black
+                                Swedish
+                                organically tanned leather strap.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="product-detail">
-                    <ul>
-                        <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                            organically tanned leather strap.
-                        </li>
-                        <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                            organically tanned leather strap.
-                        </li>
-                        <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                            organically tanned leather strap.
-                        </li>
-                    </ul>
-                </div>
+                <img src="/img/a40455dd300d63eab0f12f6e3b501ece.jpeg" class="am-u-sm-5 product-image"/>
             </div>
-            <img src="/img/a40455dd300d63eab0f12f6e3b501ece.jpeg" class="am-u-sm-5 product-image"/>
-            <div class="product-like am-u-sm-12">
-                <div class="am-u-sm-2">
+            <div class="product-like-list am-u-sm-12">
+                <div class="product-like-text">
                     <h3>Products</h3>
                     <h1>You May Like</h1>
                     <div class="controller">
-                        <img class="am-u-sm-4" src="/img/0901L_pre.png"/>
-                        <img class="am-u-sm-4" src="/img/0901R_pre.png"/>
+                        <img src="/img/0901L_pre.png"/>
+                        <img src="/img/0901R_pre.png"/>
                     </div>
                 </div>
-                <ul class="am-u-sm-10 am-avg-sm-2 am-avg-md-3 am-avg-lg-5 am-thumbnails">
-                    <li>
+                <ul class="am-u-sm-10 am-avg-sm-5" style="width: 920px;float: right">
+                    <li class="product-like">
                         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
                         <div class="product-info">
                             <p class="am-text-center">Leather BagLeather Bag</p>
                             <p class="am-text-center">289 USD</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="product-like">
                         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
                         <div class="product-info">
                             <p class="am-text-center">Leather BagLeather Bag</p>
                             <p class="am-text-center">289 USD</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="product-like">
                         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
                         <div class="product-info">
                             <p class="am-text-center">Leather BagLeather Bag</p>
                             <p class="am-text-center">289 USD</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="product-like">
                         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
                         <div class="product-info">
                             <p class="am-text-center">Leather BagLeather Bag</p>
                             <p class="am-text-center">289 USD</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="product-like">
                         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
                         <div class="product-info">
                             <p class="am-text-center">Leather BagLeather Bag</p>

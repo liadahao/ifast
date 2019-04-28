@@ -115,7 +115,7 @@ footer {
 
 .main-body {
     width: 1240px;
-    height:768px;
+    height: 768px;
     display: block;
     position: absolute;
     top: 50%;
@@ -268,36 +268,77 @@ footer {
     height: 480px;
 }
 
-.product-like {
+.product-like-list {
     margin-top: 25px;
 }
 
-.product-like h3 {
-    font-size: 18px;
-    font-family: PingFangSC-Light;
-    font-weight: 300;
-    color: rgba(156, 155, 155, 1);
+.product-like-text{
+    width: 168px;
+    float: left;
 }
 
-.product-like h1 {
-    font-size: 24px;
-    font-family: PingFangSC-Light;
-    font-weight: 300;
-    color: rgba(156, 155, 155, 1);
+.product-like-text h3{
+    width:72px;
+    height:15px;
+    font-size:18px;
+    font-family:PingFangSC-Light;
+    font-weight:300;
+    color:rgba(156,155,155,1);
 }
 
-.product-like .controller {
-    margin-top: 81px;
+.product-like-text h1{
+    width:150px;
+    height:24px;
+    font-size:24px;
+    font-family:PingFangSC-Light;
+    font-weight:300;
+    color:rgba(156,155,155,1);
 }
 
-.product-like .controller img {
-    height: 38px;
+.product-like-list > .am-avg-sm-5 > .product-like {
+    width: 176px;
+    height: 236px;
+    margin-right: 10px;
+}
+
+.product-like-list > .am-avg-sm-5 > .product-like:last-child {
+    margin-right: 0;
 }
 
 .product-like img {
     max-width: 100%;
     height: 176px;
 }
+
+.product-like-list h3 {
+    margin-top: 21px;
+    font-size: 18px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(156, 155, 155, 1);
+}
+
+.product-like-list h1 {
+    font-size: 24px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(156, 155, 155, 1);
+    margin-top: 30px;
+}
+
+.product-like-list .controller {
+    margin-top: 81px;
+}
+
+.product-like-list .controller img {
+    width: 70px;
+    height: 38px;
+}
+
+.product-like-list .controller img:last-child {
+    float: right;
+}
+
 
 .product-info {
     background: linear-gradient(0deg, rgba(73, 18, 139, 0.35), rgba(0, 253, 255, 0.35));
