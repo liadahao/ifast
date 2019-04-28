@@ -16,9 +16,14 @@
             background: url("/img/03.jpg") no-repeat left top;
         }
 
-        .main-body{
-            padding-left: 5.65%;
-            padding-right: 5.65%;
+        .left-nav .top {
+            margin-top: 156px;
+        }
+
+        .main-body {
+            width: 770px;
+            height: 768px;
+            background: rgba(13, 1, 24, 1);
         }
 
         .contact-content {
@@ -26,26 +31,32 @@
             padding-left: 71px;
             padding-right: 71px;
             background: rgba(13, 1, 24, 1);
+            height: 100%;
         }
 
         .contact-title1 {
+            width: 230px;
             height: 24px;
             font-size: 30px;
             font-family: PingFangSC-Light;
             font-weight: 300;
             color: rgba(0, 253, 255, 1);
+            border-bottom: 4px solid rgba(255, 138, 0, 1);
         }
 
         .contact-title2 {
+            width: 420px;
             height: 24px;
             font-size: 30px;
             font-family: PingFangSC-Light;
             font-weight: 300;
             color: rgba(0, 253, 255, 1);
+            margin-top: 44px;
+            border-bottom: 4px solid rgba(255, 138, 0, 1);
         }
 
         .contact-content form {
-            margin-top: 60px;
+            margin-top: 66px;
             font-size: 18px;
             font-family: PingFangSC-Ultralight;
             font-weight: 200;
@@ -54,11 +65,17 @@
 
         .contact-content form input {
             width: 100%;
+            height: 61px;
             background-color: transparent;
             border-top: 0;
             border-left: 0;
             border-right: 0;
             border-bottom-color: #00FDFF;
+            border-width: 1px;
+            font-size: 18px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 1);
         }
 
         .contact-content form input:focus {
@@ -69,19 +86,35 @@
 
         .contact-content form button {
             margin-top: 34px;
+            width: 140px;
             height: 44px;
             background: rgba(0, 253, 255, 1);
             float: right;
+            font-size: 18px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(73, 18, 139, 1);
         }
+
+        .email-label {
+            width: 35px;
+            height: 12px;
+            font-size: 14px;
+            font-family: PingFangSC-Light;
+            font-weight: 300;
+            color: rgba(156, 155, 155, 1);
+            margin: 0;
+        }
+
 
     </style>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="main am-vertical-align">
-    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
-        <div class="am-u-sm-3 am-vertical-align">
-            <div class="left-nav am-vertical-align-middle">
+<div class="main">
+    <div class="am-g" style="height:768px">
+        <div class="am-u-sm-3">
+            <div class="left-nav">
                 <div class="top">
                     <a href="/page/about">
                         <img src="/img/up.png"/>
@@ -97,7 +130,7 @@
                 <form action="/cms/contact/save" method="post">
                     <fieldset>
                         <div class="am-form-group">
-                            <label for="doc-vld-name-2">Email：</label>
+                            <label for="doc-vld-name-2" class="email-label">Email：</label>
                             <input type="email" name="email" id="doc-vld-name-2" placeholder="" required/>
                         </div>
 
@@ -115,7 +148,7 @@
                             <label for="doc-vld-age-2">Company（备选）：</label>
                             <input type="text" name="company" class="" id="doc-vld-age-2" placeholder=""/>
                         </div>
-                        <button class="am-btn am-btn-secondary" type="submit">Submit</button>
+                        <button class="am-btn" type="submit">Submit<img src="/img/1101go.png" style="margin-left: 17px"/></button>
                     </fieldset>
                 </form>
             </div>

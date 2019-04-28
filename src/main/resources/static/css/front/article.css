@@ -1,12 +1,22 @@
 html, body {
-    background: url("/img/02.jpg") no-repeat center center;
+    background: url("/img/02.jpg") no-repeat;
     font-family: PingFangSC-Light;
+    background-size: cover;
+    height: auto;
+}
+
+.article {
+    margin-top: 156px;
+    position: relative;
 }
 
 .main-body {
+    width: 1240px;
+    display: block;
     padding-left: 5.65%;
     padding-right: 5.65%;
     line-height: 1.6;
+    height: auto;
 }
 
 .first-floor {
@@ -103,9 +113,9 @@ html, body {
     background: transparent;
 }
 
-.box3 .overlay{
+.box3 .overlay {
     position: absolute;
-    background:rgba(0,0,0,1);
+    background: rgba(0, 0, 0, 1);
     opacity: 0.7;
 }
 
@@ -115,7 +125,7 @@ html, body {
     cursor: pointer;
 }
 
-.box2 .background{
+.box2 .background {
     width: 100%;
     height: 38%;
     cursor: pointer;
@@ -131,7 +141,7 @@ html, body {
     color: rgba(59, 59, 59, 1);
 }
 
-.box2 .text{
+.box2 .text {
     height: 62%;
 }
 
@@ -150,7 +160,7 @@ html, body {
     font-weight: bold;
     color: rgba(19, 19, 19, 1);
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
 }
 
 .box3 .box-title {
@@ -164,7 +174,7 @@ html, body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
 }
 
 .tag-list {
@@ -206,33 +216,33 @@ html, body {
     font-weight: 300;
 }
 
-.social-icon{
+.social-icon {
     top: 36%;
     left: 78%;
     position: absolute;
 }
 
-.box2 .social-icon{
+.box2 .social-icon {
     top: 32%;
     left: 74%;
     position: absolute;
 }
 
-.box3 .social-icon{
+.box3 .social-icon {
     top: 1%;
     left: 75%;
     position: absolute;
 }
 
-.load-more{
+.load-more {
     padding-top: 12px;
-    height:50px;
-    border:1px solid rgba(0,253,255,1);
+    height: 50px;
+    border: 1px solid rgba(0, 253, 255, 1);
     background: transparent;
-    font-size:18px;
-    font-family:PingFangSC-Light;
-    font-weight:300;
-    color:rgba(0,253,255,1);
+    font-size: 18px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(0, 253, 255, 1);
     text-align: center;
     cursor: pointer;
 }

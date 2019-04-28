@@ -28,6 +28,8 @@ html, body {
     margin-bottom: 0;
     border-bottom-width: 0;
     background: rgba(0, 0, 0, 0);
+    top: 0;
+    left: 0;
 }
 
 .am-offcanvas-bar {
@@ -105,13 +107,20 @@ footer {
 }
 
 .main {
-    display: block;
     margin: 0 auto;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .main-body {
-    height: 100%;
+    width: 1240px;
+    height:768px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .flex-prev {
@@ -302,10 +311,6 @@ footer {
 @media screen and (max-width: 1440px) {
     .am-u-sm-2 {
         width: 8.333%;
-    }
-
-    .am-u-sm-8 {
-        width: 83.33%;
     }
 
     .main-body .article-info .custom-icon {

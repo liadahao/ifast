@@ -15,9 +15,9 @@
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="main am-vertical-align">
-    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
-        <div class="am-u-sm-2 am-vertical-align">
+<div class="main">
+    <div class="am-g" style="height:768px">
+        <div class="am-u-sm-2 am-vertical-align" style="width: 50px">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/techtour">
@@ -42,7 +42,7 @@
             <div th:text="${data['content']['content']}" class="content">
             </div>
             <div class="video-content am-u-sm-12">
-                <div class="am-u-sm-12" style="height: 100%;width: 43%">
+                <div class="am-u-sm-12" style="height: 100%;width: 492px">
                     <ul class="am-avg-sm-3" id="thumbnail-list">
                         <li th:attr="data-thumb=${data['content']['video1']}">
                             <img class="video-thumbnail" th:src="${data['content']['video1']}">
@@ -54,9 +54,9 @@
                             <img class="video-thumbnail" th:src="${data['content']['video3']}">
                         </li>
                     </ul>
-                    <img id="carousel-img" class="video-thumbnail" src=""/>
+                    <img id="carousel-img" src=""/>
                 </div>
-                <div class="right-side am-u-sm-12" style="height: 100%;width: 57%">
+                <div class="right-side am-u-sm-12" style="height: 100%;width: 526px">
                     <div id="right-side-content-list" class="am-u-sm-12">
                         <div class="am-u-sm-12" style="height: 100%" th:each="model,modelStat : ${data['content']['model']}"
                              th:if="${model.title ne ''}">
@@ -126,6 +126,9 @@
                 .attr("src", "/img/0301locaL.png")
                 .attr("class", "locat-img-l");
         }
+    });
+    $(".video-thumbnail").click(function () {
+        $("#carousel-img").attr('src', $(this).attr('src'));
     });
     $("#right-side-prev").click(function () {
         $('#right-side-content-list').children().each(function (index) {

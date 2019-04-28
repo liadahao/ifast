@@ -1,13 +1,11 @@
-<div th:fragment=top-nav>
-    <header class="am-topbar">
-        <a href="/" th:if="${index!=null&&index['indexLogo']!=null}">
-            <img class="nav-logo" th:src="${index['indexLogo']}"/>
-        </a>
-        <a th:if="${index==null||index['indexLogo']==null}" href="/">
-            <img class="nav-logo" src="/img/logo.png"/></a>
-        <img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}">
-    </header>
-</div>
+<header class="am-topbar" th:fragment=top-nav>
+    <a href="/" th:if="${index!=null&&index['indexLogo']!=null}">
+        <img class="nav-logo" th:src="${index['indexLogo']}"/>
+    </a>
+    <a th:if="${index==null||index['indexLogo']==null}" href="/">
+        <img class="nav-logo" src="/img/logo.png"/></a>
+    <img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}">
+</header>
 
 <div th:fragment=nav-side>
     <div id="doc-oc-demo3" class="am-offcanvas">

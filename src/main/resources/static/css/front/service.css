@@ -2,13 +2,15 @@ body {
     background: url("/img/04.jpg") no-repeat top left;
 }
 
-.main-body{
+.main-body {
     padding-right: 3.63%;
     padding-left: 3.63%;
 }
 
 .title-content {
     height: 148px;
+    margin-top: -24px;
+    margin-bottom: 0;
     padding-left: 70px;
     padding-top: 3%;
     font-size: 70px;
@@ -18,11 +20,12 @@ body {
     background-image: url("/img/0401ornament.png");
     background-repeat: no-repeat;
     background-position: left center;
-    margin: 0;
 }
 
 .content {
-    margin-left: 11.27%;
+    width: 976px;
+    margin-left: 124px;
+    height: 100px;
     font-size: 16px;
     font-family: PingFangSC-Regular;
     font-weight: 400;
@@ -46,9 +49,11 @@ body {
 
 .box {
     padding-left: 15px;
-    width: 31%;
+    padding-right: 15px;
+    width: 340px;
     float: left;
     background-size: cover;
+    min-height: 570px;
 }
 
 .box1 {
@@ -64,8 +69,8 @@ body {
 }
 
 .box-title {
-    height: 15.97%;
-    margin-top: 44.03%;
+    height: 80px;
+    margin-top: 209px;
     font-size: 30px;
     font-family: PingFangSC-Light;
     font-weight: 300;
@@ -77,4 +82,8 @@ body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
+    margin-top: 20px;
+    width:310px;
+    height:241px;
+    line-height: 1.6;
 }

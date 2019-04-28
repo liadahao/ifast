@@ -14,9 +14,9 @@
     <link th:href="@{/css/front/article.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div th:include="nav :: top-nav"></div>
-<div class="main am-vertical-align">
-    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
+<div th:replace="nav :: top-nav"></div>
+<div class="article">
+    <div class="am-g">
         <div class="am-u-sm-2 am-vertical-align">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="main-body am-u-sm-8">
+        <div class="article-body am-u-sm-8">
             <div class="first-floor am-u-sm-12">
                 <div class="title">Article</div>
                 <div class="content">
