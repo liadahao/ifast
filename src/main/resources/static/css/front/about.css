@@ -1,0 +1,200 @@
+html, body {
+    background: url("/img/about-background.jpg") no-repeat fixed center center;
+}
+
+.main-body {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.am-tabs-bd .am-tab-panel {
+    padding: 0;
+}
+
+.am-nav-tabs > li.am-active > a {
+    border: 0;
+    font-size: 56px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(0, 253, 255, 1);
+    background: transparent;
+}
+
+.am-nav-tabs > li.am-active > a, .am-nav-tabs > li.am-active > a:focus, .am-nav-tabs > li.am-active > a:hover {
+    border: 0;
+    font-size: 56px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(0, 253, 255, 1);
+    background: transparent;
+}
+
+.am-nav-tabs > li > a {
+    font-size: 56px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(61, 34, 60, 1);
+    line-height: 0.75;
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+
+.am-tabs-bd {
+    border: 0
+}
+
+.am-nav-tabs {
+    margin-top: 39px;
+    border: 0;
+}
+
+.am-tab-panel > p:first-child {
+    margin-top: 50px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+}
+
+.about-who .left-side {
+    margin-top: 33px;
+    width: 460px;
+    float: left;
+}
+
+.people-name {
+    margin-top: 49px;
+    font-size: 36px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 192, 0, 1);
+}
+
+.people-description {
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(156, 155, 155, 1);
+}
+
+.people-content {
+    margin-top: 30px;
+    font-size: 16px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+    line-height: 1.6;
+    padding-right: 5px;
+}
+
+#carousel {
+    margin-top: 20px;
+}
+
+#carousel ul {
+    padding-left: 0;
+}
+
+#carousel img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#carousel li {
+    margin-right: 24px;
+    float: left;
+    display: block;
+}
+
+.right-side {
+    margin-top: 33px;
+    width: 640px;
+    height: 580px;
+    float: right;
+}
+
+.right-side img {
+    width: 100%;
+    height: 100%;
+}
+
+.about-what h1 {
+    font-size: 26px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+}
+
+.box-line {
+    margin-top: 40px;
+    height: 264px;
+    position: relative;
+}
+
+.box:last-child {
+    margin-left: 2%;
+}
+
+.box {
+    width: 530px;
+    height: 264px;
+    float: left;
+    position: relative;
+}
+
+.box-title {
+    height: 70px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.box-title img {
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+
+.box-title-content {
+    width: 420px;
+    height: 20px;
+    font-size: 26px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+    margin-left: 23px;
+}
+
+.am-tabs-nav li:first-child {
+    margin-right: 168px;
+}
+
+.am-nav > li > a {
+    padding: 0;
+}
+
+.am-tabs {
+    height: 100%;
+}
+
+.am-active .tab-bg {
+    width: 200px;
+    height: 30px;
+    background: rgba(73, 18, 139, 1);
+    opacity: 0.89;
+    margin-left: 26px;
+    z-index: -999;
+    margin-top: -19px;
+}
+
+.box .content{
+    width:513px;
+    height:161px;
+    font-size:14px;
+    font-family:PingFangSC-Light;
+    font-weight:300;
+    color:rgba(255,255,255,1);
+    line-height: 1.6;
+}

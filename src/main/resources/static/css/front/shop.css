@@ -51,6 +51,8 @@
     height: 76px;
     margin-top: 20px;
     margin-bottom: 20px;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 
 .price {
@@ -64,7 +66,7 @@
     line-height: 1;
 }
 
-button {
+.am-btn {
     width: 170px;
     height: 42px;
     background: rgba(251, 100, 0, 1);

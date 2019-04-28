@@ -272,27 +272,27 @@ footer {
     margin-top: 25px;
 }
 
-.product-like-text{
+.product-like-text {
     width: 168px;
     float: left;
 }
 
-.product-like-text h3{
-    width:72px;
-    height:15px;
-    font-size:18px;
-    font-family:PingFangSC-Light;
-    font-weight:300;
-    color:rgba(156,155,155,1);
+.product-like-text h3 {
+    width: 72px;
+    height: 15px;
+    font-size: 18px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(156, 155, 155, 1);
 }
 
-.product-like-text h1{
-    width:150px;
-    height:24px;
-    font-size:24px;
-    font-family:PingFangSC-Light;
-    font-weight:300;
-    color:rgba(156,155,155,1);
+.product-like-text h1 {
+    width: 150px;
+    height: 24px;
+    font-size: 24px;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(156, 155, 155, 1);
 }
 
 .product-like-list > .am-avg-sm-5 > .product-like {
@@ -341,12 +341,25 @@ footer {
 
 
 .product-info {
-    background: linear-gradient(0deg, rgba(73, 18, 139, 0.35), rgba(0, 253, 255, 0.35));
+    line-height: 1;
+    width: 176px;
+    height: 60px;
+    padding-top: 10px;
+    background: url("/img/product_like.png");
+    background-size: cover;
     border-radius: 0 0 2px 2px;
     font-size: 14px;
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
+}
+
+.product-info p{
+    margin: 0;
+}
+
+.product-info p:last-child{
+    margin-top: 12px;
 }
 
 @media screen and (max-width: 1440px) {

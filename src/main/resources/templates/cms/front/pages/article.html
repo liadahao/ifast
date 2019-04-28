@@ -15,9 +15,9 @@
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="article">
+<div class="main">
     <div class="am-g">
-        <div class="am-u-sm-2 am-vertical-align">
+        <div class="am-u-sm-2 am-vertical-align" style="height:768px">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/service">
@@ -54,7 +54,7 @@
                 <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
             </div>
         </div>
-        <div class="am-u-sm-2 am-vertical-align">
+        <div class="am-u-sm-2 am-vertical-align" style="height:768px">
             <div class="right-nav am-vertical-align-middle">
                 <a href="/page/techtour" class="circular"></a>
                 <a href="/page/workshop" class="circular"></a>
@@ -70,8 +70,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>

@@ -11,169 +11,13 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
-
-    <style>
-
-        html, body {
-            background: url("/img/about-background.jpg") no-repeat fixed center center;
-        }
-
-        .main-body{
-            padding-left: 5.65%;
-            padding-right: 5.65%;
-            line-height: 1.6;
-        }
-
-        .am-nav-tabs > li.am-active > a {
-            border: 0;
-            font-size: 56px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(0, 253, 255, 1);
-            background: transparent;
-        }
-
-        .am-nav-tabs > li.am-active > a, .am-nav-tabs > li.am-active > a:focus, .am-nav-tabs > li.am-active > a:hover {
-            border: 0;
-            font-size: 56px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(0, 253, 255, 1);
-            background: transparent;
-        }
-
-        .am-nav-tabs > li > a {
-            font-size: 56px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(61, 34, 60, 1);
-            margin-right: 5px;
-            line-height: 1.6;
-            border: 1px solid transparent;
-            border-radius: 0;
-        }
-
-        .am-tabs-bd {
-            border: 0
-        }
-
-        .am-nav-tabs {
-            border: 0;
-        }
-
-        .about-who p {
-            font-size: 16px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 1);
-        }
-
-        .about-who .left-side {
-            margin-top: 33px;
-            width: 41.82%;
-            float: left;
-        }
-
-        .about-who .left-side h1 {
-            margin-top: 1em;
-            font-size: 36px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 192, 0, 1);
-        }
-
-        .about-who .left-side h2 {
-            margin-top: 1em;
-            font-size: 20px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(156, 155, 155, 1);
-        }
-
-        .about-who .left-side p {
-            font-size: 16px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 1);
-        }
-
-        #carousel {
-            margin-top: 20px;
-        }
-
-        #carousel ul {
-            padding-left: 0;
-        }
-
-        #carousel img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-        }
-
-        #carousel li {
-            margin-right: 24px;
-            float: left;
-            display: block;
-        }
-
-        .right-side {
-            margin-top: 33px;
-            width: 58%;
-            float: right;
-        }
-
-        .right-side img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .about-what p {
-            font-size: 16px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 1);
-        }
-
-        .about-what h1 {
-            font-size: 26px;
-            font-family: PingFangSC-Light;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 1);
-        }
-
-        .box:last-child {
-            margin-left: 2%;
-        }
-
-        .box {
-            width: 48.18%;
-            float: left;
-        }
-
-        .box-title {
-            margin-bottom: 30px;
-        }
-
-        .am-tabs-nav li:first-child{
-            margin-right: 168px;
-        }
-
-        .am-nav>li>a{
-            padding: 0;
-        }
-
-        .am-tabs{
-            height: 100%;
-        }
-
-    </style>
+    <link th:href="@{/css/front/about.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div th:replace="nav :: top-nav"></div>
-<div class="main am-vertical-align">
-    <div class="am-g am-vertical-align-middle" style="height: 71.12%">
-        <div class="am-u-sm-2 am-vertical-align">
+<div class="main">
+    <div class="am-g" style="height:768px">
+        <div class="am-u-sm-2 am-vertical-align" style="width: 50px">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/shop">
@@ -183,7 +27,7 @@
                 </div>
                 <div class="bottom">
                     <a href="/page/contact">
-                        <div class="bottom-text">Contact us </div>
+                        <div class="bottom-text">Contact us</div>
                         <img src="/img/down.png"/>
                     </a>
                 </div>
@@ -192,141 +36,56 @@
         <div class="main-body am-u-sm-8">
             <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
                 <ul class="am-tabs-nav am-nav am-nav-tabs">
-                    <li class="am-active"><a href="javascript: void(0)">WHO</a></li>
-                    <li><a href="javascript: void(0)">WHAT</a></li>
+                    <li class="am-active">
+                        <a href="javascript: void(0)" th:text="${data['content']['tab1']['title']}" style="z-index: 1">WHO</a>
+                        <div class="tab-bg" id="who-title-bg"></div>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0)" th:text="${data['content']['tab2']['title']}" style="z-index: 1">WHAT</a>
+                        <div class="tab-bg" id="what-title-bg"></div>
+                    </li>
                 </ul>
                 <div class="am-tabs-bd">
                     <div class="am-tab-panel am-active about-who">
-                        <p>Founded by the best ，Not robots but humans</p>
+                        <p th:text="${data['content']['tab1']['content']}"></p>
                         <div class="left-side">
                             <div id="carousel" class="flexslider">
                                 <div class="flex-viewport" style="overflow: hidden; position: relative;">
                                     <ul class="slides"
                                         style="width: 500%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                                        <li>
-                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                        </li>
-                                        <li class="flex-active-slide">
-                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                        </li>
-                                        <li>
-                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                        </li>
-                                        <li>
-                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                        </li>
-                                        <li>
-                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
-                                        </li>
-                                        <li>
-                                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                                        <li th:each="model,modelStat : ${data['content']['tab1']['model']}"
+                                            th:if="${model['pic'] ne ''}">
+                                            <img th:src="${model['pic']}"
+                                                 src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg"
+                                                 draggable="false">
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <h1>Marc Gutierrez</h1>
-                            <h2>Co-fouder and CEO</h2>
-                            <p>
-                                How to make effective business? Best software platform for running an internet business.
-                                We
-                                build the most powerful and flexible tools for internet commerce. Our company make high
-                                responce products.How to make effective business? Best software platform for running an
-                                internet business. We build the most powerful and flexible tools for internet commerce.
-                                Our
-                                company make high responce products.How to make effective business? Best software
-                                platform
-                                for running an internet business. We build the most powerful and flexible tools for
-                                internet
-                                commerce.
-                            </p>
+                            <div id="info-list">
+                                <div class="about-who-info"
+                                     th:each="model,modelStat : ${data['content']['tab1']['model']}">
+                                    <h1 class="people-name" th:text="${model['name']}"></h1>
+                                    <h2 class="people-description" th:text="${model['description']}"></h2>
+                                    <p class="people-content" th:text="${model['content']}"></p>
+                                    <input type="hidden" th:value="${model['image']}">
+                                </div>
+                            </div>
                         </div>
                         <div class="right-side">
-                            <img src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg" draggable="false">
+                            <img id="people-image" draggable="false">
                         </div>
                     </div>
                     <div class="am-tab-panel about-what">
-                        <p>We inspire people to impact 。By giving them a closer look at the best companies</p>
+                        <p th:text="${data['content']['tab2']['content']}"></p>
                         <div class="box-line">
-                            <div class="box">
-                                <div class="box-title">
-                                    <img src="/img/1002tours.png"/>
-                                    <h1>Tech Tours</h1>
+                            <div class="box" th:each="model,modelStat : ${data['content']['tab2']['model']}">
+                                <div class="box-title am-vertical-align">
+                                    <img th:src="${model['image']}" src="/img/1002tours.png"/>
+                                    <div th:text="${model['title']}"
+                                         class="box-title-content am-vertical-align-bottom"></div>
                                 </div>
-                                <p>
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    marke
-                                </p>
-                            </div>
-                            <div class="box">
-                                <div class="box-title">
-                                    <img src="/img/1002workshops.png"/>
-                                    <h1>Workshops</h1>
-                                </div>
-                                <p>
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="box-line">
-                            <div class="box">
-                                <div class="box-title">
-                                    <img src="/img/1002service.png"/>
-                                    <h1>Consultancy Service </h1></div>
-                                <p>
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                </p>
-                            </div>
-                            <div class="box">
-                                <div class="box-title">
-                                    <img src="/img/1002shop.png"/>
-                                    <h1>Shop</h1>
-                                </div>
-                                <p>
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                    Tours4Tech Was founded by - you know- amazing people that wanted to bring you a
-                                    better
-                                    insight of china. People with experience in the Tech industry and in the chinese
-                                    market.
-                                </p>
+                                <p class="content" th:text="${model['content']}"></p>
                             </div>
                         </div>
                     </div>
@@ -369,6 +128,15 @@
         var $myOc = $(id);
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
+        });
+        var list = $("#info-list").children();
+        list.each(function (index) {
+            if (index !== 0) {
+                $(this).hide();
+            } else {
+                var src = $(this).find('input').val();
+                $("#people-image").attr("src", src)
+            }
         });
     });
 </script>
