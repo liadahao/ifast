@@ -105,6 +105,10 @@ form.steps({
             form.find(".body:eq(" + newIndex + ") label.error").remove();
             form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
         }
+        if (newIndex === 2) {
+            $('<li aria-hidden="false"><a href="#finish" role="menuitem" id="save-preview">保存预览</a></li>')
+                .insertBefore($('ul[role="menu"]').children().eq(2));
+        }
         form.validate().settings.ignore = ":disabled,:hidden";
         return form.valid();
     },
@@ -127,6 +131,7 @@ form.steps({
     },
     onFinished: function (event, currentIndex) {
         var data = $('#article-form').serialize();
+        data = "status=1&" + data;
         $.ajax({
             cache: true,
             type: "POST",
@@ -148,6 +153,29 @@ form.steps({
         });
     }
 }).validate({});
+
+$("#save-preview").on('click', function () {
+    var data = $('#article-form').serialize();
+    data = "status=4&" + data;
+    $.ajax({
+        cache: true,
+        type: "POST",
+        url: "/cms/article/update",
+        data: data,
+        async: false,
+        error: function (request) {
+            parent.layer.alert("Connection error");
+        },
+        success: function (data) {
+            if (data.code == 0) {
+                parent.layer.msg("操作成功");
+                window.location.href = "/cms/article";
+            } else {
+                parent.layer.alert(data.msg)
+            }
+        }
+    });
+});
 
 // 初始化Web Uploader
 var uploader = WebUploader.create({

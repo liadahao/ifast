@@ -8,13 +8,11 @@ $.validator.setDefaults({
 	}
 });
 function update() {
-	var data = $('#signupForm').serialize();
-	data = "status=1&" + data;
 	$.ajax({
 		cache : true,
 		type : "POST",
-		url : "/cms/event/update",
-		data : data,
+		url : "/cms/message/update",
+		data : $('#signupForm').serialize(),// 你的formid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");

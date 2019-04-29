@@ -3,6 +3,8 @@ package com.cms.service;
 import com.cms.domain.ArticleDO;
 import com.ifast.common.base.CoreService;
 
+import java.util.List;
+
 /**
  * 
  * <pre>
@@ -12,4 +14,5 @@ import com.ifast.common.base.CoreService;
  */
 public interface ArticleService extends CoreService<ArticleDO> {
 
+    List<ArticleDO> selectByTagId(Long id, int offsetCurrent, int size);
 }

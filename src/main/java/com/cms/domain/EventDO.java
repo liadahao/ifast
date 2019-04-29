@@ -54,7 +54,7 @@ public class EventDO implements Serializable {
     /**
      * 状态
      */
-    private String status;
+    private int status;
 
     /**
      * 评论状态，默认允许评论

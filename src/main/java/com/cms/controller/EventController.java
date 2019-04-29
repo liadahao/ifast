@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.cms.core.TagConstant;
 import com.cms.domain.TagDO;
+import com.cms.service.MessageService;
 import com.cms.service.TagService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -37,6 +38,8 @@ import com.ifast.common.utils.Result;
 @Controller
 @RequestMapping("/cms/event")
 public class EventController extends AdminBaseController {
+    @Autowired
+    MessageService messageService;
     @Autowired
     TagService tagService;
     @Autowired
@@ -106,6 +109,7 @@ public class EventController extends AdminBaseController {
         }
         event.setCreatetime(new Date());
         eventService.insert(event);
+        messageService.saveEvent(event, getUserId());
         return Result.ok();
     }
 
@@ -131,6 +135,7 @@ public class EventController extends AdminBaseController {
         }
         event.setModifytime(new Date());
         boolean update = eventService.updateById(event);
+        messageService.saveEvent(event, getUserId());
         return update ? Result.ok() : Result.fail();
     }
 

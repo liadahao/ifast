@@ -24,6 +24,27 @@ import lombok.EqualsAndHashCode;
 @SuppressWarnings("serial")
 @TableName("article")
 public class ArticleDO implements Serializable {
+    /**
+     * 发布状态
+     */
+    public static final int PUBLISH_STATUS = 0;
+    /**
+     * 审核中
+     */
+    public static final int VERIFYING_STATUS = 1;
+    /**
+     * 未通过审核状态
+     */
+    public static final int NOT_VERIFY_STATUS = 2;
+    /**
+     * 隐藏状态
+     */
+    public static final int HIDE_STATUS = 3;
+    /**
+     * 预览状态
+     */
+    public static final int PREVIEW_STATUS = 4;
+
     @TableId(type = IdType.AUTO)
     private Integer id;
 
@@ -61,6 +82,8 @@ public class ArticleDO implements Serializable {
      * 作者
      */
     private String author;
+
+    private Integer createUserId;
     /**
      * 创建用户名
      */
@@ -74,7 +97,7 @@ public class ArticleDO implements Serializable {
     /**
      * 状态
      */
-    private String status;
+    private int status;
 
     /**
      * 评论状态，默认允许评论

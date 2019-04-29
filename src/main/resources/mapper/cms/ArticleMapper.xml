@@ -2,5 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cms.dao.ArticleDao">
-
+    <select id="selectByTagId" resultType="com.cms.domain.ArticleDO">
+        SELECT a.*
+        FROM article_tag aa
+                 LEFT JOIN article a ON a.id = aa.articleId
+        WHERE aa.tagId = #{tagId}
+          AND a.`status` = 0
+        ORDER BY a.id DESC
+        limit #{offset},#{size};
+    </select>
 </mapper>

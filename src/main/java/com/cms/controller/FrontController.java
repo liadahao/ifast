@@ -8,7 +8,9 @@ import com.cms.core.HtmlConstant;
 import com.cms.core.TagConstant;
 import com.cms.domain.*;
 import com.cms.service.*;
+import com.ifast.common.base.AdminBaseController;
 import com.ifast.common.domain.ConfigDO;
+import com.ifast.common.exception.IFastException;
 import com.ifast.common.service.ConfigService;
 import com.ifast.common.utils.HttpContextUtils;
 import com.ifast.common.utils.Result;
@@ -27,7 +29,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
-public class FrontController {
+public class FrontController extends AdminBaseController {
 
     @Autowired
     NavService navService;
@@ -111,7 +113,9 @@ public class FrontController {
     @ResponseBody
     @GetMapping("/article/list")
     public Result<Page<ArticleDO>> articleList(String searchTitle, String searchTag) {
-        Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
+        Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>()
+                .orderBy("id", false)
+                .eq("status", ArticleDO.PUBLISH_STATUS);
         if (!StringUtils.isEmpty(searchTitle)) {
             wrapper.like("title", searchTitle);
         }
@@ -120,25 +124,17 @@ public class FrontController {
             Wrapper<TagDO> tagDOWrapper = new EntityWrapper<TagDO>().orderBy("id", false);
             tagDOWrapper.eq("name", searchTag).eq("type", TagConstant.ARTICLE.type);
             TagDO tagDO = tagService.selectOne(tagDOWrapper);
-            Wrapper<ArticleTagDO> articleTagDOWrapper = new EntityWrapper<ArticleTagDO>().orderBy("id", false);
             if (tagDO != null) {
-                articleTagDOWrapper.eq("tagId", tagDO.getId());
-                articleTagDOWrapper.last("limit " + page.getOffsetCurrent() + "," + page.getSize());
-                List<ArticleTagDO> articleTagList = articleTagService.selectList(articleTagDOWrapper);
-                List<Long> articleIds = articleTagList.stream().map(ArticleTagDO::getArticleId).collect(Collectors.toList());
-                page.setRecords(new ArrayList<>());
-                if (!articleIds.isEmpty()) {
-                    List<ArticleDO> articleList = articleService.selectBatchIds(articleIds);
-                    for (ArticleDO articleDO : articleList) {
-                        List<TagDO> tagDOList = tagService.selectByArticleId(articleDO.getId());
-                        if (tagDOList != null && !tagDOList.isEmpty()) {
-                            articleDO.setTag(tagDOList.stream().map(TagDO::getName).collect(Collectors.toList()));
-                        } else {
-                            articleDO.setTag(new ArrayList<>());
-                        }
+                List<ArticleDO> articleList = articleService.selectByTagId(tagDO.getId(), page.getOffsetCurrent(), page.getSize());
+                for (ArticleDO articleDO : articleList) {
+                    List<TagDO> tagDOList = tagService.selectByArticleId(articleDO.getId());
+                    if (tagDOList != null && !tagDOList.isEmpty()) {
+                        articleDO.setTag(tagDOList.stream().map(TagDO::getName).collect(Collectors.toList()));
+                    } else {
+                        articleDO.setTag(new ArrayList<>());
                     }
-                    page.setRecords(articleList);
                 }
+                page.setRecords(articleList);
             } else {
                 return Result.ok(page);
             }
@@ -160,7 +156,7 @@ public class FrontController {
     @GetMapping("/article/{id}/maylike")
     public Result<Page<ArticleDO>> mayLikeArticleList(@PathVariable Integer id) {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
-        wrapper.ne("id", id);
+        wrapper.ne("id", id).eq("status", 0);
         int pageNumber = getParaToInt("pageNumber", 1);
         int pageSize = getParaToInt("pageSize", 3);
         Page<ArticleDO> page = new Page<>(pageNumber, pageSize);
@@ -179,6 +175,11 @@ public class FrontController {
     @GetMapping("/article/{id}")
     public String articleDetail(@PathVariable Integer id, Model model) {
         ArticleDO article = articleService.selectById(id);
+        if (article.getStatus() != 0) {
+            if ((article.getCreateUserId() != null && article.getCreateUserId() != getUserId().longValue()) || !getSubjct().hasRole("adminRole")) {
+                throw new IFastException("页面不存在");
+            }
+        }
         Integer viewCount = article.getViewCount();
         if (viewCount != null && viewCount >= 0) {
             viewCount++;
@@ -247,6 +248,7 @@ public class FrontController {
     @GetMapping("/event/list")
     public Result<Page<EventDO>> eventList(Integer tagId, String starttime) throws ParseException {
         Wrapper<EventDO> wrapper = new EntityWrapper<EventDO>().orderBy("id", false);
+        wrapper.eq("status", 0);
         if (tagId != null) {
             wrapper.eq("tagId", tagId);
         }

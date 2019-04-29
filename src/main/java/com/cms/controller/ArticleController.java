@@ -11,6 +11,7 @@ import com.cms.domain.ArticleTagDO;
 import com.cms.domain.TagDO;
 import com.cms.service.ArticleService;
 import com.cms.service.ArticleTagService;
+import com.cms.service.MessageService;
 import com.cms.service.TagService;
 import com.ifast.common.annotation.Log;
 import com.ifast.common.base.AdminBaseController;
@@ -40,6 +41,8 @@ public class ArticleController extends AdminBaseController {
     private TagService tagService;
     @Autowired
     private ArticleTagService articleTagService;
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping()
     @RequiresPermissions("cms:article:article")
@@ -145,8 +148,10 @@ public class ArticleController extends AdminBaseController {
                 }
             }
         }
+        article.setCreateUserId(getUserId().intValue());
         article.setCreateUserName(getUsername());
         articleService.insert(article);
+        messageService.saveArticle(article, getUserId());
         if (article.getTag() != null && !article.getTag().isEmpty()) {
             for (String tagName : article.getTag()) {
                 if (StringUtils.isEmpty(tagName)) {
@@ -206,6 +211,7 @@ public class ArticleController extends AdminBaseController {
             }
         }
         boolean update = articleService.updateById(article);
+        messageService.saveArticle(article, getUserId());
         EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
         articleTagDOEntityWrapper.eq("articleId", article.getId());
         articleTagService.delete(articleTagDOEntityWrapper);
@@ -215,7 +221,8 @@ public class ArticleController extends AdminBaseController {
                     continue;
                 }
                 EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
-                entityWrapper.eq("name", tagName).eq("type", TagConstant.ARTICLE.type);;
+                entityWrapper.eq("name", tagName).eq("type", TagConstant.ARTICLE.type);
+                ;
                 TagDO tag = tagService.selectOne(entityWrapper);
                 if (tag == null) {
                     tag = new TagDO();

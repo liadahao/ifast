@@ -48,8 +48,9 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/tour?useUnicode=true&useSSL=false
     # 推荐utf8mb4编码以便支持表情字符，sys_log记录系统数据变动需要支持utf8mb4
+    connectionInitSqls: SET NAMES utf8mb4;
     username: root
-    password: liadahao
+    password: 123456
     initialSize: 1
     minIdle: 3
     maxActive: 20
