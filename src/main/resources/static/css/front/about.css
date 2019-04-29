@@ -101,6 +101,14 @@ html, body {
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    cursor: pointer;
+}
+
+#carousel img:hover {
+    transform: scale(1);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
 }
 
 #carousel li {
@@ -197,4 +205,12 @@ html, body {
     font-weight:300;
     color:rgba(255,255,255,1);
     line-height: 1.6;
+}
+
+.social-list{
+    margin-top: 45px;
+}
+
+.social-list a{
+    margin-right: 40px;
 }

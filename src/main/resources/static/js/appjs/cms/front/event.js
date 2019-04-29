@@ -12,7 +12,7 @@ $(function () {
 })(jQuery);
 
 function load() {
-    var type = $.getUrlParam('type');
+    var tagId = $.getUrlParam('tagId');
     var date = $.getUrlParam('date');
     var pageNumber = $.getUrlParam('pageNumber');
     if (!pageNumber) {
@@ -21,7 +21,7 @@ function load() {
     $.ajax({
         type: "GET",
         url: "/event/list",
-        data: {"pageNumber": pageNumber, "pageSize": "8", "type": type, "starttime": date},
+        data: {"pageNumber": pageNumber, "pageSize": "8", "tagId": tagId, "starttime": date},
         async: false,
         error: function (request) {
         },
@@ -30,18 +30,18 @@ function load() {
         }
     });
     $('.load-more').click(function () {
-        var type = $.getUrlParam('type');
+        var tagId = $.getUrlParam('tagId');
         var date = $.getUrlParam('date');
         var pageNumber = $.getUrlParam('pageNumber');
-        if ((type != '' || date != '') || (type == '' && date == '')) {
+        if ((tagId != '' || date != '') || (tagId == '' && date == '')) {
             var url = "/page/event?pageSize=8";
             if (pageNumber != '') {
                 url = url + "&pageNumber=" + (parseInt(pageNumber) + 1);
             } else {
                 url = url + "&pageNumber=2";
             }
-            if (type != '') {
-                url = url + "&type=" + type;
+            if (tagId != '') {
+                url = url + "&tagId=" + tagId;
             }
             if (date != '') {
                 url = url + "&starttime=" + date;
@@ -60,12 +60,12 @@ function load() {
 }
 
 function search() {
-    var type = $("#search-type").val();
+    var tagId = $("#tagId").val();
     var date = $("#search-date").val();
-    if ((type != '' || date != '') || (type == '' && date == '')) {
+    if ((tagId != '' || date != '') || (tagId == '' && date == '')) {
         var url = "/page/event?pageNumber=1&pageSize=8";
-        if (type != '') {
-            url = url + "&type=" + type;
+        if (tagId != '') {
+            url = url + "&tagId=" + tagId;
         }
         if (date != '') {
             url = url + "&starttime=" + date;

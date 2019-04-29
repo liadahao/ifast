@@ -1,4 +1,5 @@
 var form = $("#signupForm").show();
+// 初始化步骤表单
 form.steps({
     headerTag: "h3",
     bodyTag: "fieldset",
@@ -149,9 +150,155 @@ layui.use('upload', function () {
             });
         }
     });
-
-
 });
+
+function addAboutModel() {
+    var page = $('#tab1-model-list');
+    var len = page.children().length;
+    if (len >= 6) {
+        alert('模块已到达6个');
+        return;
+    }
+    var html = '<div class="layui-card">' +
+        '<div class="layui-card-header">\n' +
+        '        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">\n' +
+        '            <legend>模块' + (len + 1) + '</legend>\n' +
+        '        </fieldset>\n' +
+        '    </div>\n' +
+        '    <div class="layui-card-body">\n' +
+        '        <div class="form-group">\n' +
+        '            <label class="col-sm-1 control-label">人物姓名：</label>\n' +
+        '            <div class="col-sm-4">\n' +
+        '                <input id="model-' + len + '-name" name="content[tab1][model][' + len + '][name]"\n' +
+        '                       class="form-control"\n' +
+        '                       type="text"/>\n' +
+        '            </div>\n' +
+        '            <label class="col-sm-1 control-label">人物简介 ：</label>\n' +
+        '            <div class="col-sm-4">\n' +
+        '        <textarea id="model-' + len + '-description" name="content[tab1][model][' + len + '][description]"\n' +
+        '                  class="form-control"\n' +
+        '                  rows="3"></textarea>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '        <div class="form-group">\n' +
+        '            <label class="col-sm-1 control-label">人物排序 ：</label>\n' +
+        '            <div class="col-sm-4">\n' +
+        '                <input id="model-' + len + '-order" name="content[tab1][model][' + len + '][order]"\n' +
+        '                       class="form-control"\n' +
+        '                       type="number"/>\n' +
+        '            </div>\n' +
+        '            <label class="col-sm-1 control-label">段落 ：</label>\n' +
+        '            <div class="col-sm-6">\n' +
+        '        <textarea id="model-' + len + '-content" name="content[tab1][model][' + len + '][content]"\n' +
+        '                  class="form-control"\n' +
+        '                  rows="5"></textarea>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '<div class="form-group">\n' +
+        '    <label class="col-sm-1 control-label">人物肖像：</label>\n' +
+        '    <div class="layui-upload col-sm-4">\n' +
+        '        <button type="button" class="layui-btn about-upload-btn"\n' +
+        '                id="pic-button-' + len + '">上传图片\n' +
+        '        </button>\n' +
+        '        <button type="button" class="layui-btn about-upload-clear"\n' +
+        '                id="pic-clear-' + len + '">清除\n' +
+        '        </button>\n' +
+        '        <div class="layui-upload-list">\n' +
+        '            <img \n' +
+        '                 class="layui-upload-img" id="pic-' + len + '">\n' +
+        '            <p id="pic-text-' + len + '"></p>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '    <input id="pic-value-' + len + '"\n' +
+        '           name="content[tab1][model][' + len + '][pic]"\n' +
+        '           class="form-control" type="hidden"/>\n' +
+        '    <label class="col-sm-1 control-label">图片：</label>\n' +
+        '    <div class="layui-upload col-sm-4">\n' +
+        '        <button type="button" class="layui-btn about-upload-btn"\n' +
+        '                id="image-button-' + len + '">上传图片\n' +
+        '        </button>\n' +
+        '        <button type="button" class="layui-btn about-upload-clear"\n' +
+        '                id="image-clear-' + len + '">清除\n' +
+        '        </button>\n' +
+        '        <div class="layui-upload-list">\n' +
+        '            <img' +
+        '                 class="layui-upload-img"id="image-' + len + '">\n' +
+        '            <p id="image-text-' + len + '"></p>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '    <input id="image-value-' + len + '"\n' +
+        '           name="content[tab1][model][' + len + '][image]"\n' +
+        '           class="form-control" type="hidden"/>\n' +
+        '</div>' +
+        '        <div class="form-group">\n' +
+        '            <div class="col-sm-8 link-table">\n' +
+        '                <div class="ibox float-e-margins">\n' +
+        '                    <div class="ibox-title">\n' +
+        '                        <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>\n' +
+        '                    </div>\n' +
+        '                    <span id="addLink" class="btn btn-primary"\n' +
+        '                          onclick="addLink(' + len + ')">添加</span>\n' +
+        '                    <div class="ibox-content">\n' +
+        '                        <table class="table">\n' +
+        '                            <thead>\n' +
+        '                            <tr>\n' +
+        '                                <th>社交媒体名称</th>\n' +
+        '                                <th>url链接</th>\n' +
+        '                                <th>排序</th>\n' +
+        '                            </tr>\n' +
+        '                            </thead>\n' +
+        '                            <tbody id="linktable-' + len + '">\n' +
+        '                            </tbody>\n' +
+        '                        </table>\n' +
+        '                    </div>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '</div>\n';
+    page.append(html);
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '.about-upload-btn'
+            , url: '/common/sysFile/upload'
+            , before: function (obj) {
+                var id = this.item[0].id;
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    var type = id.split('-')[0];
+                    var count = id.split('-')[2];
+                    $('#' + type + '-' + count).attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                } else {
+                    var id = this.item[0].id;
+                    var type = id.split('-')[0];
+                    var count = id.split('-')[2];
+                    var demoText = $('#' + type + '-text-' + count);
+                    demoText.html('<span style="color: #FF5722;">上传成功</span>');
+                    $('#' + type + '-value-' + count).val(res.data); //图片链接（base64）
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+};
+
 
 $('#background-clear').click(function () {
     $('#background-img').removeAttr('src'); //图片链接（base64）

@@ -68,6 +68,13 @@
                                     <h1 class="people-name" th:text="${model['name']}"></h1>
                                     <h2 class="people-description" th:text="${model['description']}"></h2>
                                     <p class="people-content" th:text="${model['content']}"></p>
+                                    <div class="social-list">
+                                        <a th:if="${model['social']}"
+                                           th:each="social,socialStat :${model['social']}"
+                                           th:href="${social['url']}">
+                                            <img th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
+                                        </a>
+                                    </div>
                                     <input type="hidden" th:value="${model['image']}">
                                 </div>
                             </div>
@@ -123,19 +130,31 @@
         prevText: '',
         nextText: ''
     });
+    var list = $("#info-list").children();
     $(function () {
         var id = '#doc-oc-demo3';
         var $myOc = $(id);
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
-        var list = $("#info-list").children();
         list.each(function (index) {
             if (index !== 0) {
                 $(this).hide();
             } else {
                 var src = $(this).find('input').val();
                 $("#people-image").attr("src", src)
+            }
+        });
+    });
+    $('#carousel').find('li').on('click', function () {
+        var showIndex = $(this).index();
+        list.each(function (index) {
+            if (index !== showIndex) {
+                $(this).hide();
+            } else {
+                $(this).show();
+                var src = $(this).find('input').val();
+                $("#people-image").attr("src", src);
             }
         });
     });

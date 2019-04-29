@@ -76,9 +76,9 @@ html, body {
 }
 
 .boxes {
-    margin-top: 2.22%;
+    margin-top: 46px;
     height: auto;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .box:nth-child(1) {

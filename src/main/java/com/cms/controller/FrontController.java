@@ -76,6 +76,12 @@ public class FrontController {
             Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("id", false);
             List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);
             model.addAttribute("data", galleryDOList);
+        } else if (HtmlConstant.EVENT.getHtml().equals(name)) {
+            Wrapper<TagDO> tagDOWrapper = new EntityWrapper<TagDO>()
+                    .eq("type", TagConstant.EVNENT.type)
+                    .eq("isEnable", 1);
+            List<TagDO> list = tagService.selectList(tagDOWrapper);
+            model.addAttribute("tags", list);
         } else {
             Map<String, Object> map = new HashMap<>();
             map.put("content", new HashMap<>());
@@ -239,10 +245,10 @@ public class FrontController {
 
     @ResponseBody
     @GetMapping("/event/list")
-    public Result<Page<EventDO>> eventList(Integer type, String starttime) throws ParseException {
+    public Result<Page<EventDO>> eventList(Integer tagId, String starttime) throws ParseException {
         Wrapper<EventDO> wrapper = new EntityWrapper<EventDO>().orderBy("id", false);
-        if (type != null) {
-            wrapper.eq("type", type);
+        if (tagId != null) {
+            wrapper.eq("tagId", tagId);
         }
         if (!StringUtils.isEmpty(starttime)) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");

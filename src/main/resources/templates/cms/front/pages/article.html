@@ -17,7 +17,7 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g">
-        <div class="am-u-sm-2 am-vertical-align" style="height:768px">
+        <div class="am-u-sm-2 am-vertical-align left-nav-parent" style="height:768px">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
                     <a href="/page/service">
@@ -54,7 +54,7 @@
                 <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
             </div>
         </div>
-        <div class="am-u-sm-2 am-vertical-align" style="height:768px">
+        <div class="am-u-sm-2 am-vertical-align right-nav-parent" style="height:768px">
             <div class="right-nav am-vertical-align-middle">
                 <a href="/page/techtour" class="circular"></a>
                 <a href="/page/workshop" class="circular"></a>
@@ -82,6 +82,10 @@
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
+        var width = $(window).width();
+        var navWidth = (width - 1240) / 2;
+        $(".right-nav-parent").width(navWidth);
+        $(".left-nav-parent").width(navWidth);
     });
 </script>
 </body>

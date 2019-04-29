@@ -1,15 +1,20 @@
 package com.cms.core;
 
 /**
- * <pre>
- * </pre>
- * <small> 2018年4月6日 | Aron</small>
+ * Html类型
  *
  * @author dahao
  */
 public enum HtmlConstant {
 
+    /**
+     * 首页
+     */
+    INDEX(1, "index"),
 
+    /**
+     * Techtour页
+     */
     TECHTOUR(2, "techtour"),
 
     WORKSHOP(3, "workshop"),
@@ -20,7 +25,15 @@ public enum HtmlConstant {
 
     ABOUT(6, "about"),
 
-    ADD_LINK(7, "add-link");
+    ADD_LINK(7, "add-link"),
+
+    ARTICLE(8, "article"),
+
+    EVENT(9, "event"),
+
+    GALLERY(10, "gallery"),
+
+    SHOP(11, "shop");
 
     public int type;
     public String html;
