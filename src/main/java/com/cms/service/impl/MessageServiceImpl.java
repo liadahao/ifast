@@ -47,7 +47,7 @@ public class MessageServiceImpl extends CoreServiceImpl<MessageDao, MessageDO> i
         if (message == null) {
             message = new MessageDO();
         }
-        message.setType(TagConstant.ARTICLE.type);
+        message.setType(TagConstant.EVNENT.type);
         message.setTypeid(event.getId());
         message.setCreatetime(new Date());
         message.setStatus(event.getStatus());

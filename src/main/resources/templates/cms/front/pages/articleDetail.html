@@ -23,9 +23,12 @@
         <input id="id" type="hidden" th:value="${article.id}">
         <div th:style="'background-image:url(' + @{(${article.thumbnail}=='' ? '' : ${article.thumbnail})} + ')'"
              class="article-haed">
-            <div class="head-body">
-                <h1 th:text="${article.title}" class="am-text-center"></h1>
-                <h2 th:text="${article.author +'&nbsp;&nbsp;&nbsp;'+ article.createTime}" class="am-text-center"></h2>
+            <div class="overlay">
+                <div class="head-body">
+                    <h1 th:text="${article.title}" class="am-text-center"></h1>
+                    <h2 th:text="${article.author +'&nbsp;&nbsp;&nbsp;'+ article.createTime}"
+                        class="am-text-center"></h2>
+                </div>
             </div>
         </div>
         <div class="article-body">
@@ -33,6 +36,7 @@
                 <div class="tag" th:each="tag :${tags}" th:if="${tag!=null}" th:text="${tag['name']}">
                 </div>
             </div>
+            <img class="article-body-icon" src="/img/0503.png"/>
             <div th:utext="${article.content}" class="article-content">
 
             </div>
@@ -42,28 +46,33 @@
                    th:href="${social['url']}" target="_blank">
                 </a>
             </div>
-            <div class="article-info am-g">
+            <div class="article-info">
                 <div class="share-icon am-u-sm-6">
                     <a th:if="${article['social']}" th:each="social,socialStat:${article['social']}" href="#"
-                       th:attr="class=|am-icon-btn am-icon-${#strings.toLowerCase(social.type)}|"
-                       th:href="${social['url']}" target="_blank"></a>
+                       th:href="${social['url']}" target="_blank"><img
+                            th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/></a>
                 </div>
-                <div class="custom-icon am-u-md-2">
-                    <div class="am-u-md-2">
-                        <img src="/img/0503surrpise.png" alt=""
-                             width="30" height="30">
+                <div class="custom-icon am-u-md-6">
+                    <div class="hard-icon-body">
+                        <div class="am-u-md-2">
+                            <img src="/img/0503hard.png" alt=""
+                                 width="30" height="30">
+                        </div>
+                        <div class="am-text-middle keep-trying">
+                            <p class="am-text-center">TRY HARD</p>
+                            <p th:text="${article['keepTryingCount']}" id="keep-trying-count" class="am-text-center">
+                                0</p>
+                        </div>
                     </div>
-                    <div class="am-text-middle am-u-md-4 good">
-                        <p class="am-text-center">SURPRISE</p>
-                        <p th:text="${article['goodCount']}" id="good-count" class="am-text-center">0</p>
-                    </div>
-                    <div class="am-u-md-2">
-                        <img src="/img/0503hard.png" alt=""
-                             width="30" height="30">
-                    </div>
-                    <div class="am-text-middle am-u-md-4 keep-trying">
-                        <p class="am-text-center">TRY HARD</p>
-                        <p th:text="${article['keepTryingCount']}" id="keep-trying-count" class="am-text-center">0</p>
+                    <div class="good-icon-body">
+                        <div class="am-u-md-2">
+                            <img src="/img/0503surrpise.png" alt=""
+                                 width="30" height="30">
+                        </div>
+                        <div class="am-text-middle good">
+                            <p class="am-text-center">SURPRISE</p>
+                            <p th:text="${article['goodCount']}" id="good-count" class="am-text-center">0</p>
+                        </div>
                     </div>
                 </div>
             </div>

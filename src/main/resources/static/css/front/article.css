@@ -58,6 +58,10 @@ html, body {
     border-bottom: #49128B;
 }
 
+#search-title {
+    border-bottom: 1px solid rgba(73, 18, 139, 1);
+}
+
 .search input:focus {
     background-color: transparent;
 }
@@ -120,13 +124,13 @@ html, body {
 
 .box1 .background {
     width: 100%;
-    height: 41.66%;
+    height: 250px;
     cursor: pointer;
 }
 
 .box2 .background {
     width: 100%;
-    height: 38%;
+    height: 200px;
     cursor: pointer;
 }
 
@@ -153,13 +157,30 @@ html, body {
 }
 
 .box-title {
-    margin-top: 9.14%;
-    height: 14.29%;
+    margin-bottom: 20px;
+    margin-top: 36px;
     font-size: 18px;
     font-weight: bold;
     color: rgba(19, 19, 19, 1);
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+.box-title:hover {
+    color: #0d8ddb;
+    cursor: pointer;
+}
+
+.box1 .box-title {
+    width: 404px;
+    height: 50px;
+
+}
+
+.box2 .box-title {
+    width: 291px;
+    height: 46px;
 }
 
 .box3 .box-title {
@@ -167,13 +188,33 @@ html, body {
     color: rgba(255, 255, 255, 1);
 }
 
+.box3 .box-title:hover {
+    color: #0d8ddb;
+    cursor: pointer;
+}
+
 .box-conetnt {
-    height: 32%;
     font-size: 14px;
     font-family: PingFangSC-Light;
     font-weight: 300;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.6;
+}
+
+.box1 .box-conetnt {
+    width: 404px;
+    height: 110px;
+}
+
+.box2 .box-conetnt {
+    width: 292px;
+    height: 90px;
+}
+
+.box3 .box-conetnt {
+    width: 292px;
+    height: 63px;
 }
 
 .tag-list {
@@ -207,6 +248,8 @@ html, body {
     margin-top: 19px;
     font-size: 14px;
     font-weight: 300;
+    line-height: 1;
+    height: 12px;
 }
 
 .create-time {
@@ -228,8 +271,8 @@ html, body {
 }
 
 .box3 .social-icon {
-    top: 1%;
-    left: 75%;
+    top: 3%;
+    left: 87%;
     position: absolute;
 }
 

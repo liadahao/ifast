@@ -75,7 +75,7 @@ public class FrontController extends AdminBaseController {
             suffix = HtmlConstant.getHtml(navDO.getType());
             model.addAttribute("data", navVo);
         } else if ("gallery".equals(name)) {
-            Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("id", false);
+            Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("weight", false);
             List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);
             model.addAttribute("data", galleryDOList);
         } else if (HtmlConstant.EVENT.getHtml().equals(name)) {

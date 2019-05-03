@@ -42,20 +42,21 @@
                     and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
                 </div>
             </div>
-            <div class="search">
+            <div class="search am-form am-form-inline">
                 <div class="am-input-group">
-                    <input id="search-date" type="text" class="am-form-field" placeholder="日期" required
+                    <input id="search-date" type="text" class="am-form-field" placeholder="MONTH" required
                            data-am-datepicker="{format: 'yyyy-mm', viewMode: 'months', minViewMode: 'months',autoClose:'true',locale: 'en_US'}"/>
-                    <select id="search-type" data-am-selected name="type">
-                        <option selected value=""></option>
-                        <option th:if="${tags}" th:each="tag : ${tags}" th:text="${tag['name']}" th:value="${tag['id']}">创业</option>
-                    </select>
-                    <button class="search-btn" type="button" onclick="search()"></button>
                 </div>
+                <div class="am-form-group am-form-select">
+                    <select id="search-tag" name="tag" placeholder="TYPE">
+                        <option selected value="">TYPE</option>
+                        <option th:if="${tags}" th:each="tag : ${tags}" th:text="${tag['name']}"
+                                th:value="${tag['id']}"></option>
+                    </select>
+                </div>
+                <button class="search-btn" type="button" onclick="search()"></button>
             </div>
-            <div id="event-list" class="am-u-sm-12">
-
-            </div>
+            <div id="event-list" class="am-u-sm-12"></div>
             <div class="am-u-sm-12" style="margin-top: 40px">
                 <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
             </div>

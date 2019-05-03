@@ -16,6 +16,14 @@ function load() {
     var searchTag = $.getUrlParam('searchTag');
     var searchTitle = $.getUrlParam('searchTitle');
     var pageNumber = $.getUrlParam('pageNumber');
+    if (searchTag != null && searchTag != '') {
+        $(".title").text(searchTag);
+        $(".content").text('');
+    }
+    if (searchTitle != null && searchTitle != '') {
+        $(".title").text(searchTitle);
+        $(".content").text('');
+    }
     if (!pageNumber) {
         pageNumber = 1;
     }
@@ -30,8 +38,15 @@ function load() {
             handleData(data);
         }
     });
-    $('.box').click(function () {
-        window.location.href = "/article/" + $(this).attr("id");
+    $('.box-title').click(function () {
+        var id = $(this).parent().parent().attr("id");
+        if (!id) {
+            id = $(this).parent().parent().parent().attr("id");
+        }
+        window.open("/article/" + id);
+    });
+    $('.background').click(function () {
+        window.open("/article/" + $(this).parent().attr("id"));
     });
     $('.load-more').click(function () {
         var title = $.getUrlParam('searchTitle');
@@ -93,13 +108,20 @@ function handleData(data) {
     var box = '<div class="boxes am-u-sm-12" id="' + id + '"></div>';
     $('#article-list').append(box);
     selector = $('#' + id);
-    for (var j = 0, len = row.length; j < len; j++) {
+    var j = 0;
+    var len = row.length;
+    while (j < len) {
         var obj = row[j];
         var style = obj.style;
         if (style == 2 || style == 3) {
             num = num + 1;
         } else if (style == 1) {
-            num = num + 2;
+            if (num >= 2) {
+                style = 2;
+                num = num + 1;
+            } else {
+                num = num + 2;
+            }
         } else if (style == 4) {
             if (num < 2) {
                 style = 1;
@@ -169,32 +191,62 @@ function handleData(data) {
         selector.append(html);
         if (obj.facebook) {
             var json = JSON.parse(obj.facebook);
+            var prefix;
+            if (style != 3) {
+                prefix = "/img/0501share_facebook_def.png";
+            } else {
+                prefix = "/img/0503share_facebook_def.png";
+            }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="/img/0501share_facebook_def.png"/></a>');
+                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.linkedin) {
             var json = JSON.parse(obj.linkedin);
+            var prefix;
+            if (style != 3) {
+                prefix = "/img/0501share_linkedin_def.png";
+            } else {
+                prefix = "/img/0503share_linkedin_def.png";
+            }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="/img/0501share_linkedin_def.png"/></a>');
+                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.twitter) {
             var json = JSON.parse(obj.twitter);
+            var prefix;
+            if (style != 3) {
+                prefix = "/img/0501share_twitter_def.png";
+            } else {
+                prefix = "/img/0503share_twitter_def.png";
+            }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="/img/0501share_twitter_def.png"/></a>');
+                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.medium) {
             var json = JSON.parse(obj.medium);
+            var prefix;
+            if (style != 3) {
+                prefix = "/img/0501share_medium_def.png";
+            } else {
+                prefix = "/img/0503share_medium_def.png";
+            }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="/img/0501share_medium_def.png"/></a>');
+                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.instagram) {
             var json = JSON.parse(obj.instagram);
+            var prefix;
+            if (style != 3) {
+                prefix = "/img/0501share_instagram_def.png";
+            } else {
+                prefix = "/img/0503share_instagram_def.png";
+            }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="/img/0501share_instagram_def.png"/></a>');
+                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         var width = $("#" + obj.id).outerWidth();
@@ -214,12 +266,13 @@ function handleData(data) {
             var tagHtml = '<div class="tag">' + obj.tag[i] + '</div>';
             tagList.append(tagHtml);
         }
+        j++
     }
 }
 
 function search() {
     var title = $("#search-title").val();
-    var tag = $("#search-tag").val();
+    var tag = $.getUrlParam('searchTag');
     if ((tag != '' || title != '') || (tag == '' && title == '')) {
         var url = "/page/article?pageNumber=1&pageSize=6";
         if (tag != '') {

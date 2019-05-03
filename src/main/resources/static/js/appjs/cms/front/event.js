@@ -50,17 +50,17 @@ function load() {
         }
     });
     $('.tag').click(function () {
-        var tag = $(this).text();
+        var tag = $(this).attr('data-id');
         var url = "/page/event?pageNumber=1&pageSize=8";
         if (tag != '') {
-            url = url + "&searchTag=" + tag;
+            url = url + "&tagId=" + tag;
         }
         window.open(url);
     });
 }
 
 function search() {
-    var tagId = $("#tagId").val();
+    var tagId = $("#search-tag").val();
     var date = $("#search-date").val();
     if ((tagId != '' || date != '') || (tagId == '' && date == '')) {
         var url = "/page/event?pageNumber=1&pageSize=8";
@@ -92,6 +92,7 @@ function handleData(data) {
             selector = $('#' + id);
         }
         var html = '<li id="' + obj.id + '" class="box">\n' +
+            '            <div class="tag" data-id="' + obj.tagId + '">' + obj.tag + '</div>\n' +
             '            <img src="/img/8a30e88df3c32bc450f315ec62283436.jpg"/>\n' +
             '            <div class="text" data-url="' + obj.linkto + '">\n' +
             '                <h3 class="event-title">\n' +
@@ -100,7 +101,7 @@ function handleData(data) {
             '                <p class="event-date">\n' +
             obj.starttime +
             '                </p>\n' +
-            '                <div class="event-address am-u-sm-12">\n' +
+            '                <div class="event-address">\n' +
             '                    <img src="/img/0701Location.png"/>\n<p class="am-text-top">' +
             obj.address +
             '                </p></div>\n' +

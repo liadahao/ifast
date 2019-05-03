@@ -37,7 +37,7 @@
             margin-top: 75px;
         }
 
-        #slider img {
+        .big-image {
             width: 722px;
             height: 440px;
             float: right;
@@ -54,19 +54,49 @@
         }
 
         .gallery-content {
-            margin-top: 60px;
-            width: 695px;
-            padding-left: 70px;
-            padding-top: 70px;
+            margin-top: 89px;
+            margin-left: 80px;
+            width: 740px;
+            height: 124px;
             font-size: 14px;
             font-family: PingFangSC-Light;
             font-weight: 300;
             color: rgba(255, 255, 255, 1);
-            background-image: url("/img/0601ornament.png");
-            background-repeat: no-repeat;
-            background-position: left center;
-            position: absolute;
             line-height: 1.6;
+        }
+
+        .gallery-content-shadow {
+            width: 740px;
+            height: 124px;
+            background: rgba(0, 0, 0, 1);
+            opacity: 0.15;
+            position: absolute;
+        }
+
+        .gallery-content-text {
+            width: 700px;
+            height: 100px;
+            margin: 12px 20px;
+            position: absolute;
+        }
+
+        #slider .gallery-adorn {
+            width: 184px;
+            height: 109px;
+            margin-top: 60px;
+            margin-left: 33px;
+            position: absolute;
+        }
+
+        .flexslider .slides .image-shadow {
+            position: absolute;
+            width: 722px;
+            height: 440px;
+        }
+
+        .flexslider .slides .big-image img:last-child {
+            width: 100%;
+            height: 100%;
         }
 
     </style>
@@ -96,13 +126,23 @@
                 <div class="flex-viewport" style="overflow: hidden; position: relative;">
                     <ul class="slides"
                         style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
-                        <li th:each="gallery : ${data}" th:if="${gallery['url'] ne ''}" style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
-                            <img th:src="${gallery['url']}" draggable="false">
+                        <li th:each="gallery : ${data}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
+                            style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
+                            <div class="big-image">
+                                <img src="/img/gallery-img-bg.png" class="image-shadow">
+                                <img th:src="${gallery['url']}" draggable="false">
+                            </div>
                             <p class="gallery-title">GALLERY</p>
-                            <p class="gallery-content" th:text="${gallery['description']}">So many of us are demotivated to achieve anything. Such
-                                people are not enthusiastic
-                                about anything. They don’t want to work towards any goal. Nothing motivates them to
-                                work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                            <img class="gallery-adorn" src="/img/0601ornament.png">
+                            <div class="gallery-content">
+                                <div class="gallery-content-shadow"></div>
+                                <p class="gallery-content-text" th:text="${gallery['description']}">So many of us are
+                                    demotivated to achieve
+                                    anything. Such
+                                    people are not enthusiastic
+                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -111,7 +151,8 @@
                 <div class="flex-viewport" style="overflow: hidden; position: relative;">
                     <ul class="slides"
                         style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                        <li th:each="gallery : ${data}" th:if="${gallery['url'] ne ''}" style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
+                        <li th:each="gallery : ${data}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
+                            style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
                             <img th:src="${gallery['url']}" draggable="false">
                         </li>
                     </ul>
