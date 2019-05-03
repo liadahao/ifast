@@ -48,6 +48,12 @@ public class NavController extends AdminBaseController {
         return "cms/nav/nav";
     }
 
+    @GetMapping("album")
+    String album() {
+        return "cms/nav/album";
+    }
+
+
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("cms:nav:nav")

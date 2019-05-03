@@ -5,6 +5,16 @@ $().ready(function () {
             $(this).prop("checked", true);
         }
     });
+    $("#album").click(function () {
+        layer.open({
+            type: 2,
+            title: '相册',
+            maxmin: true,
+            shadeClose: false, // 点击遮罩关闭层
+            area: ['950px', '520px'],
+            content: '/cms/nav/album' // iframe的url
+        });
+    })
 });
 
 
