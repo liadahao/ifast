@@ -331,7 +331,7 @@ function addTechtourLink(id) {
         area: ['700px', '450px'],
         fixed: false, //不固定
         maxmin: true,
-        content: '/cms/nav/add/7'
+        content: '/cms/nav/add/12'
     });
 }
 
@@ -350,7 +350,7 @@ function editTechtourLink(selector) {
         area: ['700px', '450px'],
         fixed: false, //不固定
         maxmin: true,
-        content: '/cms/nav/add/7',
+        content: '/cms/nav/add/12',
         success: function (layero, index) {
             var childId = layer.getChildFrame('#id', index);
             childId.val(trId);
@@ -375,3 +375,20 @@ function editTechtourLink(selector) {
 function removeLink(selector) {
     $(selector).parent().parent('tr').remove();
 }
+
+$().ready(function () {
+    $("#album").click(function () {
+        layer.open({
+            type: 2,
+            title: '相册',
+            maxmin: true,
+            shadeClose: false, // 点击遮罩关闭层
+            area: ['950px', '520px'],
+            content: '/cms/nav/album', // iframe的url
+            success: function (layero, index) {
+                var parentId = layer.getChildFrame('#parentImage', index);
+                parentId.val("background");
+            }
+        });
+    });
+});

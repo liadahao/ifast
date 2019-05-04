@@ -71,7 +71,7 @@
                                     <div class="social-list">
                                         <a th:if="${model['social']}"
                                            th:each="social,socialStat :${model['social']}"
-                                           th:href="${social['url']}">
+                                           th:href="${social['url']}" target="_blank">
                                             <img th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
                                         </a>
                                     </div>

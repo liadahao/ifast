@@ -137,8 +137,8 @@
                                                     <div class="ibox-title">
                                                         <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
                                                     </div>
-                                                    <span id="addLink" class="btn btn-primary"
-                                                          onclick="addLink(0)">添加</span>
+                                                    <span class="btn btn-primary"
+                                                          th:onclick="|addLink(${modelStat.index})|">添加</span>
                                                     <div class="ibox-content">
                                                         <table class="table">
                                                             <thead>
@@ -148,7 +148,7 @@
                                                                 <th>排序</th>
                                                             </tr>
                                                             </thead>
-                                                            <tbody id="linktable-0">
+                                                            <tbody th:id="|linktable-${modelStat.index}|">
                                                             <tr th:each="social,socialStat:${model['social']}">
                                                                 <td><select class="form-control m-b"
                                                                             th:attr="name=content[tab1][model][+${modelStat.index}+][social][+${socialStat.index}+][type]">
@@ -269,7 +269,6 @@
 <script src="/js/plugins/staps/jquery.steps.min.js"></script>
 <script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
-<script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
 <script>
     function addLink(id) {

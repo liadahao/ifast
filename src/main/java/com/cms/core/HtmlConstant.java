@@ -21,19 +21,14 @@ public enum HtmlConstant {
 
     SERVICE(4, "service"),
 
-    TESTIMONIALS(5, "testimonials"),
-
-    ABOUT(6, "about"),
-
-    ADD_LINK(7, "add-link"),
-
-    ARTICLE(8, "article"),
-
-    EVENT(9, "event"),
-
-    GALLERY(10, "gallery"),
-
-    SHOP(11, "shop");
+    ARTICLE(5, "article"),
+    GALLERY(6, "gallery"),
+    EVENT(7, "event"),
+    TESTIMONIALS(8, "testimonials"),
+    SHOP(9, "shop"),
+    ABOUT(10, "about"),
+    CONTACT(11, "contact"),
+    ADD_LINK(12, "add-link");
 
     public int type;
     public String html;

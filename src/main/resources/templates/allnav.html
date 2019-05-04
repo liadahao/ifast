@@ -21,6 +21,7 @@
         <label class="col-sm-3 control-label">背景图：</label>
         <div class="layui-upload col-sm-8">
             <button type="button" class="layui-btn" id="background-button">上传图片</button>
+            <button type="button" id="album" class="layui-btn btn-primary">从相册选择</button>
             <button type="button" class="layui-btn" id="background-clear">清除</button>
             <div class="layui-upload-list">
                 <img th:if="${nav['background']!=null && nav['background'] ne ''}" th:src="${nav['background']}"

@@ -134,6 +134,10 @@ function handleData(data) {
             '            </div>\n' +
             '        </li>';
         selector.append(html);
+        var tag = $('#' + obj.id).find('.tag');
+        tag.css({
+            'margin-left': ($('#' + obj.id).width() - tag.outerWidth()) / 2,
+        });
         if (obj.thumbnail && obj.thumbnail !== '') {
             $('#' + obj.id).children('img').attr('src', obj.thumbnail);
         }
