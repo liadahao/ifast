@@ -161,7 +161,7 @@
             position: relative;
         }
 
-        .head-title-img{
+        .head-title-img {
             width: 104px;
             height: 93px;
             right: 100px;
@@ -228,11 +228,9 @@
             </div>
         </div>
         <div class="main-body am-u-sm-8">
-            <div class="title">
-                Testimonials
+            <div class="title" th:text="${data['content']['title']}">
             </div>
-            <p class="title-content">
-                Hundreds of people rely on us；Hundreds of p eople rely on us
+            <p class="title-content" th:text="${data['content']['content']}">
             </p>
             <div class="bg-b">
                 <div class="left">
@@ -243,25 +241,19 @@
                          src="/img/business-brainstorming-between-man-and-woman-in-the-office-picjumbo-com.jpg"/>
                     <img class="third-video" src="/img/entrepreneur-working-in-the-office-picjumbo-com.jpg"/>
                 </div>
-                <img class="people-pic" src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg">
-                <h1 class="head-title-name">Jared Pasparage</h1>
-                <p class="head-title-description">Data Visualization Lead at United Airlines MBA, University of Katz
-                    Graduate School of
-                    Business, </p>
-                <img class="head-title-img" src="/img/0801.png">
-                <p class="content">“Everybody knows where and what it is. In the case of China's Silicon Valley,
-                    it's not so
-                    widely known. I
-                    was ignorant to how built up and revolutionaryShenzhen is becoming for the global tech scene,
-                    until
-                    Tours4tech showed me. Tours4tech took the time to show the interworkings of the tech, both in
-                    detail and
-                    strategy. From coding artificial intelligence to electronics supply chain best practices, I came
-                    away
-                    knowing that SZ is the tech capital of China."</p>
+                <div class="right-list">
+                    <div class="people-info" th:each="model :${data['content']['model']}">
+                        <img class="people-pic" src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg"
+                             th:src="${model['pic']}">
+                        <h1 class="head-title-name" th:text="${model['name']}"></h1>
+                        <p class="head-title-description" th:text="${model['description']}"></p>
+                        <img class="head-title-img" src="/img/0801.png">
+                        <p class="content" th:text="${model['content']}"></p>
+                    </div>
+                </div>
                 <div class="controller-icon">
-                    <img class="am-u-lg-2" src="/img/0801L_def.png">
-                    <img class="am-u-lg-2" src="/img/0801R_def.png">
+                    <img class="am-u-lg-2" src="/img/0801L_def.png" onclick="prev()">
+                    <img class="am-u-lg-2" src="/img/0801R_def.png" onclick="next()">
                 </div>
             </div>
         </div>
@@ -286,13 +278,48 @@
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript">
+    var list = $(".right-list").children();
     $(function () {
         var id = '#doc-oc-demo3';
         var $myOc = $(id);
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
+        list.each(function (index) {
+            if (index !== 0) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
     });
+
+    function prev() {
+        list.each(function (index) {
+            if (index === 0) {
+                return true;
+            }
+            if (!$(this).is(':hidden')) {
+                $(this).prev().show();
+                $(this).hide();
+                return false;
+            }
+        });
+    }
+
+    function next() {
+        var len = list.length;
+        list.each(function (index) {
+            if (index === (len - 1)) {
+                return true;
+            }
+            if (!$(this).is(':hidden')) {
+                $(this).next().show();
+                $(this).hide();
+                return false;
+            }
+        });
+    }
 </script>
 </body>
 </html>

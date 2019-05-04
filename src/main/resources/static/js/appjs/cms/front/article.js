@@ -134,33 +134,36 @@ function handleData(data) {
     var j = 0;
     var len = row.length;
     while (j < len) {
+        num++;
         var obj = row[j];
-        var style = obj.style;
-        if (style == 2 || style == 3) {
-            num = num + 1;
-        } else if (style == 1) {
-            if (num >= 2) {
-                style = 2;
-                num = num + 1;
-            } else {
-                num = num + 2;
-            }
-        } else if (style == 4) {
-            if (num < 2) {
-                style = 1;
-                num = num + 2;
-            } else {
-                style = 2;
-                num = num + 1;
-            }
-        }
-        if (num > 4) {
-            num = num - 4;
+        var style;
+        if (num > 3) {
+            num = 1;
             line = line + 1;
             var id = 'line-' + line;
             var box = '<div class="boxes am-u-sm-12" id="' + id + '"></div>';
             $('#article-list').append(box);
             selector = $('#' + id)
+        }
+        if (line % 3 === 1) {
+            style = num;
+        }
+        if (line % 3 === 2) {
+            style = num + 1;
+            if (style > 3) {
+                style = style - 3;
+            }
+        }
+        if (line % 3 === 0) {
+            if (num === 1) {
+                style = 2;
+            }
+            if (num === 2) {
+                style = 1;
+            }
+            if (num === 3) {
+                style = 3;
+            }
         }
         var html;
         if (style == 1) {

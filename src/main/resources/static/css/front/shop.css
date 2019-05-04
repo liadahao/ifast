@@ -34,9 +34,8 @@
 }
 
 .tag {
-    margin-top: 20px;
-    padding: 7px 10px 5px;
-    width: 50px;
+    margin-right: 10px;
+    padding: 5px 10px;
     height: 22px;
     background: rgba(73, 18, 139, 1);
     border: 1px solid rgba(73, 18, 139, 1);
@@ -44,6 +43,12 @@
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
+    display: inline-block;
+    line-height: 1;
+}
+
+.tag:last-child {
+    margin-right: 0;
 }
 
 .product-description {
@@ -104,7 +109,7 @@
 }
 
 .image-controller-select {
-    background:rgba(251,100,0,1);
+    background: rgba(251, 100, 0, 1);
 }
 
 .controller-list .controller:first-child {

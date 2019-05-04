@@ -111,6 +111,9 @@ function handleData(data) {
             eventList.append(box);
             selector = $('#' + id);
         }
+        if (obj.tag.length > 30) {
+            obj.tag = obj.tag.substring(0, 30);
+        }
         var html = '<li id="' + obj.id + '" class="box">\n' +
             '            <div class="tag" data-id="' + obj.tagId + '">' + obj.tag + '</div>\n' +
             '            <img src="/img/8a30e88df3c32bc450f315ec62283436.jpg"/>\n' +

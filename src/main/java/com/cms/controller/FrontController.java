@@ -66,6 +66,7 @@ public class FrontController extends AdminBaseController {
                 .eq("status", ArticleDO.PUBLISH_STATUS)
                 .last("limit 1");
         ProductDO productDO = productService.selectOne(wrapper);
+        productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         model.addAttribute("product", productDO);
         return "/cms/front/pages/shop";
     }
@@ -73,6 +74,7 @@ public class FrontController extends AdminBaseController {
     @RequestMapping("/shop/{id}")
     public String productDetail(@PathVariable Integer id, Model model) {
         ProductDO productDO = productService.selectById(id);
+        productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         model.addAttribute("product", productDO);
         return "/cms/front/pages/shop";
 
@@ -116,6 +118,7 @@ public class FrontController extends AdminBaseController {
                     .eq("type", ProductDO.ON_SHELVES)
                     .eq("status", ArticleDO.PUBLISH_STATUS);
             ProductDO productDO = productService.selectOne(productDOWrapper);
+            productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
             model.addAttribute("product", productDO);
         } else if ("gallery".equals(name)) {
             Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("weight", false);

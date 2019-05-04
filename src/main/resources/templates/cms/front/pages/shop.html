@@ -46,6 +46,7 @@
                     <h1 class="product-title" th:text="${product['name']}">
                     </h1>
                     <div class="tag-list">
+                        <div class="tag" th:each="tag : ${product['tagList']}" th:text="${tag}"></div>
                     </div>
                     <p class="product-description" th:text="${product['description']}">
                     </p>

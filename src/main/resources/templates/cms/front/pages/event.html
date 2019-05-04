@@ -94,6 +94,9 @@
         var navWidth = (width - 1240) / 2;
         $(".right-nav-parent").width(navWidth);
         $(".left-nav-parent").width(navWidth);
+        $(".tag").css({
+            'margin-left': ($(".box").width() - $(".tag").outerWidth()) / 2,
+        });
     });
 </script>
 </body>
