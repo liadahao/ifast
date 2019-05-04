@@ -25,12 +25,11 @@ html, body {
 
 .first-floor .title {
     width: 20%;
-    height: 57px;
     font-size: 68px;
     font-weight: 300;
     color: rgba(0, 253, 255, 1);
     float: left;
-    line-height: 0.85;
+    line-height: 1.2;
     text-overflow:ellipsis;
     white-space:nowrap;
     overflow: hidden;
