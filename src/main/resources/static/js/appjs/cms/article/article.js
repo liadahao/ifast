@@ -32,10 +32,10 @@ function load() {
                         //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         pageNumber: params.pageNumber,
                         pageSize: params.pageSize,
-                        id:$('#id-search').val(),
-                        title:$('#title-search').val(),
-                        startTime:$('#starttime').val(),
-                        endTime:$('#endtime').val()
+                        id: $('#id-search').val(),
+                        title: $('#title-search').val(),
+                        startTime: $('#starttime').val(),
+                        endTime: $('#endtime').val()
                     };
                 },
                 // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
@@ -86,6 +86,9 @@ function load() {
                             }
                             if (row['status'] == 3) {
                                 return '已隐藏';
+                            }
+                            if (row['status'] == 4) {
+                                return '预览状态';
                             }
                             return value;
                         }

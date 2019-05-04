@@ -20,17 +20,20 @@ html, body {
 
 .first-floor {
     width: 100%;
-    overflow: hidden;
     margin-bottom: 42px;
 }
 
 .first-floor .title {
     width: 20%;
+    height: 57px;
     font-size: 68px;
     font-weight: 300;
     color: rgba(0, 253, 255, 1);
     float: left;
     line-height: 0.85;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
 }
 
 .first-floor .content {
@@ -42,6 +45,8 @@ html, body {
     color: rgba(255, 255, 255, 1);
     float: left;
     line-height: 1.4;
+    text-overflow:ellipsis;
+    overflow: hidden;
 }
 
 

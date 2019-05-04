@@ -24,6 +24,9 @@ public class MessageServiceImpl extends CoreServiceImpl<MessageDao, MessageDO> i
 
     @Override
     public void saveArticle(ArticleDO article, Long userId) {
+        if (article.getStatus() != ArticleDO.VERIFYING_STATUS) {
+            return;
+        }
         EntityWrapper<MessageDO> wrapper = new EntityWrapper<>();
         wrapper.eq("typeId", article.getId()).eq("type", TagConstant.ARTICLE.type);
         MessageDO message = this.selectOne(wrapper);
@@ -41,6 +44,9 @@ public class MessageServiceImpl extends CoreServiceImpl<MessageDao, MessageDO> i
 
     @Override
     public void saveEvent(EventDO event, Long userId) {
+        if (event.getStatus() != ArticleDO.VERIFYING_STATUS) {
+            return;
+        }
         EntityWrapper<MessageDO> wrapper = new EntityWrapper<>();
         wrapper.eq("typeId", event.getId()).eq("type", TagConstant.EVNENT.type);
         MessageDO message = selectOne(wrapper);

@@ -124,7 +124,7 @@ function edit(id) {
 }
 
 function preview(id) {
-    window.open("/page/product/" + id, "_blank");
+    window.open("/shop/" + id, "_blank");
 }
 
 function remove(id) {

@@ -119,7 +119,7 @@ public class ArticleController extends AdminBaseController {
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("cms:article:add")
-    public Result<String> save(ArticleDO article) {
+    public Result save(ArticleDO article) {
         if (StringUtils.isEmpty(article.getContent())) {
             return Result.fail();
         }
@@ -180,14 +180,14 @@ public class ArticleController extends AdminBaseController {
                 }
             }
         }
-        return Result.ok();
+        return Result.ok(article.getId());
     }
 
     @Log("修改文章表")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("cms:article:edit")
-    public Result<String> update(ArticleDO article) {
+    public Result update(ArticleDO article) {
         if (article.getSocial() != null && !article.getSocial().isEmpty()) {
             for (Map<String, String> map : article.getSocial()) {
                 String type = map.get("type");
@@ -244,7 +244,7 @@ public class ArticleController extends AdminBaseController {
                 }
             }
         }
-        return update ? Result.ok() : Result.fail();
+        return update ? Result.ok(article.getId()) : Result.fail();
     }
 
     @Log("删除文章表")

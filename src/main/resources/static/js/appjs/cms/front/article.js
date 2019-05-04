@@ -16,21 +16,28 @@ function load() {
     var searchTag = $.getUrlParam('searchTag');
     var searchTitle = $.getUrlParam('searchTitle');
     var pageNumber = $.getUrlParam('pageNumber');
+    var pageSize = 6;
     if (searchTag != null && searchTag != '') {
         $(".title").text(searchTag);
+        $(".title").css('width', '100%');
         $(".content").text('');
+        $(".content").hide('');
     }
     if (searchTitle != null && searchTitle != '') {
         $(".title").text(searchTitle);
-        $(".content").text('');
+        $(".title").css('width', '100%');
+        $(".content").hide('');
     }
     if (!pageNumber) {
         pageNumber = 1;
+    } else if (parseInt(pageNumber) === 2) {
+        pageNumber = 1;
+        pageSize = 12;
     }
     $.ajax({
         type: "GET",
         url: "/article/list",
-        data: {"pageNumber": pageNumber, "pageSize": "6", "searchTag": searchTag, "searchTitle": searchTitle},
+        data: {"pageNumber": pageNumber, "pageSize": pageSize, "searchTag": searchTag, "searchTitle": searchTitle},
         async: false,
         error: function (request) {
         },
@@ -53,10 +60,12 @@ function load() {
         var tag = $.getUrlParam('searchTag');
         var pageNumber = $.getUrlParam('pageNumber');
         if ((tag != '' || title != '') || (tag == '' && title == '')) {
-            var url = "/page/article?pageSize=6";
-            if (pageNumber != '') {
+            var url;
+            if (pageNumber != '' && parseInt(pageNumber) > 1) {
+                url = "/article/list?pageSize=6";
                 url = url + "&pageNumber=" + (parseInt(pageNumber) + 1);
             } else {
+                url = "/page/article?pageSize=6";
                 url = url + "&pageNumber=2";
             }
             if (tag != '') {
@@ -65,7 +74,21 @@ function load() {
             if (title != '') {
                 url = url + "&searchTitle=" + title;
             }
-            window.open(url);
+            if (pageNumber != '' && parseInt(pageNumber) > 1) {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    async: false,
+                    error: function (request) {
+                    },
+                    success: function (data) {
+                        window.history.pushState({}, "", url);
+                        handleData(data);
+                    }
+                });
+            } else {
+                window.open(url);
+            }
         }
     });
     $('.tag').click(function () {
@@ -95,12 +118,12 @@ function load() {
 }
 
 function handleData(data) {
-    $('#article-list').empty();
+    var articleList = $("#article-list");
     var row = data.data.records;
     if (row.length === 0) {
         return;
     }
-    var line = 0;
+    var line = articleList.children().size();
     var num = 0;
     var selector;
     line = line + 1;
@@ -132,7 +155,7 @@ function handleData(data) {
             }
         }
         if (num > 4) {
-            num = 0;
+            num = num - 4;
             line = line + 1;
             var id = 'line-' + line;
             var box = '<div class="boxes am-u-sm-12" id="' + id + '"></div>';

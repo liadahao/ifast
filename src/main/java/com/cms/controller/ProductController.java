@@ -4,10 +4,12 @@ package com.cms.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.cms.domain.CategoryDO;
-import com.cms.domain.ProductDO;
+import com.cms.core.TagConstant;
+import com.cms.domain.*;
 import com.cms.service.CategoryService;
 import com.cms.service.ProductService;
+import com.cms.service.ProductTagService;
+import com.cms.service.TagService;
 import com.ifast.common.annotation.Log;
 import com.ifast.common.base.AdminBaseController;
 import com.ifast.common.utils.Result;
@@ -19,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,6 +38,10 @@ public class ProductController extends AdminBaseController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    TagService tagService;
+    @Autowired
+    ProductTagService productTagService;
 
     @GetMapping()
     @RequiresPermissions("cms:product:product")
@@ -134,6 +141,26 @@ public class ProductController extends AdminBaseController {
             product.setCategoryName(categoryDO.getName());
         }
         productService.insert(product);
+        for (String tagName : product.getTagList()) {
+            if (StringUtils.isEmpty(tagName)) {
+                continue;
+            }
+            EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
+            entityWrapper.eq("name", tagName).eq("type", TagConstant.PRODUCT.type);
+            TagDO tag = tagService.selectOne(entityWrapper);
+            if (tag == null) {
+                tag = new TagDO();
+                tag.setName(tagName);
+                tag.setCreatetime(new Date());
+                tag.setType(TagConstant.PRODUCT.type);
+                tag.setIsenable(1);
+                tagService.insert(tag);
+            }
+            ProductTagDO productTagDO = new ProductTagDO();
+            productTagDO.setProductId(product.getId().longValue());
+            productTagDO.setTagId(tag.getId());
+            productTagService.insert(productTagDO);
+        }
         return Result.ok();
     }
 
@@ -146,7 +173,41 @@ public class ProductController extends AdminBaseController {
             CategoryDO categoryDO = categoryService.selectById(product.getCategoryid());
             product.setCategoryName(categoryDO.getName());
         }
+        if (product.getTagList() != null && !product.getTagList().isEmpty()) {
+            product.getTagList().remove("");
+            String tag = StringUtils.join(product.getTagList(), ",");
+            product.setTags(tag);
+        }
         boolean update = productService.updateById(product);
+        EntityWrapper<ProductTagDO> deleteWrapper = new EntityWrapper<>();
+        deleteWrapper.eq("productId", product.getId());
+        productTagService.delete(deleteWrapper);
+        for (String tagName : product.getTagList()) {
+            if (StringUtils.isEmpty(tagName)) {
+                continue;
+            }
+            EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
+            entityWrapper.eq("name", tagName).eq("type", TagConstant.PRODUCT.type);
+            TagDO tag = tagService.selectOne(entityWrapper);
+            if (tag == null) {
+                tag = new TagDO();
+                tag.setName(tagName);
+                tag.setCreatetime(new Date());
+                tag.setType(TagConstant.PRODUCT.type);
+                tag.setIsenable(1);
+                tagService.insert(tag);
+            }
+            EntityWrapper<ProductTagDO> productTagDOEntityWrapper = new EntityWrapper<>();
+            productTagDOEntityWrapper.eq("productId", product.getId())
+                    .eq("tagId", tag.getId());
+            ProductTagDO productTagDO = productTagService.selectOne(productTagDOEntityWrapper);
+            if (productTagDO == null) {
+                productTagDO = new ProductTagDO();
+                productTagDO.setProductId(product.getId().longValue());
+                productTagDO.setTagId(tag.getId());
+                productTagService.insert(productTagDO);
+            }
+        }
         return update ? Result.ok() : Result.fail();
     }
 

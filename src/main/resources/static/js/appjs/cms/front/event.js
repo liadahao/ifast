@@ -13,15 +13,19 @@ $(function () {
 
 function load() {
     var tagId = $.getUrlParam('tagId');
-    var date = $.getUrlParam('date');
+    var starttime = $.getUrlParam('starttime');
     var pageNumber = $.getUrlParam('pageNumber');
+    var pageSize = 8;
     if (!pageNumber) {
         pageNumber = 1;
+    } else if (parseInt(pageNumber) === 2) {
+        pageNumber = 1;
+        pageSize = 16;
     }
     $.ajax({
         type: "GET",
         url: "/event/list",
-        data: {"pageNumber": pageNumber, "pageSize": "8", "tagId": tagId, "starttime": date},
+        data: {"pageNumber": pageNumber, "pageSize": pageSize, "tagId": tagId, "starttime": starttime},
         async: false,
         error: function (request) {
         },
@@ -31,13 +35,15 @@ function load() {
     });
     $('.load-more').click(function () {
         var tagId = $.getUrlParam('tagId');
-        var date = $.getUrlParam('date');
+        var date = $.getUrlParam('starttime');
         var pageNumber = $.getUrlParam('pageNumber');
         if ((tagId != '' || date != '') || (tagId == '' && date == '')) {
-            var url = "/page/event?pageSize=8";
-            if (pageNumber != '') {
+            var url;
+            if (pageNumber != '' && parseInt(pageNumber) > 1) {
+                url = "/event/list?pageSize=8";
                 url = url + "&pageNumber=" + (parseInt(pageNumber) + 1);
             } else {
+                url = "/page/event?pageSize=8";
                 url = url + "&pageNumber=2";
             }
             if (tagId != '') {
@@ -46,7 +52,21 @@ function load() {
             if (date != '') {
                 url = url + "&starttime=" + date;
             }
-            window.open(url);
+            if (pageNumber != '' && parseInt(pageNumber) > 1) {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    async: false,
+                    error: function (request) {
+                    },
+                    success: function (data) {
+                        window.history.pushState({}, "", url);
+                        handleData(data);
+                    }
+                });
+            } else {
+                window.open(url);
+            }
         }
     });
     $('.tag').click(function () {
@@ -75,12 +95,12 @@ function search() {
 }
 
 function handleData(data) {
-    $('#event-list').empty();
+    var eventList = $("#event-list");
     var row = data.data.records;
     if (row.length === 0) {
         return;
     }
-    var line = 0;
+    var line = eventList.children().size();
     var selector;
     for (var j = 0, len = row.length; j < len; j++) {
         var obj = row[j];
@@ -88,7 +108,7 @@ function handleData(data) {
             line = line + 1;
             var id = "line-" + line;
             var box = '<div id="' + id + '" class="boxes am-avg-sm-2 am-avg-md-3 am-avg-lg-4"></div>';
-            $('#event-list').append(box);
+            eventList.append(box);
             selector = $('#' + id);
         }
         var html = '<li id="' + obj.id + '" class="box">\n' +

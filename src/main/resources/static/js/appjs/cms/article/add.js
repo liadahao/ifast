@@ -40,7 +40,7 @@ form.steps({
             form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
         }
         if (newIndex === 2) {
-            $('<li aria-hidden="false"><a href="#finish" role="menuitem" id="save-preview">保存预览</a></li>')
+            $('<li aria-hidden="false"><a href="#finish" role="menuitem" id="save-preview" onclick="preview()">保存预览</a></li>')
                 .insertBefore($('ul[role="menu"]').children().eq(2));
         }
         form.validate().settings.ignore = ":disabled,:hidden";
@@ -87,7 +87,7 @@ form.steps({
     }
 }).validate({});
 
-$("#save-preview").on('click', function () {
+function preview() {
     var data = $('#article-form').serialize();
     data = "status=4&" + data;
     $.ajax({
@@ -102,13 +102,15 @@ $("#save-preview").on('click', function () {
         success: function (data) {
             if (data.code == 0) {
                 parent.layer.msg("操作成功");
+                window.open("/article/" + data.data);
                 window.location.href = "/cms/article";
             } else {
                 parent.layer.alert(data.msg)
             }
         }
     });
-});
+}
+
 // 初始化Web Uploader
 var uploader = WebUploader.create({
 

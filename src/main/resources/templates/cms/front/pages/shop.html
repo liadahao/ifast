@@ -23,6 +23,7 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
+        <input id="id" type="hidden" th:value="${product.id}">
         <div class="am-u-sm-2 am-vertical-align" style="width: 50px">
             <div class="left-nav am-vertical-align-middle">
                 <div class="top">
@@ -42,46 +43,44 @@
         <div class="main-body am-u-sm-8">
             <div class="product am-u-sm-12">
                 <div class="product-text">
-                    <h1 class="product-title">
-                        Daniel Wellington Women's 0511DW Daniel Wellington Women's 0511DW
+                    <h1 class="product-title" th:text="${product['name']}">
                     </h1>
                     <div class="tag-list">
                     </div>
-                    <p class="product-description">
-                        Our interpretation of 1950’s simplicity. Expressed completely in black with a black Swedish
-                        organically
-                        tanned leather strap.Our interpretation of 1950’s simplicity. Expressed completely in black with
-                        a
-                        black
-                        Swedish organically tanned leather strap.
+                    <p class="product-description" th:text="${product['description']}">
                     </p>
                     <div class="price-line">
-                        <div class="price am-u-sm-3">
-                            $250
+                        <div class="price am-u-sm-3" th:text="${product['price']}">
                         </div>
-                        <button class="am-btn am-btn-warning am-btn-xl" href="#">
+                        <a class="am-btn am-btn-warning am-btn-xl" th:href="${product['url']}" target="_blank"
+                           style="line-height: 1.6">
                             <i class="am-icon-shopping-cart"></i>
                             Add To Bag
-                        </button>
+                        </a>
                     </div>
-                    <div class="product-detail">
-                        <ul>
-                            <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black
-                                Swedish
-                                organically tanned leather strap.
-                            </li>
-                            <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black
-                                Swedish
-                                organically tanned leather strap.
-                            </li>
-                            <li>Our interpretation of 1950’s simplicity. Expressed completely in black with a black
-                                Swedish
-                                organically tanned leather strap.
-                            </li>
-                        </ul>
+                    <div class="product-detail" th:text="${product['detail']}">
                     </div>
                 </div>
-                <img src="/img/a40455dd300d63eab0f12f6e3b501ece.jpeg" class="am-u-sm-5 product-image"/>
+                <div class="right-image">
+                    <div class="image-list">
+                        <img th:if="${product['image1']}" th:src="${product['image1']}" class="product-image"/>
+                        <img th:if="${product['image2']}" th:src="${product['image2']}" class="product-image"
+                             style="display: none"/>
+                        <img th:if="${product['image3']}" th:src="${product['image3']}" class="product-image"
+                             style="display: none"/>
+                        <img th:if="${product['image4']}" th:src="${product['image4']}" class="product-image"
+                             style="display: none"/>
+                        <img th:if="${product['image5']}" th:src="${product['image5']}" class="product-image"
+                             style="display: none"/>
+                    </div>
+                    <div class="controller-list">
+                        <div class="image-controller" th:if="${product['image5']}"></div>
+                        <div class="image-controller" th:if="${product['image4']}"></div>
+                        <div class="image-controller" th:if="${product['image3']}"></div>
+                        <div class="image-controller" th:if="${product['image2']}"></div>
+                        <div class="image-controller" th:if="${product['image1']}"></div>
+                    </div>
+                </div>
             </div>
             <div class="product-like-list am-u-sm-12">
                 <div class="product-like-text">
@@ -92,42 +91,7 @@
                         <img src="/img/0901R_pre.png"/>
                     </div>
                 </div>
-                <ul class="am-u-sm-10 am-avg-sm-5" style="width: 920px;float: right">
-                    <li class="product-like">
-                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                        <div class="product-info">
-                            <p class="am-text-center">Leather BagLeather Bag</p>
-                            <p class="am-text-center">289 USD</p>
-                        </div>
-                    </li>
-                    <li class="product-like">
-                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                        <div class="product-info">
-                            <p class="am-text-center">Leather BagLeather Bag</p>
-                            <p class="am-text-center">289 USD</p>
-                        </div>
-                    </li>
-                    <li class="product-like">
-                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                        <div class="product-info">
-                            <p class="am-text-center">Leather BagLeather Bag</p>
-                            <p class="am-text-center">289 USD</p>
-                        </div>
-                    </li>
-                    <li class="product-like">
-                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                        <div class="product-info">
-                            <p class="am-text-center">Leather BagLeather Bag</p>
-                            <p class="am-text-center">289 USD</p>
-                        </div>
-                    </li>
-                    <li class="product-like">
-                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg"/>
-                        <div class="product-info">
-                            <p class="am-text-center">Leather BagLeather Bag</p>
-                            <p class="am-text-center">289 USD</p>
-                        </div>
-                    </li>
+                <ul class="am-u-sm-10 am-avg-sm-5 product-list" style="width: 920px;float: right">
                 </ul>
             </div>
         </div>
@@ -158,7 +122,51 @@
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
+        var list = $(".image-list").children();
+        var len = $(".image-list").children().size();
+        $(".image-controller").click(function () {
+            var showIndex = len - $(this).index() - 1;
+            list.each(function (index) {
+                if (index !== showIndex) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        })
     });
+    var id = $("#id").val();
+    $.ajax({
+        type: "GET",
+        url: "/shop/" + id + "/maylike",
+        data: {"pageNumber": "1", "pageSize": "5"},
+        async: false,
+        error: function (request) {
+        },
+        success: function (data) {
+            handleData(data);
+        }
+    });
+    $('.product-list li').click(function () {
+        window.location.href = "/shop/" + $(this).attr("id");
+    });
+
+    function handleData(data) {
+        var row = data.data.records;
+        var list = $(".product-list");
+        for (var j = 0, len = row.length; j < len; j++) {
+            var obj = row[j];
+            var html = '<li class="product-like" id="' + obj.id + '">\n' +
+                '                        <img src="' + obj.image1 + '"/>\n' +
+                '                        <div class="product-info">\n' +
+                '                            <p class="am-text-center">' + obj.name + '</p>\n' +
+                '                            <p class="am-text-center">' + obj.price + '</p>\n' +
+                '                        </div>\n' +
+                '                    </li>';
+            list.append(html);
+        }
+    }
+
 </script>
 </body>
 </html>

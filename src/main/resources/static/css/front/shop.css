@@ -75,3 +75,34 @@
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
 }
+
+.image-list {
+    overflow: hidden;
+}
+
+.right-image {
+    width: 480px;
+    float: right;
+}
+
+.controller-list {
+    margin-top: 19px;
+    width: 140px;
+    float: right;
+    overflow: hidden;
+}
+
+.image-controller {
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.4;
+    border-radius: 50%;
+    margin-right: 12px;
+    float: right;
+    cursor: pointer;
+}
+
+.controller-list .controller:first-child {
+    margin: 0;
+}

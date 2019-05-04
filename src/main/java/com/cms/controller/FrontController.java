@@ -45,6 +45,8 @@ public class FrontController extends AdminBaseController {
     EventService eventService;
     @Autowired
     ConfigService configService;
+    @Autowired
+    ProductService productService;
 
     @GetMapping({"/", ""})
     String welcome(Model model) {
@@ -54,6 +56,37 @@ public class FrontController extends AdminBaseController {
     @RequestMapping("/index")
     public String index(Model model) {
         return "redirect:/page/index";
+    }
+
+    @RequestMapping("/shop")
+    public String shop(Model model) {
+        Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>()
+                .orderBy("id", false)
+                .eq("status", ProductDO.ON_SHELVES).last("limit 1");
+        ProductDO productDO = productService.selectOne(wrapper);
+        model.addAttribute("product", productDO);
+        return "/cms/front/pages/shop";
+
+    }
+
+    @RequestMapping("/shop/{id}")
+    public String productDetail(@PathVariable Integer id, Model model) {
+        ProductDO productDO = productService.selectById(id);
+        model.addAttribute("product", productDO);
+        return "/cms/front/pages/shop";
+
+    }
+
+    @ResponseBody
+    @GetMapping("/shop/{id}/maylike")
+    public Result<Page<ProductDO>> maylike(@PathVariable Integer id, Model model) {
+        Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>().orderBy("`order`", false);
+        wrapper.ne("id", id).eq("status", ProductDO.ON_SHELVES);
+        int pageNumber = getParaToInt("pageNumber", 1);
+        int pageSize = getParaToInt("pageSize", 5);
+        Page<ProductDO> page = new Page<>(pageNumber, pageSize);
+        page = productService.selectPage(page, wrapper);
+        return Result.ok(page);
     }
 
     @RequestMapping("/page/{name}")
@@ -176,7 +209,8 @@ public class FrontController extends AdminBaseController {
     public String articleDetail(@PathVariable Integer id, Model model) {
         ArticleDO article = articleService.selectById(id);
         if (article.getStatus() != 0) {
-            if ((article.getCreateUserId() != null && article.getCreateUserId() != getUserId().longValue()) || !getSubjct().hasRole("adminRole")) {
+            if ((article.getCreateUserId() != null && article.getCreateUserId() != getUserId().longValue())
+                    || !getSubjct().hasRole("adminRole")) {
                 throw new IFastException("页面不存在");
             }
         }

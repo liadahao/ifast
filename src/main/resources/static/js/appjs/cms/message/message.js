@@ -82,7 +82,15 @@ function load() {
                     },
                     {
                         field: 'content',
-                        title: '内容'
+                        title: '内容',
+                        formatter: function (value, row, index) {
+                            if (row.type == 1) {
+                                return "文章内容";
+                            }
+                            if (row.type == 2) {
+                                return "活动内容";
+                            }
+                        }
                     },
                     {
                         field: 'remarks',
