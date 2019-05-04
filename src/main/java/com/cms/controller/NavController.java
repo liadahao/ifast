@@ -131,8 +131,10 @@ public class NavController extends AdminBaseController {
         String suffix = HtmlConstant.getHtml(nav.getType());
         NavVo navVo = new NavVo();
         BeanUtils.copyProperties(nav, navVo, "content");
-        Map<String, Object> map = JSON.parseObject(nav.getContent(), Map.class);
-        if (map == null) {
+        Map<String, Object> map;
+        if (!StringUtils.isEmpty(nav.getContent())) {
+            map = JSON.parseObject(nav.getContent(), Map.class);
+        } else {
             map = new HashMap<>();
             map.put("tab1", new HashMap<>());
             map.put("tab2", new HashMap<>());

@@ -60,6 +60,9 @@ public class FrontController extends AdminBaseController {
 
     @RequestMapping("/shop")
     public String shop(Model model) {
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
         Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>()
                 .orderBy("`order`", false)
                 .eq("type", ProductDO.ON_SHELVES)
@@ -68,14 +71,51 @@ public class FrontController extends AdminBaseController {
         ProductDO productDO = productService.selectOne(wrapper);
         productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         model.addAttribute("product", productDO);
+        NavDO navDO = new NavDO();
+        navDO.setId(9L);
+        model.addAttribute("data", navDO);
+        for (int i = 0, len = navDOList.size(); i < len; i++) {
+            if (Objects.equals(navDOList.get(i).getId(), navDO.getId())) {
+                if (i > 0) {
+                    model.addAttribute("prev", navDOList.get(i - 1));
+                } else {
+                    model.addAttribute("prev", new HashMap<>());
+                }
+                if (i < (len - 1)) {
+                    model.addAttribute("next", navDOList.get(i + 1));
+                } else {
+                    model.addAttribute("next", new HashMap<>());
+                }
+            }
+        }
         return "/cms/front/pages/shop";
     }
 
     @RequestMapping("/shop/{id}")
     public String productDetail(@PathVariable Integer id, Model model) {
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
         ProductDO productDO = productService.selectById(id);
         productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         model.addAttribute("product", productDO);
+        NavDO navDO = new NavDO();
+        navDO.setId(9L);
+        model.addAttribute("data", navDO);
+        for (int i = 0, len = navDOList.size(); i < len; i++) {
+            if (Objects.equals(navDOList.get(i).getId(), navDO.getId())) {
+                if (i > 0) {
+                    model.addAttribute("prev", navDOList.get(i - 1));
+                } else {
+                    model.addAttribute("prev", new HashMap<>());
+                }
+                if (i < (len - 1)) {
+                    model.addAttribute("next", navDOList.get(i + 1));
+                } else {
+                    model.addAttribute("next", new HashMap<>());
+                }
+            }
+        }
         return "/cms/front/pages/shop";
 
     }
@@ -102,7 +142,25 @@ public class FrontController extends AdminBaseController {
         } else {
             wrapper = new EntityWrapper<NavDO>().eq("name", name);
         }
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
         NavDO navDO = navService.selectOne(wrapper);
+        model.addAttribute("data", navDO);
+        for (int i = 0, len = navDOList.size(); i < len; i++) {
+            if (Objects.equals(navDOList.get(i).getId(), navDO.getId())) {
+                if (i > 0) {
+                    model.addAttribute("prev", navDOList.get(i - 1));
+                } else {
+                    model.addAttribute("prev", new HashMap<>());
+                }
+                if (i < (len - 1)) {
+                    model.addAttribute("next", navDOList.get(i + 1));
+                } else {
+                    model.addAttribute("next", new HashMap<>());
+                }
+            }
+        }
         String suffix = "";
         Map data;
         if (navDO != null && !StringUtils.isEmpty(navDO.getContent())) {
@@ -123,7 +181,7 @@ public class FrontController extends AdminBaseController {
         } else if ("gallery".equals(name)) {
             Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("weight", false);
             List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);
-            model.addAttribute("data", galleryDOList);
+            model.addAttribute("gallery", galleryDOList);
         } else if (HtmlConstant.EVENT.getHtml().equals(name)) {
             Wrapper<TagDO> tagDOWrapper = new EntityWrapper<TagDO>()
                     .eq("type", TagConstant.EVNENT.type)
@@ -135,6 +193,7 @@ public class FrontController extends AdminBaseController {
             map.put("content", new HashMap<>());
             model.addAttribute("gallery", new HashMap<>());
         }
+        // 获取首页设置信息
         List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
         Map<String, Object> map = new HashMap<>();
         map.put("content", new HashMap<>());
@@ -220,6 +279,9 @@ public class FrontController extends AdminBaseController {
 
     @GetMapping("/article/{id}")
     public String articleDetail(@PathVariable Integer id, Model model) {
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
         ArticleDO article = articleService.selectById(id);
         if (article.getStatus() != 0) {
             if ((article.getCreateUserId() != null && article.getCreateUserId() != getUserId().longValue())

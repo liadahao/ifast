@@ -74,7 +74,24 @@ function load() {
                     },
                     {
                         field: 'type',
-                        title: '类型'
+                        title: '类型',
+                        formatter: function (value, row, index) {
+                            if (row.type == '2') {
+                                return "手风琴页面（Techtour)";
+                            }
+                            if (row.type == '3') {
+                                return "轮播式（Workshop）";
+                            }
+                            if (row.type == '4') {
+                                return "单模块静态（Service）";
+                            }
+                            if (row.type == '8') {
+                                return "单模块评价（Testimonials）";
+                            }
+                            if (row.type == '10') {
+                                return "多模块特征（About）";
+                            }
+                        }
                     },
                     {
                         field: 'isshow',
@@ -124,6 +141,10 @@ function edit(id) {
 }
 
 function remove(id) {
+    if (id == 5 || id == 6 || id == 7 || id == 9 || id == 11) {
+        layer.msg("不能删除");
+        return true;
+    }
     layer.confirm('确定要删除选中的记录？', {
         btn: ['确定', '取消']
     }, function () {

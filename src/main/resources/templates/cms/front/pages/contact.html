@@ -113,16 +113,7 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
-        <div class="am-u-sm-2">
-            <div class="left-nav">
-                <div class="top">
-                    <a href="/page/about">
-                        <img src="/img/up.png"/>
-                        <div class="top-text">About us</div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="contact-content">
                 <h1 class="contact-title1">Hello there</h1>
@@ -153,20 +144,7 @@
                 </form>
             </div>
         </div>
-        <div class="am-u-sm-2 am-vertical-align">
-            <div class="right-nav am-vertical-align-middle">
-                <a href="/page/techtour" class="circular"></a>
-                <a href="/page/workshop" class="circular"></a>
-                <a href="/page/service" class="circular"></a>
-                <a href="/page/article"></a>
-                <a href="/page/gallery" class="circular"></a>
-                <a href="/page/event" class="circular"></a>
-                <a href="/page/testimonials" class="circular"></a>
-                <a href="/page/shop" class="circular"></a>
-                <a href="/page/about" class="circular"></a>
-                <a class="select-circular"></a>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
 <!-- 侧边栏内容 -->

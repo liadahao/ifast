@@ -184,9 +184,10 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody th:if="${nav['content']['social']!=null}"
-                                                               th:each="social,socialStat:${nav['content']['social']}"
                                                                th:id="linktable-0">
-                                                        <tr th:id="tr-+${socialStat.index}">
+                                                        <tr th:if="${nav['content']['social']!=null}"
+                                                            th:each="social,socialStat:${nav['content']['social']}"
+                                                            th:id="tr-+${socialStat.index}">
                                                             <td><input
                                                                     th:attr="name=content[social][+${socialStat.index}+][name]"
                                                                     class="form-control" type="text"
@@ -201,7 +202,8 @@
                                                                     th:attr="name=content[social][+${socialStat.index}+][logo]"
                                                                     class="form-control" type="hidden" value=""
                                                                     readonly="readonly"
-                                                                    th:value="${social.logo}"><img th:src="${social.logo}"></td>
+                                                                    th:value="${social.logo}"><img
+                                                                    th:src="${social.logo}"></td>
                                                             <td><input
                                                                     th:attr="name=content[social][+${socialStat.index}+][order]"
                                                                     class="form-control" type="number" value="1"

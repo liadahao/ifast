@@ -14,37 +14,63 @@
                 <img src="/img/0103close.png">
             </div>
             <div class="am-offcanvas-content">
-                <h3>
-                    <a href="/page/techtour?type=2">Tech Tour</a>
-                </h3>
-                <h3>
-                    <a href="/page/workshop?type=3">Workshop</a>
-                </h3>
-                <h3>
-                    <a href="/page/service?type=4">Consultancy Service</a>
-                </h3>
-                <h3>
-                    <a href="/page/article">Article</a>
-                </h3>
-                <h3>
-                    <a href="/page/gallery">Gallery</a>
-                </h3>
-                <h3>
-                    <a href="/page/event">Event</a>
-                </h3>
-                <h3>
-                    <a href="/page/testimonials?type=5">Testimonials</a>
-                </h3>
-                <h3>
-                    <a href="/page/shop">Shop</a>
-                </h3>
-                <h3>
-                    <a href="/page/about?type=6">About us</a>
-                </h3>
-                <h3>
-                    <a href="/page/contact">Contact us</a>
+                <h3 th:each="nav : ${navList}">
+                    <a th:href="${nav['url']}" th:text="${nav['navname']}"></a>
                 </h3>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="am-u-sm-2 am-vertical-align right-nav-parent" style="height: 768px" th:fragment=nav-right-side>
+    <div class="right-nav am-vertical-align-middle">
+        <a th:each="nav : ${navList}" th:href="${nav['url']}"
+           th:class="${data['id']==nav['id'] ? 'select-circular' : 'circular'}"></a>
+    </div>
+</div>
+
+<div th:class="${next['name'] != null?'am-u-sm-2 am-vertical-align left-nav-parent':'am-u-sm-2'}" style="height: 768px" th:fragment=nav-left-side>
+    <div class="left-nav am-vertical-align-middle" th:if="${next['name'] != null}">
+        <div class="top" th:if="${prev['name'] != null}">
+            <a th:href="${prev['url']}">
+                <img src="/img/up.png"/>
+                <div class="top-text" th:text="${prev['navname']}"></div>
+            </a>
+        </div>
+        <div class="top" th:if="${prev['name'] == null}">
+            <a href="/page/index">
+                <img src="/img/up.png"/>
+                <div class="top-text">Home</div>
+            </a>
+        </div>
+        <div class="bottom" th:if="${next['name'] != null}">
+            <a th:href="${next['url']}">
+                <div class="bottom-text" th:text="${next['navname']}"></div>
+                <img src="/img/down.png"/>
+            </a>
+        </div>
+    </div>
+    <div class="left-nav" th:if="${next['name'] == null}">
+        <div class="top">
+            <a th:href="${prev['url']}">
+                <img src="/img/up.png"/>
+                <div class="top-text" th:text="${prev['navname']}"></div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="left-nav am-vertical-align-middle" th:fragment=other-nav-left-side>
+    <div class="top">
+        <a href="/page/event">
+            <img src="/img/up.png"/>
+            <div class="top-text">Event</div>
+        </a>
+    </div>
+    <div class="bottom">
+        <a href="/page/shop">
+            <div class="bottom-text">Shop</div>
+            <img src="/img/down.png"/>
+        </a>
     </div>
 </div>

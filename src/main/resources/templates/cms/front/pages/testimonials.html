@@ -195,6 +195,7 @@
             width: 70px;
             height: 38px;
             background: rgba(73, 18, 139, 1);
+            cursor: pointer;
         }
 
         .right-nav {
@@ -213,20 +214,7 @@
 <div class="main">
     <div class="am-g" style="height:768px">
         <img class="bg-a" src="/img/0801bg1.png">
-        <div class="left-nav am-vertical-align-middle">
-            <div class="top">
-                <a href="/page/event">
-                    <img src="/img/up.png"/>
-                    <div class="top-text">Event</div>
-                </a>
-            </div>
-            <div class="bottom">
-                <a href="/page/shop">
-                    <div class="bottom-text">Shop</div>
-                    <img src="/img/down.png"/>
-                </a>
-            </div>
-        </div>
+        <div th:replace="nav :: other-nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="title" th:text="${data['content']['title']}">
             </div>
@@ -257,20 +245,7 @@
                 </div>
             </div>
         </div>
-        <div class="am-u-sm-2 am-vertical-align" style="height: 100%">
-            <div class="right-nav am-vertical-align-middle">
-                <a href="/page/techtour" class="circular"></a>
-                <a href="/page/workshop" class="circular"></a>
-                <a href="/page/service" class="circular"></a>
-                <a href="/page/article"></a>
-                <a href="/page/gallery" class="circular"></a>
-                <a href="/page/event" class="circular"></a>
-                <a class="select-circular"></a>
-                <a href="/page/shop" class="circular"></a>
-                <a href="/page/about" class="circular"></a>
-                <a href="/page/contact" class="circular"></a>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
 <!-- 侧边栏内容 -->

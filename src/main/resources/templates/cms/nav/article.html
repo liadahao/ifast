@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/layui.css" media="all">
+<link href="/css/plugins/steps/jquery.steps.css" rel="stylesheet">
+<link rel="stylesheet" href="/js/plugins/webuploader/webuploader.css" media="all">
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <h3>菜单信息</h3>
+                        <fieldset id="menu-info" class="ibox-content">
+                            <div th:include="allnav :: other-menu-info"></div>
+                        </fieldset>
+                        <h3>页面信息</h3>
+                        <fieldset id="page-info" class="ibox-content">
+
+                        </fieldset>
+                        <h3>SEO信息</h3>
+                        <fieldset id="seo-info" class="ibox-content">
+                            <div th:include="allnav :: seo-info"></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script src="/js/plugins/staps/jquery.steps.min.js"></script>
+<script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
+<script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
+<script>
+
+</script>
+</body>
+</html>

@@ -105,28 +105,13 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
-        <div class="am-u-sm-2 am-vertical-align" style="width: 50px">
-            <div class="left-nav am-vertical-align-middle">
-                <div class="top">
-                    <a href="/page/article">
-                        <img src="/img/up.png"/>
-                        <div class="top-text">Article</div>
-                    </a>
-                </div>
-                <div class="bottom">
-                    <a href="/page/event">
-                        <div class="bottom-text">Event</div>
-                        <img src="/img/down.png"/>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div id="slider" class="flexslider">
                 <div class="flex-viewport" style="overflow: hidden; position: relative;">
                     <ul class="slides"
                         style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
-                        <li th:each="gallery : ${data}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
+                        <li th:each="gallery : ${gallery}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
                             style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
                             <div class="big-image">
                                 <img src="/img/gallery-img-bg.png" class="image-shadow">
@@ -151,7 +136,7 @@
                 <div class="flex-viewport" style="overflow: hidden; position: relative;">
                     <ul class="slides"
                         style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                        <li th:each="gallery : ${data}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
+                        <li th:each="gallery : ${gallery}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
                             style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
                             <img th:src="${gallery['url']}" draggable="false">
                         </li>
@@ -159,20 +144,7 @@
                 </div>
             </div>
         </div>
-        <div class="am-u-sm-2 am-vertical-align">
-            <div class="right-nav am-vertical-align-middle">
-                <a href="/page/techtour" class="circular"></a>
-                <a href="/page/workshop" class="circular"></a>
-                <a href="/page/service" class="circular"></a>
-                <a href="/page/article" class="circular"></a>
-                <a class="select-circular"></a>
-                <a href="/page/event" class="circular"></a>
-                <a href="/page/testimonials" class="circular"></a>
-                <a href="/page/shop" class="circular"></a>
-                <a href="/page/about" class="circular"></a>
-                <a href="/page/contact" class="circular"></a>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
 <!-- 侧边栏内容 -->

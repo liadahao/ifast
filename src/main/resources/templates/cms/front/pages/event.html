@@ -17,22 +17,7 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g">
-        <div class="am-u-sm-2 am-vertical-align left-nav-parent" style="height:768px">
-            <div class="left-nav am-vertical-align-middle">
-                <div class="top">
-                    <a href="/page/gallery">
-                        <img src="/img/up.png"/>
-                        <div class="top-text">Gallery</div>
-                    </a>
-                </div>
-                <div class="bottom">
-                    <a href="/page/testimonials">
-                        <div class="bottom-text">Testimonials</div>
-                        <img src="/img/down.png"/>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-left-side"></div>
         <div class="article-body am-u-sm-8">
             <div class="first-floor">
                 <div class="title">Event</div>
@@ -61,20 +46,7 @@
                 <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
             </div>
         </div>
-        <div class="am-u-sm-2 am-vertical-align right-nav-parent" style="height:768px">
-            <div class="right-nav am-vertical-align-middle">
-                <a href="/page/techtour" class="circular"></a>
-                <a href="/page/workshop" class="circular"></a>
-                <a href="/page/service" class="circular"></a>
-                <a href="/page/article" class="circular"></a>
-                <a href="/page/gallery" class="circular"></a>
-                <a class="select-circular"></a>
-                <a href="/page/testimonials" class="circular"></a>
-                <a href="/page/shop" class="circular"></a>
-                <a href="/page/about" class="circular"></a>
-                <a href="/page/contact" class="circular"></a>
-            </div>
-        </div>
+        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
 
