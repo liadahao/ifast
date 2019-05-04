@@ -103,6 +103,10 @@
     cursor: pointer;
 }
 
+.image-controller-select {
+    background:rgba(251,100,0,1);
+}
+
 .controller-list .controller:first-child {
     margin: 0;
 }

@@ -61,12 +61,11 @@ public class FrontController extends AdminBaseController {
     @RequestMapping("/shop")
     public String shop(Model model) {
         Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>()
-                .orderBy("id", false)
+                .orderBy("`order`", false)
                 .eq("status", ProductDO.ON_SHELVES).last("limit 1");
         ProductDO productDO = productService.selectOne(wrapper);
         model.addAttribute("product", productDO);
         return "/cms/front/pages/shop";
-
     }
 
     @RequestMapping("/shop/{id}")
@@ -107,6 +106,12 @@ public class FrontController extends AdminBaseController {
             navVo.setContent(data);
             suffix = HtmlConstant.getHtml(navDO.getType());
             model.addAttribute("data", navVo);
+        } else if (HtmlConstant.SHOP.getHtml().equals(name)) {
+            Wrapper<ProductDO> productDOWrapper = new EntityWrapper<ProductDO>()
+                    .orderBy("`order`", false)
+                    .eq("status", ProductDO.ON_SHELVES).last("limit 1");
+            ProductDO productDO = productService.selectOne(productDOWrapper);
+            model.addAttribute("product", productDO);
         } else if ("gallery".equals(name)) {
             Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("weight", false);
             List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);

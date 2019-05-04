@@ -78,17 +78,18 @@
                         <div class="image-controller" th:if="${product['image4']}"></div>
                         <div class="image-controller" th:if="${product['image3']}"></div>
                         <div class="image-controller" th:if="${product['image2']}"></div>
-                        <div class="image-controller" th:if="${product['image1']}"></div>
+                        <div class="image-controller image-controller-select" th:if="${product['image1']}"></div>
                     </div>
                 </div>
             </div>
             <div class="product-like-list am-u-sm-12">
+                <input type="hidden" id="pageNumber" value="1">
                 <div class="product-like-text">
                     <h3>Products</h3>
                     <h1>You May Like</h1>
                     <div class="controller">
-                        <img src="/img/0901L_pre.png"/>
-                        <img src="/img/0901R_pre.png"/>
+                        <img src="/img/0901L_pre.png" onclick="prev()"/>
+                        <img src="/img/0901R_pre.png" onclick="next()"/>
                     </div>
                 </div>
                 <ul class="am-u-sm-10 am-avg-sm-5 product-list" style="width: 920px;float: right">
@@ -125,6 +126,14 @@
         var list = $(".image-list").children();
         var len = $(".image-list").children().size();
         $(".image-controller").click(function () {
+            var controllerIndex = $(this).index();
+            $(".controller-list").children().each(function (index) {
+                if (index !== controllerIndex) {
+                    $(".controller-list").children().eq(index).removeClass("image-controller-select");
+                } else {
+                    $(".controller-list").children().eq(index).addClass("image-controller-select");
+                }
+            });
             var showIndex = len - $(this).index() - 1;
             list.each(function (index) {
                 if (index !== showIndex) {
@@ -153,7 +162,11 @@
 
     function handleData(data) {
         var row = data.data.records;
+        if (row.length === 0) {
+            return;
+        }
         var list = $(".product-list");
+        list.empty();
         for (var j = 0, len = row.length; j < len; j++) {
             var obj = row[j];
             var html = '<li class="product-like" id="' + obj.id + '">\n' +
@@ -165,6 +178,44 @@
                 '                    </li>';
             list.append(html);
         }
+    }
+
+    function prev() {
+        var pageNumber = $("#pageNumber").val();
+        if (pageNumber > 1) {
+            pageNumber = parseInt(pageNumber) - 1;
+            $("#pageNumber").val(pageNumber);
+            $.ajax({
+                type: "GET",
+                url: "/shop/" + id + "/maylike",
+                data: {"pageNumber": pageNumber, "pageSize": "5"},
+                async: false,
+                error: function (request) {
+                },
+                success: function (data) {
+                    handleData(data);
+                }
+            });
+        }
+    }
+
+    function next() {
+        var pageNumber = $("#pageNumber").val();
+        pageNumber = parseInt(pageNumber) + 1;
+        $.ajax({
+            type: "GET",
+            url: "/shop/" + id + "/maylike",
+            data: {"pageNumber": pageNumber, "pageSize": "5"},
+            async: false,
+            error: function (request) {
+            },
+            success: function (data) {
+                if (data.data.records.length > 0) {
+                    $("#pageNumber").val(pageNumber);
+                }
+                handleData(data);
+            }
+        });
     }
 
 </script>

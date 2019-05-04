@@ -299,6 +299,7 @@ footer {
     width: 176px;
     height: 236px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .product-like-list > .am-avg-sm-5 > .product-like:last-child {
@@ -333,6 +334,7 @@ footer {
 .product-like-list .controller img {
     width: 70px;
     height: 38px;
+    cursor: pointer;
 }
 
 .product-like-list .controller img:last-child {
@@ -356,6 +358,9 @@ footer {
 
 .product-info p{
     margin: 0;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
 }
 
 .product-info p:last-child{
