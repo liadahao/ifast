@@ -147,17 +147,19 @@ public class FrontController extends AdminBaseController {
         model.addAttribute("navList", navDOList);
         NavDO navDO = navService.selectOne(wrapper);
         model.addAttribute("data", navDO);
-        for (int i = 0, len = navDOList.size(); i < len; i++) {
-            if (Objects.equals(navDOList.get(i).getId(), navDO.getId())) {
-                if (i > 0) {
-                    model.addAttribute("prev", navDOList.get(i - 1));
-                } else {
-                    model.addAttribute("prev", new HashMap<>());
-                }
-                if (i < (len - 1)) {
-                    model.addAttribute("next", navDOList.get(i + 1));
-                } else {
-                    model.addAttribute("next", new HashMap<>());
+        if (navDO != null) {
+            for (int i = 0, len = navDOList.size(); i < len; i++) {
+                if (Objects.equals(navDO.getId(), navDOList.get(i).getId())) {
+                    if (i > 0) {
+                        model.addAttribute("prev", navDOList.get(i - 1));
+                    } else {
+                        model.addAttribute("prev", new HashMap<>());
+                    }
+                    if (i < (len - 1)) {
+                        model.addAttribute("next", navDOList.get(i + 1));
+                    } else {
+                        model.addAttribute("next", new HashMap<>());
+                    }
                 }
             }
         }
