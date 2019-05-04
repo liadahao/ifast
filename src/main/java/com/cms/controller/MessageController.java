@@ -6,8 +6,10 @@ import java.util.Arrays;
 import com.cms.core.TagConstant;
 import com.cms.domain.ArticleDO;
 import com.cms.domain.EventDO;
+import com.cms.domain.ProductDO;
 import com.cms.service.ArticleService;
 import com.cms.service.EventService;
+import com.cms.service.ProductService;
 import com.ifast.sys.domain.UserDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
@@ -43,6 +45,8 @@ public class MessageController extends AdminBaseController {
     private MessageService messageService;
     @Autowired
     ArticleService articleService;
+    @Autowired
+    ProductService productService;
     @Autowired
     EventService eventService;
 
@@ -91,6 +95,12 @@ public class MessageController extends AdminBaseController {
             eventDO.setId(message.getTypeid());
             eventDO.setStatus(message.getStatus());
             eventService.updateById(eventDO);
+        }
+        if (message.getType() == TagConstant.PRODUCT.type) {
+            ProductDO productDO = new ProductDO();
+            productDO.setId(message.getTypeid());
+            productDO.setStatus(message.getStatus());
+            productService.updateById(productDO);
         }
         boolean update = messageService.updateById(message);
         return update ? Result.ok() : Result.fail();

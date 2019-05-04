@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.cms.core.TagConstant;
 import com.cms.domain.ArticleDO;
 import com.cms.domain.EventDO;
+import com.cms.domain.ProductDO;
 import org.springframework.stereotype.Service;
 
 import com.cms.dao.MessageDao;
@@ -59,6 +60,27 @@ public class MessageServiceImpl extends CoreServiceImpl<MessageDao, MessageDO> i
         message.setTypeid(event.getId());
         message.setCreatetime(new Date());
         message.setStatus(event.getStatus());
+        message.setUserid(userId.intValue());
+        insertOrUpdate(message);
+    }
+
+    @Override
+    public void saveProduct(ProductDO product, Long userId) {
+        if (product.getStatus() != ArticleDO.VERIFYING_STATUS) {
+            return;
+        }
+        EntityWrapper<MessageDO> wrapper = new EntityWrapper<>();
+        wrapper.eq("typeId", product.getId()).eq("type", TagConstant.PRODUCT.type);
+        MessageDO message = selectOne(wrapper);
+        if (message == null) {
+            message = new MessageDO();
+        }
+        message.setContent("审核产品");
+        message.setType(TagConstant.PRODUCT.type);
+        message.setTypeid(product.getId());
+        message.setCreatetime(new Date());
+        message.setStatus(product.getStatus());
+        message.setUrl("/shop/" + product.getId());
         message.setUserid(userId.intValue());
         insertOrUpdate(message);
     }

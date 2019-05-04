@@ -20,7 +20,7 @@
                                 <select class="form-control m-b" name="categoryid">
                                     <option value=></option>
                                     <option th:each="category : ${categoryList}" th:value="${category.id}"
-                                    th:text="${category.name}">
+                                            th:text="${category.name}">
                                     </option>
                                 </select>
                             </div>
@@ -33,10 +33,10 @@
                             <div class="col-sm-8">
                                 <label>
                                     <input type="radio" value="0" id="optionsRadios1"
-                                           name="status">上架</label>
+                                           name="type">上架</label>
                                 <label>
                                     <input type="radio" value="1" id="optionsRadios2"
-                                           name="status">下架</label>
+                                           name="type">下架</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -139,12 +139,11 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-8 col-sm-offset-3">
-                                <button onclick="save()" class="btn-lg btn-success">提交</button>
-<!--                                <button type="submit" class="btn-lg btn-success">保存并预览</button>-->
-<!--                                <button type="submit" class="btn-lg btn-success">审核</button>-->
-<!--                                <button type="submit" class="btn-lg btn-success">上架</button>-->
-<!--                                <button type="submit" class="btn-lg btn-success">下架</button>-->
-                                <button onclick="cancel()" class="btn-lg btn-default">取消</button>
+                                <a onclick="preview()" class="btn-lg btn-success">保存并预览</a>
+                                <a onclick="save()" class="btn-lg btn-success">审核</a>
+                                <!--                                <button type="submit" class="btn-lg btn-success">上架</button>-->
+                                <!--                                <button type="submit" class="btn-lg btn-success">下架</button>-->
+                                <a onclick="cancel()" class="btn-lg btn-default">取消</a>
                             </div>
                         </div>
                     </form>

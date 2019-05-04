@@ -6,10 +6,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.cms.core.TagConstant;
 import com.cms.domain.*;
-import com.cms.service.CategoryService;
-import com.cms.service.ProductService;
-import com.cms.service.ProductTagService;
-import com.cms.service.TagService;
+import com.cms.service.*;
 import com.ifast.common.annotation.Log;
 import com.ifast.common.base.AdminBaseController;
 import com.ifast.common.utils.Result;
@@ -42,6 +39,8 @@ public class ProductController extends AdminBaseController {
     TagService tagService;
     @Autowired
     ProductTagService productTagService;
+    @Autowired
+    MessageService messageService;
 
     @GetMapping()
     @RequiresPermissions("cms:product:product")
@@ -108,7 +107,7 @@ public class ProductController extends AdminBaseController {
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("cms:product:add")
-    public Result<String> save(ProductDO product) {
+    public Result save(ProductDO product) {
         if (product.getImage() != null && !product.getImage().isEmpty()) {
             for (int i = 0; i < product.getImage().size(); i++) {
                 if (StringUtils.isEmpty(product.getImage().get(i))) {
@@ -141,6 +140,7 @@ public class ProductController extends AdminBaseController {
             product.setCategoryName(categoryDO.getName());
         }
         productService.insert(product);
+        messageService.saveProduct(product, getUserId());
         for (String tagName : product.getTagList()) {
             if (StringUtils.isEmpty(tagName)) {
                 continue;
@@ -161,14 +161,14 @@ public class ProductController extends AdminBaseController {
             productTagDO.setTagId(tag.getId());
             productTagService.insert(productTagDO);
         }
-        return Result.ok();
+        return Result.ok(product.getId());
     }
 
     @Log("修改")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("cms:product:edit")
-    public Result<String> update(ProductDO product) {
+    public Result update(ProductDO product) {
         if (product.getCategoryid() != null) {
             CategoryDO categoryDO = categoryService.selectById(product.getCategoryid());
             product.setCategoryName(categoryDO.getName());
@@ -179,6 +179,7 @@ public class ProductController extends AdminBaseController {
             product.setTags(tag);
         }
         boolean update = productService.updateById(product);
+        messageService.saveProduct(product, getUserId());
         EntityWrapper<ProductTagDO> deleteWrapper = new EntityWrapper<>();
         deleteWrapper.eq("productId", product.getId());
         productTagService.delete(deleteWrapper);
@@ -208,7 +209,7 @@ public class ProductController extends AdminBaseController {
                 productTagService.insert(productTagDO);
             }
         }
-        return update ? Result.ok() : Result.fail();
+        return update ? Result.ok(product.getId()) : Result.fail();
     }
 
     @Log("删除")

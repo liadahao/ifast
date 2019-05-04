@@ -81,13 +81,32 @@ function load() {
                         title: '排序'
                     },
                     {
-                        field: 'status',
-                        title: '状态',
+                        field: 'type',
+                        title: '产品状态',
                         formatter: function (value, row, index) {
-                            if (row.status == 0) {
-                                return "上架";
-                            } else {
-                                return "下架";
+                            if (row['status'] == 0) {
+                                return '上架';
+                            }
+                            if (row['status'] == 1) {
+                                return '下架';
+                            }
+                        }
+                    },
+                    {
+                        field: 'status',
+                        title: '审核状态',
+                        formatter: function (value, row, index) {
+                            if (row['status'] == 0) {
+                                return '已通过';
+                            }
+                            if (row['status'] == 1) {
+                                return '审核中';
+                            }
+                            if (row['status'] == 2) {
+                                return '未通过审核';
+                            }
+                            if (row['status'] == 4) {
+                                return '预览状态';
                             }
                         }
                     },

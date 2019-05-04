@@ -25,7 +25,7 @@ import java.util.List;
 public class ProductDO implements Serializable {
 
     public static final int ON_SHELVES = 0;
-    public static final int OFF_SHELVES = 1;
+    public static final int OFF_SHELVES = 10;
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -83,6 +83,7 @@ public class ProductDO implements Serializable {
      * 状态
      */
     private Integer status;
+    private Integer type;
 
     @TableField(exist = false)
     private List<String> tagList;

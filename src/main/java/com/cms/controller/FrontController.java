@@ -62,7 +62,9 @@ public class FrontController extends AdminBaseController {
     public String shop(Model model) {
         Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>()
                 .orderBy("`order`", false)
-                .eq("status", ProductDO.ON_SHELVES).last("limit 1");
+                .eq("type", ProductDO.ON_SHELVES)
+                .eq("status", ArticleDO.PUBLISH_STATUS)
+                .last("limit 1");
         ProductDO productDO = productService.selectOne(wrapper);
         model.addAttribute("product", productDO);
         return "/cms/front/pages/shop";
@@ -80,7 +82,9 @@ public class FrontController extends AdminBaseController {
     @GetMapping("/shop/{id}/maylike")
     public Result<Page<ProductDO>> maylike(@PathVariable Integer id, Model model) {
         Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>().orderBy("`order`", false);
-        wrapper.ne("id", id).eq("status", ProductDO.ON_SHELVES);
+        wrapper.ne("id", id)
+                .eq("type", ProductDO.ON_SHELVES)
+                .eq("status", ArticleDO.PUBLISH_STATUS);
         int pageNumber = getParaToInt("pageNumber", 1);
         int pageSize = getParaToInt("pageSize", 5);
         Page<ProductDO> page = new Page<>(pageNumber, pageSize);
@@ -109,7 +113,8 @@ public class FrontController extends AdminBaseController {
         } else if (HtmlConstant.SHOP.getHtml().equals(name)) {
             Wrapper<ProductDO> productDOWrapper = new EntityWrapper<ProductDO>()
                     .orderBy("`order`", false)
-                    .eq("status", ProductDO.ON_SHELVES).last("limit 1");
+                    .eq("type", ProductDO.ON_SHELVES)
+                    .eq("status", ArticleDO.PUBLISH_STATUS);
             ProductDO productDO = productService.selectOne(productDOWrapper);
             model.addAttribute("product", productDO);
         } else if ("gallery".equals(name)) {

@@ -3,6 +3,7 @@ package com.cms.service;
 import com.cms.domain.ArticleDO;
 import com.cms.domain.EventDO;
 import com.cms.domain.MessageDO;
+import com.cms.domain.ProductDO;
 import com.ifast.common.base.CoreService;
 
 /**
@@ -16,4 +17,6 @@ public interface MessageService extends CoreService<MessageDO> {
     void saveArticle(ArticleDO article, Long userId);
 
     void saveEvent(EventDO event, Long userId);
+
+    void saveProduct(ProductDO product, Long userId);
 }
