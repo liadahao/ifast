@@ -33,6 +33,7 @@ public class MessageServiceImpl extends CoreServiceImpl<MessageDao, MessageDO> i
         if (message == null) {
             message = new MessageDO();
         }
+        message.setContent("审核文章内容");
         message.setType(TagConstant.ARTICLE.type);
         message.setTypeid(article.getId());
         message.setCreatetime(new Date());
@@ -53,6 +54,7 @@ public class MessageServiceImpl extends CoreServiceImpl<MessageDao, MessageDO> i
         if (message == null) {
             message = new MessageDO();
         }
+        message.setContent("审核活动内容");
         message.setType(TagConstant.EVNENT.type);
         message.setTypeid(event.getId());
         message.setCreatetime(new Date());

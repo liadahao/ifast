@@ -83,7 +83,10 @@ function load() {
                     {
                         field: 'content',
                         title: '内容',
-                        formatter: function (value, row, index) {
+                        formatter: function (value, row, index) {;
+                            if (row.content && row.content != '') {
+                                return row.content;
+                            }
                             if (row.type == 1) {
                                 return "文章内容";
                             }
