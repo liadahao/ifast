@@ -156,9 +156,6 @@
             handleData(data);
         }
     });
-    $('.product-list li').click(function () {
-        window.location.href = "/shop/" + $(this).attr("id");
-    });
 
     function handleData(data) {
         var row = data.data.records;
@@ -178,6 +175,9 @@
                 '                    </li>';
             list.append(html);
         }
+        $('.product-like').on('click', function () {
+            window.location.href = "/shop/" + $(this).attr("id");
+        });
     }
 
     function prev() {

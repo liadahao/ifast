@@ -84,10 +84,10 @@ function load() {
                         field: 'type',
                         title: '产品状态',
                         formatter: function (value, row, index) {
-                            if (row['status'] == 0) {
+                            if (row['type'] == 0) {
                                 return '上架';
                             }
-                            if (row['status'] == 1) {
+                            if (row['type'] == 1) {
                                 return '下架';
                             }
                         }
