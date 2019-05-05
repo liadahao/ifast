@@ -135,17 +135,18 @@ public class FrontController extends AdminBaseController {
     }
 
     @RequestMapping("/page/{name}")
-    public String website(@PathVariable String name, Integer type, Model model) {
+    public String website(@PathVariable String name, Model model) {
         Wrapper<NavDO> wrapper;
-        if (type != null) {
-            wrapper = new EntityWrapper<NavDO>().eq("type", type);
-        } else {
-            wrapper = new EntityWrapper<NavDO>().eq("name", name);
+        int type = HtmlConstant.getType(name);
+        wrapper = new EntityWrapper<NavDO>().eq("type", type);
+        NavDO navDO = navService.selectOne(wrapper);
+        if (navDO == null) {
+            wrapper = new EntityWrapper<NavDO>().eq("url", "/page/" + name);
+            navDO = navService.selectOne(wrapper);
         }
         List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
                 .eq("isShow", 1).orderBy("`order`", true));
         model.addAttribute("navList", navDOList);
-        NavDO navDO = navService.selectOne(wrapper);
         model.addAttribute("data", navDO);
         if (navDO != null) {
             for (int i = 0, len = navDOList.size(); i < len; i++) {

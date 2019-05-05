@@ -38,6 +38,15 @@ public enum HtmlConstant {
         this.html = html;
     }
 
+    public static int getType(String name) {
+        for (HtmlConstant htmlConstant : values()) {
+            if (htmlConstant.getHtml().equals(name)) {
+                return htmlConstant.getType();
+            }
+        }
+        return 0;
+    }
+
     public int getType() {
         return type;
     }

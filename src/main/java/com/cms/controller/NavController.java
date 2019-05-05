@@ -149,6 +149,11 @@ public class NavController extends AdminBaseController {
     @PostMapping("/save")
     @RequiresPermissions("cms:nav:add")
     public Result<String> save(@RequestBody NavDO nav) {
+        if (!StringUtils.isEmpty(nav.getNavname())) {
+            String url = "/page/";
+            url = url + nav.getNavname().toLowerCase().replace(" ", "");
+            nav.setUrl(url);
+        }
         navService.insert(nav);
         return Result.ok();
     }
@@ -158,6 +163,11 @@ public class NavController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:nav:edit")
     public Result<String> update(@RequestBody NavDO nav) {
+        if (!StringUtils.isEmpty(nav.getNavname())) {
+            String url = "/page/";
+            url = url + nav.getNavname().toLowerCase().replace(" ", "");
+            nav.setUrl(url);
+        }
         boolean update = navService.updateById(nav);
         return update ? Result.ok() : Result.fail();
     }
