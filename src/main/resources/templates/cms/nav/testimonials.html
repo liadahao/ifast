@@ -109,11 +109,29 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-1 control-label">任务肖像：</label>
-                                            <div class="col-sm-4">
-                                                <input th:attr="name=content[model][+${modelStat.index}+][pic]"
+                                            <label class="col-sm-1 control-label">人物肖像：</label>
+                                            <div class="col-sm-8 layui-upload">
+                                                <button type="button" class="layui-btn about-upload-btn"
+                                                        th:id="image-button-+${modelStat.index}">上传图片
+                                                </button>
+                                                <button type="button" th:id="image-album-+${modelStat.index}"
+                                                        class="layui-btn btn-primary nav-album">从相册选择
+                                                </button>
+                                                <button type="button" class="layui-btn about-upload-clear"
+                                                        th:id="image-clear-+${modelStat.index}">清除
+                                                </button>
+                                                <div class="layui-upload-list">
+                                                    <img th:if="${model['pic']!=null && model['pic'] ne ''}"
+                                                         th:src="${model['pic']}" class="layui-upload-img"
+                                                         th:id="image-+${modelStat.index}">
+                                                    <img th:if="${model['pic']==null || model['pic'] eq ''}"
+                                                         class="layui-upload-img" th:id="image-+${modelStat.index}">
+                                                    <p th:id="image-text-+${modelStat.index}"></p>
+                                                </div>
+                                                <input th:id="image-value-+${modelStat.index}"
+                                                       th:attr="name=content[model][+${modelStat.index}+][pic]"
                                                        class="form-control"
-                                                       type="hidden" th:value="${model['pic']}"/>
+                                                       type="hidden" th:value="${model['pic']}">
                                             </div>
                                         </div>
                                     </div>
@@ -160,13 +178,13 @@
             '        <div class="col-sm-4">\n' +
             '            <input name="content[model][' + len + '][name]"\n' +
             '                   class="form-control"\n' +
-            '                   type="text" th:value="${model[\'name\']}"/>\n' +
+            '                   type="text"/>\n' +
             '        </div>\n' +
             '        <label class="col-sm-1 control-label">人物简介 ：</label>\n' +
             '        <div class="col-sm-4">\n' +
             '        <textarea name="content[model][' + len + '][description]"\n' +
             '                  class="form-control"\n' +
-            '                  rows="3" th:text="${model[\'description\']}"></textarea>\n' +
+            '                  rows="3"></textarea>\n' +
             '        </div>\n' +
             '    </div>\n' +
             '    <div class="form-group">\n' +
@@ -174,16 +192,30 @@
             '        <div class="col-sm-4">\n' +
             '        <textarea name="content[model][' + len + '][content]"\n' +
             '                  class="form-control"\n' +
-            '                  rows="5" th:text="${model[\'content\']}"></textarea>\n' +
+            '                  rows="5"></textarea>\n' +
             '        </div>\n' +
             '    </div>\n' +
-            '    <div class="form-group">\n' +
-            '        <label class="col-sm-1 control-label">任务肖像：</label>\n' +
-            '        <div class="col-sm-4">\n' +
-            '            <input name="content[model][' + len + '][pic]" class="form-control"\n' +
-            '                   type="hidden" th:value="${model[\'pic\']}"/>\n' +
+            '<div class="form-group">\n' +
+            '    <label class="col-sm-3 control-label">人物肖像：</label>\n' +
+            '    <div class="col-sm-8 layui-upload">\n' +
+            '        <button type="button" class="layui-btn about-upload-btn"\n' +
+            '                id="image-button-' + len + '">上传图片\n' +
+            '        </button>\n' +
+            '        <button type="button" id="image-album-' + len + '" class="layui-btn btn-primary nav-album">从相册选择\n' +
+            '        </button>\n' +
+            '        <button type="button" class="layui-btn about-upload-clear"\n' +
+            '                id="image-clear-' + len + '">清除\n' +
+            '        </button>\n' +
+            '        <div class="layui-upload-list">\n' +
+            '            <img' +
+            '                 class="layui-upload-img" id="image-' + len + '">\n' +
+            '            <p id="image-text-' + len + '"></p>\n' +
             '        </div>\n' +
-            '    </div>\n' +
+            '        <input id="image-value-' + len + '"\n' +
+            '               name="content[model][' + len + '][pic]"\n' +
+            '               class="form-control"\n' +
+            '               type="hidden">\n' +
+            '</div>' +
             '</div>' +
             '</div>\n';
         page.append(html);
