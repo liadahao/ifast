@@ -72,9 +72,33 @@ body {
 }
 
 .am-collapse p {
-    padding-right: 1.09%;
-    padding-left: 3%
+    width: 420px;
+    height: 294px;
 }
+
+.collapse-video-container {
+    width: 150px;
+    height: 90px;
+    position: relative;
+    float: right;
+}
+
+.collapse-video-container .plyr {
+    min-width: 150px;
+    height: 90px;
+}
+
+.collapse-video-container video {
+    width: 150px;
+    height: 90px;
+    object-fit: fill
+}
+
+.collapse-video-container .plyr__poster {
+    width: 150px;
+    height: 90px;
+}
+
 
 .am-panel-hd {
     background: rgba(0, 0, 0, 0);
@@ -87,11 +111,12 @@ body {
 .am-panel {
     line-height: 1.6;
     background: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 253, 255, 1);
+    border-top: 1px solid rgba(0, 253, 255, 1);
+
 }
 
-.am-panel:first-child {
-    border-top: 1px solid rgba(0, 253, 255, 1);
+.am-panel:last-child {
+    border-bottom: 1px solid rgba(0, 253, 255, 1);
 }
 
 #accordion {
@@ -105,7 +130,8 @@ body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(246, 246, 246, 1);
-    padding: 1.00rem 1.00rem 0;
+    padding-left: 0;
+    padding-right: 0;
     border-top: 0;
 }
 

@@ -11,6 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/plyr.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/front/techtour.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -28,10 +29,9 @@
 
                 </p>
                 <div class="video-container">
-                    <video src="/video/WeChat_20190327231432.mp4"
-                           controls="controls">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="player" data-plyr-provider="youtube"
+                         th:attr="data-plyr-embed-id=|${data['content']['video']}|">
+                    </div>
                 </div>
             </div>
             <div class="am-panel-group am-u-sm-7" id="accordion">
@@ -45,15 +45,14 @@
                     </span>
                     </div>
                     <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
-                        <div class="am-panel-bd">
-                            <div class="am-g">
-                                <p th:if="${data['content']['model1content'] != null}"
-                                   th:text="${data['content']['model1content']}"
-                                   class="am-u-sm-9">
-                                </p>
-                                <video th:src="${data['content']['model1video']}" src="/video/WeChat_20190327231432.mp4"
-                                       controls="controls" class="am-u-sm-3">
-                                </video>
+                        <div class="am-panel-bd" style="overflow: hidden">
+                            <p th:if="${data['content']['model1content'] != null}"
+                               th:text="${data['content']['model1content']}" style="float: left">
+                            </p>
+                            <div class="collapse-video-container">
+                                <div class="player" data-plyr-provider="youtube"
+                                     th:attr="data-plyr-embed-id=${data['content']['model1video']}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -68,15 +67,14 @@
                     </span>
                     </div>
                     <div id="do-not-say-2" class="am-panel-collapse am-collapse">
-                        <div class="am-panel-bd">
-                            <div class="am-g">
-                                <p th:if="${data['content']['model2content'] != null}"
-                                   th:text="${data['content']['model2content']}"
-                                   class="am-u-sm-9">
-                                </p>
-                                <video th:src="${data['content']['model2video']}" src="/video/WeChat_20190327231432.mp4"
-                                       controls="controls" class="am-u-sm-3">
-                                </video>
+                        <div class="am-panel-bd" style="overflow: hidden">
+                            <p th:if="${data['content']['model2content'] != null}"
+                               th:text="${data['content']['model2content']}" style="float: left">
+                            </p>
+                            <div class="collapse-video-container">
+                                <div class="player" data-plyr-provider="youtube"
+                                     th:attr="data-plyr-embed-id=${data['content']['model2video']}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -91,15 +89,14 @@
                     </span>
                     </div>
                     <div id="do-not-say-3" class="am-panel-collapse am-collapse">
-                        <div class="am-panel-bd">
-                            <div class="am-g">
-                                <p th:if="${data['content']['model3content'] != null}"
-                                   th:text="${data['content']['model3content']}"
-                                   class="am-u-sm-9">
-                                </p>
-                                <video th:src="${data['content']['model3video']}" src="/video/WeChat_20190327231432.mp4"
-                                       controls="controls" class="am-u-sm-3">
-                                </video>
+                        <div class="am-panel-bd" style="overflow: hidden">
+                            <p th:if="${data['content']['model3content'] != null}"
+                               th:text="${data['content']['model3content']}" style="float: left">
+                            </p>
+                            <div class="collapse-video-container">
+                                <div class="player" data-plyr-provider="youtube"
+                                     th:attr="data-plyr-embed-id=${data['content']['model3video']}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,8 +111,8 @@
                     </span>
                     </div>
                     <div id="do-not-say-4" class="am-panel-collapse am-collapse">
-                        <div class="am-panel-bd">
-                            <div class="am-g">
+                        <div class="am-panel-bd" style="overflow: hidden">
+                            <div class="am-u-sm-12">
                                 <ul class="am-avg-sm-4 am-thumbnails">
                                     <li th:each="social : ${data['content']['social']}">
                                         <a th:if="${social.isShow eq 'on'}" th:href="${social.url}" target="_blank">
@@ -137,7 +134,9 @@
 <div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script type="text/javascript">
+    const players = Plyr.setup('.player', {controls: ['play-large', 'fullscreen']});
     $(function () {
         var id = '#doc-oc-demo3';
         var $myOc = $(id);

@@ -367,6 +367,8 @@ public class FrontController extends AdminBaseController {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
             Date d = sdf.parse(starttime);
             wrapper.ge("startTime", d);
+            String s = getLastDayOfMonth(d.getMonth());
+            wrapper.le("startTime", s);
         }
         Page<EventDO> page = eventService.selectPage(getPage(EventDO.class), wrapper);
         return Result.ok(page);
@@ -403,4 +405,24 @@ public class FrontController extends AdminBaseController {
         }
         return Integer.parseInt(pageNumber);
     }
+
+    public String getLastDayOfMonth(int month) {
+        Calendar cal = Calendar.getInstance();
+        // 设置月份
+        cal.set(Calendar.MONTH, month);
+        // 获取某月最大天数
+        int lastDay = 0;
+        //2月的平年瑞年天数
+        if (month == 2) {
+            lastDay = cal.getLeastMaximum(Calendar.DAY_OF_MONTH);
+        } else {
+            lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        }
+        // 设置日历中月份的最大天数
+        cal.set(Calendar.DAY_OF_MONTH, lastDay);
+        // 格式化日期
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(cal.getTime()) + " 23:59:59";
+    }
+
 }

@@ -26,19 +26,19 @@
             <div class="content" th:text="${data['content']['headcontent']}">
             </div>
             <div class="boxes">
-                <div class="box box1">
+                <div class="box box1" th:style="'background-image:url(' + @{(${data['content']['model1image']}=='' ? '' : ${data['content']['model1image']})} + ')'">
                     <h1 class="box-title" th:text="${data['content']['model1title']}">
                     </h1>
                     <p class="box-conetnt" th:text="${data['content']['model1content']}">
                     </p>
                 </div>
-                <div class="box box2 ">
+                <div class="box box2" th:style="'background-image:url(' + @{(${data['content']['model2image']}=='' ? '' : ${data['content']['model2image']})} + ')'">
                     <h1 class="box-title" th:text="${data['content']['model2title']}">
                     </h1>
                     <p class="box-conetnt" th:text="${data['content']['model2content']}">
                     </p>
                 </div>
-                <div class="box box3">
+                <div class="box box3" th:style="'background-image:url(' + @{(${data['content']['model3image']}=='' ? '' : ${data['content']['model3image']})} + ')'">
                     <h1 class="box-title" th:text="${data['content']['model3title']}">
                     </h1>
                     <p class="box-conetnt" th:text="${data['content']['model3content']}">

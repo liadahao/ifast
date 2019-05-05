@@ -11,6 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/plyr.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/front/workshop.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -30,20 +31,38 @@
                 <div class="am-u-sm-12" style="height: 100%;width: 492px">
                     <ul class="am-avg-sm-3" id="thumbnail-list">
                         <li th:attr="data-thumb=${data['content']['video1']}">
-                            <img class="video-thumbnail" th:src="${data['content']['video1']}">
+                            <div class="video-thumbnail">
+                                <div class="player" data-plyr-provider="youtube"
+                                     th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                                </div>
+                            </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video2']}">
-                            <img class="video-thumbnail" th:src="${data['content']['video2']}">
+                            <div class="video-thumbnail">
+                                <div class="player" data-plyr-provider="youtube"
+                                     th:attr="data-plyr-embed-id=${data['content']['video2']}">
+                                </div>
+                            </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video3']}">
-                            <img class="video-thumbnail" th:src="${data['content']['video3']}">
+                            <div class="video-thumbnail">
+                                <div class="player" data-plyr-provider="youtube"
+                                     th:attr="data-plyr-embed-id=${data['content']['video3']}">
+                                </div>
+                            </div>
                         </li>
                     </ul>
-                    <img id="carousel-img" src=""/>
+
+                    <div id="carousel-img">
+                        <div id="player" data-plyr-provider="youtube"
+                             th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                        </div>
+                    </div>
                 </div>
                 <div class="right-side am-u-sm-12" style="height: 100%;width: 526px">
                     <div id="right-side-content-list" class="am-u-sm-12">
-                        <div class="am-u-sm-12" style="height: 100%" th:each="model,modelStat : ${data['content']['model']}"
+                        <div class="am-u-sm-12" style="height: 100%"
+                             th:each="model,modelStat : ${data['content']['model']}"
                              th:if="${model.title ne ''}">
                             <div class="title-img-div am-vertical-align">
                                 <img class="am-u-sm-5" th:src="${model['image']}">
@@ -73,6 +92,7 @@
 <div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script>
     $(function () {
         var id = '#doc-oc-demo3';
@@ -81,6 +101,7 @@
             $myOc.offCanvas($(this).data('rel'));
         });
     });
+    const players = Plyr.setup('.player', {controls: ['play-large']});
     var url = $('#thumbnail-list').find('li:first-child').find('img').attr('src');
     $("#carousel-img").attr('src', url);
     var list = $('#right-side-content-list').children();
@@ -99,8 +120,18 @@
                 .attr("class", "locat-img-l");
         }
     });
+    const player = new Plyr('#player');
     $(".video-thumbnail").click(function () {
-        $("#carousel-img").attr('src', $(this).attr('src'));
+        var url = $(this).parent().attr('data-thumb');
+        player.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url,
+                    provider: 'youtube'
+                }
+            ]
+        };
     });
     $("#right-side-prev").click(function () {
         $('#right-side-content-list').children().each(function (index) {

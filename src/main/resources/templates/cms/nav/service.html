@@ -68,9 +68,30 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">图片链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-1-image" name="content[model1image]" class="form-control"
-                                                   type="text" th:value="${nav['content']['model1image']}">
+                                        <div class="col-sm-8 layui-upload">
+                                            <button type="button" class="layui-btn about-upload-btn"
+                                                    id="image-button-1">上传图片
+                                            </button>
+                                            <button type="button" id="image-album-1"
+                                                    class="layui-btn btn-primary nav-album">从相册选择
+                                            </button>
+                                            <button type="button" class="layui-btn about-upload-clear"
+                                                    id="image-clear-1">清除
+                                            </button>
+                                            <div class="layui-upload-list">
+                                                <img th:if="${nav['content']['model1image']!=null
+                                                && nav['content']['model1image'] ne ''}"
+                                                     th:src="${nav['content']['model1image']}" class="layui-upload-img"
+                                                     id="image-1">
+                                                <img th:if="${nav['content']['model1image']==null
+                                                || nav['content']['model1image'] eq ''}"
+                                                     class="layui-upload-img" id="image-1">
+                                                <p id="image-text-1"></p>
+                                            </div>
+                                            <input id="image-value-1"
+                                                   name="content[model1image]"
+                                                   class="form-control"
+                                                   type="hidden" th:value="${nav['content']['model1image']}">
                                         </div>
                                     </div>
                                 </div>
@@ -101,9 +122,30 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">图片链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-2-image" name="content[model2image]" class="form-control"
-                                                   type="text" th:value="${nav['content']['model2image']}">
+                                        <div class="col-sm-8 layui-upload">
+                                            <button type="button" class="layui-btn about-upload-btn"
+                                                    id="image-button-2">上传图片
+                                            </button>
+                                            <button type="button" id="image-album-2"
+                                                    class="layui-btn btn-primary nav-album">从相册选择
+                                            </button>
+                                            <button type="button" class="layui-btn about-upload-clear"
+                                                    id="image-clear-2">清除
+                                            </button>
+                                            <div class="layui-upload-list">
+                                                <img th:if="${nav['content']['model2image']!=null
+                                                && nav['content']['model2image'] ne ''}"
+                                                     th:src="${nav['content']['model2image']}" class="layui-upload-img"
+                                                     id="image-2">
+                                                <img th:if="${nav['content']['model2image']==null
+                                                || nav['content']['model2image'] eq ''}"
+                                                     class="layui-upload-img" id="image-2">
+                                                <p id="image-text-2"></p>
+                                            </div>
+                                            <input id="image-value-2"
+                                                   name="content[model2image]"
+                                                   class="form-control"
+                                                   type="hidden" th:value="${nav['content']['model2image']}">
                                         </div>
                                     </div>
                                 </div>
@@ -134,9 +176,30 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">图片链接：</label>
-                                        <div class="col-sm-8">
-                                            <input id="model-3-image" name="content[model3image]" class="form-control"
-                                                   type="text" th:value="${nav['content']['model3image']}">
+                                        <div class="col-sm-8 layui-upload">
+                                            <button type="button" class="layui-btn about-upload-btn"
+                                                    id="image-button-3">上传图片
+                                            </button>
+                                            <button type="button" id="image-album-3"
+                                                    class="layui-btn btn-primary nav-album">从相册选择
+                                            </button>
+                                            <button type="button" class="layui-btn about-upload-clear"
+                                                    id="image-clear-3">清除
+                                            </button>
+                                            <div class="layui-upload-list">
+                                                <img th:if="${nav['content']['model3image']!=null
+                                                && nav['content']['model3image'] ne ''}"
+                                                     th:src="${nav['content']['model3image']}" class="layui-upload-img"
+                                                     id="image-3">
+                                                <img th:if="${nav['content']['model3image']==null
+                                                || nav['content']['model3image'] eq ''}"
+                                                     class="layui-upload-img" id="image-3">
+                                                <p id="image-text-3"></p>
+                                            </div>
+                                            <input id="image-value-3"
+                                                   name="content[model3image]"
+                                                   class="form-control"
+                                                   type="hidden" th:value="${nav['content']['model3image']}">
                                         </div>
                                     </div>
                                 </div>

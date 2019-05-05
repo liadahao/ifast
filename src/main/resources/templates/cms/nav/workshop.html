@@ -90,10 +90,28 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">图片链接：</label>
-                                        <div class="col-sm-8">
-                                            <input th:attr="name=content[model][+${modelStat.index}+][image]"
+                                        <div class="col-sm-8 layui-upload">
+                                            <button type="button" class="layui-btn about-upload-btn"
+                                                    th:id="image-button-+${modelStat.index}">上传图片
+                                            </button>
+                                            <button type="button" th:id="image-album-+${modelStat.index}"
+                                                    class="layui-btn btn-primary nav-album">从相册选择
+                                            </button>
+                                            <button type="button" class="layui-btn about-upload-clear"
+                                                    th:id="image-clear-+${modelStat.index}">清除
+                                            </button>
+                                            <div class="layui-upload-list">
+                                                <img th:if="${model['image']!=null && model['image'] ne ''}"
+                                                     th:src="${model['image']}" class="layui-upload-img"
+                                                     th:id="image-+${modelStat.index}">
+                                                <img th:if="${model['image']==null || model['image'] eq ''}"
+                                                     class="layui-upload-img" th:id="image-+${modelStat.index}">
+                                                <p th:id="image-text-+${modelStat.index}"></p>
+                                            </div>
+                                            <input th:id="image-value-+${modelStat.index}"
+                                                   th:attr="name=content[model][+${modelStat.index}+][image]"
                                                    class="form-control"
-                                                   type="text" th:value="${model['image']}">
+                                                   type="hidden" th:value="${model['image']}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -130,12 +148,11 @@
 <script src="/js/plugins/staps/jquery.steps.min.js"></script>
 <script src="/js/plugins/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/js/plugins/webuploader/webuploader.js"></script>
-<script type="text/javascript" src="/js/appjs/cms/nav/showLink.js"></script>
 <script type="text/javascript" src="/js/appjs/cms/nav/nav-edit.js"></script>
 <script>
     var page = $('#signupForm-p-1');
-    var len = page.children().length;
-    for (var i = len; i <= 5; i++) {
+    var len = page.children().size();
+    for (var i = len - 1; i < 5; i++) {
         var html = '<div class="layui-card">\n' +
             '    <div class="layui-card-header">\n' +
             '        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">\n' +
@@ -158,13 +175,28 @@
             '                      rows="5"></textarea>\n' +
             '            </div>\n' +
             '        </div>\n' +
-            '        <div class="form-group">\n' +
-            '            <label class="col-sm-3 control-label">图片链接：</label>\n' +
-            '            <div class="col-sm-8">\n' +
-            '                <input name="content[model][' + i + '][image]" class="form-control"\n' +
-            '                       type="text">\n' +
-            '            </div>\n' +
+            '<div class="form-group">\n' +
+            '    <label class="col-sm-3 control-label">图片链接：</label>\n' +
+            '    <div class="col-sm-8 layui-upload">\n' +
+            '        <button type="button" class="layui-btn about-upload-btn"\n' +
+            '                id="image-button-' + i + '">上传图片\n' +
+            '        </button>\n' +
+            '        <button type="button" id="image-album-' + i + '" class="layui-btn btn-primary nav-album">从相册选择\n' +
+            '        </button>\n' +
+            '        <button type="button" class="layui-btn about-upload-clear"\n' +
+            '                id="image-clear-' + i + '">清除\n' +
+            '        </button>\n' +
+            '        <div class="layui-upload-list">\n' +
+            '            <img' +
+            '                 class="layui-upload-img" id="image-' + i + '">\n' +
+            '            <p id="image-text-' + i + '"></p>\n' +
             '        </div>\n' +
+            '        <input id="image-value-' + i + '"\n' +
+            '               name="content[model][' + i + '][image]"\n' +
+            '               class="form-control"\n' +
+            '               type="hidden">\n' +
+            '    </div>\n' +
+            '</div>' +
             '        <div class="form-group">\n' +
             '            <label class="col-sm-3 control-label">是否显示：</label>\n' +
             '            <div class="switch col-sm-8">\n' +

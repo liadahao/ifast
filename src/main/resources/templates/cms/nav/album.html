@@ -119,6 +119,11 @@
                 if (parentImage == 'background') {
                     parent.$('#background').val(url);
                     parent.$('#background-img').attr('src', url);
+                } else if (parentImage != '') {
+                    var type = parentImage.split('-')[0];
+                    var count = parentImage.split('-')[2];
+                    parent.$('#' + type + '-value-' + count).val(url);
+                    parent.$('#' + type + '-' + count).attr('src', url);
                 } else {
                     parent.$('#thumbnail').val(url);
                     var $li = $(
