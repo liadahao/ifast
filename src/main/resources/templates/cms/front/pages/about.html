@@ -57,7 +57,7 @@
                                         <a th:if="${model['social']}"
                                            th:each="social,socialStat :${model['social']}"
                                            th:href="${social['url']}" target="_blank">
-                                            <img th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
+                                            <img th:if="${social.type ne ''}" th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
                                         </a>
                                     </div>
                                     <input type="hidden" th:value="${model['image']}">

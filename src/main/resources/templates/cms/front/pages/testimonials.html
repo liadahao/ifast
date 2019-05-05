@@ -11,6 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/plyr.css}" rel="stylesheet" type="text/css"/>
     <style>
 
         html, body {
@@ -114,6 +115,7 @@
             width: 28px;
             height: 40px;
             position: absolute;
+            cursor: pointer;
         }
 
         .left .down-video {
@@ -122,6 +124,7 @@
             width: 28px;
             height: 40px;
             position: absolute;
+            cursor: pointer;
         }
 
 
@@ -222,12 +225,23 @@
             </p>
             <div class="bg-b">
                 <div class="left">
-                    <img class="first-video" src="/img/agreement-2548138_1280.jpg"/>
+                    <div class="first-video" th:attr="data-thumb=${data['content']['video1']}">
+                        <div id="player1" data-plyr-provider="youtube"
+                             th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                        </div>
+                    </div>
                     <img class="up-video" src="/img/0801up_def.png"/>
                     <img class="down-video" src="/img/0801down_def.png"/>
-                    <img class="second-video"
-                         src="/img/business-brainstorming-between-man-and-woman-in-the-office-picjumbo-com.jpg"/>
-                    <img class="third-video" src="/img/entrepreneur-working-in-the-office-picjumbo-com.jpg"/>
+                    <div class="second-video" th:attr="data-thumb=${data['content']['video2']}">
+                        <div id="player2" data-plyr-provider="youtube"
+                             th:attr="data-plyr-embed-id=${data['content']['video2']}">
+                        </div>
+                    </div>
+                    <div class="third-video" th:attr="data-thumb=${data['content']['video3']}">
+                        <div id="player3" data-plyr-provider="youtube"
+                             th:attr="data-plyr-embed-id=${data['content']['video3']}">
+                        </div>
+                    </div>
                 </div>
                 <div class="right-list">
                     <div class="people-info" th:each="model :${data['content']['model']}">
@@ -252,7 +266,12 @@
 <div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script type="text/javascript">
+    const player1 = new Plyr('#player1', {controls: ['play-large']});
+    const player2 = new Plyr('#player2', {controls: ['play-large']});
+    const player3 = new Plyr('#player3', {controls: ['play-large']});
+
     var list = $(".right-list").children();
     $(function () {
         var id = '#doc-oc-demo3';
@@ -267,6 +286,76 @@
                 $(this).show();
             }
         });
+    });
+    $(".up-video").on('click', function () {
+        var url1 = $(".first-video").attr('data-thumb');
+        var url2 = $(".second-video").attr('data-thumb');
+        var url3 = $(".third-video").attr('data-thumb');
+        player1.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url2,
+                    provider: 'youtube'
+                }
+            ]
+        };
+        player2.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url3,
+                    provider: 'youtube'
+                }
+            ]
+        };
+        player3.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url1,
+                    provider: 'youtube'
+                }
+            ]
+        };
+        $(".first-video").attr('data-thumb', url2);
+        $(".second-video").attr('data-thumb', url3);
+        $(".third-video").attr('data-thumb', url1);
+    });
+    $(".down-video").on('click', function () {
+        var url1 = $(".first-video").attr('data-thumb');
+        var url2 = $(".second-video").attr('data-thumb');
+        var url3 = $(".third-video").attr('data-thumb');
+        player1.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url3,
+                    provider: 'youtube'
+                }
+            ]
+        };
+        player2.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url1,
+                    provider: 'youtube'
+                }
+            ]
+        };
+        player3.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: url2,
+                    provider: 'youtube'
+                }
+            ]
+        };
+        $(".first-video").attr('data-thumb', url3);
+        $(".second-video").attr('data-thumb', url1);
+        $(".third-video").attr('data-thumb', url2);
     });
 
     function prev() {
