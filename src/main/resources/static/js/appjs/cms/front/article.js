@@ -122,6 +122,13 @@ function handleData(data) {
     var row = data.data.records;
     if (row.length === 0) {
         $(".load-more").parent().hide();
+        var textDiv = $('<div>No Search Results</div>').css({
+            "margin": "50px auto",
+            "text-align": "center",
+            "font-size": "42px",
+            "color": "white"
+        });
+        $('#article-list').append(textDiv);
         return;
     }
     var line = articleList.children().size();
@@ -289,9 +296,16 @@ function handleData(data) {
             })
         }
         var tagList = $("#" + obj.id + " .tag-list");
-        for (var i = 0; i < obj.tag.length; i++) {
-            var tagHtml = '<div class="tag">' + obj.tag[i] + '</div>';
+        var tagListWidth = tagList.width();
+        var tempWidth = 0, tagIndex = 0;
+        while (tempWidth < tagListWidth && tagIndex < obj.tag.length) {
+            var tagHtml = '<div class="tag">' + obj.tag[tagIndex] + '</div>';
             tagList.append(tagHtml);
+            tempWidth = tempWidth + tagList.children().eq(tagIndex).outerWidth();
+            if (tempWidth > tagListWidth) {
+                tagList.find(":last-child").remove();
+            }
+            tagIndex++;
         }
         j++
     }

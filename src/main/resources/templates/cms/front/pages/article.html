@@ -14,49 +14,38 @@
     <link th:href="@{/css/front/article.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div th:replace="nav :: top-nav"></div>
 <div class="main">
-    <div class="am-g">
-        <div th:replace="nav :: nav-left-side"></div>
-        <div class="article-body am-u-sm-8">
-            <div class="first-floor am-u-sm-12">
-                <div class="title">Article</div>
-                <div class="content">
-                    Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
-                    ecosystem
-                    and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
-                </div>
-            </div>
-            <div class="search am-u-sm-12">
-                <div class="am-input-group">
-                    <input type="text" class="am-form-field" id="search-title" placeholder="请输入标题" style="width: 400px">
-                    <button class="search-btn" type="button" onclick="search()"></button>
-                </div>
-            </div>
-            <div id="article-list" class="am-u-sm-12"></div>
-            <div class="am-u-sm-12" style="margin-top: 40px">
-                <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
+    <div class="article-body">
+        <div class="first-floor am-u-sm-12">
+            <div class="title">Article</div>
+            <div class="content">
+                Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
+                ecosystem
+                and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
             </div>
         </div>
-        <div th:replace="nav :: nav-right-side"></div>
+        <div class="search am-u-sm-12">
+            <div class="am-input-group">
+                <input type="text" class="am-form-field" id="search-title" placeholder="Please Enter A Title"
+                       style="width: 400px">
+                <button class="search-btn" type="button" onclick="search()"></button>
+            </div>
+        </div>
+        <div id="article-list" class="am-u-sm-12"></div>
+        <div class="am-u-sm-12" style="margin-top: 40px">
+            <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
+        </div>
     </div>
 </div>
 <!-- 侧边栏内容 -->
-<div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/appjs/cms/front/article.js}"></script>
 <script type="text/javascript">
     $(function () {
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
         var width = $(window).width();
         var navWidth = (width - 1240) / 2;
-        $(".right-nav-parent").width(navWidth);
-        $(".left-nav-parent").width(navWidth);
+        $(".article-body").css('margin-left', navWidth);
     });
 </script>
 </body>

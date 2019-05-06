@@ -7,6 +7,29 @@
     <img class="nav" src="/img/nav.png" data-am-offcanvas="{target: '#doc-oc-demo3'}">
 </header>
 
+<div th:fragment=index-nav-side>
+    <div id="doc-oc-demo3" class="am-offcanvas">
+        <div class="am-offcanvas-bar am-offcanvas-bar-flip">
+            <div class="side-close" data-rel="close">
+                <img src="/img/0103close.png">
+            </div>
+            <div class="am-offcanvas-content">
+                <h3 th:each="nav,navStat : ${navList}">
+                    <a th:href="|/page?index=${navStat.index}|" th:text="${nav['navname']}"></a>
+                </h3>
+            </div>
+            <div class="bottom-social-list">
+                <a th:if="${navSocialList}"
+                   th:each="social,socialStat :${navSocialList}"
+                   th:href="${social['url']}" target="_blank">
+                    <img th:if="${social.logo ne ''}"
+                         th:src="|/img/0503share_${#strings.toLowerCase(social.logo)}_def.png|"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:fragment=nav-side>
     <div id="doc-oc-demo3" class="am-offcanvas">
         <div class="am-offcanvas-bar am-offcanvas-bar-flip">
@@ -15,7 +38,7 @@
             </div>
             <div class="am-offcanvas-content">
                 <h3 th:each="nav : ${navList}">
-                    <a th:href="${nav['url']}" th:text="${nav['navname']}"></a>
+                    <a th:text="${nav['navname']}" href="#"></a>
                 </h3>
             </div>
         </div>
@@ -29,7 +52,8 @@
     </div>
 </div>
 
-<div th:class="${next['name'] != null?'am-u-sm-2 am-vertical-align left-nav-parent':'am-u-sm-2'}" style="height: 768px" th:fragment=nav-left-side>
+<div th:class="${next['name'] != null?'am-u-sm-2 am-vertical-align left-nav-parent':'am-u-sm-2'}" style="height: 768px"
+     th:fragment=nav-left-side>
     <div class="left-nav am-vertical-align-middle" th:if="${next['name'] != null}">
         <div class="top" th:if="${prev['name'] != null}">
             <a th:href="${prev['url']}">

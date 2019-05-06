@@ -213,11 +213,9 @@
     </style>
 </head>
 <body>
-<div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
         <img class="bg-a" src="/img/0801bg1.png">
-        <div th:replace="nav :: other-nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="title" th:text="${data['content']['title']}">
             </div>
@@ -259,11 +257,8 @@
                 </div>
             </div>
         </div>
-        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
-<!-- 侧边栏内容 -->
-<div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plyr.js}"></script>
@@ -274,11 +269,6 @@
 
     var list = $(".right-list").children();
     $(function () {
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
         list.each(function (index) {
             if (index !== 0) {
                 $(this).hide();

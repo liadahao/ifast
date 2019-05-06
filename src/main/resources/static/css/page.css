@@ -30,6 +30,7 @@ html, body {
     background: rgba(0, 0, 0, 0);
     top: 0;
     left: 0;
+    z-index: 999;
 }
 
 .am-offcanvas-bar {
@@ -150,7 +151,7 @@ footer {
 }
 
 .left-nav .top {
-    margin-top: 38.7%;
+    margin-top: 117px;
     width: 50px;
 }
 
@@ -170,7 +171,7 @@ footer {
     text-align: right;
     color: rgba(255, 255, 255, 1);
     margin-top: 45px;
-    margin-left: -40px;
+    margin-left: -36px;
     opacity: 0.6;
     height: 80px;
     width: 150px;
@@ -190,7 +191,7 @@ footer {
     width: 150px;
     text-align: left;
     margin-bottom: 60px;
-    margin-left: -55px;
+    margin-left: -50px;
     transform: rotate(-90deg);
     -ms-transform: rotate(-90deg); /* IE 9 */
     -moz-transform: rotate(-90deg); /* Firefox */
@@ -210,7 +211,20 @@ footer {
 .right-nav a:first-child {
 }
 
-.right-nav .select-circular {
+.bottom-social-list{
+    border-top: 1px solid rgba(0,253,255,1);
+    margin-left: 2.83%;
+    margin-right: 2.83%;
+    padding-top: 4.17%;
+    padding-left: 80px;
+    margin-bottom: 4.17%;
+}
+
+.bottom-social-list a{
+    margin-right: 40px;
+}
+
+.select-circular {
     margin-bottom: 20px;
     width: 12px;
     height: 12px;
@@ -219,7 +233,7 @@ footer {
     display: block;
 }
 
-.right-nav .circular {
+.circular {
     margin-bottom: 20px;
     width: 12px;
     height: 12px;
@@ -227,6 +241,7 @@ footer {
     opacity: 0.4;
     border-radius: 5px;
     display: block;
+    cursor: pointer;
 }
 
 .product-title {

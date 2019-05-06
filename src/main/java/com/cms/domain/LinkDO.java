@@ -1,5 +1,7 @@
 package com.cms.domain;
 
+import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -9,38 +11,40 @@ import com.ifast.common.base.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-
 /**
  * 
  * <pre>
- * 
+ * 系统日志
  * </pre>
- * <small> 2019-04-11 00:02:07 | Aron</small>
+ * <small> 2019-05-06 23:41:55 | Aron</small>
  */
 @Data
 @SuppressWarnings("serial")
 @TableName("link")
 public class LinkDO implements Serializable {
+
     @TableId(type = IdType.AUTO)
 	private Long id;
 
-    /** 外链名称 */
+    /** 名称 */
     private String name;
 
-    /** 是否显示（1：显示 0：隐藏） */
-    private Integer show;
+    /** 是否显示 */
+    private Integer isshow;
 
-    /** 外链logo */
+    /** logo链接 */
     private String logo;
 
-    /** 排序 */
-    private Integer order;
+    /** 权重 */
+    private Integer weight;
 
-    /** 外链地址 */
+    /** 跳转链接 */
     private String url;
 
-    /**  */
-    private Integer navid;
+    /** 创建时间 */
+    private Date createtime;
+
+    /** 类型 */
+    private Integer type;
 
 }

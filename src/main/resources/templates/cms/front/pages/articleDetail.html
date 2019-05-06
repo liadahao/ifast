@@ -161,9 +161,16 @@
                 '        </li>';
             list.append(html);
             var tagList = $("#" + obj.id + " .tag-list");
-            for (var i = 0; i < obj.tag.length; i++) {
-                var tagHtml = '<div class="tag">' + obj.tag[i] + '</div>';
+            var tagListWidth = tagList.width();
+            var tempWidth = 0, tagIndex = 0;
+            while (tempWidth < tagListWidth && tagIndex < obj.tag.length) {
+                var tagHtml = '<div class="tag">' + obj.tag[tagIndex] + '</div>';
                 tagList.append(tagHtml);
+                tempWidth = tempWidth + tagList.children().eq(tagIndex).outerWidth();
+                if (tempWidth > tagListWidth) {
+                    tagList.find(":last-child").remove();
+                }
+                tagIndex++;
             }
         }
     }

@@ -8,7 +8,7 @@ package com.ifast.generator.type;
  */
 public class EnumGen {
     public static enum KvType {
-        mapping(4400, "java与db字段映射关系"), base(4401, "生成注释基本配置"), index(4402, "首页设置");
+        mapping(4400, "java与db字段映射关系"), base(4401, "生成注释基本配置"), index(4402, "首页设置"), nav(4403, "导航社交媒体");
 
         private int value;
         private String desc;
@@ -43,6 +43,6 @@ public class EnumGen {
             }
             return "";
         }
-        }
+    }
 
 }

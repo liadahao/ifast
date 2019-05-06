@@ -14,10 +14,8 @@
     <link th:href="@{/css/front/about.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
-        <div th:replace="nav :: nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
                 <ul class="am-tabs-nav am-nav am-nav-tabs">
@@ -57,7 +55,8 @@
                                         <a th:if="${model['social']}"
                                            th:each="social,socialStat :${model['social']}"
                                            th:href="${social['url']}" target="_blank">
-                                            <img th:if="${social.type ne ''}" th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
+                                            <img th:if="${social.type ne ''}"
+                                                 th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
                                         </a>
                                     </div>
                                     <input type="hidden" th:value="${model['image']}">
@@ -84,11 +83,8 @@
                 </div>
             </div>
         </div>
-        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
-<!-- 侧边栏内容 -->
-<div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript">
@@ -102,13 +98,8 @@
         prevText: '',
         nextText: ''
     });
-    var list = $("#info-list").children();
     $(function () {
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
+        var list = $("#info-list").children();
         list.each(function (index) {
             if (index !== 0) {
                 $(this).hide();

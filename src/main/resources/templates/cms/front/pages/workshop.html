@@ -15,10 +15,8 @@
     <link th:href="@{/css/front/workshop.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
-        <div th:replace="nav :: nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="title">
                 <h1 th:text="${data['content']['title']}" class="title-content">
@@ -85,7 +83,6 @@
                 </div>
             </div>
         </div>
-        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
 <div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
@@ -100,19 +97,12 @@
         </div>
     </div>
 </div>
-<!-- 侧边栏内容 -->
-<div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script>
     const controls = `<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>`
     $(function () {
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
         const players = Plyr.setup('.player', {controls, clickToPlay: false});
         const player = new Plyr('#player', {controls, clickToPlay: false});
         const popPlayer = new Plyr('#pop-player');

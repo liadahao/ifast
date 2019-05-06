@@ -8,11 +8,18 @@ $.validator.setDefaults({
 	}
 });
 function save() {
+	var isshow = document.getElementById('isshowCheck').checked;
+	if (isshow) {
+		$("#isshow").val('1');
+	} else {
+		$("#isshow").val('0');
+	}
+	var data = $('#signupForm').serialize();
 	$.ajax({
 		cache : true,
 		type : "POST",
 		url : "/cms/link/save",
-		data : $('#signupForm').serialize(),// 你的formid
+		data : data,// 你的formid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
@@ -20,7 +27,7 @@ function save() {
 		success : function(data) {
 			if (data.code == 0) {
 				parent.layer.msg("操作成功");
-				parent.reLoad();
+				parent.reLoadLink();
 				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
 				parent.layer.close(index);
 

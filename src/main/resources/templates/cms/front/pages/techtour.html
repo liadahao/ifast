@@ -15,10 +15,8 @@
     <link th:href="@{/css/front/techtour.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
-        <div th:replace="nav :: nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="left-side am-u-sm-5">
                 <div class="title">
@@ -132,7 +130,6 @@
                 </div>
             </div>
         </div>
-        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
 <div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
@@ -146,7 +143,6 @@
     </div>
 </div>
 <!-- 侧边栏内容 -->
-<div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plyr.js}"></script>
@@ -154,11 +150,6 @@
     const players = Plyr.setup('.player', {controls: ['play-large']});
     const player = Plyr.setup('#player');
     $(function () {
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
         $('.collapse-video-container').on('click', function () {
             var url = $(this).attr('video-url');
             player.source = {

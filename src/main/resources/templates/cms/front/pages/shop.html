@@ -20,11 +20,9 @@
     </style>
 </head>
 <body>
-<div th:replace="nav :: top-nav"></div>
 <div class="main">
     <div class="am-g" style="height:768px">
         <input id="id" type="hidden" th:value="${product.id}">
-        <div th:replace="nav :: nav-left-side"></div>
         <div class="main-body am-u-sm-8">
             <div class="product am-u-sm-12">
                 <div class="product-text">
@@ -82,20 +80,12 @@
                 </ul>
             </div>
         </div>
-        <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
-<!-- 侧边栏内容 -->
-<div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript">
     $(function () {
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
         var list = $(".image-list").children();
         var len = $(".image-list").children().size();
         $(".image-controller").click(function () {

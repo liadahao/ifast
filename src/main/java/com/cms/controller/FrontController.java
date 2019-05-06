@@ -47,15 +47,38 @@ public class FrontController extends AdminBaseController {
     ConfigService configService;
     @Autowired
     ProductService productService;
+    @Autowired
+    LinkService linkService;
 
     @GetMapping({"/", ""})
     String welcome(Model model) {
-        return "redirect:/page/index";
+        return "redirect:/index";
     }
 
     @RequestMapping("/index")
     public String index(Model model) {
-        return "redirect:/page/index";
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
+        List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
+                .eq("isShow", 1).orderBy("weight", true));
+        model.addAttribute("navSocialList", linkDOList);
+        // 获取首页设置信息
+        List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
+        Map<String, Object> map = new HashMap<>();
+        map.put("content", new HashMap<>());
+        for (ConfigDO configDO : configDOList) {
+            if (configDO.getK().equals("content")) {
+                if (!StringUtils.isEmpty(configDO.getV())) {
+                    HashMap<String, Object> contentMap = JSON.parseObject(configDO.getV(), HashMap.class);
+                    map.put(configDO.getK(), contentMap);
+                }
+            } else {
+                map.put(configDO.getK(), configDO.getV());
+            }
+        }
+        model.addAttribute("index", map);
+        return "/cms/front/pages/index";
     }
 
     @RequestMapping("/shop")
@@ -63,6 +86,9 @@ public class FrontController extends AdminBaseController {
         List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
                 .eq("isShow", 1).orderBy("`order`", true));
         model.addAttribute("navList", navDOList);
+        List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
+                .eq("isShow", 1).orderBy("weight", true));
+        model.addAttribute("navSocialList", linkDOList);
         Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>()
                 .orderBy("`order`", false)
                 .eq("type", ProductDO.ON_SHELVES)
@@ -96,6 +122,9 @@ public class FrontController extends AdminBaseController {
         List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
                 .eq("isShow", 1).orderBy("`order`", true));
         model.addAttribute("navList", navDOList);
+        List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
+                .eq("isShow", 1).orderBy("weight", true));
+        model.addAttribute("navSocialList", linkDOList);
         ProductDO productDO = productService.selectById(id);
         productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         model.addAttribute("product", productDO);
@@ -134,6 +163,34 @@ public class FrontController extends AdminBaseController {
         return Result.ok(page);
     }
 
+    @RequestMapping("/page")
+    public String website(Integer index, Model model) {
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
+        List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
+                .eq("isShow", 1).orderBy("weight", true));
+        model.addAttribute("navSocialList", linkDOList);
+        // 获取首页设置信息
+        List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
+        Map<String, Object> map = new HashMap<>();
+        map.put("content", new HashMap<>());
+        for (ConfigDO configDO : configDOList) {
+            if (configDO.getK().equals("content")) {
+                if (!StringUtils.isEmpty(configDO.getV())) {
+                    HashMap<String, Object> contentMap = JSON.parseObject(configDO.getV(), HashMap.class);
+                    map.put(configDO.getK(), contentMap);
+                }
+            } else {
+                map.put(configDO.getK(), configDO.getV());
+            }
+        }
+        model.addAttribute("index", map);
+        model.addAttribute("currentPage", index);
+        return "/cms/front/pages/page";
+    }
+
+
     @RequestMapping("/page/{name}")
     public String website(@PathVariable String name, Model model) {
         Wrapper<NavDO> wrapper;
@@ -144,26 +201,7 @@ public class FrontController extends AdminBaseController {
             wrapper = new EntityWrapper<NavDO>().eq("url", "/page/" + name);
             navDO = navService.selectOne(wrapper);
         }
-        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
-                .eq("isShow", 1).orderBy("`order`", true));
-        model.addAttribute("navList", navDOList);
         model.addAttribute("data", navDO);
-        if (navDO != null) {
-            for (int i = 0, len = navDOList.size(); i < len; i++) {
-                if (Objects.equals(navDO.getId(), navDOList.get(i).getId())) {
-                    if (i > 0) {
-                        model.addAttribute("prev", navDOList.get(i - 1));
-                    } else {
-                        model.addAttribute("prev", new HashMap<>());
-                    }
-                    if (i < (len - 1)) {
-                        model.addAttribute("next", navDOList.get(i + 1));
-                    } else {
-                        model.addAttribute("next", new HashMap<>());
-                    }
-                }
-            }
-        }
         String suffix = "";
         Map data;
         if (navDO != null && !StringUtils.isEmpty(navDO.getContent())) {
