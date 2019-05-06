@@ -49,7 +49,9 @@
                             <p th:if="${data['content']['model1content'] != null}"
                                th:text="${data['content']['model1content']}" style="float: left">
                             </p>
-                            <div class="collapse-video-container">
+                            <div class="collapse-video-container"
+                                 data-am-modal="{target: '#my-popup', width: 800, height: 500}"
+                                 th:attr="video-url=${data['content']['model1video']}">
                                 <div class="player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['model1video']}">
                                 </div>
@@ -71,7 +73,9 @@
                             <p th:if="${data['content']['model2content'] != null}"
                                th:text="${data['content']['model2content']}" style="float: left">
                             </p>
-                            <div class="collapse-video-container">
+                            <div class="collapse-video-container"
+                                 data-am-modal="{target: '#my-popup', width: 800, height: 500}"
+                                 th:attr="video-url=${data['content']['model2video']}">
                                 <div class="player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['model2video']}">
                                 </div>
@@ -93,7 +97,9 @@
                             <p th:if="${data['content']['model3content'] != null}"
                                th:text="${data['content']['model3content']}" style="float: left">
                             </p>
-                            <div class="collapse-video-container">
+                            <div class="collapse-video-container"
+                                 th:attr="video-url=${data['content']['model3video']}"
+                                 data-am-modal="{target: '#my-popup', width: 800, height: 500}">
                                 <div class="player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['model3video']}">
                                 </div>
@@ -129,19 +135,47 @@
         <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
-
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div id="player"></div>
+        </div>
+    </div>
+</div>
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script type="text/javascript">
-    const players = Plyr.setup('.player', {controls: ['play-large', 'fullscreen']});
+    const players = Plyr.setup('.player', {controls: ['play-large']});
+    const player = Plyr.setup('#player');
     $(function () {
         var id = '#doc-oc-demo3';
         var $myOc = $(id);
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
+        });
+        $('.collapse-video-container').on('click', function () {
+            var url = $(this).attr('video-url');
+            player.source = {
+                type: 'video',
+                sources: [
+                    {
+                        src: url,
+                        provider: 'youtube',
+                    },
+                ],
+            };
+            e = window.event || e;
+            if (e.stopPropagation) {
+                e.stopPropagation();      //阻止事件 冒泡传播
+            } else {
+                e.cancelBubble = true;   //ie兼容
+            }
         });
     });
 </script>

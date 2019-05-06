@@ -38,8 +38,10 @@
                                         <button type="button" class="layui-btn" id="logo">上传图片</button>
                                         <button type="button" class="layui-btn" id="logo-clear">清除</button>
                                         <div class="layui-upload-list">
-                                            <img th:if="${data['indexLogo']!=null && data['indexLogo'] ne ''}" th:src="${data['indexLogo']}" class="layui-upload-img" id="logo-img">
-                                            <img th:if="${data['indexLogo']==null || data.indexLogo eq ''}" class="layui-upload-img" id="logo-img">
+                                            <img th:if="${data['indexLogo']!=null && data['indexLogo'] ne ''}"
+                                                 th:src="${data['indexLogo']}" class="layui-upload-img" id="logo-img">
+                                            <img th:if="${data['indexLogo']==null || data.indexLogo eq ''}"
+                                                 class="layui-upload-img" id="logo-img">
                                             <p id="logo-text"></p>
                                         </div>
                                     </div>
@@ -49,24 +51,40 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">背景视频设置：</label>
                                     <div class="layui-upload col-sm-8">
-                                        <button type="button" class="layui-btn" id="video">上传视频</button>
-                                        <button type="button" class="layui-btn" id="video-clear">清除</button>
+                                        <button type="button" class="layui-btn" id="background-video-btn">上传视频</button>
+                                        <button type="button" class="layui-btn" id="background-video-clear">清除</button>
                                         <div class="layui-upload-list">
-                                            <video th:if="${data.indexVideo!=null && data['indexVideo'] ne ''}" th:src="${data.indexVideo}" id="video-img" controls style="width: 50%!important;">
+                                            <video th:if="${data['indexBackgroundVideo']!=null && data['indexBackgroundVideo'] ne ''}"
+                                                   th:src="${data['indexBackgroundVideo']}" id="background-video"
+                                                   controls style="width: 50%!important;">
                                             </video>
-                                            <video th:if="${data.indexVideo==null || data.indexVideo eq ''}" id="video-img" controls style="width: 50%!important;display: none">
+                                            <video th:if="${data['indexBackgroundVideo']==null || data['indexBackgroundVideo'] eq ''}"
+                                                   id="background-video" controls
+                                                   style="width: 50%!important;display: none">
                                             </video>
-                                            <p id="video-text"></p>
+                                            <p id="background-video-text"></p>
                                         </div>
                                     </div>
-                                    <input id="indexVideo" name="indexVideo" class="form-control" type="hidden"
-                                           th:value="${data['indexVideo']}"/>
+                                    <input id="indexBackgroundVideo" name="indexBackgroundVideo" class="form-control"
+                                           type="hidden"
+                                           th:value="${data['indexBackgroundVideo']}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">弹窗视频设置：</label>
+                                    <div class="col-sm-8">
+                                        <input id="indexVideo" name="indexVideo" class="form-control" type="text"
+                                               th:value="${data['indexVideo']}"/>
+                                    </div>
+                                    <label class="col-sm-3 control-label"></label>
+                                    <div class="col-sm-8" style="color: #0a6aa1">
+                                        **仅支持Youtube视频Url地址
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-8 link-table">
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-title">
-                                                <h5>社交媒体链接添加(每个媒体只能添加一个，重复会被覆盖)</h5>
+                                                <h5>社交媒体链接添加</h5>
                                             </div>
                                             <span id="addLink" class="btn btn-primary"
                                                   onclick="addTechtourLink(0)">添加</span>
@@ -137,7 +155,8 @@
                             <div class="form-group">
                                 <div class="col-sm-8 col-sm-offset-3">
                                     <button onclick="go()" type="submit" class="btn btn-primary">保存</button>
-                                    <button onclick="location.reload() " type="submit" class="btn btn-primary">取消</button>
+                                    <button onclick="location.reload() " type="submit" class="btn btn-primary">取消
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +205,7 @@
         var uploadInst = upload.render({
             elem: '#logo'
             , url: '/common/sysFile/upload'
-            ,accept:'images'
+            , accept: 'images'
             , before: function (obj) {
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
@@ -213,14 +232,26 @@
         });
 
         upload.render({
-            elem: '#video'
-            ,url: '/common/sysFile/upload'
-            ,accept: 'video' //视频
-            ,done: function(res){
+            elem: '#background-video-btn'
+            , url: '/common/sysFile/upload'
+            , accept: 'video' //视频
+            , done: function (res) {
                 layer.msg("上传成功");
-                $('#video-img').attr('src', res.data);
+                $('#background-video').attr('src', res.data);
+                $('#indexBackgroundVideo').val(res.data);
+                $('#background-video').show();
+            }
+        });
+
+        upload.render({
+            elem: '#video-btn'
+            , url: '/common/sysFile/upload'
+            , accept: 'video' //视频
+            , done: function (res) {
+                layer.msg("上传成功");
+                $('#video').attr('src', res.data);
                 $('#indexVideo').val(res.data);
-                $('#video-img').show();
+                $('#video').show();
             }
         });
     });

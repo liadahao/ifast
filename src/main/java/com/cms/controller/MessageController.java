@@ -60,7 +60,7 @@ public class MessageController extends AdminBaseController {
     @GetMapping("/list")
     @RequiresPermissions("cms:message:message")
     public Result<Page<MessageDO>> list(MessageDO messageDTO) {
-        Wrapper<MessageDO> wrapper = new EntityWrapper<MessageDO>().orderBy("id", false);
+        Wrapper<MessageDO> wrapper = new EntityWrapper<MessageDO>().orderBy("`status`", false);
 //        UserDO user = getUser();
         Subject user = getSubjct();
         if (!user.hasRole("adminRole")) {

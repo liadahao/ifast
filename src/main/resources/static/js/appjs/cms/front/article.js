@@ -121,6 +121,7 @@ function handleData(data) {
     var articleList = $("#article-list");
     var row = data.data.records;
     if (row.length === 0) {
+        $(".load-more").parent().hide();
         return;
     }
     var line = articleList.children().size();

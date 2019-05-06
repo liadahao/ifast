@@ -53,7 +53,7 @@
                         </li>
                     </ul>
 
-                    <div id="carousel-img">
+                    <div id="carousel-img" data-am-modal="{target: '#my-popup', width: 800, height: 500}">
                         <div id="player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video1']}">
                         </div>
@@ -88,20 +88,72 @@
         <div th:replace="nav :: nav-right-side"></div>
     </div>
 </div>
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div id="pop-player" data-plyr-provider="youtube"
+                 th:attr="data-plyr-embed-id=${data['content']['video1']}">
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 侧边栏内容 -->
 <div th:include="nav :: nav-side"></div>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script>
+    const controls = `<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>`
     $(function () {
         var id = '#doc-oc-demo3';
         var $myOc = $(id);
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
+        const players = Plyr.setup('.player', {controls, clickToPlay: false});
+        const player = new Plyr('#player', {controls, clickToPlay: false});
+        const popPlayer = new Plyr('#pop-player');
+        $('.video-thumbnail .plyr__control').on('click', function () {
+            event.preventDefault();
+        });
+        $('#player .plyr__control').on('click', function () {
+            event.preventDefault();
+        });
+        $(".video-thumbnail").click(function () {
+            var url = $(this).parent().attr('data-thumb');
+            player.source = {
+                type: 'video',
+                sources: [
+                    {
+                        src: url,
+                        provider: 'youtube'
+                    }
+                ]
+            };
+            popPlayer.source = {
+                type: 'video',
+                sources: [
+                    {
+                        src: url,
+                        provider: 'youtube'
+                    }
+                ]
+            };
+            e = window.event || e;
+            if (e.stopPropagation) {
+                e.stopPropagation();      //阻止事件 冒泡传播
+            } else {
+                e.cancelBubble = true;   //ie兼容
+            }
+        });
+        $('#my-popup').on('close.modal.amui', function () {
+            popPlayer.pause();
+        });
+
     });
-    const players = Plyr.setup('.player', {controls: ['play-large']});
     var url = $('#thumbnail-list').find('li:first-child').find('img').attr('src');
     $("#carousel-img").attr('src', url);
     var list = $('#right-side-content-list').children();
@@ -120,19 +172,7 @@
                 .attr("class", "locat-img-l");
         }
     });
-    const player = new Plyr('#player');
-    $(".video-thumbnail").click(function () {
-        var url = $(this).parent().attr('data-thumb');
-        player.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url,
-                    provider: 'youtube'
-                }
-            ]
-        };
-    });
+
     $("#right-side-prev").click(function () {
         $('#right-side-content-list').children().each(function (index) {
             if (index === 0) {

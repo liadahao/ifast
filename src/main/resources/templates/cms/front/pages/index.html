@@ -12,7 +12,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
-
+    <link th:href="@{/css/plyr.css}" rel="stylesheet" type="text/css"/>
     <style>
         .main {
             color: #fff;
@@ -100,6 +100,10 @@
             z-index: -999;
         }
 
+        .am-modal-hd {
+            height: 30px;
+        }
+
     </style>
 </head>
 <body>
@@ -108,8 +112,9 @@
     <div class="am-g am-vertical-align-middle" style="text-align: center">
         <div id="videocontainer">
             <video class="background_video" id="background_video" playsinline="" autoplay="" muted="" loop="">
-                <source th:if="${index['indexVideo']!=null}" src="" th:src="${index['indexVideo']}" type="video/mp4"/>
-                <source th:if="${index['indexVideo']==null}" src="/video/城市.mp4" type="video/mp4"/>
+                <source th:if="${index['indexBackgroundVideo']!=null}" src="" th:src="${index['indexBackgroundVideo']}"
+                        type="video/mp4"/>
+                <source th:if="${index['indexBackgroundVideo']==null}" src="/video/城市.mp4" type="video/mp4"/>
             </video>
         </div>
         <div class="am-u-lg-12">
@@ -120,16 +125,21 @@
             <div class="am-text-xxl">
                 <a href="/page/techtour" class="am-btn am-btn-xl get-btn">Learn More</a>
             </div>
-            <div class="watch-video" data-am-modal="{target: '#my-popup'}">
+            <div class="watch-video" data-am-modal="{target: '#my-popup', width: 800, height: 500}">
                 <i class="am-icon-play-circle-o am-icon-sm watch-icon"></i>
                 Watch Video
             </div>
-            <div class="am-popup" id="my-popup">
-                <video class="pop_video" controls="controls" id="" playsinline="" autoplay="">
-                    <source th:if="${index['indexVideo']!=null}" src="" th:src="${index['indexVideo']}"
-                            type="video/mp4"/>
-                    <source th:if="${index['indexVideo']==null}" src="/video/城市.mp4" type="video/mp4"/>
-                </video>
+            <div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
+                <div class="am-modal-dialog">
+                    <div class="am-modal-hd">
+                        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                    </div>
+                    <div class="am-modal-bd">
+                        <div id="player" data-plyr-provider="youtube"
+                             th:attr="data-plyr-embed-id=${index['indexVideo']}">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -139,7 +149,7 @@
         <div th:each="social : ${index['content']['social']}"
              th:if="${social['isShow'] eq 'on' && social['logo'] ne ''}"
              class="social">
-            <img class="footer-icon" th:src="${social['logo']}">
+            <a th:href="${social['url']}" target="_blank"><img class="footer-icon" th:src="${social['logo']}"></a>
         </div>
     </div>
 </footer>
@@ -148,14 +158,18 @@
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/amazeui.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/bideo.js}"></script>
+<script type="text/javascript" th:src="@{/js/plyr.js}"></script>
 <script type="text/javascript">
+    const player = new Plyr('#player');
     $(function () {
         var id = '#doc-oc-demo3';
         var $myOc = $(id);
         $('.side-close').on('click', function () {
             $myOc.offCanvas($(this).data('rel'));
         });
-
+        $('#my-popup').on('close.modal.amui', function () {
+            player.pause();
+        });
 
         var bv = new Bideo();
         bv.init({
