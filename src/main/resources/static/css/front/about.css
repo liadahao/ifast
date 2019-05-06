@@ -77,6 +77,10 @@ html, body {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(156, 155, 155, 1);
+    height:15px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
 }
 
 .people-content {
