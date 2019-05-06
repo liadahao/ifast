@@ -125,7 +125,7 @@
             });
             var wheelName = navigator.userAgent.indexOf("Firefox") > 0 ? "DOMMouseScroll" : "mousewheel";
 
-            $(document).on(wheelName, function () {
+            $(navbarUl).on(wheelName, function () {
                 var event = window.event || arguments.callee.caller.arguments[0];
                 //console.log(event);
                 var contentV = 0;
