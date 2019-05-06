@@ -9,7 +9,7 @@ body {
 
 .title-content {
     height: 148px;
-    margin-top: -24px;
+    margin-top: 20px;
     margin-bottom: 0;
     padding-left: 70px;
     padding-top: 3%;
@@ -25,16 +25,24 @@ body {
 .content {
     width: 976px;
     margin-left: 124px;
-    height: 100px;
+    height: 73px;
     font-size: 16px;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
     line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
 }
 
 .boxes {
-    margin-top: 2.22%;
+    margin-top: 25px;
     height: auto;
     overflow: hidden
 }
@@ -53,7 +61,7 @@ body {
     width: 340px;
     float: left;
     background-size: cover;
-    min-height: 570px;
+    height: 500px;
 }
 
 .box1 {
@@ -69,13 +77,16 @@ body {
 }
 
 .box-title {
-    height: 80px;
-    margin-top: 209px;
+    height: 77px;
+    margin-top: 189px;
     font-size: 30px;
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
     line-height: 1.6;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
 }
 
 .box-conetnt {
@@ -85,6 +96,9 @@ body {
     color: rgba(255, 255, 255, 1);
     margin-top: 20px;
     width:310px;
-    height:241px;
+    height:161px;
     line-height: 1.5;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
 }

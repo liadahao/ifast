@@ -41,6 +41,14 @@
                     <a th:text="${nav['navname']}" href="#"></a>
                 </h3>
             </div>
+            <div class="bottom-social-list">
+                <a th:if="${navSocialList}"
+                   th:each="social,socialStat :${navSocialList}"
+                   th:href="${social['url']}" target="_blank">
+                    <img th:if="${social.logo ne ''}"
+                         th:src="|/img/0503share_${#strings.toLowerCase(social.logo)}_def.png|"/>
+                </a>
+            </div>
         </div>
     </div>
 </div>

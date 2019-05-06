@@ -244,6 +244,10 @@ footer {
     cursor: pointer;
 }
 
+.product{
+    margin-top: 47px;
+}
+
 .product-title {
     font-size: 32px;
     font-family: PingFangSC-Light;
@@ -271,6 +275,9 @@ footer {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: rgba(216, 218, 220, 1);
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
 }
 
 .product-detail li {
@@ -363,7 +370,7 @@ footer {
     line-height: 1;
     width: 176px;
     height: 60px;
-    padding-top: 10px;
+    padding: 10px;
     background: url("/img/product_like.png");
     background-size: cover;
     border-radius: 0 0 2px 2px;
@@ -378,6 +385,11 @@ footer {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    width:157px;
+    font-size:14px;
+    font-family:PingFangSC-Light;
+    font-weight:300;
+    color:rgba(255,255,255,1);
 }
 
 .product-info p:last-child {

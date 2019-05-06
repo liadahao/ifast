@@ -184,10 +184,6 @@ html, body {
     padding: 0;
 }
 
-.am-tabs {
-    height: 100%;
-}
-
 .am-active .tab-bg {
     width: 200px;
     height: 30px;
@@ -206,6 +202,9 @@ html, body {
     font-weight:300;
     color:rgba(255,255,255,1);
     line-height: 1.6;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
 }
 
 .social-list{

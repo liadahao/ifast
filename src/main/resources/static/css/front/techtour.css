@@ -58,6 +58,12 @@ body {
     line-height: 1.8;
     height: 208px;
     overflow: hidden;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
 }
 
 .left-side .video-container {
@@ -74,6 +80,9 @@ body {
 .am-collapse p {
     width: 420px;
     height: 294px;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
 }
 
 .collapse-video-container {

@@ -83,6 +83,9 @@ function load() {
                     },
                     success: function (data) {
                         window.history.pushState({}, "", url);
+                        if (data.data.records.length === 0) {
+                            return;
+                        }
                         handleData(data);
                     }
                 });
