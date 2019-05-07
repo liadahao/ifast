@@ -114,7 +114,7 @@
     </div>
 </div>
 
-<div class="main" th:fragment="workshop">
+<div class="main" th:fragment="workshop" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 workshop" th:id="${data['navname']}">
             <div class="workshop-title">
@@ -202,7 +202,7 @@
     </div>
 </div>
 
-<div class="main" th:fragment="service">
+<div class="main" th:fragment="service" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 service">
             <div class="title">
@@ -238,7 +238,7 @@
     </div>
 </div>
 
-<div th:fragment="article" class="article-main am-u-sm-12">
+<div th:fragment="article" class="article-main am-u-sm-12" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="article-body am-u-sm-12">
         <div class="first-floor am-u-sm-12">
             <div class="title">Article</div>
@@ -262,7 +262,7 @@
     </div>
 </div>
 
-<div class="main" th:fragment="gallery">
+<div class="main" th:fragment="gallery" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 gallery">
             <div id="gallery-slider" class="flexslider">
@@ -305,7 +305,7 @@
     </div>
 </div>
 
-<div th:fragment="event" class="event-main  am-u-sm-12">
+<div th:fragment="event" class="event-main  am-u-sm-12" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="event-body am-u-sm-12">
         <div class="first-floor">
             <div class="title">Event</div>
@@ -336,7 +336,7 @@
     </div>
 </div>
 
-<div class="main" th:fragment="testimonials">
+<div class="main" th:fragment="testimonials" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g testimonials" style="height:768px">
         <!--    <img class="testimonials-bg-a" src="/img/0801bg1.png">-->
         <div class="main-body am-u-sm-8">
@@ -385,9 +385,9 @@
     </div>
 </div>
 
-<div class="main" th:fragment="shop">
+<div class="main" th:fragment="shop" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
-        <input id="id" type="hidden" th:value="${product.id}">
+        <input id="productId" type="hidden" th:value="${product.id}">
         <div class="main-body am-u-sm-8">
             <div class="product am-u-sm-12">
                 <div class="product-text">
@@ -432,13 +432,13 @@
                 </div>
             </div>
             <div class="product-like-list am-u-sm-12">
-                <input type="hidden" id="pageNumber" value="1">
+                <input type="hidden" id="productPageNumber" value="1">
                 <div class="product-like-text">
                     <h3>Products</h3>
                     <h1>You May Like</h1>
                     <div class="controller">
-                        <img src="/img/0901L_pre.png" onclick="prev()"/>
-                        <img src="/img/0901R_pre.png" onclick="next()"/>
+                        <img src="/img/0901L_pre.png" onclick="productPrev()"/>
+                        <img src="/img/0901R_pre.png" onclick="productNext()"/>
                     </div>
                 </div>
                 <ul class="am-u-sm-10 am-avg-sm-5 product-list" style="width: 920px;float: right">
@@ -448,7 +448,7 @@
     </div>
 </div>
 
-<div class="main" th:fragment="about">
+<div class="main" th:fragment="about" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 about">
             <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
@@ -520,7 +520,7 @@
         </div>
     </div>
 </div>
-<div class="main" th:fragment="contact">
+<div class="main" th:fragment="contact" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 contact">
             <div class="contact-content">

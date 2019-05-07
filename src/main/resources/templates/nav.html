@@ -15,7 +15,7 @@
             </div>
             <div class="am-offcanvas-content">
                 <h3 th:each="nav,navStat : ${navList}">
-                    <a th:href="|/page?index=${navStat.index}|" th:text="${nav['navname']}"></a>
+                    <a th:href="|/page?page=${navStat.count}|" th:text="${nav['navname']}"></a>
                 </h3>
             </div>
             <div class="bottom-social-list">

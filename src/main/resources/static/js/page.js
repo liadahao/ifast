@@ -91,7 +91,7 @@ list.each(function (index) {
             .attr("class", "locat-img-l");
     }
 });
-// 设置about页时间
+// 设置about页事件
 var about_list = $(".info-list").children();
 about_list.each(function (index) {
     if (index !== 0) {
@@ -116,3 +116,100 @@ $('.about-who-carousel').find('li').on('click', function () {
         }
     });
 });
+
+// 设置shop页
+
+var productImageList = $(".image-list").children();
+var len = productImageList.size();
+$(".image-controller").click(function () {
+    var controllerIndex = $(this).index();
+    $(".controller-list").children().each(function (index) {
+        if (index !== controllerIndex) {
+            $(".controller-list").children().eq(index).removeClass("image-controller-select");
+        } else {
+            $(".controller-list").children().eq(index).addClass("image-controller-select");
+        }
+    });
+    var showIndex = len - $(this).index() - 1;
+    productImageList.each(function (index) {
+        if (index !== showIndex) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
+})
+
+var id = $("#productId").val();
+$.ajax({
+    type: "GET",
+    url: "/shop/" + id + "/maylike",
+    data: {"pageNumber": "1", "pageSize": "5"},
+    async: false,
+    error: function (request) {
+    },
+    success: function (data) {
+        handleProductData(data);
+    }
+});
+
+function handleProductData(data) {
+    var row = data.data.records;
+    if (row.length === 0) {
+        return;
+    }
+    var list = $(".product-list");
+    list.empty();
+    for (var j = 0, len = row.length; j < len; j++) {
+        var obj = row[j];
+        var html = '<li class="product-like" id="' + obj.id + '">\n' +
+            '                        <img src="' + obj.image1 + '"/>\n' +
+            '                        <div class="product-info">\n' +
+            '                            <p class="am-text-center">' + obj.name + '</p>\n' +
+            '                            <p class="am-text-center">' + obj.price + '</p>\n' +
+            '                        </div>\n' +
+            '                    </li>';
+        list.append(html);
+    }
+    $('.product-like').on('click', function () {
+        window.location.href = "/shop/" + $(this).attr("id");
+    });
+}
+
+function productPrev() {
+    var pageNumber = $("#productPageNumber").val();
+    if (pageNumber > 1) {
+        pageNumber = parseInt(pageNumber) - 1;
+        $("#productPageNumber").val(pageNumber);
+        $.ajax({
+            type: "GET",
+            url: "/shop/" + id + "/maylike",
+            data: {"pageNumber": pageNumber, "pageSize": "5"},
+            async: false,
+            error: function (request) {
+            },
+            success: function (data) {
+                handleProductData(data);
+            }
+        });
+    }
+}
+
+function productNext() {
+    var pageNumber = $("#productPageNumber").val();
+    pageNumber = parseInt(pageNumber) + 1;
+    $.ajax({
+        type: "GET",
+        url: "/shop/" + id + "/maylike",
+        data: {"pageNumber": pageNumber, "pageSize": "5"},
+        async: false,
+        error: function (request) {
+        },
+        success: function (data) {
+            if (data.data.records.length > 0) {
+                $("#productPageNumber").val(pageNumber);
+            }
+            handleProductData(data);
+        }
+    });
+}

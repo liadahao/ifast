@@ -11,10 +11,20 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
-    <link th:href="@{/css/front/shop.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/front/page.css}" rel="stylesheet" type="text/css"/>
     <style>
         html, body {
             background: url("/img/about-background.jpg") no-repeat fixed left top;
+        }
+
+        .main-body{
+            padding: 0 70px;
+            width: 1240px;
+            height: 768px;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
     </style>
@@ -107,79 +117,7 @@
             });
         })
     });
-    var id = $("#id").val();
-    $.ajax({
-        type: "GET",
-        url: "/shop/" + id + "/maylike",
-        data: {"pageNumber": "1", "pageSize": "5"},
-        async: false,
-        error: function (request) {
-        },
-        success: function (data) {
-            handleData(data);
-        }
-    });
 
-    function handleData(data) {
-        var row = data.data.records;
-        if (row.length === 0) {
-            return;
-        }
-        var list = $(".product-list");
-        list.empty();
-        for (var j = 0, len = row.length; j < len; j++) {
-            var obj = row[j];
-            var html = '<li class="product-like" id="' + obj.id + '">\n' +
-                '                        <img src="' + obj.image1 + '"/>\n' +
-                '                        <div class="product-info">\n' +
-                '                            <p class="am-text-center">' + obj.name + '</p>\n' +
-                '                            <p class="am-text-center">' + obj.price + '</p>\n' +
-                '                        </div>\n' +
-                '                    </li>';
-            list.append(html);
-        }
-        $('.product-like').on('click', function () {
-            window.location.href = "/shop/" + $(this).attr("id");
-        });
-    }
-
-    function prev() {
-        var pageNumber = $("#pageNumber").val();
-        if (pageNumber > 1) {
-            pageNumber = parseInt(pageNumber) - 1;
-            $("#pageNumber").val(pageNumber);
-            $.ajax({
-                type: "GET",
-                url: "/shop/" + id + "/maylike",
-                data: {"pageNumber": pageNumber, "pageSize": "5"},
-                async: false,
-                error: function (request) {
-                },
-                success: function (data) {
-                    handleData(data);
-                }
-            });
-        }
-    }
-
-    function next() {
-        var pageNumber = $("#pageNumber").val();
-        pageNumber = parseInt(pageNumber) + 1;
-        $.ajax({
-            type: "GET",
-            url: "/shop/" + id + "/maylike",
-            data: {"pageNumber": pageNumber, "pageSize": "5"},
-            async: false,
-            error: function (request) {
-            },
-            success: function (data) {
-                if (data.data.records.length > 0) {
-                    $("#pageNumber").val(pageNumber);
-                }
-                handleData(data);
-            }
-        });
-    }
 
 </script>
 </body>
