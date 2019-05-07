@@ -104,7 +104,6 @@
     const controls = `<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>`
     $(function () {
         const players = Plyr.setup('.player', {controls, clickToPlay: false});
-        const player = new Plyr('#player', {controls, clickToPlay: false});
         const popPlayer = new Plyr('#pop-player');
         $('.video-thumbnail .plyr__control').on('click', function () {
             event.preventDefault();

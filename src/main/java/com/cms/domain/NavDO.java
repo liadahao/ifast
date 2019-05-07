@@ -13,10 +13,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * <pre>
- *
- * </pre>
- * <small> 2019-04-08 23:53:56 | Aron</small>
+ * 导航实体类
+ * <p>
+ * 2019-04-08 23:53:56
  */
 @Data
 @SuppressWarnings("serial")

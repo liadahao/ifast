@@ -164,13 +164,45 @@ public class FrontController extends AdminBaseController {
     }
 
     @RequestMapping("/page")
-    public String website(Integer index, Model model) {
+    public String page(Integer index, Model model) {
         List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
                 .eq("isShow", 1).orderBy("`order`", true));
-        model.addAttribute("navList", navDOList);
+        List<NavVo> navVoList = new LinkedList<>();
+        for (NavDO navDO : navDOList) {
+            NavVo navVo = new NavVo();
+            BeanUtils.copyProperties(navDO, navVo);
+            if (!StringUtils.isEmpty(navDO.getContent())) {
+                Map data = JSON.parseObject(navDO.getContent(), Map.class);
+                if (data == null) {
+                    data = new HashMap<>();
+                }
+                navVo.setContent(data);
+            }
+            navVo.setHtmlSuffix(HtmlConstant.getHtml(navDO.getType()));
+            navVoList.add(navVo);
+        }
+        model.addAttribute("navList", navVoList);
         List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
                 .eq("isShow", 1).orderBy("weight", true));
         model.addAttribute("navSocialList", linkDOList);
+        // 获取相册信息
+        Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("weight", false);
+        List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);
+        model.addAttribute("gallery", galleryDOList);
+        // 获取产品信息
+        Wrapper<ProductDO> productDOWrapper = new EntityWrapper<ProductDO>()
+                .orderBy("`order`", false)
+                .eq("type", ProductDO.ON_SHELVES)
+                .eq("status", ArticleDO.PUBLISH_STATUS);
+        ProductDO productDO = productService.selectOne(productDOWrapper);
+        productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
+        model.addAttribute("product", productDO);
+        // 获取活动标签信息
+        Wrapper<TagDO> tagDOWrapper = new EntityWrapper<TagDO>()
+                .eq("type", TagConstant.EVNENT.type)
+                .eq("isEnable", 1);
+        List<TagDO> list = tagService.selectList(tagDOWrapper);
+        model.addAttribute("tags", list);
         // 获取首页设置信息
         List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());
         Map<String, Object> map = new HashMap<>();
@@ -185,6 +217,7 @@ public class FrontController extends AdminBaseController {
                 map.put(configDO.getK(), configDO.getV());
             }
         }
+
         model.addAttribute("index", map);
         model.addAttribute("currentPage", index);
         return "/cms/front/pages/page";

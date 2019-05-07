@@ -1,0 +1,543 @@
+<div class="am-g" style="height:768px" th:fragment="techtour">
+    <div class="main-body am-u-sm-8 techtour">
+        <div class="techtour-left-side am-u-sm-5">
+            <div class="techtour-title">
+                <div class="techtour-left-title am-text-center">Tech</div>
+                <div class="techtour-right-title am-text-center">Tour</div>
+            </div>
+            <p th:text="${data['content']['content']}" class="techtour-content"></p>
+            <div class="video-container">
+                <div class="player" data-plyr-provider="youtube"
+                     th:attr="data-plyr-embed-id=|${data['content']['video']}|">
+                </div>
+            </div>
+        </div>
+        <div class="am-panel-group am-u-sm-7 techtour-right-side" th:id="${data['navname']}">
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/img/0201enterprise.png"></span>
+                    <span th:if="${data['content']['model1title'] != null}"
+                          th:text="${data['content']['model1title']}"
+                          class="am-panel-title"
+                          th:attr="data-am-collapse=|{parent: '#${data['navname']}', target: '#${data['navname']}-collapse-1'}|">
+                    </span>
+                </div>
+                <div th:id="|${data['navname']}-collapse-1|" class="am-panel-collapse am-collapse am-in">
+                    <div class="am-panel-bd" style="overflow: hidden">
+                        <p th:if="${data['content']['model1content'] != null}"
+                           th:text="${data['content']['model1content']}" style="float: left">
+                        </p>
+                        <div class="collapse-video-container"
+                             data-am-modal="{target: '#video-popup', width: 800, height: 500}"
+                             th:attr="video-url=${data['content']['model1video']}">
+                            <div class="player" data-plyr-provider="youtube"
+                                 th:attr="data-plyr-embed-id=${data['content']['model1video']}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/img/0201manufacturing.png"></span>
+                    <span th:if="${data['content']['model2title'] != null}"
+                          th:text="${data['content']['model2title']}"
+                          class="am-panel-title"
+                          th:attr="data-am-collapse=|{parent: '#${data['navname']}', target: '#${data['navname']}-collapse-2'}|">
+                    </span>
+                </div>
+                <div th:id="|${data['navname']}-collapse-2|" class="am-panel-collapse am-collapse">
+                    <div class="am-panel-bd" style="overflow: hidden">
+                        <p th:if="${data['content']['model2content'] != null}"
+                           th:text="${data['content']['model2content']}" style="float: left">
+                        </p>
+                        <div class="collapse-video-container"
+                             data-am-modal="{target: '#video-popup', width: 800, height: 500}"
+                             th:attr="video-url=${data['content']['model2video']}">
+                            <div class="player" data-plyr-provider="youtube"
+                                 th:attr="data-plyr-embed-id=${data['content']['model2video']}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/img/0201startups.png"></span>
+                    <span th:if="${data['content']['model3title'] != null}"
+                          th:text="${data['content']['model3title']}"
+                          class="am-panel-title"
+                          th:attr="data-am-collapse=|{parent: '#${data['navname']}', target: '#${data['navname']}-collapse-3'}|">
+                    </span>
+                </div>
+                <div th:id="|${data['navname']}-collapse-3|" class="am-panel-collapse am-collapse">
+                    <div class="am-panel-bd" style="overflow: hidden">
+                        <p th:if="${data['content']['model3content'] != null}"
+                           th:text="${data['content']['model3content']}" style="float: left">
+                        </p>
+                        <div class="collapse-video-container"
+                             th:attr="video-url=${data['content']['model3video']}"
+                             data-am-modal="{target: '#video-popup', width: 800, height: 500}">
+                            <div class="player" data-plyr-provider="youtube"
+                                 th:attr="data-plyr-embed-id=${data['content']['model3video']}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-panel">
+                <div class="am-panel-hd">
+                    <span><img class="" src="/img/0201visit.png"></span>
+                    <span th:if="${data['content']['model4title'] != null}"
+                          th:text="${data['content']['model4title']}"
+                          class="am-panel-title"
+                          data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">
+                    </span>
+                </div>
+                <div id="do-not-say-4" class="am-panel-collapse am-collapse">
+                    <div class="am-panel-bd" style="overflow: hidden">
+                        <div class="am-u-sm-12">
+                            <ul class="am-avg-sm-4 am-thumbnails">
+                                <li th:each="social : ${data['content']['social']}">
+                                    <a th:if="${social.isShow eq 'on'}" th:href="${social.url}" target="_blank">
+                                        <img class="footer-icon" th:src="${social.logo}"
+                                             src="/img/air.png"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="am-g" style="height:768px" th:fragment="workshop">
+    <div class="main-body am-u-sm-8 workshop" th:id="${data['navname']}">
+        <div class="workshop-title">
+            <h1 th:text="${data['content']['title']}" class="workshop-title-content">
+            </h1>
+            <div class="workshop-title-background"></div>
+        </div>
+        <div th:text="${data['content']['content']}" class="workshop-content">
+        </div>
+        <div class="workshop-video-container am-u-sm-12">
+            <div class="am-u-sm-12" style="height: 100%;width: 492px">
+                <ul class="am-avg-sm-3 workshop-thumbnail-list">
+                    <li th:attr="data-thumb=${data['content']['video1']}">
+                        <div class="video-thumbnail">
+                            <div class="player" data-plyr-provider="youtube"
+                                 th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                            </div>
+                        </div>
+                    </li>
+                    <li th:attr="data-thumb=${data['content']['video2']}">
+                        <div class="video-thumbnail">
+                            <div class="player" data-plyr-provider="youtube"
+                                 th:attr="data-plyr-embed-id=${data['content']['video2']}">
+                            </div>
+                        </div>
+                    </li>
+                    <li th:attr="data-thumb=${data['content']['video3']}">
+                        <div class="video-thumbnail">
+                            <div class="player" data-plyr-provider="youtube"
+                                 th:attr="data-plyr-embed-id=${data['content']['video3']}">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div th:id="|${data['navname']}-carousel-img|" class="workshop-carousel-img"
+                     data-am-modal="{target: '#video-popup', width: 800, height: 500}">
+                    <div id="workshop-player" data-plyr-provider="youtube"
+                         th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                    </div>
+                </div>
+            </div>
+            <div class="workshop-right-side am-u-sm-12" style="height: 100%;width: 526px">
+                <div class="am-u-sm-12 workshop-right-container" th:id="|${data['navname']}-right-container|">
+                    <div class="am-u-sm-12" style="height: 100%"
+                         th:each="model,modelStat : ${data['content']['model']}"
+                         th:if="${model.title ne ''}">
+                        <div class="title-img-div am-vertical-align">
+                            <img class="am-u-sm-5" th:src="${model['image']}">
+                            <div th:text="${model['title']}" class="title am-vertical-align-bottom">
+                            </div>
+                        </div>
+                        <p th:text="${model['content']}" class="workshop-right-content">
+
+                        </p>
+                    </div>
+                </div>
+                <div class="right-side-footer am-u-sm-12">
+                    <div class="right-side-locat am-u-sm-7">
+                    </div>
+                    <div class="workshop-right-side-nav am-u-sm-4">
+                        <img th:id="|${data['navname']}-prev|" onclick="workshopPrev(this.id)" class="right-side-prev"
+                             src="/img/0301L_def.png"/>
+                        <img th:id="|${data['navname']}-next|" onclick="workshopNext(this.id)" class="right-side-next"
+                             src="/img/0301R_def.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd">
+                <div id="pop-player" data-plyr-provider="youtube"
+                     th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="am-g" style="height:768px" th:fragment="service">
+    <div class="main-body am-u-sm-8 service">
+        <div class="title">
+            <h1 th:text="${data['content']['headtitle']}" class="service-title-content">
+            </h1>
+        </div>
+        <div class="service-content" th:text="${data['content']['headcontent']}">
+        </div>
+        <div class="service-boxes">
+            <div class="service-box box1"
+                 th:style="'background-image:url(' + @{(${data['content']['model1image']}=='' ? '' : ${data['content']['model1image']})} + ')'">
+                <h1 class="service-box-title" th:text="${data['content']['model1title']}">
+                </h1>
+                <p class="service-box-conetnt" th:text="${data['content']['model1content']}">
+                </p>
+            </div>
+            <div class="service-box box2"
+                 th:style="'background-image:url(' + @{(${data['content']['model2image']}=='' ? '' : ${data['content']['model2image']})} + ')'">
+                <h1 class="service-box-title" th:text="${data['content']['model2title']}">
+                </h1>
+                <p class="service-box-conetnt" th:text="${data['content']['model2content']}">
+                </p>
+            </div>
+            <div class="service-box box3"
+                 th:style="'background-image:url(' + @{(${data['content']['model3image']}=='' ? '' : ${data['content']['model3image']})} + ')'">
+                <h1 class="service-box-title" th:text="${data['content']['model3title']}">
+                </h1>
+                <p class="service-box-conetnt" th:text="${data['content']['model3content']}">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="article" class="main">
+    <div class="article-body">
+        <div class="first-floor am-u-sm-12">
+            <div class="title">Article</div>
+            <div class="content">
+                Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
+                ecosystem
+                and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+            </div>
+        </div>
+        <div class="search am-u-sm-12">
+            <div class="am-input-group">
+                <input type="text" class="am-form-field" id="search-title" placeholder="Please Enter A Title"
+                       style="width: 400px">
+                <button class="search-btn" type="button" onclick="search()"></button>
+            </div>
+        </div>
+        <div id="article-list" class="am-u-sm-12"></div>
+        <div class="am-u-sm-12" style="margin-top: 40px">
+            <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
+        </div>
+    </div>
+</div>
+
+<div class="am-g" style="height:768px" th:fragment="gallery">
+    <div class="main-body am-u-sm-8 gallery">
+        <div id="gallery-slider" class="flexslider">
+            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                <ul class="slides"
+                    style="width: 2400%; transition-duration: 0s; transform: translate3d(-1395px, 0px, 0px);">
+                    <li th:each="gallery : ${gallery}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
+                        style="width: 1395px; margin-right: 0px; float: left; display: block;" class="">
+                        <div class="big-image">
+                            <img src="/img/gallery-img-bg.png" class="image-shadow">
+                            <img th:src="${gallery['url']}" draggable="false">
+                        </div>
+                        <p class="gallery-title">GALLERY</p>
+                        <img class="gallery-adorn" src="/img/0601ornament.png">
+                        <div class="gallery-content">
+                            <div class="gallery-content-shadow"></div>
+                            <p class="gallery-content-text" th:text="${gallery['description']}">So many of us are
+                                demotivated to achieve
+                                anything. Such
+                                people are not enthusiastic
+                                about anything. They don’t want to work towards any goal. Nothing motivates them to
+                                work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="gallery-carousel" class="flexslider">
+            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                <ul class="slides"
+                    style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                    <li th:each="gallery : ${gallery}" th:if="${gallery['url'] ne '' && gallery['isshow'] eq 1}"
+                        style="width: 140px; margin-right: 5px; float: left; display: block;" class="">
+                        <img th:src="${gallery['url']}" draggable="false">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="event" class="main">
+    <div class="article-body">
+        <div class="first-floor">
+            <div class="title">Event</div>
+            <div class="content">
+                Reporting from Ground Zero of businesses disrupting life as we know it. As also, stories on the
+                ecosystem
+                and those getting disrupted.Reporting from Ground Zero of businesses disrupting life as we know it.
+            </div>
+        </div>
+        <div class="search am-form am-form-inline">
+            <div class="am-input-group">
+                <input id="search-date" type="text" class="am-form-field" placeholder="MONTH" required
+                       data-am-datepicker="{format: 'yyyy-mm', viewMode: 'months', minViewMode: 'months',autoClose:'true',locale: 'en_US'}"/>
+            </div>
+            <div class="am-form-group am-form-select">
+                <select id="search-tag" name="tag" placeholder="TYPE">
+                    <option selected value="">TYPE</option>
+                    <option th:if="${tags}" th:each="tag : ${tags}" th:text="${tag['name']}"
+                            th:value="${tag['id']}"></option>
+                </select>
+            </div>
+            <button class="search-btn" type="button" onclick="search()"></button>
+        </div>
+        <div id="event-list" class="am-u-sm-12"></div>
+        <div class="am-u-sm-12" style="margin-top: 40px">
+            <div class="load-more am-text-middle am-u-sm-3 am-u-sm-centered">Load More</div>
+        </div>
+    </div>
+</div>
+
+<div class="am-g testimonials" style="height:768px" th:fragment="testimonials">
+    <!--    <img class="testimonials-bg-a" src="/img/0801bg1.png">-->
+    <div class="main-body am-u-sm-8">
+        <div class="testimonials-title" th:text="${data['content']['title']}">
+        </div>
+        <p class="testimonials-title-content" th:text="${data['content']['content']}">
+        </p>
+        <div class="testimonials-bg-b">
+            <div class="testimonials-left">
+                <div class="first-video" th:attr="data-thumb=${data['content']['video1']}">
+                    <div id="testimonials-player1" data-plyr-provider="youtube"
+                         th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                    </div>
+                </div>
+                <img class="up-video" src="/img/0801up_def.png"/>
+                <img class="down-video" src="/img/0801down_def.png"/>
+                <div class="second-video" th:attr="data-thumb=${data['content']['video2']}">
+                    <div id="testimonials-player2" data-plyr-provider="youtube"
+                         th:attr="data-plyr-embed-id=${data['content']['video2']}">
+                    </div>
+                </div>
+                <div class="third-video" th:attr="data-thumb=${data['content']['video3']}">
+                    <div id="testimonials-player3" data-plyr-provider="youtube"
+                         th:attr="data-plyr-embed-id=${data['content']['video3']}">
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials-right-list" th:id="|${data['navname']}-right-list|">
+                <div class="people-info" th:each="model :${data['content']['model']}">
+                    <img class="people-pic" src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg"
+                         th:src="${model['pic']}">
+                    <h1 class="head-title-name" th:text="${model['name']}"></h1>
+                    <p class="head-title-description" th:text="${model['description']}"></p>
+                    <img class="head-title-img" src="/img/0801.png">
+                    <p class="content" th:text="${model['content']}"></p>
+                </div>
+            </div>
+            <div class="testimonials-controller-icon">
+                <img class="am-u-lg-2" th:id="|${data['navname']}-right-prev|" src="/img/0801L_def.png"
+                     onclick="testimonialsPrev(this.id)">
+                <img class="am-u-lg-2" th:id="|${data['navname']}-right-next|" src="/img/0801R_def.png"
+                     onclick="testimonialsNext(this.id)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="am-g" style="height:768px" th:fragment="shop">
+    <input id="id" type="hidden" th:value="${product.id}">
+    <div class="main-body am-u-sm-8">
+        <div class="product am-u-sm-12">
+            <div class="product-text">
+                <h1 class="product-title" th:text="${product['name']}">
+                </h1>
+                <div class="product-tag-list">
+                    <div class="tag" th:each="tag : ${product['tagList']}" th:text="${tag}"></div>
+                </div>
+                <p class="product-description" th:text="${product['description']}">
+                </p>
+                <div class="price-line">
+                    <div class="price am-u-sm-3" th:text="${product['price']}">
+                    </div>
+                    <a class="am-btn am-btn-warning am-btn-xl" th:href="${product['url']}" target="_blank"
+                       style="line-height: 1.6">
+                        <i class="am-icon-shopping-cart"></i>
+                        Add To Bag
+                    </a>
+                </div>
+                <div class="product-detail" th:text="${product['detail']}">
+                </div>
+            </div>
+            <div class="right-image">
+                <div class="image-list">
+                    <img th:if="${product['image1']}" th:src="${product['image1']}" class="product-image"/>
+                    <img th:if="${product['image2']}" th:src="${product['image2']}" class="product-image"
+                         style="display: none"/>
+                    <img th:if="${product['image3']}" th:src="${product['image3']}" class="product-image"
+                         style="display: none"/>
+                    <img th:if="${product['image4']}" th:src="${product['image4']}" class="product-image"
+                         style="display: none"/>
+                    <img th:if="${product['image5']}" th:src="${product['image5']}" class="product-image"
+                         style="display: none"/>
+                </div>
+                <div class="controller-list">
+                    <div class="image-controller" th:if="${product['image5']}"></div>
+                    <div class="image-controller" th:if="${product['image4']}"></div>
+                    <div class="image-controller" th:if="${product['image3']}"></div>
+                    <div class="image-controller" th:if="${product['image2']}"></div>
+                    <div class="image-controller image-controller-select" th:if="${product['image1']}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="product-like-list am-u-sm-12">
+            <input type="hidden" id="pageNumber" value="1">
+            <div class="product-like-text">
+                <h3>Products</h3>
+                <h1>You May Like</h1>
+                <div class="controller">
+                    <img src="/img/0901L_pre.png" onclick="prev()"/>
+                    <img src="/img/0901R_pre.png" onclick="next()"/>
+                </div>
+            </div>
+            <ul class="am-u-sm-10 am-avg-sm-5 product-list" style="width: 920px;float: right">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="am-g" style="height:768px" th:fragment="about">
+    <div class="main-body am-u-sm-8 about">
+        <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li class="am-active">
+                    <a href="javascript: void(0)" th:text="${data['content']['tab1']['title']}"
+                       style="z-index: 1">WHO</a>
+                    <div class="tab-bg" id="who-title-bg"></div>
+                </li>
+                <li>
+                    <a href="javascript: void(0)" th:text="${data['content']['tab2']['title']}"
+                       style="z-index: 1">WHAT</a>
+                    <div class="tab-bg" id="what-title-bg"></div>
+                </li>
+            </ul>
+            <div class="am-tabs-bd">
+                <div class="am-tab-panel am-active about-who">
+                    <p th:text="${data['content']['tab1']['content']}"></p>
+                    <div class="left-side">
+                        <div id="about-who-carousel" class="flexslider">
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="slides"
+                                    style="width: 500%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                    <li th:each="model,modelStat : ${data['content']['tab1']['model']}"
+                                        th:if="${model['pic'] ne ''}">
+                                        <img th:src="${model['pic']}"
+                                             src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg"
+                                             draggable="false">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="info-list">
+                            <div class="about-who-info"
+                                 th:each="model,modelStat : ${data['content']['tab1']['model']}">
+                                <h1 class="people-name" th:text="${model['name']}"></h1>
+                                <h2 class="people-description" th:text="${model['description']}"></h2>
+                                <p class="people-content" th:text="${model['content']}"></p>
+                                <div class="social-list">
+                                    <a th:if="${model['social']}"
+                                       th:each="social,socialStat :${model['social']}"
+                                       th:href="${social['url']}" target="_blank">
+                                        <img th:if="${social.type ne ''}"
+                                             th:src="|/img/0503share_${#strings.toLowerCase(social.type)}_def.png|"/>
+                                    </a>
+                                </div>
+                                <input type="hidden" th:value="${model['image']}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <img id="people-image" draggable="false">
+                    </div>
+                </div>
+                <div class="am-tab-panel about-what">
+                    <p th:text="${data['content']['tab2']['content']}"></p>
+                    <div class="box-line">
+                        <div class="box" th:each="model,modelStat : ${data['content']['tab2']['model']}">
+                            <div class="box-title am-vertical-align">
+                                <img th:src="${model['image']}" src="/img/1002tours.png"/>
+                                <div th:text="${model['title']}"
+                                     class="box-title-content am-vertical-align-bottom"></div>
+                            </div>
+                            <p class="content" th:text="${model['content']}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="am-g" style="height:768px" th:fragment="contact">
+    <div class="main-body am-u-sm-8">
+        <div class="contact-content">
+            <h1 class="contact-title1">Hello there</h1>
+            <h1 class="contact-title2">Want to work with us?</h1>
+            <form action="" method="post" id="contact-form">
+                <fieldset>
+                    <div class="am-form-group">
+                        <label for="doc-vld-name-2">Email：</label>
+                        <input type="email" name="email" id="doc-vld-name-2" placeholder="" required/>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="doc-vld-email-2">Name：</label>
+                        <input type="text" name="name" id="doc-vld-email-2" placeholder="" required/>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="doc-vld-url-2">Address：</label>
+                        <input type="text" name="address" id="doc-vld-url-2" placeholder="" required/>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="doc-vld-age-2">Company（optional）：</label>
+                        <input type="text" name="company" class="" id="doc-vld-age-2" placeholder=""/>
+                    </div>
+                    <button class="am-btn" id="submit">Submit<img src="/img/1101go.png" style="margin-left: 17px"/>
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

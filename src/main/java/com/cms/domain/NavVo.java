@@ -36,6 +36,9 @@ public class NavVo implements Serializable {
     private String metaKeywords;
     private String metaDescription;
 
+    private String htmlSuffix;
+
+
     /**
      *
      */
