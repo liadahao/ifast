@@ -37,8 +37,8 @@
                 <img src="/img/0103close.png">
             </div>
             <div class="am-offcanvas-content">
-                <h3 th:each="nav : ${navList}">
-                    <a th:text="${nav['navname']}" href="#"></a>
+                <h3 th:each="nav,navStat : ${navList}">
+                    <a th:text="${nav['navname']}" th:onclick="|navslidepage(${navStat.count})|" href="#"></a>
                 </h3>
             </div>
             <div class="bottom-social-list">

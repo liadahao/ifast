@@ -1,17 +1,8 @@
 $(function () {
-    load();
+    load_event();
 });
 
-(function ($) {
-    $.getUrlParam = function (name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return decodeURI(r[2]);
-        return '';
-    }
-})(jQuery);
-
-function load() {
+function load_event() {
     var tagId = $.getUrlParam('tagId');
     var starttime = $.getUrlParam('starttime');
     var pageNumber = $.getUrlParam('pageNumber');
@@ -30,10 +21,10 @@ function load() {
         error: function (request) {
         },
         success: function (data) {
-            handleData(data);
+            handleEventData(data);
         }
     });
-    $('.load-more').click(function () {
+    $('.event-body .load-more').click(function () {
         var tagId = $.getUrlParam('tagId');
         var date = $.getUrlParam('starttime');
         var pageNumber = $.getUrlParam('pageNumber');
@@ -61,7 +52,7 @@ function load() {
                     },
                     success: function (data) {
                         window.history.pushState({}, "", url);
-                        handleData(data);
+                        handleEventData(data);
                     }
                 });
             } else {
@@ -69,7 +60,7 @@ function load() {
             }
         }
     });
-    $('.tag').click(function () {
+    $('.event-body .tag').click(function () {
         var tag = $(this).attr('data-id');
         var url = "/page/event?pageNumber=1&pageSize=8";
         if (tag != '') {
@@ -80,8 +71,8 @@ function load() {
 }
 
 function search() {
-    var tagId = $("#search-tag").val();
-    var date = $("#search-date").val();
+    var tagId = $("#event-search-tag").val();
+    var date = $("#event-search-date").val();
     if ((tagId != '' || date != '') || (tagId == '' && date == '')) {
         var url = "/page/event?pageNumber=1&pageSize=8";
         if (tagId != '') {
@@ -94,7 +85,7 @@ function search() {
     }
 }
 
-function handleData(data) {
+function handleEventData(data) {
     var eventList = $("#event-list");
     var row = data.data.records;
     if (row.length === 0) {
@@ -106,7 +97,7 @@ function handleData(data) {
         var obj = row[j];
         if (j % 4 === 0) {
             line = line + 1;
-            var id = "line-" + line;
+            var id = "event-line-" + line;
             var box = '<div id="' + id + '" class="boxes am-avg-sm-2 am-avg-md-3 am-avg-lg-4"></div>';
             eventList.append(box);
             selector = $('#' + id);
@@ -114,7 +105,7 @@ function handleData(data) {
         if (obj.tag.length > 30) {
             obj.tag = obj.tag.substring(0, 30);
         }
-        var html = '<li id="' + obj.id + '" class="box">\n' +
+        var html = '<li id="event-' + obj.id + '" class="box">\n' +
             '            <div class="tag" data-id="' + obj.tagId + '">' + obj.tag + '</div>\n' +
             '            <img src="/img/8a30e88df3c32bc450f315ec62283436.jpg"/>\n' +
             '            <div class="text" data-url="' + obj.linkto + '">\n' +
@@ -134,12 +125,12 @@ function handleData(data) {
             '            </div>\n' +
             '        </li>';
         selector.append(html);
-        var tag = $('#' + obj.id).find('.tag');
+        var tag = $('#event-' + obj.id).find('.tag');
         tag.css({
-            'margin-left': ($('#' + obj.id).width() - tag.outerWidth()) / 2,
+            'margin-left': ($('#event-' + obj.id).width() - tag.outerWidth()) / 2,
         });
         if (obj.thumbnail && obj.thumbnail !== '') {
-            $('#' + obj.id).children('img').attr('src', obj.thumbnail);
+            $('#event-' + obj.id).children('img').attr('src', obj.thumbnail);
         }
     }
     $(".text").click(function () {

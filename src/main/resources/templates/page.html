@@ -1,4 +1,4 @@
-<div class="main" th:fragment="techtour">
+<div class="main" th:fragment="techtour" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 techtour">
             <div class="techtour-left-side am-u-sm-5">
@@ -250,9 +250,9 @@
         </div>
         <div class="search am-u-sm-12">
             <div class="am-input-group">
-                <input type="text" class="am-form-field" id="search-title" placeholder="Please Enter A Title"
+                <input type="text" class="am-form-field" id="article-search-title" placeholder="Please Enter A Title"
                        style="width: 400px">
-                <button class="search-btn" type="button" onclick="search()"></button>
+                <button class="search-btn" type="button" onclick="article_search()"></button>
             </div>
         </div>
         <div id="article-list" class="am-u-sm-12"></div>
@@ -305,8 +305,8 @@
     </div>
 </div>
 
-<div th:fragment="event" class="article-main">
-    <div class="article-body">
+<div th:fragment="event" class="event-main  am-u-sm-12">
+    <div class="event-body am-u-sm-12">
         <div class="first-floor">
             <div class="title">Event</div>
             <div class="content">
@@ -317,11 +317,11 @@
         </div>
         <div class="search am-form am-form-inline">
             <div class="am-input-group">
-                <input id="search-date" type="text" class="am-form-field" placeholder="MONTH" required
+                <input id="event-search-date" type="text" class="am-form-field" placeholder="MONTH" required
                        data-am-datepicker="{format: 'yyyy-mm', viewMode: 'months', minViewMode: 'months',autoClose:'true',locale: 'en_US'}"/>
             </div>
             <div class="am-form-group am-form-select">
-                <select id="search-tag" name="tag" placeholder="TYPE">
+                <select id="event-search-tag" name="tag" placeholder="TYPE">
                     <option selected value="">TYPE</option>
                     <option th:if="${tags}" th:each="tag : ${tags}" th:text="${tag['name']}"
                             th:value="${tag['id']}"></option>
@@ -456,22 +456,21 @@
                     <li class="am-active">
                         <a href="javascript: void(0)" th:text="${data['content']['tab1']['title']}"
                            style="z-index: 1">WHO</a>
-                        <div class="tab-bg" id="who-title-bg"></div>
+                        <div class="tab-bg"></div>
                     </li>
                     <li>
                         <a href="javascript: void(0)" th:text="${data['content']['tab2']['title']}"
                            style="z-index: 1">WHAT</a>
-                        <div class="tab-bg" id="what-title-bg"></div>
+                        <div class="tab-bg"></div>
                     </li>
                 </ul>
                 <div class="am-tabs-bd">
                     <div class="am-tab-panel am-active about-who">
                         <p th:text="${data['content']['tab1']['content']}"></p>
                         <div class="left-side">
-                            <div id="about-who-carousel" class="flexslider">
-                                <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                                    <ul class="slides"
-                                        style="width: 500%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                            <div th:id="|${data['navname']}-carousel|" class="flexslider about-who-carousel">
+                                <div style="overflow: hidden; position: relative;">
+                                    <ul>
                                         <li th:each="model,modelStat : ${data['content']['tab1']['model']}"
                                             th:if="${model['pic'] ne ''}">
                                             <img th:src="${model['pic']}"
@@ -481,7 +480,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div id="info-list">
+                            <div th:id="|${data['navname']}-info-list|" class="info-list">
                                 <div class="about-who-info"
                                      th:each="model,modelStat : ${data['content']['tab1']['model']}">
                                     <h1 class="people-name" th:text="${model['name']}"></h1>
@@ -499,8 +498,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="right-side">
-                            <img id="people-image" draggable="false">
+                        <div class="about-who-right-side">
+                            <img th:id="|${data['navname']}-people-image|" class="people-image" draggable="false">
                         </div>
                     </div>
                     <div class="am-tab-panel about-what">
@@ -523,7 +522,7 @@
 </div>
 <div class="main" th:fragment="contact">
     <div class="am-g" style="height:768px">
-        <div class="main-body am-u-sm-8">
+        <div class="main-body am-u-sm-8 contact">
             <div class="contact-content">
                 <h1 class="contact-title1">Hello there</h1>
                 <h1 class="contact-title2">Want to work with us?</h1>

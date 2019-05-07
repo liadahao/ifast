@@ -52,6 +52,7 @@
 <script type="text/javascript" th:src="@{/js/jquery.flexslider.js}"></script>
 <script type="text/javascript" th:src="@{/js/page.js}"></script>
 <script type="text/javascript" th:src="@{/js/appjs/cms/front/article.js}"></script>
+<script type="text/javascript" th:src="@{/js/appjs/cms/front/event.js}"></script>
 
 </body>
 </html>
@@ -138,6 +139,32 @@
             }
             pagination.querySelector('.pagination-page').innerHTML = paginationContent;
         }
+
+        var width = $(window).width();
+        var navWidth = (width - 1240) / 2;
+        $(".article-body").css('margin-left', navWidth);
+        $(".event-body").css('margin-left', navWidth);
+        // The slider being synced must be initialized first
+        $('#gallery-carousel').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: true,
+            slideshow: false,
+            itemWidth: 140,
+            itemMargin: 24,
+            asNavFor: '#gallery-slider',
+            prevText: '',
+            nextText: ''
+        });
+
+        $('#gallery-slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            directionNav: false,
+            animationLoop: true,
+            slideshow: false,
+            sync: "#gallery-carousel"
+        });
     });
 
     var list = $(".testimonials-right-list").children();
@@ -239,30 +266,7 @@
         $(".second-video").attr('data-thumb', url1);
         $(".third-video").attr('data-thumb', url2);
     });
-    $(function () {
-        var list = $("#info-list").children();
-        list.each(function (index) {
-            if (index !== 0) {
-                $(this).hide();
-            } else {
-                var src = $(this).find('input').val();
-                $("#people-image").attr("src", src)
-            }
-        });
 
-    });
-    $('#about-who-carousel').find('li').on('click', function () {
-        var showIndex = $(this).index();
-        list.each(function (index) {
-            if (index !== showIndex) {
-                $(this).hide();
-            } else {
-                $(this).show();
-                var src = $(this).find('input').val();
-                $("#people-image").attr("src", src);
-            }
-        });
-    });
     const controls = '<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>';
     const players = Plyr.setup('.player', {controls});
     const workshopplayer = new Plyr('#workshop-player', {controls, clickToPlay: false});

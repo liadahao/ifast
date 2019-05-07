@@ -1,6 +1,6 @@
 var prefix = "/cms/article";
 $(function () {
-    load();
+    load_article();
 });
 
 (function ($) {
@@ -12,21 +12,21 @@ $(function () {
     }
 })(jQuery);
 
-function load() {
+function load_article() {
     var searchTag = $.getUrlParam('searchTag');
     var searchTitle = $.getUrlParam('searchTitle');
     var pageNumber = $.getUrlParam('pageNumber');
     var pageSize = 6;
     if (searchTag != null && searchTag != '') {
-        $(".title").text(searchTag);
-        $(".title").css('width', '100%');
-        $(".content").text('');
-        $(".content").hide('');
+        $(".article-body .title").text(searchTag);
+        $(".article-body .title").css('width', '100%');
+        $(".article-body .content").text('');
+        $(".article-body .content").hide('');
     }
     if (searchTitle != null && searchTitle != '') {
-        $(".title").text(searchTitle);
-        $(".title").css('width', '100%');
-        $(".content").hide('');
+        $(".article-body .title").text(searchTitle);
+        $(".article-body .title").css('width', '100%');
+        $(".article-body .content").hide('');
     }
     if (!pageNumber) {
         pageNumber = 1;
@@ -42,20 +42,23 @@ function load() {
         error: function (request) {
         },
         success: function (data) {
-            handleData(data);
+            handleArticleData(data);
         }
     });
-    $('.box-title').click(function () {
+    $('.article-body .box-title').click(function () {
         var id = $(this).parent().parent().attr("id");
         if (!id) {
             id = $(this).parent().parent().parent().attr("id");
         }
+        id = id.split("-")[1];
         window.open("/article/" + id);
     });
-    $('.background').click(function () {
-        window.open("/article/" + $(this).parent().attr("id"));
+    $('.article-body .background').click(function () {
+        var id = $(this).parent().attr("id");
+        id = id.split("-")[1];
+        window.open("/article/" + id);
     });
-    $('.load-more').click(function () {
+    $('.article-body .load-more').click(function () {
         var title = $.getUrlParam('searchTitle');
         var tag = $.getUrlParam('searchTag');
         var pageNumber = $.getUrlParam('pageNumber');
@@ -86,7 +89,7 @@ function load() {
                         if (data.data.records.length === 0) {
                             return;
                         }
-                        handleData(data);
+                        handleArticleData(data);
                     }
                 });
             } else {
@@ -94,7 +97,7 @@ function load() {
             }
         }
     });
-    $('.tag').click(function () {
+    $('.article-body .tag').click(function () {
         var tag = $(this).text();
         if ((tag != '' || title != '') || (tag == '' && title == '')) {
             var url = "/page/article?pageNumber=1&pageSize=6";
@@ -110,7 +113,7 @@ function load() {
             e.cancelBubble = true;   //ie兼容
         }
     });
-    $('a').click(function () {
+    $('.article-body a').click(function () {
         e = window.event || e;
         if (e.stopPropagation) {
             e.stopPropagation();      //阻止事件 冒泡传播
@@ -120,27 +123,27 @@ function load() {
     })
 }
 
-function handleData(data) {
+function handleArticleData(data) {
     var articleList = $("#article-list");
     var row = data.data.records;
     if (row.length === 0) {
-        $(".load-more").parent().hide();
+        $(".article-body .load-more").parent().hide();
         var textDiv = $('<div>No Search Results</div>').css({
             "margin": "50px auto",
             "text-align": "center",
             "font-size": "42px",
             "color": "white"
         });
-        $('#article-list').append(textDiv);
+        articleList.append(textDiv);
         return;
     }
     var line = articleList.children().size();
     var num = 0;
     var selector;
     line = line + 1;
-    var id = 'line-' + line;
+    var id = 'article-line-' + line;
     var box = '<div class="boxes am-u-sm-12" id="' + id + '"></div>';
-    $('#article-list').append(box);
+    articleList.append(box);
     selector = $('#' + id);
     var j = 0;
     var len = row.length;
@@ -151,9 +154,9 @@ function handleData(data) {
         if (num > 3) {
             num = 1;
             line = line + 1;
-            var id = 'line-' + line;
+            var id = 'article-line-' + line;
             var box = '<div class="boxes am-u-sm-12" id="' + id + '"></div>';
-            $('#article-list').append(box);
+            articleList.append(box);
             selector = $('#' + id)
         }
         if (line % 3 === 1) {
@@ -178,7 +181,7 @@ function handleData(data) {
         }
         var html;
         if (style == 1) {
-            html = '<div id="' + obj.id + '" class="box box1">\n' +
+            html = '<div id="article-' + obj.id + '" class="box box1">\n' +
                 '            <img class="background" src="' + obj.thumbnail + '"/>\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +
@@ -194,7 +197,7 @@ function handleData(data) {
                 '        </div>'
         }
         if (style == 2) {
-            html = '<div id="' + obj.id + '" class="box box2">\n' +
+            html = '<div id="article-' + obj.id + '" class="box box2">\n' +
                 '            <img class="background" src="' + obj.thumbnail + '"/>\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +
@@ -210,7 +213,7 @@ function handleData(data) {
                 '        </div>'
         }
         if (style == 3) {
-            html = '<div id="' + obj.id + '" class="box box3">\n' +
+            html = '<div id="article-' + obj.id + '" class="box box3">\n' +
                 '            <div class="overlay">\n' +
                 '            <div class="text">\n' +
                 '                <h1 class="box-title">\n' +
@@ -235,7 +238,7 @@ function handleData(data) {
                 prefix = "/img/0503share_facebook_def.png";
             }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
+                $("#article-" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.linkedin) {
@@ -247,7 +250,7 @@ function handleData(data) {
                 prefix = "/img/0503share_linkedin_def.png";
             }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
+                $("#article-" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.twitter) {
@@ -259,7 +262,7 @@ function handleData(data) {
                 prefix = "/img/0503share_twitter_def.png";
             }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
+                $("#article-" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.medium) {
@@ -271,7 +274,7 @@ function handleData(data) {
                 prefix = "/img/0503share_medium_def.png";
             }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
+                $("#article-" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
         if (obj.instagram) {
@@ -283,22 +286,22 @@ function handleData(data) {
                 prefix = "/img/0503share_instagram_def.png";
             }
             if (json.isTop) {
-                $("#" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
+                $("#article-" + obj.id).append('<a href="' + json.url + '" target="_blank"><img class="social-icon" src="' + prefix + '"/></a>');
             }
         }
-        var width = $("#" + obj.id).outerWidth();
-        var height = $("#" + obj.id).outerHeight();
+        var width = $("#article-" + obj.id).outerWidth();
+        var height = $("#article-" + obj.id).outerHeight();
         if (style == 3) {
-            $("#" + obj.id).css({
+            $("#article-" + obj.id).css({
                 "background": "url(" + obj.thumbnail + ")"
                 , "background-size": "cover"
             });
-            $("#" + obj.id + " .overlay").css({
+            $("#article-" + obj.id + " .overlay").css({
                 "width": "" + width + ""
                 , "height": "" + height + ""
             })
         }
-        var tagList = $("#" + obj.id + " .tag-list");
+        var tagList = $("#article-" + obj.id + " .tag-list");
         var tagListWidth = tagList.width();
         var tempWidth = 0, tagIndex = 0;
         while (tempWidth < tagListWidth && tagIndex < obj.tag.length) {
@@ -314,8 +317,8 @@ function handleData(data) {
     }
 }
 
-function search() {
-    var title = $("#search-title").val();
+function article_search() {
+    var title = $("#article-search-title").val();
     var tag = $.getUrlParam('searchTag');
     if ((tag != '' || title != '') || (tag == '' && title == '')) {
         var url = "/page/article?pageNumber=1&pageSize=6";
