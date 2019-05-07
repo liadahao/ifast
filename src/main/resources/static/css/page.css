@@ -12,7 +12,36 @@ html, body {
     background: url("/img/01.jpg") no-repeat top left;
 }
 
-.page .main-body {
+
+[class*=am-u-] {
+    padding: 0;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    /*Safari*/
+    display: -moz-box;
+    /*Firefox*/
+    display: -ms-flexbox;
+    /*IE*/
+    display: -webkit-flex;
+    /*Chrome*/
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.slide-page .main-body {
     padding: 0 70px;
     width: 1240px;
     height: 768px;
@@ -22,7 +51,7 @@ html, body {
     transform: translate(-50%, -50%);
 }
 
-.page .techtour {
+.slide-page .techtour {
     padding: 56px 70px;
 }
 
@@ -168,9 +197,6 @@ html, body {
 Workshop
  */
 
-.page .workshop {
-    padding: 0 70px;
-}
 
 .workshop-title {
     position: relative
@@ -319,10 +345,6 @@ Workshop
 /**
 service
  */
-.page .service {
-    padding: 0 70px;
-}
-
 .service-title-content {
     height: 148px;
     margin-top: 20px;
@@ -411,9 +433,7 @@ service
 /**
 gallery
  */
-.page .gallery {
-    padding: 0 70px;
-}
+
 
 .am-slider-carousel li {
     margin-right: 5px;
@@ -495,7 +515,7 @@ gallery
 /**
 article
  */
-.main {
+.article-main {
     padding-top: 106px;
 }
 
@@ -1044,10 +1064,6 @@ footer {
     left: 0;
     width: 100%;
     height: 9.26%;
-}
-
-[class*=am-u-] {
-    padding: 0;
 }
 
 .gallery .flex-prev {
