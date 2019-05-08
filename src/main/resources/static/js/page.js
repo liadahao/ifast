@@ -354,6 +354,7 @@ $(function () {
         var bottomname = document.querySelectorAll('.slide-page')[initPage].getAttribute('data-name');
         document.querySelectorAll('.bottom-text')[0].innerHTML = bottomname;
     }
+
     function renderPagination() {
         var pagination = document.querySelector('#pagination');
         var len = document.querySelectorAll('.slide-page').length;
@@ -363,6 +364,24 @@ $(function () {
             paginationContent += '<li onclick="slide.slideTo(' + i + ')" class="circular"></li>';
         }
         pagination.querySelector('.pagination-page').innerHTML = paginationContent;
+    }
+
+    init();
+
+    function init() {
+        var len = document.querySelectorAll('.slide-page').length;
+        for (var i = 0; i < len; i++) {
+            var page = document.querySelectorAll('.slide-page')[i];
+            var template = page.getAttribute('data-template');
+            if (template == 'workshop') {
+                workshopInit(page.id);
+            }
+        }
+    }
+
+    function workshopInit(id) {
+        id = id.split('-')[0];
+        const players = Plyr.setup('#' + id + ' .workshop-player', {controls, clickToPlay: false});
     }
 
     var width = $(window).width();
@@ -447,6 +466,14 @@ $(".video-thumbnail").click(function () {
     var selector = $("#" + id + "-carousel-img");
     var url = $(this).parent().attr('data-thumb');
     var bg = $(this).find(".plyr__poster").css("background-image");
+    var html = '<button type="button" class="plyr__control plyr__control--overlaid"\n' +
+        '                                style="display: block;top: 60%">\n' +
+        '                            <svg role="presentation" focusable="false">\n' +
+        '                                <use xlink:href="#plyr-play"></use>\n' +
+        '                            </svg>\n' +
+        '                            <span class="plyr__sr-only">Play</span></button>';
+    selector.empty();
+    selector.append(html);
     selector.css("background-image", bg);
     selector.attr("data-thumb", url);
 });

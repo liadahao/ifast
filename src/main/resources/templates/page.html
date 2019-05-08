@@ -131,21 +131,21 @@
                     <ul class="am-avg-sm-3 workshop-thumbnail-list">
                         <li th:attr="data-thumb=${data['content']['video1']}">
                             <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail1|">
-                                <div class="player" data-plyr-provider="youtube"
+                                <div class="workshop-player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video1']}">
                                 </div>
                             </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video2']}">
                             <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail2|">
-                                <div class="player" data-plyr-provider="youtube"
+                                <div class="workshop-player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video2']}">
                                 </div>
                             </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video3']}">
                             <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail3|">
-                                <div class="player" data-plyr-provider="youtube"
+                                <div class="workshop-player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video3']}">
                                 </div>
                             </div>
@@ -154,12 +154,9 @@
 
                     <div th:id="|${data['navname']}-carousel-img|" class="workshop-carousel-img"
                          data-am-modal="{target: '#video-popup', width: 800, height: 500}">
-                        <button type="button" class="plyr__control plyr__control--overlaid"
-                                style="display: block;top: 60%">
-                            <svg role="presentation" focusable="false">
-                                <use xlink:href="#plyr-play"></use>
-                            </svg>
-                            <span class="plyr__sr-only">Play</span></button>
+                        <div class="workshop-player" data-plyr-provider="youtube"
+                             th:attr="data-plyr-embed-id=${data['content']['video1']}">
+                        </div>
                     </div>
                 </div>
                 <div class="workshop-right-side am-u-sm-12" style="height: 100%;width: 526px">
