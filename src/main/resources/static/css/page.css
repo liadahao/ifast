@@ -55,6 +55,10 @@ html, body {
     padding: 56px 70px;
 }
 
+.video-popup-player-container {
+    padding-top: 10px;
+}
+
 /**
 设置techtour页面
  */
@@ -335,6 +339,7 @@ Workshop
     height: 296px;
     background: rgba(0, 0, 0, 1);
     opacity: 0.4;
+    background-size: cover;
 }
 
 .workshop-video-container .plyr {

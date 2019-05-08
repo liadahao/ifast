@@ -20,11 +20,11 @@
     </div>
     <div class="left-nav"
          style="height: 768px; position: absolute; z-index: 1000; top: 50%; left: 1%; margin-top: -384px;">
-        <div class="top"><a href="#"><img src="/img/up.png">
-            <div class="top-text" onclick="slide.slidePrev()">Home</div>
+        <div class="top" onclick="slide.slidePrev()"><a href="/index"><img src="/img/up.png">
+            <div class="top-text">Home</div>
         </a></div>
-        <div class="bottom"><a href="#">
-            <div class="bottom-text" onclick="slide.slideNext()">Workshop</div>
+        <div class="bottom" onclick="slide.slideNext()"><a href="#">
+            <div class="bottom-text">Workshop</div>
             <img src="/img/down.png"></a></div>
     </div>
     <nav class="pagination" id="pagination"
@@ -38,7 +38,9 @@
             <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
         </div>
         <div class="am-modal-bd">
-            <div id="video-player"></div>
+            <div class="video-popup-player-container">
+                <div id="video-popup-player" data-plyr-provider="youtube"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -57,116 +59,6 @@
 </body>
 </html>
 <script>
-    $(".video-thumbnail").click(function () {
-        var url = $(this).parent().attr('data-thumb');
-        workshopplayer.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        e = window.event || e;
-        if (e.stopPropagation) {
-            e.stopPropagation();      //阻止事件 冒泡传播
-        } else {
-            e.cancelBubble = true;   //ie兼容
-        }
-    });
-    $('#video-popup').on('close.modal.amui', function () {
-        // player.pause();
-    });
-
-    //引用方法
-    $(function () {
-        // $('#mao').screen();
-        var id = '#doc-oc-demo3';
-        var $myOc = $(id);
-        $('.side-close').on('click', function () {
-            $myOc.offCanvas($(this).data('rel'));
-        });
-
-        function GetQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]);
-            return null;
-        }
-
-        pageParams = GetQueryString('page') * 1;
-        renderPagination();
-        var initPage = pageParams || 1;
-        var currentPage = initPage;
-        var slide = new slidePage({
-            slidePages: '.slide-page',
-            slideContainer: '#slide-container',
-            refresh: true,
-            page: initPage,
-            before: function (origin, diraction, target) {
-                if (target > 1) {
-                    var topname = document.querySelectorAll('.slide-page')[target - 2].getAttribute('data-name');
-                    document.querySelectorAll('.top-text')[0].innerHTML = topname;
-                }
-                var len = document.querySelectorAll('.slide-page').length;
-                if (target < len) {
-                    var bottomname = document.querySelectorAll('.slide-page')[target].getAttribute('data-name');
-                    document.querySelectorAll('.bottom-text')[0].innerHTML = bottomname;
-                }
-                pagepages = document.querySelectorAll('#pagination li');
-                pagepages[origin - 1].classList.remove('select-circular');
-                pagepages[origin - 1].classList.add('circular');
-                pagepages[target - 1].classList.add('select-circular');
-                pagepages[target - 1].classList.remove('circular');
-                currentPage = target
-            },
-            after: function (origin, diraction, target) {
-            },
-        });
-        window.slide = slide;
-        // -- 由于slidePage不提供分页组件，所以以下是当前示例的分页器逻辑
-        pagination.querySelectorAll('li')[initPage - 1].classList.remove('circular');
-        pagination.querySelectorAll('li')[initPage - 1].classList.add('select-circular');
-
-        function renderPagination() {
-            var pagination = document.querySelector('#pagination');
-            var len = document.querySelectorAll('.slide-page').length;
-            var paginationContent = '';
-            // 渲染页码
-            for (var i = 1; i <= len; i++) {
-                paginationContent += '<li onclick="slide.slideTo(' + i + ')" class="circular"></li>';
-            }
-            pagination.querySelector('.pagination-page').innerHTML = paginationContent;
-        }
-
-        var width = $(window).width();
-        var navWidth = (width - 1240) / 2;
-        $(".article-body").css('margin-left', navWidth);
-        $(".event-body").css('margin-left', navWidth);
-        // The slider being synced must be initialized first
-        $('#gallery-carousel').flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: true,
-            slideshow: false,
-            itemWidth: 140,
-            itemMargin: 24,
-            asNavFor: '#gallery-slider',
-            prevText: '',
-            nextText: ''
-        });
-
-        $('#gallery-slider').flexslider({
-            animation: "slide",
-            controlNav: false,
-            directionNav: false,
-            animationLoop: true,
-            slideshow: false,
-            sync: "#gallery-carousel"
-        });
-    });
-
     var list = $(".testimonials-right-list").children();
     list.each(function (index) {
         if (index !== 0) {
@@ -177,101 +69,4 @@
     });
 
 
-    $('.collapse-video-container').on('click', function () {
-        var url = $(this).attr('video-url');
-        player.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        e = window.event || e;
-        if (e.stopPropagation) {
-            e.stopPropagation();      //阻止事件 冒泡传播
-        } else {
-            e.cancelBubble = true;   //ie兼容
-        }
-    });
-
-    $(".up-video").on('click', function () {
-        var url1 = $(".first-video").attr('data-thumb');
-        var url2 = $(".second-video").attr('data-thumb');
-        var url3 = $(".third-video").attr('data-thumb');
-        player1.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url2,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        player2.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url3,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        player3.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url1,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        $(".first-video").attr('data-thumb', url2);
-        $(".second-video").attr('data-thumb', url3);
-        $(".third-video").attr('data-thumb', url1);
-    });
-    $(".down-video").on('click', function () {
-        var url1 = $(".first-video").attr('data-thumb');
-        var url2 = $(".second-video").attr('data-thumb');
-        var url3 = $(".third-video").attr('data-thumb');
-        player1.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url3,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        player2.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url1,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        player3.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url2,
-                    provider: 'youtube'
-                }
-            ]
-        };
-        $(".first-video").attr('data-thumb', url3);
-        $(".second-video").attr('data-thumb', url1);
-        $(".third-video").attr('data-thumb', url2);
-    });
-
-    const controls = '<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>';
-    const players = Plyr.setup('.player', {controls});
-    const workshopplayer = new Plyr('#workshop-player', {controls, clickToPlay: false});
-    const player = Plyr.setup('#video-player');
-    const player1 = new Plyr('#testimonials-player1', {controls: ['play-large']});
-    const player2 = new Plyr('#testimonials-player2', {controls: ['play-large']});
-    const player3 = new Plyr('#testimonials-player3', {controls: ['play-large']});
 </script>

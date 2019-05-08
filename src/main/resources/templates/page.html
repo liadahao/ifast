@@ -1,4 +1,5 @@
-<div class="main" th:fragment="techtour" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="techtour"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 techtour">
             <div class="techtour-left-side am-u-sm-5">
@@ -7,7 +8,7 @@
                     <div class="techtour-right-title am-text-center">Tour</div>
                 </div>
                 <p th:text="${data['content']['content']}" class="techtour-content"></p>
-                <div class="video-container">
+                <div class="video-container" data-am-modal="{target: '#video-popup', width: 800, height: 500}">
                     <div class="player" data-plyr-provider="youtube"
                          th:attr="data-plyr-embed-id=|${data['content']['video']}|">
                     </div>
@@ -114,7 +115,8 @@
     </div>
 </div>
 
-<div class="main" th:fragment="workshop" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="workshop"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 workshop" th:id="${data['navname']}">
             <div class="workshop-title">
@@ -128,21 +130,21 @@
                 <div class="am-u-sm-12" style="height: 100%;width: 492px">
                     <ul class="am-avg-sm-3 workshop-thumbnail-list">
                         <li th:attr="data-thumb=${data['content']['video1']}">
-                            <div class="video-thumbnail">
+                            <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail1|">
                                 <div class="player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video1']}">
                                 </div>
                             </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video2']}">
-                            <div class="video-thumbnail">
+                            <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail2|">
                                 <div class="player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video2']}">
                                 </div>
                             </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video3']}">
-                            <div class="video-thumbnail">
+                            <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail3|">
                                 <div class="player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video3']}">
                                 </div>
@@ -152,9 +154,12 @@
 
                     <div th:id="|${data['navname']}-carousel-img|" class="workshop-carousel-img"
                          data-am-modal="{target: '#video-popup', width: 800, height: 500}">
-                        <div id="workshop-player" data-plyr-provider="youtube"
-                             th:attr="data-plyr-embed-id=${data['content']['video1']}">
-                        </div>
+                        <button type="button" class="plyr__control plyr__control--overlaid"
+                                style="display: block;top: 60%">
+                            <svg role="presentation" focusable="false">
+                                <use xlink:href="#plyr-play"></use>
+                            </svg>
+                            <span class="plyr__sr-only">Play</span></button>
                     </div>
                 </div>
                 <div class="workshop-right-side am-u-sm-12" style="height: 100%;width: 526px">
@@ -173,28 +178,16 @@
                         </div>
                     </div>
                     <div class="right-side-footer am-u-sm-12">
-                        <div class="right-side-locat am-u-sm-7">
+                        <div class="right-side-locat am-u-sm-7" th:id="|${data['navname']}-right-side-locat|">
                         </div>
                         <div class="workshop-right-side-nav am-u-sm-4">
-                            <img th:id="|${data['navname']}-prev|" onclick="workshopPrev(this.id)"
-                                 class="right-side-prev"
+                            <img th:id="|${data['navname']}-prev|"
+                                 class="workshop-right-side-prev"
                                  src="/img/0301L_def.png"/>
-                            <img th:id="|${data['navname']}-next|" onclick="workshopNext(this.id)"
-                                 class="right-side-next"
+                            <img th:id="|${data['navname']}-next|"
+                                 class="workshop-right-side-next"
                                  src="/img/0301R_def.png"/>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="am-modal am-modal-no-btn" tabindex="-1" id="my-popup">
-            <div class="am-modal-dialog">
-                <div class="am-modal-hd">
-                    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
-                </div>
-                <div class="am-modal-bd">
-                    <div id="pop-player" data-plyr-provider="youtube"
-                         th:attr="data-plyr-embed-id=${data['content']['video1']}">
                     </div>
                 </div>
             </div>
@@ -202,7 +195,8 @@
     </div>
 </div>
 
-<div class="main" th:fragment="service" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="service"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 service">
             <div class="title">
@@ -238,7 +232,8 @@
     </div>
 </div>
 
-<div th:fragment="article" class="article-main am-u-sm-12" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div th:fragment="article" class="article-main am-u-sm-12"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="article-body am-u-sm-12">
         <div class="first-floor am-u-sm-12">
             <div class="title">Article</div>
@@ -262,7 +257,8 @@
     </div>
 </div>
 
-<div class="main" th:fragment="gallery" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="gallery"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 gallery">
             <div id="gallery-slider" class="flexslider">
@@ -305,7 +301,8 @@
     </div>
 </div>
 
-<div th:fragment="event" class="event-main  am-u-sm-12" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div th:fragment="event" class="event-main  am-u-sm-12"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="event-body am-u-sm-12">
         <div class="first-floor">
             <div class="title">Event</div>
@@ -336,7 +333,8 @@
     </div>
 </div>
 
-<div class="main" th:fragment="testimonials" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="testimonials"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g testimonials" style="height:768px">
         <!--    <img class="testimonials-bg-a" src="/img/0801bg1.png">-->
         <div class="main-body am-u-sm-8">
@@ -346,20 +344,24 @@
             </p>
             <div class="testimonials-bg-b">
                 <div class="testimonials-left">
-                    <div class="first-video" th:attr="data-thumb=${data['content']['video1']}">
-                        <div id="testimonials-player1" data-plyr-provider="youtube"
+                    <div class="first-video" th:id="|${data['navname']}-first-video|"
+                         th:attr="data-thumb=${data['content']['video1']}">
+                        <div class="testimonials-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video1']}">
                         </div>
                     </div>
-                    <img class="up-video" src="/img/0801up_def.png"/>
-                    <img class="down-video" src="/img/0801down_def.png"/>
-                    <div class="second-video" th:attr="data-thumb=${data['content']['video2']}">
-                        <div id="testimonials-player2" data-plyr-provider="youtube"
+                    <img th:id="|${data['navname']}-up-video|" class="up-video" src="/img/0801up_def.png"/>
+                    <img th:id="|${data['navname']}-down-video|" class="down-video" src="/img/0801down_def.png"/>
+                    <div class="second-video" th:id="|${data['navname']}-second-video|"
+                         th:attr="data-thumb=${data['content']['video2']}"
+                         data-am-modal="{target: '#video-popup', width: 800, height: 500}">
+                        <div class="testimonials-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video2']}">
                         </div>
                     </div>
-                    <div class="third-video" th:attr="data-thumb=${data['content']['video3']}">
-                        <div id="testimonials-player3" data-plyr-provider="youtube"
+                    <div class="third-video" th:id="|${data['navname']}-third-video|"
+                         th:attr="data-thumb=${data['content']['video3']}">
+                        <div class="testimonials-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video3']}">
                         </div>
                     </div>
@@ -385,7 +387,8 @@
     </div>
 </div>
 
-<div class="main" th:fragment="shop" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="shop"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <input id="productId" type="hidden" th:value="${product.id}">
         <div class="main-body am-u-sm-8">
@@ -448,7 +451,8 @@
     </div>
 </div>
 
-<div class="main" th:fragment="about" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="about"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 about">
             <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
@@ -520,7 +524,8 @@
         </div>
     </div>
 </div>
-<div class="main" th:fragment="contact" th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
+<div class="main" th:fragment="contact"
+     th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
         <div class="main-body am-u-sm-8 contact">
             <div class="contact-content">
