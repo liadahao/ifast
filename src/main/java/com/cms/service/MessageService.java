@@ -17,7 +17,7 @@ public interface MessageService extends CoreService<MessageDO> {
 
     void saveArticle(ArticleDO article, UserDO user);
 
-    void saveEvent(EventDO event, UserDO userId);
+    void saveEvent(EventDO event, UserDO user);
 
-    void saveProduct(ProductDO product, UserDO userId);
+    void saveProduct(ProductDO product, UserDO user);
 }
