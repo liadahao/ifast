@@ -139,8 +139,9 @@ public class ProductController extends AdminBaseController {
             CategoryDO categoryDO = categoryService.selectById(product.getCategoryid());
             product.setCategoryName(categoryDO.getName());
         }
+        product.setCreateId(getUserId().intValue());
         productService.insert(product);
-        messageService.saveProduct(product, getUserId());
+        messageService.saveProduct(product, getUser());
         for (String tagName : product.getTagList()) {
             if (StringUtils.isEmpty(tagName)) {
                 continue;
@@ -179,7 +180,7 @@ public class ProductController extends AdminBaseController {
             product.setTags(tag);
         }
         boolean update = productService.updateById(product);
-        messageService.saveProduct(product, getUserId());
+        messageService.saveProduct(product, getUser());
         EntityWrapper<ProductTagDO> deleteWrapper = new EntityWrapper<>();
         deleteWrapper.eq("productId", product.getId());
         productTagService.delete(deleteWrapper);

@@ -15,7 +15,7 @@
 <div th:replace="nav :: top-nav"></div>
 <div class="slide-container" id="slide-container">
     <div class="slide-page" style="background-color: transparent;" th:each="data,navStat : ${navList}"
-         th:id="|${data.navname}-page|" th:attr="data-template=${data['htmlSuffix']},data-name=${data.navname}">
+         th:id="|${data.navname}-page|" th:attr="data-template=${data['htmlSuffix']},data-name=${data.navname},data-title=${data.name}">
         <div th:replace="page :: ${data['htmlSuffix']}"></div>
     </div>
     <div class="left-nav"

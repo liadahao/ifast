@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.cms.dao.VisitDao;
 import com.cms.domain.ContactDO;
+import com.cms.domain.MessageDO;
 import com.cms.domain.VisitDO;
 import com.cms.service.ContactService;
+import com.cms.service.MessageService;
 import com.ifast.common.annotation.Log;
 import com.ifast.common.base.AdminBaseController;
 import com.ifast.common.domain.Tree;
@@ -53,6 +55,8 @@ public class LoginController extends AdminBaseController {
     VisitDao visitDao;
     @Autowired
     ContactService contactService;
+    @Autowired
+    MessageService messageService;
 
     @GetMapping({"admin"})
     String adminIndex(Model model) {
@@ -116,6 +120,15 @@ public class LoginController extends AdminBaseController {
         browseCountWrapper.le("gmtCreate", today_end);
         int browseCount = visitDao.selectCount(browseCountWrapper);
         model.addAttribute("browseCount", browseCount);
+        // 获取五条消息通知
+        Wrapper<MessageDO> messageDOEntityWrapper = new EntityWrapper<>();
+        messageDOEntityWrapper.orderBy("createTime", false);
+        messageDOEntityWrapper.last("limit 5");
+        if (!getSubjct().isPermitted("cms:message:edit")) {
+            messageDOEntityWrapper.eq("userid", getUserId());
+        }
+        List<MessageDO> messageDOList = messageService.selectList(messageDOEntityWrapper);
+        model.addAttribute("messageList", messageDOList);
         return "main";
     }
 

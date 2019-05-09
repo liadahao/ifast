@@ -84,6 +84,7 @@ public class ProductDO implements Serializable {
      */
     private Integer status;
     private Integer type;
+    private Integer createId;
 
     @TableField(exist = false)
     private List<String> tagList;

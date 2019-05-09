@@ -81,45 +81,32 @@ public class FrontController extends AdminBaseController {
         return "/cms/front/pages/index";
     }
 
-    @RequestMapping("/shop")
-    public String shop(Model model) {
+    @RequestMapping("/shop/{id}")
+    public String productDetail(@PathVariable Integer id, Model model) {
+        ProductDO productDO = productService.selectById(id);
+        if (productDO.getStatus() != ArticleDO.PUBLISH_STATUS) {
+            if ((productDO.getCreateId() != null && productDO.getCreateId() != getUserId().longValue())
+                    || !getSubjct().isPermitted("cms:message:edit")) {
+                throw new IFastException("页面不存在");
+            }
+        }
         List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
                 .eq("isShow", 1).orderBy("`order`", true));
         model.addAttribute("navList", navDOList);
         List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
                 .eq("isShow", 1).orderBy("weight", true));
         model.addAttribute("navSocialList", linkDOList);
-        Wrapper<ProductDO> wrapper = new EntityWrapper<ProductDO>()
-                .orderBy("`order`", false)
-                .eq("type", ProductDO.ON_SHELVES)
-                .eq("status", ArticleDO.PUBLISH_STATUS)
-                .last("limit 1");
-        ProductDO productDO = productService.selectOne(wrapper);
         productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         model.addAttribute("product", productDO);
         NavDO navDO = new NavDO();
         navDO.setId(9L);
         model.addAttribute("data", navDO);
-        for (int i = 0, len = navDOList.size(); i < len; i++) {
-            if (Objects.equals(navDOList.get(i).getId(), navDO.getId())) {
-                if (i > 0) {
-                    model.addAttribute("prev", navDOList.get(i - 1));
-                } else {
-                    model.addAttribute("prev", new HashMap<>());
-                }
-                if (i < (len - 1)) {
-                    model.addAttribute("next", navDOList.get(i + 1));
-                } else {
-                    model.addAttribute("next", new HashMap<>());
-                }
-            }
-        }
         return "/cms/front/pages/shop";
     }
 
-    @RequestMapping("/shop/{id}")
+    @RequestMapping("/product/{id}")
     @ResponseBody
-    public ProductDO productDetail(@PathVariable Integer id, Model model) {
+    public ProductDO getProductDetail(@PathVariable Integer id, Model model) {
         ProductDO productDO = productService.selectById(id);
         productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
         return productDO;
@@ -312,7 +299,7 @@ public class FrontController extends AdminBaseController {
     @GetMapping("/article/{id}/maylike")
     public Result<Page<ArticleDO>> mayLikeArticleList(@PathVariable Integer id) {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
-        wrapper.ne("id", id).eq("status", 0);
+        wrapper.ne("id", id).eq("status", ArticleDO.PUBLISH_STATUS);
         int pageNumber = getParaToInt("pageNumber", 1);
         int pageSize = getParaToInt("pageSize", 3);
         Page<ArticleDO> page = new Page<>(pageNumber, pageSize);
@@ -334,9 +321,9 @@ public class FrontController extends AdminBaseController {
                 .eq("isShow", 1).orderBy("`order`", true));
         model.addAttribute("navList", navDOList);
         ArticleDO article = articleService.selectById(id);
-        if (article.getStatus() != 0) {
+        if (article.getStatus() != ArticleDO.PUBLISH_STATUS) {
             if ((article.getCreateUserId() != null && article.getCreateUserId() != getUserId().longValue())
-                    || !getSubjct().hasRole("adminRole")) {
+                    || !getSubjct().isPermitted("cms:message:edit")) {
                 throw new IFastException("页面不存在");
             }
         }
