@@ -17,6 +17,7 @@ import com.ifast.common.utils.Result;
 import com.ifast.generator.type.EnumGen;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,7 +87,7 @@ public class FrontController extends AdminBaseController {
         ProductDO productDO = productService.selectById(id);
         if (productDO.getStatus() != ArticleDO.PUBLISH_STATUS) {
             if ((productDO.getCreateId() != null && productDO.getCreateId() != getUserId().longValue())
-                    || !getSubjct().isPermitted("cms:message:edit")) {
+                    && !getSubjct().isPermitted("cms:message:edit")) {
                 throw new IFastException("页面不存在");
             }
         }
@@ -322,8 +323,10 @@ public class FrontController extends AdminBaseController {
         model.addAttribute("navList", navDOList);
         ArticleDO article = articleService.selectById(id);
         if (article.getStatus() != ArticleDO.PUBLISH_STATUS) {
+            Subject user = getSubjct();
+            boolean isPer = user.isPermitted("cms:message:edit");
             if ((article.getCreateUserId() != null && article.getCreateUserId() != getUserId().longValue())
-                    || !getSubjct().isPermitted("cms:message:edit")) {
+                    && !isPer) {
                 throw new IFastException("页面不存在");
             }
         }

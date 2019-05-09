@@ -32,6 +32,12 @@ function update() {
 	});
 
 }
+
+function cancel() {
+	parent.reLoad();
+	var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+	parent.layer.close(index);
+}
 function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({

@@ -58,6 +58,7 @@ public class MessageController extends AdminBaseController {
     @RequiresPermissions("cms:message:message")
     public Result<Page<MessageDO>> list(MessageDO messageDTO) {
         Wrapper<MessageDO> wrapper = new EntityWrapper<MessageDO>().orderBy("`status`", false);
+        wrapper.orderBy("createTime",false);
         Subject user = getSubjct();
         // 若没有审核权限，返回自己相关消息
         if (!user.isPermitted("cms:message:edit")) {
@@ -69,7 +70,6 @@ public class MessageController extends AdminBaseController {
 
 
     @GetMapping("/edit/{id}")
-    @RequiresPermissions("cms:message:edit")
     String edit(@PathVariable("id") Integer id, Model model) {
         MessageDO message = messageService.selectById(id);
         model.addAttribute("message", message);
