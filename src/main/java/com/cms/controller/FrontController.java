@@ -318,9 +318,6 @@ public class FrontController extends AdminBaseController {
 
     @GetMapping("/article/{id}")
     public String articleDetail(@PathVariable Integer id, Model model) {
-        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
-                .eq("isShow", 1).orderBy("`order`", true));
-        model.addAttribute("navList", navDOList);
         ArticleDO article = articleService.selectById(id);
         if (article.getStatus() != ArticleDO.PUBLISH_STATUS) {
             Subject user = getSubjct();
@@ -330,6 +327,12 @@ public class FrontController extends AdminBaseController {
                 throw new IFastException("页面不存在");
             }
         }
+        List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
+                .eq("isShow", 1).orderBy("`order`", true));
+        model.addAttribute("navList", navDOList);
+        List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
+                .eq("isShow", 1).orderBy("weight", true));
+        model.addAttribute("navSocialList", linkDOList);
         Integer viewCount = article.getViewCount();
         if (viewCount != null && viewCount >= 0) {
             viewCount++;
