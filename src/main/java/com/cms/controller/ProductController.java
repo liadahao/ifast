@@ -170,6 +170,28 @@ public class ProductController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:product:edit")
     public Result update(ProductDO product) {
+        if (product.getImage() != null && !product.getImage().isEmpty()) {
+            for (int i = 0; i < product.getImage().size(); i++) {
+                if (StringUtils.isEmpty(product.getImage().get(i))) {
+                    continue;
+                }
+                if (i == 0) {
+                    product.setImage1(product.getImage().get(i));
+                }
+                if (i == 1) {
+                    product.setImage2(product.getImage().get(i));
+                }
+                if (i == 2) {
+                    product.setImage3(product.getImage().get(i));
+                }
+                if (i == 3) {
+                    product.setImage4(product.getImage().get(i));
+                }
+                if (i == 4) {
+                    product.setImage5(product.getImage().get(i));
+                }
+            }
+        }
         if (product.getCategoryid() != null) {
             CategoryDO categoryDO = categoryService.selectById(product.getCategoryid());
             product.setCategoryName(categoryDO.getName());

@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="am-panel-group am-u-sm-7 techtour-right-side" th:id="${data['navname']}">
+            <div class="am-panel-group am-u-sm-7 techtour-right-side" th:id="${#strings.replace(data.navname,' ','')}">
                 <div class="am-panel">
                     <div class="am-panel-hd">
                         <span><img class="" src="/img/0201enterprise.png"></span>
@@ -118,7 +118,7 @@
 <div class="main" th:fragment="workshop"
      th:style="'background-image:url(' + @{(${data['background']}=='' ? '' : ${data['background']})} + ')'">
     <div class="am-g" style="height:768px">
-        <div class="main-body am-u-sm-8 workshop" th:id="${data['navname']}">
+        <div class="main-body am-u-sm-8 workshop" th:id="${#strings.replace(data.navname,' ','')}">
             <div class="workshop-title">
                 <h1 th:text="${data['content']['title']}" class="workshop-title-content">
                 </h1>
@@ -130,21 +130,21 @@
                 <div class="am-u-sm-12" style="height: 100%;width: 492px">
                     <ul class="am-avg-sm-3 workshop-thumbnail-list">
                         <li th:attr="data-thumb=${data['content']['video1']}">
-                            <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail1|">
+                            <div class="video-thumbnail" th:id="|${#strings.replace(data.navname,' ','')}-video-thumbnail1|">
                                 <div class="workshop-player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video1']}">
                                 </div>
                             </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video2']}">
-                            <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail2|">
+                            <div class="video-thumbnail" th:id="|${#strings.replace(data.navname,' ','')}-video-thumbnail2|">
                                 <div class="workshop-player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video2']}">
                                 </div>
                             </div>
                         </li>
                         <li th:attr="data-thumb=${data['content']['video3']}">
-                            <div class="video-thumbnail" th:id="|${data['navname']}-video-thumbnail3|">
+                            <div class="video-thumbnail" th:id="|${#strings.replace(data.navname,' ','')}-video-thumbnail3|">
                                 <div class="workshop-player" data-plyr-provider="youtube"
                                      th:attr="data-plyr-embed-id=${data['content']['video3']}">
                                 </div>
@@ -152,7 +152,7 @@
                         </li>
                     </ul>
 
-                    <div th:id="|${data['navname']}-carousel-img|" class="workshop-carousel-img"
+                    <div th:id="|${#strings.replace(data.navname,' ','')}-carousel-img|" class="workshop-carousel-img"
                          data-am-modal="{target: '#video-popup', width: 800, height: 500}">
                         <div class="workshop-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video1']}">
@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <div class="workshop-right-side am-u-sm-12" style="height: 100%;width: 526px">
-                    <div class="am-u-sm-12 workshop-right-container" th:id="|${data['navname']}-right-container|">
+                    <div class="am-u-sm-12 workshop-right-container" th:id="|${#strings.replace(data.navname,' ','')}-right-container|">
                         <div class="am-u-sm-12" style="height: 100%"
                              th:each="model,modelStat : ${data['content']['model']}"
                              th:if="${model.title ne ''}">
@@ -175,13 +175,13 @@
                         </div>
                     </div>
                     <div class="right-side-footer am-u-sm-12">
-                        <div class="right-side-locat am-u-sm-7" th:id="|${data['navname']}-right-side-locat|">
+                        <div class="right-side-locat am-u-sm-7" th:id="|${#strings.replace(data.navname,' ','')}-right-side-locat|">
                         </div>
                         <div class="workshop-right-side-nav am-u-sm-4">
-                            <img th:id="|${data['navname']}-prev|"
+                            <img th:id="|${#strings.replace(data.navname,' ','')}-prev|"
                                  class="workshop-right-side-prev"
                                  src="/img/0301L_def.png"/>
-                            <img th:id="|${data['navname']}-next|"
+                            <img th:id="|${#strings.replace(data.navname,' ','')}-next|"
                                  class="workshop-right-side-next"
                                  src="/img/0301R_def.png"/>
                         </div>
@@ -272,12 +272,7 @@
                             <img class="gallery-adorn" src="/img/0601ornament.png">
                             <div class="gallery-content">
                                 <div class="gallery-content-shadow"></div>
-                                <p class="gallery-content-text" th:text="${gallery['description']}">So many of us are
-                                    demotivated to achieve
-                                    anything. Such
-                                    people are not enthusiastic
-                                    about anything. They don’t want to work towards any goal. Nothing motivates them to
-                                    work. Why is it so? Why many of us are not motivated? What is wrong</p>
+                                <a th:href="${gallery['linkTo']}" target="_blank"><p class="gallery-content-text" th:text="${gallery['description']}"></p></a>
                             </div>
                         </li>
                     </ul>
@@ -341,29 +336,29 @@
             </p>
             <div class="testimonials-bg-b">
                 <div class="testimonials-left">
-                    <div class="first-video" th:id="|${data['navname']}-first-video|"
+                    <div class="first-video" th:id="|${#strings.replace(data.navname,' ','')}-first-video|"
                          th:attr="data-thumb=${data['content']['video1']}">
                         <div class="testimonials-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video1']}">
                         </div>
                     </div>
-                    <img th:id="|${data['navname']}-up-video|" class="up-video" src="/img/0801up_def.png"/>
-                    <img th:id="|${data['navname']}-down-video|" class="down-video" src="/img/0801down_def.png"/>
-                    <div class="second-video" th:id="|${data['navname']}-second-video|"
+                    <img th:id="|${#strings.replace(data.navname,' ','')}-up-video|" class="up-video" src="/img/0801up_def.png"/>
+                    <img th:id="|${#strings.replace(data.navname,' ','')}-down-video|" class="down-video" src="/img/0801down_def.png"/>
+                    <div class="second-video" th:id="|${#strings.replace(data.navname,' ','')}-second-video|"
                          th:attr="data-thumb=${data['content']['video2']}"
                          data-am-modal="{target: '#video-popup', width: 800, height: 500}">
                         <div class="testimonials-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video2']}">
                         </div>
                     </div>
-                    <div class="third-video" th:id="|${data['navname']}-third-video|"
+                    <div class="third-video" th:id="|${#strings.replace(data.navname,' ','')}-third-video|"
                          th:attr="data-thumb=${data['content']['video3']}">
                         <div class="testimonials-player" data-plyr-provider="youtube"
                              th:attr="data-plyr-embed-id=${data['content']['video3']}">
                         </div>
                     </div>
                 </div>
-                <div class="testimonials-right-list" th:id="|${data['navname']}-right-list|">
+                <div class="testimonials-right-list" th:id="|${#strings.replace(data.navname,' ','')}-right-list|">
                     <div class="people-info" th:each="model :${data['content']['model']}">
                         <img class="people-pic" src="/img/669b4bed8e0eafac9fc523d3ce8d51cf.jpeg"
                              th:src="${model['pic']}">
@@ -374,9 +369,9 @@
                     </div>
                 </div>
                 <div class="testimonials-controller-icon">
-                    <img class="am-u-lg-2" th:id="|${data['navname']}-right-prev|" src="/img/0801L_def.png"
+                    <img class="am-u-lg-2" th:id="|${#strings.replace(data.navname,' ','')}-right-prev|" src="/img/0801L_def.png"
                          onclick="testimonialsPrev(this.id)">
-                    <img class="am-u-lg-2" th:id="|${data['navname']}-right-next|" src="/img/0801R_def.png"
+                    <img class="am-u-lg-2" th:id="|${#strings.replace(data.navname,' ','')}-right-next|" src="/img/0801R_def.png"
                          onclick="testimonialsNext(this.id)">
                 </div>
             </div>
@@ -469,7 +464,7 @@
                     <div class="am-tab-panel am-active about-who">
                         <p th:text="${data['content']['tab1']['content']}"></p>
                         <div class="left-side">
-                            <div th:id="|${data['navname']}-carousel|" class="flexslider about-who-carousel">
+                            <div th:id="|${#strings.replace(data.navname,' ','')}-carousel|" class="flexslider about-who-carousel">
                                 <div style="overflow: hidden; position: relative;">
                                     <ul>
                                         <li th:each="model,modelStat : ${data['content']['tab1']['model']}"
@@ -481,7 +476,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div th:id="|${data['navname']}-info-list|" class="info-list">
+                            <div th:id="|${#strings.replace(data.navname,' ','')}-info-list|" class="info-list">
                                 <div class="about-who-info"
                                      th:each="model,modelStat : ${data['content']['tab1']['model']}">
                                     <h1 class="people-name" th:text="${model['name']}"></h1>
@@ -500,7 +495,7 @@
                             </div>
                         </div>
                         <div class="about-who-right-side">
-                            <img th:id="|${data['navname']}-people-image|" class="people-image" draggable="false">
+                            <img th:id="|${#strings.replace(data.navname,' ','')}-people-image|" class="people-image" draggable="false">
                         </div>
                     </div>
                     <div class="am-tab-panel about-what">
