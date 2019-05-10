@@ -33,10 +33,7 @@ import com.cms.service.MessageService;
 import com.ifast.common.utils.Result;
 
 /**
- * <pre>
- *
- * </pre>
- * <small> 2019-04-29 22:08:03 | Aron</small>
+ * 我的通知功能
  */
 @Controller
 @RequestMapping("/cms/message")
@@ -61,9 +58,10 @@ public class MessageController extends AdminBaseController {
     @RequiresPermissions("cms:message:message")
     public Result<Page<MessageDO>> list(MessageDO messageDTO) {
         Wrapper<MessageDO> wrapper = new EntityWrapper<MessageDO>().orderBy("`status`", false);
-//        UserDO user = getUser();
+        wrapper.orderBy("createTime",false);
         Subject user = getSubjct();
-        if (!user.hasRole("adminRole")) {
+        // 若没有审核权限，返回自己相关消息
+        if (!user.isPermitted("cms:message:edit")) {
             wrapper.eq("userid", getUserId());
         }
         Page<MessageDO> page = messageService.selectPage(getPage(MessageDO.class), wrapper);
@@ -72,10 +70,11 @@ public class MessageController extends AdminBaseController {
 
 
     @GetMapping("/edit/{id}")
-    @RequiresPermissions("cms:message:edit")
     String edit(@PathVariable("id") Integer id, Model model) {
         MessageDO message = messageService.selectById(id);
         model.addAttribute("message", message);
+        message.setIsread(1);
+        messageService.updateById(message);
         return "cms/message/edit";
     }
 
@@ -84,18 +83,21 @@ public class MessageController extends AdminBaseController {
     @RequestMapping("/update")
     @RequiresPermissions("cms:message:edit")
     public Result<String> update(MessageDO message) {
+        // 审核文章
         if (message.getType() == TagConstant.ARTICLE.type) {
             ArticleDO articleDO = new ArticleDO();
             articleDO.setId(message.getTypeid());
             articleDO.setStatus(message.getStatus());
             articleService.updateById(articleDO);
         }
+        // 审核活动
         if (message.getType() == TagConstant.EVNENT.type) {
             EventDO eventDO = new EventDO();
             eventDO.setId(message.getTypeid());
             eventDO.setStatus(message.getStatus());
             eventService.updateById(eventDO);
         }
+        // 审核产品
         if (message.getType() == TagConstant.PRODUCT.type) {
             ProductDO productDO = new ProductDO();
             productDO.setId(message.getTypeid());

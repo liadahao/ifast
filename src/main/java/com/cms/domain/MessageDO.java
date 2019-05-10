@@ -64,5 +64,9 @@ public class MessageDO implements Serializable {
      * 提交者id
      */
     private Integer userid;
+    /**
+     * 是否已读
+     */
+    private Integer isread;
 
 }

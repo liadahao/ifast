@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.baomidou.mybatisplus.annotations.TableField;
@@ -19,6 +21,7 @@ public class UserDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //
+    @TableId(type = IdType.AUTO)
     private Long id;
     // 用户名
     private String username;

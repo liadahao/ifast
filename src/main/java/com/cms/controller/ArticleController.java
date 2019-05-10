@@ -27,10 +27,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * <pre>
  * 文章表
- * </pre>
- * <small> 2019-04-08 18:31:25 | Aron</small>
  */
 @Controller
 @RequestMapping("/cms/article")
@@ -151,7 +148,7 @@ public class ArticleController extends AdminBaseController {
         article.setCreateUserId(getUserId().intValue());
         article.setCreateUserName(getUsername());
         articleService.insert(article);
-        messageService.saveArticle(article, getUserId());
+        messageService.saveArticle(article, getUser());
         if (article.getTag() != null && !article.getTag().isEmpty()) {
             for (String tagName : article.getTag()) {
                 if (StringUtils.isEmpty(tagName)) {
@@ -211,7 +208,7 @@ public class ArticleController extends AdminBaseController {
             }
         }
         boolean update = articleService.updateById(article);
-        messageService.saveArticle(article, getUserId());
+        messageService.saveArticle(article, getUser());
         EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
         articleTagDOEntityWrapper.eq("articleId", article.getId());
         articleTagService.delete(articleTagDOEntityWrapper);

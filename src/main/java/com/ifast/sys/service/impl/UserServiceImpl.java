@@ -59,7 +59,6 @@ public class UserServiceImpl extends CoreServiceImpl<UserDao, UserDO> implements
     public UserDO selectById(Serializable id) {
         List<Long> roleIds = userRoleMapper.listRoleId(id);
         UserDO user = baseMapper.selectById(id);
-        user.setDeptName(deptMapper.selectById(user.getDeptId()).getName());
         user.setroleIds(roleIds);
         return user;
     }

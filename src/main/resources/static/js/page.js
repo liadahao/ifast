@@ -178,7 +178,7 @@ function handleProductData(data) {
     $('.product-like').on('click', function () {
         $.ajax({
             type: "GET",
-            url: "/shop/" + $(this).attr("id"),
+            url: "/product/" + $(this).attr("id"),
             async: false,
             error: function (request) {
             },
@@ -334,6 +334,8 @@ $(function () {
                 var bottomname = document.querySelectorAll('.slide-page')[target].getAttribute('data-name');
                 document.querySelectorAll('.bottom-text')[0].innerHTML = bottomname;
             }
+            var title = document.querySelectorAll('.slide-page')[target - 1].getAttribute('data-title');
+            document.querySelectorAll('title')[0].innerHTML = title;
         },
     });
     window.slide = slide;

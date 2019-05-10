@@ -5,6 +5,7 @@ import com.cms.domain.EventDO;
 import com.cms.domain.MessageDO;
 import com.cms.domain.ProductDO;
 import com.ifast.common.base.CoreService;
+import com.ifast.sys.domain.UserDO;
 
 /**
  * <pre>
@@ -14,9 +15,9 @@ import com.ifast.common.base.CoreService;
  */
 public interface MessageService extends CoreService<MessageDO> {
 
-    void saveArticle(ArticleDO article, Long userId);
+    void saveArticle(ArticleDO article, UserDO user);
 
-    void saveEvent(EventDO event, Long userId);
+    void saveEvent(EventDO event, UserDO user);
 
-    void saveProduct(ProductDO product, Long userId);
+    void saveProduct(ProductDO product, UserDO user);
 }

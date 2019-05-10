@@ -109,7 +109,7 @@ public class EventController extends AdminBaseController {
         }
         event.setCreatetime(new Date());
         eventService.insert(event);
-        messageService.saveEvent(event, getUserId());
+        messageService.saveEvent(event, getUser());
         return Result.ok();
     }
 
@@ -135,7 +135,7 @@ public class EventController extends AdminBaseController {
         }
         event.setModifytime(new Date());
         boolean update = eventService.updateById(event);
-        messageService.saveEvent(event, getUserId());
+        messageService.saveEvent(event, getUser());
         return update ? Result.ok() : Result.fail();
     }
 
