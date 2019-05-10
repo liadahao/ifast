@@ -3,7 +3,7 @@ function navslidepage(index) {
     $("#doc-oc-demo3").offCanvas("close");
 }
 
-function workshopPrev(id) {
+$(".workshop-right-side-prev").on("click", function () {
     id = id.split('-')[0];
     var locatList = $("#" + id + "-right-side-locat");
     $('#' + id + '-right-container').children().each(function (index) {
@@ -22,8 +22,7 @@ function workshopPrev(id) {
             return false;
         }
     });
-}
-
+});
 
 $(".workshop-right-side-next").on("click", function () {
     var id = $(this).attr('id');
@@ -125,7 +124,7 @@ $('.about-who-carousel').find('li').on('click', function () {
 // 设置shop页
 
 var productImageList = $(".image-list").children();
-var len = productImageList.size();
+var productImageListLen = productImageList.size();
 $(".image-controller").click(function () {
     var controllerIndex = $(this).index();
     $(".controller-list").children().each(function (index) {
@@ -135,7 +134,7 @@ $(".image-controller").click(function () {
             $(".controller-list").children().eq(index).addClass("image-controller-select");
         }
     });
-    var showIndex = len - $(this).index() - 1;
+    var showIndex = productImageListLen - $(this).index() - 1;
     productImageList.each(function (index) {
         if (index !== showIndex) {
             $(this).hide();
