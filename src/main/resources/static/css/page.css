@@ -741,7 +741,6 @@ article
     -webkit-line-clamp: 5;
     text-align: justify;
     word-break: break-all;
-    line-height: 1.4;
 }
 
 .article-body .box2 .box-conetnt {
@@ -751,10 +750,9 @@ article
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     text-align: justify;
     word-break: break-all;
-    line-height: 1.4;
 }
 
 .article-body .box3 .box-conetnt {
@@ -767,7 +765,6 @@ article
     -webkit-line-clamp: 3;
     text-align: justify;
     word-break: break-all;
-    line-height: 1.4;
 }
 
 .tag-list {
