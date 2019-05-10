@@ -233,6 +233,7 @@ Workshop
     color: rgba(255, 255, 255, 1);
     margin-top: 173px;
     line-height: 1.6;
+    text-align: justify;
 }
 
 .workshop-video-container {
@@ -268,6 +269,7 @@ Workshop
 .workshop-right-container .title-img-div img {
     width: 240px;
     height: 140px;
+    text-align: justify;
 }
 
 .workshop-right-content {
@@ -496,6 +498,7 @@ gallery
     margin: 12px 20px;
     position: absolute;
     color: rgba(255, 255, 255, 1);
+    text-align: justify;
 }
 
 .gallery-content-text:hover {
@@ -1125,6 +1128,7 @@ testimonials
     margin-left: 450px;
     position: relative;
     line-height: 1.6;
+    text-align: justify;
 }
 
 .testimonials-controller-icon {
@@ -1666,6 +1670,7 @@ about
     line-height: 1.6;
     padding-right: 5px;
     height: 266px;
+    text-align: justify;
 }
 
 .about-who-carousel {
