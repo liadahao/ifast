@@ -278,6 +278,7 @@ Workshop
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
     line-height: 1.6;
+    text-align: justify;
 }
 
 .workshop-right-side .right-side-locat {
@@ -1645,6 +1646,10 @@ about
     float: left;
 }
 
+.about-who-info{
+    padding-right: 5px;
+}
+
 .about .people-name {
     margin-top: 49px;
     font-size: 36px;
@@ -1726,15 +1731,12 @@ about
     position: relative;
 }
 
-.about .box:last-child {
-    margin-left: 2%;
-}
-
 .about .box {
     width: 530px;
     height: 264px;
     float: left;
     position: relative;
+    margin-right: 20px;
 }
 
 .about .box-title {

@@ -300,6 +300,19 @@ $(function () {
     $('.side-close').on('click', function () {
         $myOc.offCanvas($(this).data('rel'));
     });
+    var firefox = navigator.userAgent.indexOf('Firefox') != -1;
+    //阻止事件冒泡和默认行为的完整兼容性代码
+    function MouseWheel(e) {
+        e = e || window.event;
+        if (e.stopPropagation) {//这是取消冒泡
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+    }
+    var con = document.getElementById('doc-oc-demo3');//要在content内部滚动，而页面不受影响，所以这里获取要滚动的对象
+    firefox ? con.addEventListener('DOMMouseScroll', MouseWheel, false) : (con.onmousewheel = MouseWheel);
+
 
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
