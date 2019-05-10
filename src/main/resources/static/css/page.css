@@ -107,7 +107,6 @@ html, body {
     height: 208px;
     overflow: hidden;
     text-align: justify;
-    text-justify: newspaper;
     word-break: break-all;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -676,7 +675,7 @@ article
 .article-body .box3 .text {
     color: rgba(255, 255, 255, 1);
     background: transparent;
-    padding-top: 38.5%;
+    padding-top: 164px;
     height: 100%;
 
 }
@@ -689,6 +688,11 @@ article
     color: rgba(19, 19, 19, 1);
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-align: justify;
+    word-break: break-all;
     line-height: 1.4;
 }
 
@@ -730,16 +734,40 @@ article
 .article-body .box1 .box-conetnt {
     width: 404px;
     height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    text-align: justify;
+    word-break: break-all;
+    line-height: 1.4;
 }
 
 .article-body .box2 .box-conetnt {
     width: 292px;
     height: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-align: justify;
+    word-break: break-all;
+    line-height: 1.4;
 }
 
 .article-body .box3 .box-conetnt {
     width: 292px;
-    height: 63px;
+    height: 61px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-align: justify;
+    word-break: break-all;
+    line-height: 1.4;
 }
 
 .tag-list {
