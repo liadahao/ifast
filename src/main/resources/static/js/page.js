@@ -4,6 +4,7 @@ function navslidepage(index) {
 }
 
 $(".workshop-right-side-prev").on("click", function () {
+    var id = $(this).attr('id');
     id = id.split('-')[0];
     var locatList = $("#" + id + "-right-side-locat");
     $('#' + id + '-right-container').children().each(function (index) {
@@ -123,9 +124,9 @@ $('.about-who-carousel').find('li').on('click', function () {
 
 // 设置shop页
 
-var productImageList = $(".image-list").children();
-var productImageListLen = productImageList.size();
 $(".image-controller").click(function () {
+    var productImageList = $(".image-list").children();
+    var productImageListLen = productImageList.size();
     var controllerIndex = $(this).index();
     $(".controller-list").children().each(function (index) {
         if (index !== controllerIndex) {
