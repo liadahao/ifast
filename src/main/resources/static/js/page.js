@@ -340,8 +340,7 @@ $(function () {
         },
         after: function (origin, diraction, target) {
             if (target > 1) {
-                var topname = document.querySelectorAll('.slide-page')[target - 2].getAttribute('data-name');
-                document.querySelectorAll('.top-text')[0].innerHTML = topname;
+                document.querySelectorAll('.top-text')[0].innerHTML = document.querySelectorAll('.slide-page')[target - 2].getAttribute('data-name');
                 document.querySelectorAll('.top a')[0].href = '#';
             } else {
                 document.querySelectorAll('.top-text')[0].innerHTML = 'Home';
@@ -349,20 +348,20 @@ $(function () {
             }
             var len = document.querySelectorAll('.slide-page').length;
             if (target < len) {
-                var bottomname = document.querySelectorAll('.slide-page')[target].getAttribute('data-name');
-                document.querySelectorAll('.bottom-text')[0].innerHTML = bottomname;
+                document.querySelectorAll('.bottom')[0].style.display = "block";
+                document.querySelectorAll('.bottom-text')[0].innerHTML = document.querySelectorAll('.slide-page')[target].getAttribute('data-name');
+            }else{
+                document.querySelectorAll('.bottom')[0].style.display = "none";
             }
-            var title = document.querySelectorAll('.slide-page')[target - 1].getAttribute('data-title');
-            document.querySelectorAll('title')[0].innerHTML = title;
-        },
+            document.querySelectorAll('title')[0].innerHTML = document.querySelectorAll('.slide-page')[target - 1].getAttribute('data-title');
+        }
     });
     window.slide = slide;
     // -- 由于slidePage不提供分页组件，所以以下是当前示例的分页器逻辑
     pagination.querySelectorAll('li')[initPage - 1].classList.remove('circular');
     pagination.querySelectorAll('li')[initPage - 1].classList.add('select-circular');
     if (initPage > 1) {
-        var topname = document.querySelectorAll('.slide-page')[initPage - 2].getAttribute('data-name');
-        document.querySelectorAll('.top-text')[0].innerHTML = topname;
+        document.querySelectorAll('.top-text')[0].innerHTML = document.querySelectorAll('.slide-page')[initPage - 2].getAttribute('data-name');
         document.querySelectorAll('.top a')[0].href = '#';
     } else {
         document.querySelectorAll('.top-text')[0].innerHTML = 'Home';
@@ -370,8 +369,10 @@ $(function () {
     }
     var len = document.querySelectorAll('.slide-page').length;
     if (initPage < len) {
-        var bottomname = document.querySelectorAll('.slide-page')[initPage].getAttribute('data-name');
-        document.querySelectorAll('.bottom-text')[0].innerHTML = bottomname;
+        document.querySelectorAll('.bottom')[0].style.display = "block";
+        document.querySelectorAll('.bottom-text')[0].innerHTML = document.querySelectorAll('.slide-page')[initPage].getAttribute('data-name');
+    }else{
+        document.querySelectorAll('.bottom')[0].style.display = "none";
     }
 
     function renderPagination() {
