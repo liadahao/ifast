@@ -1,3 +1,5 @@
+const controls = '<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>';
+
 function navslidepage(index) {
     slide.slideTo(index);
     $("#doc-oc-demo3").offCanvas("close");
@@ -124,8 +126,8 @@ $('.about-who-carousel').find('li').on('click', function () {
 
 // 设置shop页
 
-var productImageList = $(".image-list").children();
 $(".image-controller").click(function () {
+    var productImageList = $(".image-list").children();
     var productImageListLen = productImageList.size();
     var controllerIndex = $(this).index();
     $(".controller-list").children().each(function (index) {
@@ -219,6 +221,7 @@ function loadProductData(data) {
             $(".controller-list").prepend('<div class="image-controller"></div>')
         }
         $(".image-controller").click(function () {
+            var productImageList = $(".image-list").children();
             var productImageListLen = productImageList.size();
             var controllerIndex = $(this).index();
             $(".controller-list").children().each(function (index) {
@@ -415,7 +418,6 @@ $(function () {
 });
 
 //初始化视频
-const controls = '<button type="button" class="plyr__control plyr__control--overlaid plyr__tab-focus"><svg role="presentation" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button>';
 const player = new Plyr('#video-popup-player');
 const players = Plyr.setup('.player', {controls, clickToPlay: false});
 const player1s = Plyr.setup('.testimonials-player', {controls, clickToPlay: false});

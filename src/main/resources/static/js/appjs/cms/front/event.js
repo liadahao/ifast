@@ -1,5 +1,9 @@
 $(function () {
     load_event();
+    $("#event-list img").on('click', function f() {
+        var url = $(this).next().attr("data-url");
+        window.open(url);
+    });
 });
 
 (function ($) {
@@ -142,8 +146,8 @@ function handleEventData(data) {
             $('#event-' + obj.id).children('img').attr('src', obj.thumbnail);
         }
     }
-    $(".text").click(function () {
-        var url = $(this).attr("data-url");
+    $(".event-title").click(function () {
+        var url = $(this).parent().attr("data-url");
         window.open(url);
     })
 }

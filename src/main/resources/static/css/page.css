@@ -496,6 +496,11 @@ gallery
     height: 100px;
     margin: 12px 20px;
     position: absolute;
+    color: rgba(255, 255, 255, 1);
+}
+
+.gallery-content-text:hover {
+    color: #0a6aa1;
 }
 
 #gallery-slider .gallery-adorn {
@@ -873,6 +878,7 @@ event
 .event-body .box > img {
     width: 100%;
     height: 256px;
+    cursor: pointer;
 }
 
 .event-body .box .text {
@@ -882,7 +888,6 @@ event
     padding-right: 12px;
     width: 100%;
     background: rgba(255, 255, 255, 1);
-    cursor: pointer;
 }
 
 .event-title {
@@ -893,6 +898,11 @@ event
     font-weight: 300;
     color: rgba(19, 19, 19, 1);
     overflow: hidden;
+    cursor: pointer;
+}
+
+.event-title:hover{
+    color: #0a6aa1;
 }
 
 .event-date {
