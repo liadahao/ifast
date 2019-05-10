@@ -124,8 +124,8 @@ $('.about-who-carousel').find('li').on('click', function () {
 
 // 设置shop页
 
+var productImageList = $(".image-list").children();
 $(".image-controller").click(function () {
-    var productImageList = $(".image-list").children();
     var productImageListLen = productImageList.size();
     var controllerIndex = $(this).index();
     $(".controller-list").children().each(function (index) {
@@ -219,6 +219,7 @@ function loadProductData(data) {
             $(".controller-list").prepend('<div class="image-controller"></div>')
         }
         $(".image-controller").click(function () {
+            var productImageListLen = productImageList.size();
             var controllerIndex = $(this).index();
             $(".controller-list").children().each(function (index) {
                 if (index !== controllerIndex) {
@@ -227,7 +228,7 @@ function loadProductData(data) {
                     $(".controller-list").children().eq(index).addClass("image-controller-select");
                 }
             });
-            var showIndex = len - $(this).index() - 1;
+            var showIndex = productImageListLen - $(this).index() - 1;
             productImageList.each(function (index) {
                 if (index !== showIndex) {
                     $(this).hide();
