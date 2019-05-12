@@ -308,6 +308,9 @@ function handleArticleData(data) {
             var tagHtml = '<div class="tag">' + obj.tag[tagIndex] + '</div>';
             tagList.append(tagHtml);
             tempWidth = tempWidth + tagList.children().eq(tagIndex).outerWidth();
+            if (tagIndex !== (obj.tag.length - 1)) {
+                tempWidth = tempWidth + 10;
+            }
             if (tempWidth > tagListWidth) {
                 tagList.find(":last-child").remove();
             }

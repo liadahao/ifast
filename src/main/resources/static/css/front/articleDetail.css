@@ -76,6 +76,16 @@ html, body {
     margin-top: 70px;
 }
 
+.article-summary{
+    line-height: 24px;
+    color: #0a6aa1
+}
+
+.article-summary:first-letter {
+    font-size: 48px;
+    text-transform:uppercase;
+}
+
 .article-content img {
     max-width: 100%;
 }
