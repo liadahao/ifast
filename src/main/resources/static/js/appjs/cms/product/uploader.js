@@ -4,8 +4,7 @@ jQuery(function () {
         $wrap = $('#uploader'),
 
         // 图片容器
-        $queue = $('<ul class="filelist"></ul>')
-            .appendTo($wrap.find('.queueList')),
+        $queue = $('.filelist'),
 
         // 状态栏，包括进度和控制按钮
         $statusBar = $wrap.find('.statusBar'),
@@ -24,6 +23,8 @@ jQuery(function () {
 
         // 添加的文件数量
         fileCount = 0,
+
+        existFileCount = $queue.children().size(),
 
         // 添加的文件总大小
         fileSize = 0,
@@ -95,7 +96,7 @@ jQuery(function () {
 
     // 当有文件添加进来时执行，负责view的创建
     function addFile(file) {
-        var $li = $('<li id="' + file.id + '">' +
+        var $li = $('<li id="WU_FILE_' + (existFileCount) + '">' +
             '<p class="title">' + file.name + '</p>' +
             '<p class="imgWrap"></p>' +
             '<p class="progress"><span></span></p>' +
@@ -359,6 +360,7 @@ jQuery(function () {
     // 文件上传成功，给item添加成功class, 用样式标记上传成功。
     uploader.on('uploadSuccess', function (file, response) {
         let index = file.id.split('_')[2];
+        index = parseInt(index) + existFileCount;
         $('#image' + index).val(response.data);
     });
 
