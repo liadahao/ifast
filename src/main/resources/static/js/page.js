@@ -240,7 +240,7 @@ function loadProductData(data) {
                 }
             });
         });
-        var id = $("#productId").val();
+        var id = data.id;
         $.ajax({
             type: "GET",
             url: "/shop/" + id + "/maylike",
