@@ -121,10 +121,7 @@ public class FrontController extends AdminBaseController {
         wrapper.ne("id", id)
                 .eq("type", ProductDO.ON_SHELVES)
                 .eq("status", ArticleDO.PUBLISH_STATUS);
-        int pageNumber = getParaToInt("pageNumber", 1);
-        int pageSize = getParaToInt("pageSize", 5);
-        Page<ProductDO> page = new Page<>(pageNumber, pageSize);
-        page = productService.selectPage(page, wrapper);
+        Page<ProductDO> page = productService.selectPage(getPage(ProductDO.class), wrapper);
         return Result.ok(page);
     }
 

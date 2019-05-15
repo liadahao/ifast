@@ -27,7 +27,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 文章表
+ * 文章Controller
+ *
+ * @author jinbag
  */
 @Controller
 @RequestMapping("/cms/article")
@@ -51,6 +53,7 @@ public class ArticleController extends AdminBaseController {
     @GetMapping("/list")
     public Result<Page<ArticleDO>> list(ArticleDO articleDTO, Date startTime, Date endTime) {
         Wrapper<ArticleDO> wrapper = new EntityWrapper<ArticleDO>().orderBy("id", false);
+        // 搜索条件
         if (articleDTO.getId() != null) {
             wrapper.eq("id", articleDTO.getId().toString());
         } else {
@@ -85,6 +88,7 @@ public class ArticleController extends AdminBaseController {
     ArticleDO edit(@PathVariable("id") Integer id) {
         ArticleDO article = articleService.selectById(id);
         List<Map<String, String>> mapList = new LinkedList<>();
+        // 社交媒体管理
         if (!StringUtils.isEmpty(article.getFacebook())) {
             Map<String, String> map = JSON.parseObject(article.getFacebook(), Map.class);
             mapList.add(map);
@@ -123,6 +127,7 @@ public class ArticleController extends AdminBaseController {
         if (article.getCreateTime() == null) {
             article.setCreateTime(new Date());
         }
+        // 处理社交媒体管理
         if (article.getSocial() != null && !article.getSocial().isEmpty()) {
             for (Map<String, String> map : article.getSocial()) {
                 String type = map.get("type");
@@ -149,6 +154,7 @@ public class ArticleController extends AdminBaseController {
         article.setCreateUserName(getUsername());
         articleService.insert(article);
         messageService.saveArticle(article, getUser());
+        // 处理标签
         if (article.getTag() != null && !article.getTag().isEmpty()) {
             for (String tagName : article.getTag()) {
                 if (StringUtils.isEmpty(tagName)) {
@@ -211,7 +217,9 @@ public class ArticleController extends AdminBaseController {
         messageService.saveArticle(article, getUser());
         EntityWrapper<ArticleTagDO> articleTagDOEntityWrapper = new EntityWrapper<>();
         articleTagDOEntityWrapper.eq("articleId", article.getId());
+        // 删除原有标签
         articleTagService.delete(articleTagDOEntityWrapper);
+        // 处理标签
         if (article.getTag() != null && !article.getTag().isEmpty()) {
             for (String tagName : article.getTag()) {
                 if (StringUtils.isEmpty(tagName)) {
@@ -219,8 +227,8 @@ public class ArticleController extends AdminBaseController {
                 }
                 EntityWrapper<TagDO> entityWrapper = new EntityWrapper<>();
                 entityWrapper.eq("name", tagName).eq("type", TagConstant.ARTICLE.type);
-                ;
                 TagDO tag = tagService.selectOne(entityWrapper);
+                // 插入新标签
                 if (tag == null) {
                     tag = new TagDO();
                     tag.setName(tagName);
@@ -229,6 +237,7 @@ public class ArticleController extends AdminBaseController {
                     tag.setIsenable(1);
                     tagService.insert(tag);
                 }
+                // 插入关系表
                 articleTagDOEntityWrapper = new EntityWrapper<>();
                 articleTagDOEntityWrapper.eq("articleId", article.getId())
                         .eq("tagId", tag.getId());

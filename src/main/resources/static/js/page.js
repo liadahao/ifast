@@ -241,6 +241,7 @@ function loadProductData(data) {
             });
         });
         var id = data.id;
+        $("#productId").val(id);
         $.ajax({
             type: "GET",
             url: "/shop/" + id + "/maylike",
@@ -447,9 +448,9 @@ $(".video-container").on('click', function () {
         sources: [
             {
                 src: url,
-                provider: 'youtube',
-            },
-        ],
+                provider: 'youtube'
+            }
+        ]
     };
 });
 
@@ -460,9 +461,9 @@ $('.collapse-video-container').on('click', function () {
         sources: [
             {
                 src: url,
-                provider: 'youtube',
-            },
-        ],
+                provider: 'youtube'
+            }
+        ]
     };
 });
 
@@ -473,7 +474,7 @@ $('.workshop-carousel-img').on('click', function () {
         sources: [
             {
                 src: url,
-                provider: 'youtube',
+                provider: 'youtube'
             },
         ],
     };
@@ -552,4 +553,26 @@ $(".down-video").on('click', function () {
     selector1.find(".plyr__poster").css("background-image", bg3);
     selector2.find(".plyr__poster").css("background-image", bg1);
     selector3.find(".plyr__poster").css("background-image", bg2);
+});
+
+$("#contact-submit").on('click', function () {
+    $.ajax({
+        cache: true,
+        type: "POST",
+        url: "/cms/contact/save",
+        data: $('#contact-form').serialize(),// 你的formid
+        async: false,
+        error: function (request) {
+            parent.layer.alert("Connection error");
+        },
+        success: function (data) {
+            if (data.code == 0) {
+                alert("提交成功");
+                windows.location.reload(force)
+            } else {
+                parent.layer.alert(data.msg)
+            }
+
+        }
+    });
 });
