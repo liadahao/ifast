@@ -257,6 +257,7 @@ function loadProductData(data) {
 }
 
 function productPrev() {
+    var id = $("#productId").val();
     var pageNumber = $("#productPageNumber").val();
     if (pageNumber > 1) {
         pageNumber = parseInt(pageNumber) - 1;
@@ -276,6 +277,7 @@ function productPrev() {
 }
 
 function productNext() {
+    var id = $("#productId").val();
     var pageNumber = $("#productPageNumber").val();
     pageNumber = parseInt(pageNumber) + 1;
     $.ajax({

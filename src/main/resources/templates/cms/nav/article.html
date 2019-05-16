@@ -18,7 +18,13 @@
                         </fieldset>
                         <h3>页面信息</h3>
                         <fieldset id="page-info" class="ibox-content">
-
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">摘要：</label>
+                                <div class="col-sm-8">
+                                    <textarea id="headcontent" name="content[description]" class="form-control"
+                                              rows="5" th:text="${nav['content']['description']}"></textarea>
+                                </div>
+                            </div>
                         </fieldset>
                         <h3>SEO信息</h3>
                         <fieldset id="seo-info" class="ibox-content">

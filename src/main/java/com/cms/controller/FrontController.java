@@ -133,13 +133,14 @@ public class FrontController extends AdminBaseController {
         for (NavDO navDO : navDOList) {
             NavVo navVo = new NavVo();
             BeanUtils.copyProperties(navDO, navVo);
+            Map data = null;
             if (!StringUtils.isEmpty(navDO.getContent())) {
-                Map data = JSON.parseObject(navDO.getContent(), Map.class);
-                if (data == null) {
-                    data = new HashMap<>();
-                }
-                navVo.setContent(data);
+                data = JSON.parseObject(navDO.getContent(), Map.class);
             }
+            if (data == null) {
+                data = new HashMap<>();
+            }
+            navVo.setContent(data);
             navVo.setHtmlSuffix(HtmlConstant.getHtml(navDO.getType()));
             navVoList.add(navVo);
         }
