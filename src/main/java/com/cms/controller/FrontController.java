@@ -130,9 +130,21 @@ public class FrontController extends AdminBaseController {
         List<NavDO> navDOList = navService.selectList(new EntityWrapper<NavDO>()
                 .eq("isShow", 1).orderBy("`order`", true));
         List<NavVo> navVoList = new LinkedList<>();
+        List<String> metaTitleList = new LinkedList<>();
+        List<String> metaKeywordsList = new LinkedList<>();
+        List<String> metaDescriptionList = new LinkedList<>();
         for (NavDO navDO : navDOList) {
             NavVo navVo = new NavVo();
             BeanUtils.copyProperties(navDO, navVo);
+            if (!StringUtils.isEmpty(navDO.getMetaTitle())) {
+                metaTitleList.add(navDO.getMetaTitle());
+            }
+            if (!StringUtils.isEmpty(navDO.getMetaKeywords())) {
+                metaKeywordsList.add(navDO.getMetaKeywords());
+            }
+            if (!StringUtils.isEmpty(navDO.getMetaDescription())) {
+                metaDescriptionList.add(navDO.getMetaDescription());
+            }
             Map data = null;
             if (!StringUtils.isEmpty(navDO.getContent())) {
                 data = JSON.parseObject(navDO.getContent(), Map.class);
@@ -144,6 +156,12 @@ public class FrontController extends AdminBaseController {
             navVo.setHtmlSuffix(HtmlConstant.getHtml(navDO.getType()));
             navVoList.add(navVo);
         }
+        String metaTitle = StringUtils.join(metaTitleList, ";");
+        String metaKeywords = StringUtils.join(metaKeywordsList, ";");
+        String metaDescription = StringUtils.join(metaDescriptionList, ";");
+        model.addAttribute("metaTitle", metaTitle);
+        model.addAttribute("metaKeywords", metaKeywords);
+        model.addAttribute("metaDescription", metaDescription);
         model.addAttribute("navList", navVoList);
         List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
                 .eq("isShow", 1).orderBy("weight", true));
@@ -199,15 +217,7 @@ public class FrontController extends AdminBaseController {
         }
         model.addAttribute("data", navDO);
         String suffix = "";
-        Map data;
-        if (navDO != null && !StringUtils.isEmpty(navDO.getContent())) {
-            data = JSON.parseObject(navDO.getContent(), Map.class);
-            NavVo navVo = new NavVo();
-            BeanUtils.copyProperties(navDO, navVo);
-            navVo.setContent(data);
-            suffix = HtmlConstant.getHtml(navDO.getType());
-            model.addAttribute("data", navVo);
-        } else if (HtmlConstant.SHOP.getHtml().equals(name)) {
+        if (HtmlConstant.SHOP.getHtml().equals(name)) {
             Wrapper<ProductDO> productDOWrapper = new EntityWrapper<ProductDO>()
                     .orderBy("`order`", false)
                     .eq("type", ProductDO.ON_SHELVES)
@@ -215,7 +225,7 @@ public class FrontController extends AdminBaseController {
             ProductDO productDO = productService.selectOne(productDOWrapper);
             productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
             model.addAttribute("product", productDO);
-        } else if ("gallery".equals(name)) {
+        } else if (HtmlConstant.GALLERY.getHtml().equals(name)) {
             Wrapper<GalleryDO> galleryDOWrapper = new EntityWrapper<GalleryDO>().orderBy("weight", false);
             List<GalleryDO> galleryDOList = galleryService.selectList(galleryDOWrapper);
             model.addAttribute("gallery", galleryDOList);
@@ -225,10 +235,18 @@ public class FrontController extends AdminBaseController {
                     .eq("isEnable", 1);
             List<TagDO> list = tagService.selectList(tagDOWrapper);
             model.addAttribute("tags", list);
-        } else {
-            Map<String, Object> map = new HashMap<>();
-            map.put("content", new HashMap<>());
-            model.addAttribute("gallery", new HashMap<>());
+        } else if (navDO != null) {
+            Map<String, Object> data;
+            if (!StringUtils.isEmpty(navDO.getContent())) {
+                data = JSON.parseObject(navDO.getContent(), HashMap.class);
+            } else {
+                data = new HashMap<>();
+            }
+            NavVo navVo = new NavVo();
+            BeanUtils.copyProperties(navDO, navVo);
+            navVo.setContent(data);
+            suffix = HtmlConstant.getHtml(navDO.getType());
+            model.addAttribute("data", navVo);
         }
         // 获取首页设置信息
         List<ConfigDO> configDOList = configService.findListByKvType(EnumGen.KvType.index.getValue());

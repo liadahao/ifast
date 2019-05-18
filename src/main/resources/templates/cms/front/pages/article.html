@@ -9,6 +9,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="title" th:attr="content=${data['metaTitle']}"/>
+    <meta name="keywords" th:attr="content=${data['metaKeywords']}"/>
+    <meta name="description" th:attr="content=${data['metaDescription']}"/>
     <link th:href="@{/css/amazeui.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/page.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/front/article.css}" rel="stylesheet" type="text/css"/>
