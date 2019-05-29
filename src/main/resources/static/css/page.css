@@ -530,6 +530,7 @@ article
  */
 .article-main, .event-main {
     padding-top: 106px;
+    min-height: 100%;
 }
 
 .article-body, .event-body {
