@@ -156,6 +156,7 @@ public class FrontController extends AdminBaseController {
             navVo.setHtmlSuffix(HtmlConstant.getHtml(navDO.getType()));
             navVoList.add(navVo);
         }
+        // 设置seo信息
         String metaTitle = StringUtils.join(metaTitleList, ";");
         String metaKeywords = StringUtils.join(metaKeywordsList, ";");
         String metaDescription = StringUtils.join(metaDescriptionList, ";");
@@ -163,6 +164,7 @@ public class FrontController extends AdminBaseController {
         model.addAttribute("metaKeywords", metaKeywords);
         model.addAttribute("metaDescription", metaDescription);
         model.addAttribute("navList", navVoList);
+        // 设置导航栏外链
         List<LinkDO> linkDOList = linkService.selectList(new EntityWrapper<LinkDO>()
                 .eq("isShow", 1).orderBy("weight", true));
         model.addAttribute("navSocialList", linkDOList);
@@ -176,7 +178,11 @@ public class FrontController extends AdminBaseController {
                 .eq("type", ProductDO.ON_SHELVES)
                 .eq("status", ArticleDO.PUBLISH_STATUS);
         ProductDO productDO = productService.selectOne(productDOWrapper);
-        productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
+        if (productDO != null) {
+            productDO.setTagList(new ArrayList<>(Arrays.asList(productDO.getTags().split(","))));
+        } else {
+            productDO = new ProductDO();
+        }
         model.addAttribute("product", productDO);
         // 获取活动标签信息
         Wrapper<TagDO> tagDOWrapper = new EntityWrapper<TagDO>()
@@ -198,7 +204,6 @@ public class FrontController extends AdminBaseController {
                 map.put(configDO.getK(), configDO.getV());
             }
         }
-
         model.addAttribute("index", map);
         model.addAttribute("currentPage", index);
         return "/cms/front/pages/page";
