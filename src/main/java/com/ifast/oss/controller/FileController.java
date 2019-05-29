@@ -34,14 +34,14 @@ public class FileController extends AdminBaseController {
     private FileService sysFileService;
     
     @GetMapping()
-    @RequiresPermissions("oss:file:file")
+//    @RequiresPermissions("oss:file:file")
     String sysFile(Model model) {
         return "common/file/file";
     }
     
     @ResponseBody
     @GetMapping("/list")
-    @RequiresPermissions("oss:file:list")
+//    @RequiresPermissions("oss:file:list")
     public Result<Page<FileDO>> list(FileDO fileDTO) {
         Wrapper<FileDO> wrapper = new EntityWrapper<FileDO>(fileDTO);
         Page<FileDO> page = sysFileService.selectPage(getPage(FileDO.class), wrapper);
