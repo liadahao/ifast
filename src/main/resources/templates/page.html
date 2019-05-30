@@ -8,7 +8,9 @@
                     <div class="techtour-right-title am-text-center">Tour</div>
                 </div>
                 <p th:text="${data['content']['content']}" class="techtour-content"></p>
-                <div class="video-container" data-am-modal="{target: '#video-popup', width: 800, height: 500}">
+                <div class="video-container"
+                     data-am-modal="{target: '#video-popup', width: 800, height: 500}"
+                     th:attr="video-url=${data['content']['video']}">
                     <div class="player" data-plyr-provider="youtube"
                          th:attr="data-plyr-embed-id=|${data['content']['video']}|">
                     </div>
