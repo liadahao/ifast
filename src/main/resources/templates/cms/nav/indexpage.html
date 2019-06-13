@@ -119,7 +119,7 @@
                                                                 class="form-control" type="hidden" value=""
                                                                 readonly="readonly"
                                                                 th:value="${social.logo}">
-                                                            <img th:src="${social.logo}">
+                                                            <img th:src="${social.logo}" width="200" height="150">
                                                         </td>
                                                         <td><input
                                                                 th:attr="name=content[social][+${socialStat.index}+][order]"
@@ -270,8 +270,9 @@
     function addTechtourLink(id) {
         var tbody = $("#linktable-" + id);
         var len = tbody.children('tr').length;
-        if (len >= 12) {
-            parent.layer.msg("链接已到达12个");
+        if (len >= 6) {
+            parent.layer.msg("链接已到达6个");
+            return;
         }
         //iframe层-父子操作
         layer.open({
